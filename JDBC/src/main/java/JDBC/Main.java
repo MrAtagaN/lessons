@@ -5,9 +5,9 @@ import java.sql.*;
 
 public class Main {
 
-    private static final String URL = "jdbc:mysql://localhost:3306/testbase?useSSL=false";
+    private static final String URL = "jdbc:mysql://localhost:3306/?useSSL=false";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "12345678";
+    private static final String PASSWORD = "root";
 
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
 
@@ -16,6 +16,11 @@ public class Main {
         //объект для запросов
         try (Connection connection = DAO.getConnection(URL, USERNAME, PASSWORD); Statement statement = connection.createStatement()) {
             String querry;
+
+            //создание базы данных
+            querry = "create database testBase";
+            statement.execute(querry);
+            System.out.println(querry);
 
             //удаление таблицы
             querry = "drop table if exists testBase.products ";
