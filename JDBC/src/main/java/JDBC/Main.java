@@ -9,20 +9,24 @@ public class Main {
     private static final String USERNAME = "root";
     private static final String PASSWORD = "root";
 
+
+    /**
+     * Создает базу testBase, если нет
+     * Создает в ней таблицу products(id, name, price), если нет
+     *
+     *
+     */
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
-
-
-
         //объект для запросов
         try (Connection connection = DAO.getConnection(URL, USERNAME, PASSWORD); Statement statement = connection.createStatement()) {
             String querry;
 
-            //создание базы данных
-            querry = "create database testBase";
+            //создание базы данных, если нет
+            querry = "create database if not exists testBase ";
             statement.execute(querry);
             System.out.println(querry);
 
-            //удаление таблицы
+            //удаление таблицы, если есть
             querry = "drop table if exists testBase.products ";
             statement.execute(querry);
             System.out.println(querry);
@@ -32,7 +36,8 @@ public class Main {
             statement.execute(querry);
             System.out.println(querry);
 
-            //встввка в таблицу
+            /** statement */
+            //вставка в таблицу
             querry = "insert into testBase.products (id, name, price) values (1, 'cheese', 192)";
             statement.addBatch(querry);
             System.out.println(querry);
@@ -73,11 +78,27 @@ public class Main {
             statement.executeUpdate(querry);
             System.out.println(querry);
 
-            //извлечение данных еще раз
-            //через PreparedStatemet
-            querry = "select * from testBase.products";
+            /** PreparedStatemet */
+
+            //вставка данных через PreparedStatemet
+            querry = "insert into testBase.products (name, price) values (?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(querry);
-            ResultSet resultSet2 = preparedStatement.executeQuery();
+            preparedStatement.setInt(2, 232);
+            preparedStatement.setString(1, "burger");
+            preparedStatement.execute();
+            preparedStatement.close();
+
+            //обновление таблицы через PreparedStatemet
+            querry = "update testBase.products set price = ? where name = burger";
+            PreparedStatement preparedStatement2 = connection.prepareStatement(querry);
+            preparedStatement2.setInt(1, 255);
+            preparedStatement2.execute();
+            preparedStatement2.close();
+
+            //извлечение данных через PreparedStatemet
+            querry = "select * from testBase.products";
+            PreparedStatement preparedStatement3 = connection.prepareStatement(querry);
+            ResultSet resultSet2 = preparedStatement3.executeQuery();
             System.out.println(querry);
 
             while (resultSet2.next()) {
@@ -85,12 +106,11 @@ public class Main {
                 int price = resultSet2.getInt("price");
                 System.out.println(name + ", " + price);
             }
+            preparedStatement3.close();
 
+
+            /** Batch */
 
         }
-
-
-
-
     }
 }
