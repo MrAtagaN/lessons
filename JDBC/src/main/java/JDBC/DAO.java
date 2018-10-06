@@ -16,9 +16,9 @@ public class DAO {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
-            System.out.println("Ошибка при создании соединения");
             e.printStackTrace();
             connection.close();
+            System.out.println("Ошибка при создании соединения");
         }
 
         System.out.println("Подключение к базе");

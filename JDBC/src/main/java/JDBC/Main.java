@@ -12,8 +12,9 @@ public class Main {
 
     /**
      * Создает базу testBase, если нет
-     * Создает в ней таблицу products(id, name, price), если нет
-     *
+     * Удаляет в ней таблицу products(id, name, price), если есть
+     * Создает таблицу products(id, name, price)
+     * Делает вставки, изменения, получение результатов через Statement, PreparedStatemet, Batch
      *
      */
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
@@ -36,7 +37,9 @@ public class Main {
             statement.execute(querry);
             System.out.println(querry);
 
-            /** statement */
+            /**
+             * Statement
+             */
             //вставка в таблицу
             querry = "insert into testBase.products (id, name, price) values (1, 'cheese', 192)";
             statement.addBatch(querry);
@@ -78,7 +81,9 @@ public class Main {
             statement.executeUpdate(querry);
             System.out.println(querry);
 
-            /** PreparedStatemet */
+            /**
+             * PreparedStatemet
+             */
 
             //вставка данных через PreparedStatemet
             querry = "insert into testBase.products (name, price) values (?, ?)";
@@ -89,27 +94,31 @@ public class Main {
             preparedStatement.close();
 
             //обновление таблицы через PreparedStatemet
-            querry = "update testBase.products set price = ? where name = burger";
+            querry = "update testBase.products set price = ? where name = 'burger'";
             PreparedStatement preparedStatement2 = connection.prepareStatement(querry);
             preparedStatement2.setInt(1, 255);
             preparedStatement2.execute();
+            System.out.println(querry);
             preparedStatement2.close();
 
             //извлечение данных через PreparedStatemet
-            querry = "select * from testBase.products";
+            querry = "select * from testBase.products where price > ?";
             PreparedStatement preparedStatement3 = connection.prepareStatement(querry);
+            preparedStatement3.setInt(1, 10);
             ResultSet resultSet2 = preparedStatement3.executeQuery();
             System.out.println(querry);
 
             while (resultSet2.next()) {
                 String name = resultSet2.getString("name");
-                int price = resultSet2.getInt("price");
+                String price = resultSet2.getString("price");
                 System.out.println(name + ", " + price);
             }
             preparedStatement3.close();
 
 
-            /** Batch */
+            /**
+             *  Batch
+             */
 
         }
     }
