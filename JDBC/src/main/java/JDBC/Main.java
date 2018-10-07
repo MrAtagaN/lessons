@@ -15,7 +15,7 @@ public class Main {
      * Удаляет в ней таблицу products(id, name, price), если есть
      * Создает таблицу products(id, name, price)
      * Делает вставки, изменения, получение результатов через Statement, PreparedStatemet, Batch
-     *
+     * Транзакции
      */
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         //объект для запросов
@@ -32,13 +32,16 @@ public class Main {
             statement.execute(querry);
             System.out.println(querry);
 
+            /**
+             * Statement
+             */
             //создание таблицы
             querry = "create table testBase.products (ID int NOT NULL AUTO_INCREMENT primary key , name varchar(20) not null, price integer)";
             statement.execute(querry);
             System.out.println(querry);
 
             /**
-             * Statement
+             *  Batch
              */
             //вставка в таблицу
             querry = "insert into testBase.products (id, name, price) values (1, 'cheese', 192)";
@@ -115,10 +118,20 @@ public class Main {
             }
             preparedStatement3.close();
 
-
             /**
-             *  Batch
+             * Транзакции
              */
+            connection.setAutoCommit(false);
+            Savepoint savepoint = connection.setSavepoint();
+
+            querry = "insert into testBase.products (name, price) values ('eggs', 434)";
+            statement.execute(querry);
+            System.out.println(querry);
+
+            connection.rollback(savepoint);
+            System.out.println("rollback    " + querry);
+
+            connection.commit();
 
         }
     }
