@@ -13,6 +13,7 @@
         <module>Hibernate</module>
         <module>SpringCore</module>
         <module>Servlet</module>
+        <module>JavaCore</module>
     </modules>
 
 </project>
