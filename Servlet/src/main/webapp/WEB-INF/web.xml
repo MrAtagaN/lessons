@@ -4,26 +4,26 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
-    <!-- addServlet-->
-    <servlet>
-        <servlet-name>add</servlet-name>
-        <servlet-class>plekhanov.servlets.AddServlet</servlet-class>
-    </servlet>
+    <!--&lt;!&ndash; addServlet&ndash;&gt;-->
+    <!--<servlet>-->
+        <!--<servlet-name>add</servlet-name>-->
+        <!--<servlet-class>plekhanov.servlets.AddServlet</servlet-class>-->
+    <!--</servlet>-->
 
-    <servlet-mapping>
-        <servlet-name>add</servlet-name>
-        <url-pattern>/add</url-pattern>
-    </servlet-mapping>
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>add</servlet-name>-->
+        <!--<url-pattern>/add</url-pattern>-->
+    <!--</servlet-mapping>-->
 
-    <!--listServlet-->
-    <servlet>
-        <servlet-name>list</servlet-name>
-        <servlet-class>plekhanov.servlets.ListServlet</servlet-class>
-    </servlet>
+    <!--&lt;!&ndash;listServlet&ndash;&gt;-->
+    <!--<servlet>-->
+        <!--<servlet-name>list</servlet-name>-->
+        <!--<servlet-class>plekhanov.servlets.ListServlet</servlet-class>-->
+    <!--</servlet>-->
 
-    <servlet-mapping>
-        <servlet-name>list</servlet-name>
-        <url-pattern>/list</url-pattern>
-    </servlet-mapping>
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>list</servlet-name>-->
+        <!--<url-pattern>/list</url-pattern>-->
+    <!--</servlet-mapping>-->
 
 </web-app>
