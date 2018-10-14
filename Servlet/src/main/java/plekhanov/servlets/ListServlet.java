@@ -14,9 +14,7 @@ public class ListServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         RequestDispatcher dispatcher = req.getRequestDispatcher("view/list.jsp");
         dispatcher.forward(req, resp);
-
     }
 }
