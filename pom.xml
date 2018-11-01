@@ -15,6 +15,7 @@
         <module>Servlet</module>
         <module>JavaCore</module>
         <module>lessonHibernate</module>
+        <module>SpringBoot</module>
     </modules>
 
 </project>
