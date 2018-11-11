@@ -16,6 +16,7 @@
         <module>JavaCore</module>
         <module>lessonHibernate</module>
         <module>SpringBoot</module>
+        <module>Mockito</module>
     </modules>
 
 </project>
