@@ -18,6 +18,7 @@
         <module>SpringBoot</module>
         <module>Mockito</module>
         <module>XML</module>
+        <module>Spring</module>
     </modules>
 
 </project>
