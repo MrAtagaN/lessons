@@ -12,7 +12,7 @@ import java.net.Socket;
 public class HttpServer {
 
     public static void main(String[] args) throws IOException {
-        ServerSocket serverSocket = new ServerSocket(8080);
+        ServerSocket serverSocket = new ServerSocket(8080);//test
 
         while (true) {
             Socket socket = serverSocket.accept();
