@@ -2,7 +2,7 @@ package Spring.annotationBeans;
 
 import org.springframework.stereotype.Component;
 
-@Component() //cделать prototype
+@Component //cделать prototype
 public class CatAnnotation {
 
     private static int count = 0;
