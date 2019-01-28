@@ -8,7 +8,7 @@
 <form action="myForm" method="post">
     <input name="name"/><br/>
     <input name="age"/><br/>
-    <input type="submit" value="submit"><br/>
+    <input type="submit" value="Отправить"><br/>
 </form>
 </body>
 </html>
