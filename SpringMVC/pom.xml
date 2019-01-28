@@ -12,6 +12,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>SpringMVC</artifactId>
+    <build>
+        <finalName>ROOT</finalName>
+    </build>
 
     <properties>
         <org.springframework-version>5.0.8.RELEASE</org.springframework-version>
