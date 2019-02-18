@@ -52,13 +52,13 @@ public class CheckingMails {
                 Message message = messages[i];
                 System.out.println("===================================================================================" +
                 "======================================================================================================");
-                System.out.println("Email Number " + (i + 1));
+                System.out.println("Email Number " +  message.getMessageNumber());
                 System.out.println("Subject: " + message.getSubject());
                 System.out.println("From: " + message.getFrom()[0]);
                 System.out.println("Text: " + message.getContent().toString());
 
-                //сохранить шестое письмо
-                if (i == 5) {
+                //сохранить письмо
+                if (i == 100) {
                     FileOutputStream fileOutputStream = new FileOutputStream("MyEmail.eml");
                     message.writeTo(fileOutputStream);
                     fileOutputStream.close();
