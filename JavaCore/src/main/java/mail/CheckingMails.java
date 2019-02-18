@@ -13,7 +13,7 @@ public class CheckingMails {
 
     public static void main(String[] args) throws IOException {
 
-        String host = "rambler.ru";// change accordingly
+        String host = "pop.rambler.ru";// change accordingly
         String mailStoreType = "pop3";
         String username = "atagan@rambler.ru";// change accordingly
 
