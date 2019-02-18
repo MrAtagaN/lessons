@@ -1,9 +1,7 @@
 package mail;
 
 import javax.mail.*;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.Properties;
 
 /**
@@ -26,6 +24,7 @@ public class CheckingMails {
         check(host, mailStoreType, username, password);
     }
 
+
     public static void check(String host, String storeType, String user, String password) {
         try {
             //create properties field
@@ -47,15 +46,23 @@ public class CheckingMails {
 
             // retrieve the messages from the folder in an array and print it
             Message[] messages = emailFolder.getMessages();
-            System.out.println("messages.length---" + messages.length);
+            System.out.println("messages.length:  " + messages.length);
 
-            for (int i = 0, n = messages.length; i < n; i++) {
+            for (int i = 0; i < messages.length; i++) {
                 Message message = messages[i];
-                System.out.println("---------------------------------");
+                System.out.println("===================================================================================" +
+                "======================================================================================================");
                 System.out.println("Email Number " + (i + 1));
                 System.out.println("Subject: " + message.getSubject());
                 System.out.println("From: " + message.getFrom()[0]);
                 System.out.println("Text: " + message.getContent().toString());
+
+                //сохранить шестое письмо
+                if (i == 5) {
+                    FileOutputStream fileOutputStream = new FileOutputStream("MyEmail.eml");
+                    message.writeTo(fileOutputStream);
+                    fileOutputStream.close();
+                }
 
             }
 
