@@ -22,9 +22,7 @@ public class MailClient {
     }
 
 
-
-
-    public void check() {
+    public void readMessages() {
         try {
             //create properties field
             Properties properties = new Properties();
@@ -57,7 +55,7 @@ public class MailClient {
                 System.out.println("Text: " + message.getContent().toString());
 
                 //сохранить письмо
-                if (i == 100) {
+                if (i == 10) {
                     FileOutputStream fileOutputStream = new FileOutputStream("MyEmail.eml");
                     message.writeTo(fileOutputStream);
                     fileOutputStream.close();

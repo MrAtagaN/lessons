@@ -5,6 +5,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 /**
+ * Простой сервер
  * Запустить программу
  * В браузере зайти на http://localhost:8080/
  */

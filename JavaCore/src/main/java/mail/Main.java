@@ -21,6 +21,6 @@ public class Main {
         reader.close();
 
         MailClient mailClient = new MailClient(HOST, USER_NAME, MAIL_STORE_TYPE, password);
-        mailClient.check();
+        mailClient.readMessages();
     }
 }
