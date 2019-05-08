@@ -5,27 +5,26 @@ import java.io.*;
 import java.util.Properties;
 
 /**
- * Created by AtagaN on 18.02.2019.
+ * Клиент для почтового ящика
  */
-public class CheckingMails {
+public class MailClient {
 
-    public static void main(String[] args) throws IOException {
+    private String host;
+    private String userName;
+    private String mailStoreType;
+    private String password;
 
-        String host = "pop.rambler.ru";// change accordingly
-        String mailStoreType = "pop3";
-        String username = "atagan@rambler.ru";// change accordingly
-
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("INPUT PASSWORD");
-        String password = reader.readLine();
-
-        reader.close();
-
-        check(host, mailStoreType, username, password);
+    public MailClient(String host, String userName, String mailStoreType, String password) {
+        this.host = host;
+        this.userName = userName;
+        this.mailStoreType = mailStoreType;
+        this.password = password;
     }
 
 
-    public static void check(String host, String storeType, String user, String password) {
+
+
+    public void check() {
         try {
             //create properties field
             Properties properties = new Properties();
@@ -36,9 +35,9 @@ public class CheckingMails {
             Session emailSession = Session.getDefaultInstance(properties);
 
             //create the POP3 store object and connect with the pop server
-            Store store = emailSession.getStore("pop3s");
+            Store store = emailSession.getStore(mailStoreType);
 
-            store.connect(host, user, password);
+            store.connect(host, userName, password);
 
             //create the folder object and open it
             Folder emailFolder = store.getFolder("INBOX");
@@ -70,10 +69,6 @@ public class CheckingMails {
             emailFolder.close(false);
             store.close();
 
-        } catch (NoSuchProviderException e) {
-            e.printStackTrace();
-        } catch (MessagingException e) {
-            e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }
