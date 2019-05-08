@@ -1,8 +1,7 @@
 package SpringBoot;
 
-/**
- * Created by AtagaN on 01.11.2018.
- */
+
+
 public class User {
 
     private long id;

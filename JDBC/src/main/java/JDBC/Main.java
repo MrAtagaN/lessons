@@ -5,9 +5,9 @@ import java.sql.*;
 
 public class Main {
 
-    private static final String URL = "jdbc:mysql://localhost:3306/?useSSL=false";
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "root";
+//    private static final String URL = "jdbc:mysql://localhost:3306/?useSSL=false";
+//    private static final String USERNAME = "root";
+//    private static final String PASSWORD = "root";
 
 
     /**
@@ -17,7 +17,15 @@ public class Main {
      * Делает вставки, изменения, получение результатов через Statement, PreparedStatemet, Batch
      * Транзакции
      */
-    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+    public static void main(String[] args) throws SQLException {
+
+        DAO dao = new DAO();
+
+        dao.createDataBase();
+
+
+
+
         //объект для запросов
         try (Connection connection = DAO.getConnection(URL, USERNAME, PASSWORD); Statement statement = connection.createStatement()) {
             String querry;
