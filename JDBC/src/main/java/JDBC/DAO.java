@@ -27,8 +27,6 @@ public class DAO {
             e.printStackTrace();
             System.out.println("Ошибка при создании соединения");
         }
-
-
     }
 
 //    private static Connection getConnection(String url, String username, String password) {
