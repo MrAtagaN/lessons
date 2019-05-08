@@ -19,39 +19,51 @@ public class SocketProcessor implements Runnable {
     @Override
     public void run() {
         try {
-            readInputHeaders();
-            writeResponse("<html><body><h1> Hello World! </h1></body></html>");
-        } catch (Throwable t) {
-            /*do nothing*/
+
+            String inputRequest = readInputRequest();
+            System.out.println(inputRequest);
+            writeResponse("<html><body><h1> Hello World! </h1>\r\n<h3>your request:</h3>\r\n<pre>"+inputRequest+"</pre></body></html>");
+
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             try {
                 socket.close();
-            } catch (Throwable t) {
-                /*do nothing*/
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
-        System.out.println("Client processing finished");
+        System.out.println("=== Client processing finished ===");
     }
 
-    private void writeResponse(String s) throws Throwable {
+    /**
+     * Формирует http ответ
+     */
+    private void writeResponse(String content) throws Exception {
         String response = "HTTP/1.1 200 OK\r\n" +
                 "Server: PlekhanovServer/2018-09-09\r\n" +
                 "Content-Type: text/html\r\n" +
-                "Content-Length: " + s.length() + "\r\n" +
+                "Content-Length: " + content.length() + "\r\n" +
                 "Connection: close\r\n\r\n";
-        String result = response + s;
+
+        String result = response + content;
         outputStream.write(result.getBytes());
         outputStream.flush();
     }
 
-    //метод только читает запрос, но ничего не делает
-    private void readInputHeaders() throws Throwable {
+    /**
+     * Читает входящий http запрос
+     */
+    private String readInputRequest() throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
+        StringBuilder stringBuilder = new StringBuilder();
         while (true) {
-            String s = br.readLine();
-            if (s == null || s.trim().length() == 0) {
+            String line = br.readLine();
+            if (line == null || line.trim().length() == 0) {
                 break;
             }
+            stringBuilder.append(line + "\r\n");
         }
+        return stringBuilder.toString();
     }
 }

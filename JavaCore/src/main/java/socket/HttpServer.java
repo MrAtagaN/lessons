@@ -8,7 +8,6 @@ import java.net.Socket;
  * Запустить программу
  * В браузере зайти на http://localhost:8080/
  */
-
 public class HttpServer {
 
     public static void main(String[] args) throws IOException {
@@ -16,7 +15,7 @@ public class HttpServer {
 
         while (true) {
             Socket socket = serverSocket.accept();
-            System.out.println("Client has connect");
+            System.out.println("=== Client has connect ===");
             new Thread(new SocketProcessor(socket)).start();
         }
 
