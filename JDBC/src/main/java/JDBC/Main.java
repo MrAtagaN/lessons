@@ -2,7 +2,13 @@ package JDBC;
 
 import java.sql.*;
 
-
+/**
+ * Скачать MySQL server отсюда : ....
+ *
+ * Statement - обычный запрос
+ *
+ *
+ */
 public class Main {
 
 //    private static final String URL = "jdbc:mysql://localhost:3306/?useSSL=false";
@@ -22,6 +28,8 @@ public class Main {
         DAO dao = new DAO();
 
         dao.createDataBase();
+        dao.dropTableIfExists();
+        dao.createTable();
 
 
 

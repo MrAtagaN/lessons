@@ -49,13 +49,35 @@ public class DAO {
 //    }
 
     /**
-     * Создание базы данных testBase, если нет
+     * Создание базы testBase данных, если нет
      */
     public void createDataBase() throws SQLException {
         try (Statement statement = connection.createStatement()) {
             System.out.println("создание базы данных, если нет");
-            String querry = "create database if not exists testBase ";
-            statement.execute(querry);
+            String query = "create database if not exists testBase";
+            statement.execute(query);
+        }
+    }
+
+    /**
+     * Удаление таблицы testBase.products, если есть
+     */
+    public void dropTableIfExists() throws SQLException {
+        try (Statement statement = connection.createStatement()) {
+            System.out.println("удаление таблицы, если есть");
+            String query = "drop table if exists testBase.products";
+            statement.execute(query);
+        }
+    }
+
+    /**
+     * Создание таблицы testBase.products(id, name, price)
+     */
+    public void createTable() throws SQLException {
+        try (Statement statement = connection.createStatement()) {
+            String query = "create table testBase.products (ID int NOT NULL AUTO_INCREMENT primary key , name varchar(20) not null, price integer)";
+            statement.execute(query);
+            System.out.println(query);
         }
     }
 
