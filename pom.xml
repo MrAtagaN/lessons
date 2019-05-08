@@ -20,6 +20,7 @@
         <module>XML</module>
         <module>SpringAOP</module>
         <module>SpringMVC</module>
+        <module>Git</module>
     </modules>
 
 </project>

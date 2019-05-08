@@ -1,0 +1,7 @@
+# Изменение параметра user.name (user.email)
+#
+# --global параметры для пользователя в системе
+# --system общие параметры системы
+# --local по умолчанию, параметры в директории .git
+#
+git config --global user.name <USER_NAME>
