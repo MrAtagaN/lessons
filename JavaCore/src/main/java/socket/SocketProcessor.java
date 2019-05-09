@@ -3,6 +3,9 @@ package socket;
 import java.io.*;
 import java.net.Socket;
 
+/**
+ * Обрабатывает запрос
+ */
 public class SocketProcessor implements Runnable {
 
     private Socket socket;
@@ -15,13 +18,14 @@ public class SocketProcessor implements Runnable {
         this.outputStream = socket.getOutputStream();
     }
 
+
     @Override
     public void run() {
         try {
 
             String inputRequest = readInputRequest();
             System.out.println(inputRequest);
-            writeResponse("<html><body><h1> Hello World! </h1>\r\n<h3>your request:</h3>\r\n<pre>"+inputRequest+"</pre></body></html>");
+            writeResponse("<html><body><h1> Hello !!! </h1>\r\n<h3>your request:</h3>\r\n<pre>"+inputRequest+"</pre></body></html>");
 
         } catch (Exception e) {
             e.printStackTrace();
