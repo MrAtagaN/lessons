@@ -49,8 +49,8 @@ public class Renderer extends Canvas{
         //цикл по каждому пикселю
         for (int i = 0; i < imageSize * 3; i += 3) {
             pixels[i] = model.getAnInt(); //красный цвет пикселя
-            pixels[i+1] = model.getAnInt(); //зеленый цвет пикселя
-            pixels[i+2] = model.getAnInt(); //синий цвет пикселя
+            pixels[i+1] = model.getAnInt()*2; //зеленый цвет пикселя
+            pixels[i+2] = model.getAnInt()*3; //синий цвет пикселя
             //похоже что 1023 максимальный цвет
         }
 
