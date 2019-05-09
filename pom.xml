@@ -22,6 +22,7 @@
         <module>SpringMVC</module>
         <module>Git</module>
         <module>MQ</module>
+        <module>JUnit</module>
     </modules>
 
 </project>
