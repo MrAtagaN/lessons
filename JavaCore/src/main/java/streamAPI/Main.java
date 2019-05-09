@@ -1,8 +1,11 @@
 package streamAPI;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 import java.util.concurrent.ForkJoinPool;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Stream API
@@ -11,9 +14,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-        //Инициализация list числами от 0 до 30
+        //Инициализация list числами от 0 до 20
         ArrayList<Integer> list = new ArrayList();
-        for (int i = 0; i <= 30; i++) {
+        for (int i = 0; i <= 20; i++) {
             list.add(i);
         }
 
@@ -43,6 +46,38 @@ public class Main {
 
 
         System.out.println("Max, выводит максимальный элемент:\r\n" + list.stream().max((x,y) -> x-y).get());
+        System.out.println();
+
+
+        System.out.println("Collectors, собирает в set, list, map");
+        Set<Integer> result = list.stream().map(x -> x*2).collect(Collectors.toSet());
+        result.forEach(x -> System.out.print(x + " "));
+        System.out.println("\r\n");
+
+
+        System.out.println("FlatMap, принимает массив коллекций или массив стримов");
+        Stream.of(list, result).flatMap(x -> x.stream()).forEach(x -> System.out.print(x + " "));
+        System.out.println("\r\n");
+
+
+        System.out.println("Reduce, складывает элементы. Identity - начальное значение, sum - сумма, elem - текущий элемент");
+        System.out.println(list.stream().reduce(0, (sum, elem) -> sum += elem));
+        System.out.println();
+
+
+        System.out.println("Limit, первые 5 элементы");
+        list.stream().limit(5).forEach(x -> System.out.print(x + " "));
+        System.out.println("\r\n");
+
+
+        System.out.println("MapToInt, превращает элементы в примитивы");
+        list.stream().mapToInt(x -> x).forEach(x -> System.out.print(x + " "));
+        System.out.println("\r\n");
+
+        System.out.println("allMatch, возвращает true если все элементы удовлетворяют условию (<50), аналогично anyMatch, noneMatch");
+        System.out.println(list.stream().allMatch(x-> x < 50));
+        System.out.println();
+
 
     }
 
