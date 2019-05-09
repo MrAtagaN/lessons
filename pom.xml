@@ -21,6 +21,7 @@
         <module>SpringAOP</module>
         <module>SpringMVC</module>
         <module>Git</module>
+        <module>MQ</module>
     </modules>
 
 </project>
