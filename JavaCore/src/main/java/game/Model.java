@@ -12,19 +12,18 @@ public class Model implements Runnable {
     private int width;
     private int count = 1;
 
-    private volatile int[] pixels;
-    private volatile Player player;
-    private volatile Background9 background9;
-    private volatile Background8 background8;
-    private volatile Background7 background7;
-    private volatile Background6 background6;
-    private volatile Background5 background5;
+    private Player player;
+    private Background9 background9;
+    private Background8 background8;
+    private Background7 background7;
+    private Background6 background6;
+    private Background5 background5;
 
     public Model(int width, int height) {
         this.height = height;
         this.width = width;
-        this.pixels = new int[width * height * 3];
-        this.player = new Player(100, 100);
+
+        this.player = new Player(500, 850);
         this.background9 = new Background9(0);
         this.background8 = new Background8(0);
         this.background7 = new Background7(0);
@@ -58,20 +57,12 @@ public class Model implements Runnable {
     }
 
 
-    public int[] getPixels() {
-        return pixels;
-    }
-
-    public void setPixels(int[] pixels) {
-        this.pixels = pixels;
-    }
-
     @Override
     public void run() {
 
         drawBackground();
-        player.changeX(1);
-        player.changeY(1);
+//        player.changeX(1);
+//        player.changeY(1);
 
     }
 

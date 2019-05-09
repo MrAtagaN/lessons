@@ -16,6 +16,8 @@ public class Renderer extends Canvas {
 
     private int WIDTH;
     private int HEIGHT;
+    private int windowPositionWidth;
+    private int windowPositionHeight;
     private double UPDATES;
     private String GAME_TITLE;
 
@@ -39,17 +41,19 @@ public class Renderer extends Canvas {
     /**
      * Конструктор, инициализация картинок
      */
-    public Renderer(int width, int heigt, double updates, String gameTitle, Model model) {
+    public Renderer(int width, int height, double updates, String gameTitle, int windowPositionWidth, int windowPositionHeight, Model model) {
         this.WIDTH = width;
-        this.HEIGHT = heigt;
+        this.HEIGHT = height;
         this.UPDATES = updates;
         this.GAME_TITLE = gameTitle;
+        this.windowPositionWidth = windowPositionWidth;
+        this.windowPositionHeight = windowPositionHeight;
         this.model = model;
         //this.image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
 
 
         try {
-            File playerImageFile = new File("JavaCore\\src\\main\\java\\game\\resources\\images\\Player.png");
+            File playerImageFile = new File("JavaCore\\src\\main\\java\\game\\resources\\images\\Player2.png");
             playerImage = ImageIO.read(playerImageFile);
 
 
@@ -90,7 +94,7 @@ public class Renderer extends Canvas {
         Graphics graphics = bufferStrategy.getDrawGraphics();
         //graphics.drawImage(image, 0, 0, WIDTH, HEIGHT, this);
 
-        int y = -300; //выравнивание фона по высоте
+        int y = -500; //выравнивание фона по высоте
         graphics.drawImage(backgroundImage1, 0, y, WIDTH, HEIGHT - y, this);
         graphics.drawImage(backgroundImage2, 0, y, WIDTH, HEIGHT - y, this);
         graphics.drawImage(backgroundImage3, 0, y, WIDTH, HEIGHT - y, this);
@@ -106,7 +110,7 @@ public class Renderer extends Canvas {
         graphics.drawImage(backgroundImage9, model.getBackground9().getX(), y, WIDTH, HEIGHT - y, this);
         graphics.drawImage(backgroundImage9, model.getBackground9().getX() + WIDTH, y, WIDTH, HEIGHT - y, this);
 
-        graphics.drawImage(playerImage, 500, 600, 100, 100, this);
+        graphics.drawImage(playerImage, model.getPlayer().getX(), model.getPlayer().getY(), 120, 100, this);
 
         graphics.dispose();
         bufferStrategy.show();
@@ -118,11 +122,14 @@ public class Renderer extends Canvas {
      */
     public void run() {
         JFrame jFrame = new JFrame();
+        jFrame.setUndecorated(true); // на весь экран
         jFrame.setVisible(true);
         jFrame.setTitle(GAME_TITLE);
         jFrame.setResizable(false);
+        jFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
         jFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        jFrame.setBounds(400, 100, WIDTH, HEIGHT);
+        jFrame.setBounds(windowPositionWidth, windowPositionHeight, WIDTH, HEIGHT);
 
         //отрисовка
         jFrame.add(this);
