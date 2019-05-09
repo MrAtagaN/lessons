@@ -10,10 +10,8 @@ public class Model implements Runnable {
 
     private int height;
     private int width;
-    //private int anInt = 0;
     private int count = 1;
 
-    private static final int GAME_TICKS_PER_SECOND = 120;
     private volatile int[] pixels;
     private volatile Player player;
     private volatile Background9 background9;
@@ -25,7 +23,13 @@ public class Model implements Runnable {
     public Model(int width, int height) {
         this.height = height;
         this.width = width;
-        this.pixels = new int[ width * height * 3];
+        this.pixels = new int[width * height * 3];
+        this.player = new Player(100, 100);
+        this.background9 = new Background9(0);
+        this.background8 = new Background8(0);
+        this.background7 = new Background7(0);
+        this.background6 = new Background6(0);
+        this.background5 = new Background5(0);
     }
 
     public Background9 getBackground9() {
@@ -54,14 +58,6 @@ public class Model implements Runnable {
     }
 
 
-//    public int getAnInt() {
-//        return anInt;
-//    }
-//
-//    public void setAnInt(int anInt) {
-//        this.anInt = anInt;
-//    }
-
     public int[] getPixels() {
         return pixels;
     }
@@ -72,43 +68,15 @@ public class Model implements Runnable {
 
     @Override
     public void run() {
-        this.player = new Player(100, 100);
-        this.background9 = new Background9(0);
-        this.background8 = new Background8(0);
-        this.background7 = new Background7(0);
-        this.background6 = new Background6(0);
-        this.background5 = new Background5(0);
 
-        while (true) {
-            try {
-                Thread.sleep(1000/GAME_TICKS_PER_SECOND);
-
-
-                drawBackground();
-                player.changeX(1);
-                player.changeY(1);
-
-
-
-                //anInt++;
-//                if (anInt >= Integer.MAX_VALUE) {
-//                    anInt = 0;
-//                }
-
-
-
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
+        drawBackground();
+        player.changeX(1);
+        player.changeY(1);
 
     }
 
 
-
-
-
-//    private void fillPixels() {
+    //    private void fillPixels() {
 //        //цикл по каждому пикселю
 //        //похоже что 1023 максимальный цвет
 ////        for (int i = 0; i < pixels.length; i += 3) {
@@ -131,24 +99,24 @@ public class Model implements Runnable {
 //
 //
     private void drawBackground() {
-        background9.changeX((int)(-count/1.5));
-        if (Math.abs(background9.getX()) >= width ) {
+        background9.changeX((int) (-count / 1.5));
+        if (Math.abs(background9.getX()) >= width) {
             background9.setX(0);
         }
-        background8.changeX(-count/2);
-        if (Math.abs(background8.getX()) >= width ) {
+        background8.changeX(-count / 2);
+        if (Math.abs(background8.getX()) >= width) {
             background8.setX(0);
         }
-        background7.changeX(-count/3);
-        if (Math.abs(background7.getX()) >= width ) {
+        background7.changeX(-count / 3);
+        if (Math.abs(background7.getX()) >= width) {
             background7.setX(0);
         }
-        background6.changeX(-count/4);
-        if (Math.abs(background6.getX()) >= width ) {
+        background6.changeX(-count / 4);
+        if (Math.abs(background6.getX()) >= width) {
             background6.setX(0);
         }
-        background5.changeX(-count/5);
-        if (Math.abs(background5.getX()) >= width ) {
+        background5.changeX(-count / 5);
+        if (Math.abs(background5.getX()) >= width) {
             background5.setX(0);
         }
 
@@ -159,14 +127,7 @@ public class Model implements Runnable {
     }
 
 
-
-
-
-
-
-
-
- //     for (int y = 0; y < height; y++) {
+    //     for (int y = 0; y < height; y++) {
 //            for (int x = 0; x < width; x++) {
 //                //фон
 //                pixels[(x + y * width)*3]  = 0; //красный цвет пикселя

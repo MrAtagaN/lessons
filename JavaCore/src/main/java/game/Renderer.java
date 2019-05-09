@@ -22,7 +22,6 @@ public class Renderer extends Canvas {
     //private BufferedImage image;
     private BufferedImage playerImage;
 
-
     private BufferedImage backgroundImage1;
     private BufferedImage backgroundImage2;
     private BufferedImage backgroundImage3;
@@ -40,11 +39,12 @@ public class Renderer extends Canvas {
     /**
      * Конструктор, инициализация картинок
      */
-    public Renderer(int width, int heigt, double updates, String gameTitle) {
+    public Renderer(int width, int heigt, double updates, String gameTitle, Model model) {
         this.WIDTH = width;
         this.HEIGHT = heigt;
         this.UPDATES = updates;
         this.GAME_TITLE = gameTitle;
+        this.model = model;
         //this.image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
 
 
@@ -114,24 +114,9 @@ public class Renderer extends Canvas {
 
 
     /**
-     * Изменение изображения вследствии изменения модели игры
-     */
-    public void update() {
-
-        //int[] pixels = model.getPixels();
-        //image.getRaster().setPixels(0, 0, WIDTH, HEIGHT, pixels);
-    }
-
-
-    /**
      * Главный игровой цикл
      */
     public void run() {
-        //старт игровой логики
-        Model model = new Model(WIDTH, HEIGHT);
-        this.model = model;
-        new Thread(model).start();
-
         JFrame jFrame = new JFrame();
         jFrame.setVisible(true);
         jFrame.setTitle(GAME_TITLE);
@@ -169,6 +154,14 @@ public class Renderer extends Canvas {
                 frames = 0;
             }
         }
+    }
+
+
+    /**
+     * Изменение модели игры
+     */
+    public void update() {
+        model.run();
     }
 
 
