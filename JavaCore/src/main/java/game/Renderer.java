@@ -41,7 +41,7 @@ public class Renderer extends Canvas {
     /**
      * Конструктор, инициализация картинок
      */
-    public Renderer(int width, int height, double updates, String gameTitle, int windowPositionWidth, int windowPositionHeight, Model model) {
+    public Renderer(int width, int height, double updates, String gameTitle, int windowPositionWidth, int windowPositionHeight, Model model) throws IOException {
         this.WIDTH = width;
         this.HEIGHT = height;
         this.UPDATES = updates;
@@ -49,36 +49,29 @@ public class Renderer extends Canvas {
         this.windowPositionWidth = windowPositionWidth;
         this.windowPositionHeight = windowPositionHeight;
         this.model = model;
-        //this.image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
 
+        File playerImageFile = new File("JavaCore\\src\\main\\java\\game\\resources\\images\\Player2.png");
+        playerImage = ImageIO.read(playerImageFile);
 
-        try {
-            File playerImageFile = new File("JavaCore\\src\\main\\java\\game\\resources\\images\\Player2.png");
-            playerImage = ImageIO.read(playerImageFile);
+        File backgroundImageFile9 = new File("JavaCore\\src\\main\\java\\game\\resources\\images\\background\\Layer_0000_9.png");
+        backgroundImage9 = ImageIO.read(backgroundImageFile9);
+        File backgroundImageFile8 = new File("JavaCore\\src\\main\\java\\game\\resources\\images\\background\\Layer_0001_8.png");
+        backgroundImage8 = ImageIO.read(backgroundImageFile8);
+        File backgroundImageFile7 = new File("JavaCore\\src\\main\\java\\game\\resources\\images\\background\\Layer_0002_7.png");
+        backgroundImage7 = ImageIO.read(backgroundImageFile7);
+        File backgroundImageFile6 = new File("JavaCore\\src\\main\\java\\game\\resources\\images\\background\\Layer_0003_6.png");
+        backgroundImage6 = ImageIO.read(backgroundImageFile6);
+        File backgroundImageFile5 = new File("JavaCore\\src\\main\\java\\game\\resources\\images\\background\\Layer_0005_5.png");
+        backgroundImage5 = ImageIO.read(backgroundImageFile5);
+        File backgroundImageFile4 = new File("JavaCore\\src\\main\\java\\game\\resources\\images\\background\\Layer_0006_4.png");
+        backgroundImage4 = ImageIO.read(backgroundImageFile4);
+        File backgroundImageFile3 = new File("JavaCore\\src\\main\\java\\game\\resources\\images\\background\\Layer_0008_3.png");
+        backgroundImage3 = ImageIO.read(backgroundImageFile3);
+        File backgroundImageFile2 = new File("JavaCore\\src\\main\\java\\game\\resources\\images\\background\\Layer_0009_2.png");
+        backgroundImage2 = ImageIO.read(backgroundImageFile2);
+        File backgroundImageFile1 = new File("JavaCore\\src\\main\\java\\game\\resources\\images\\background\\Layer_0010_1.png");
+        backgroundImage1 = ImageIO.read(backgroundImageFile1);
 
-
-            File backgroundImageFile9 = new File("JavaCore\\src\\main\\java\\game\\resources\\images\\background\\Layer_0000_9.png");
-            backgroundImage9 = ImageIO.read(backgroundImageFile9);
-            File backgroundImageFile8 = new File("JavaCore\\src\\main\\java\\game\\resources\\images\\background\\Layer_0001_8.png");
-            backgroundImage8 = ImageIO.read(backgroundImageFile8);
-            File backgroundImageFile7 = new File("JavaCore\\src\\main\\java\\game\\resources\\images\\background\\Layer_0002_7.png");
-            backgroundImage7 = ImageIO.read(backgroundImageFile7);
-            File backgroundImageFile6 = new File("JavaCore\\src\\main\\java\\game\\resources\\images\\background\\Layer_0003_6.png");
-            backgroundImage6 = ImageIO.read(backgroundImageFile6);
-            File backgroundImageFile5 = new File("JavaCore\\src\\main\\java\\game\\resources\\images\\background\\Layer_0005_5.png");
-            backgroundImage5 = ImageIO.read(backgroundImageFile5);
-            File backgroundImageFile4 = new File("JavaCore\\src\\main\\java\\game\\resources\\images\\background\\Layer_0006_4.png");
-            backgroundImage4 = ImageIO.read(backgroundImageFile4);
-            File backgroundImageFile3 = new File("JavaCore\\src\\main\\java\\game\\resources\\images\\background\\Layer_0008_3.png");
-            backgroundImage3 = ImageIO.read(backgroundImageFile3);
-            File backgroundImageFile2 = new File("JavaCore\\src\\main\\java\\game\\resources\\images\\background\\Layer_0009_2.png");
-            backgroundImage2 = ImageIO.read(backgroundImageFile2);
-            File backgroundImageFile1 = new File("JavaCore\\src\\main\\java\\game\\resources\\images\\background\\Layer_0010_1.png");
-            backgroundImage1 = ImageIO.read(backgroundImageFile1);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
 
@@ -88,7 +81,7 @@ public class Renderer extends Canvas {
     public void render() {
         BufferStrategy bufferStrategy = this.getBufferStrategy();
         if (bufferStrategy == null) {
-            createBufferStrategy(3);
+            createBufferStrategy(4);
             return;
         }
         Graphics graphics = bufferStrategy.getDrawGraphics();
@@ -110,7 +103,7 @@ public class Renderer extends Canvas {
         graphics.drawImage(backgroundImage9, model.getBackground9().getX(), y, WIDTH, HEIGHT - y, this);
         graphics.drawImage(backgroundImage9, model.getBackground9().getX() + WIDTH, y, WIDTH, HEIGHT - y, this);
 
-        graphics.drawImage(playerImage, model.getPlayer().getX(), model.getPlayer().getY(), 120, 100, this);
+        graphics.drawImage(playerImage, model.getPlayer().getX(), model.getPlayer().getY(), 150, 130, this);
 
         graphics.dispose();
         bufferStrategy.show();
@@ -165,7 +158,7 @@ public class Renderer extends Canvas {
 
 
     /**
-     * Изменение модели игры
+     * Изменение игровой модели
      */
     public void update() {
         model.run();

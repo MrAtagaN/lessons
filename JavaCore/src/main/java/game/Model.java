@@ -19,11 +19,14 @@ public class Model implements Runnable {
     private Background6 background6;
     private Background5 background5;
 
+    /**
+     * Конструктор, инициализация игровых объектов
+     */
     public Model(int width, int height) {
         this.height = height;
         this.width = width;
 
-        this.player = new Player(500, 850);
+        this.player = new Player(2, 0,500, 810);
         this.background9 = new Background9(0);
         this.background8 = new Background8(0);
         this.background7 = new Background7(0);
@@ -51,68 +54,70 @@ public class Model implements Runnable {
         return background5;
     }
 
-
     public Player getPlayer() {
         return player;
     }
 
 
+    /**
+     * Изменение игровой модели
+     */
     @Override
     public void run() {
 
         drawBackground();
-//        player.changeX(1);
-//        player.changeY(1);
+        player.updateCoordinats();
+
+        if (player.getX() >= 1500) {
+            player.setSpeedX(-1);
+        }
+        if (player.getX() <= 300) {
+            player.setSpeedX(1);
+        }
+
 
     }
 
 
-    //    private void fillPixels() {
-//        //цикл по каждому пикселю
-//        //похоже что 1023 максимальный цвет
-////        for (int i = 0; i < pixels.length; i += 3) {
-////            pixels[i] = ; //красный цвет пикселя
-////            pixels[i + 1] = pixelsModel[i+1]; //зеленый цвет пикселя
-////            pixels[i + 2] = pixelsModel[i+2]; //синий цвет пикселя
-////        }
-//
-//        for (int y = 0; y < height; y++) {
-//            for (int x = 0; x < width; x++) {
-//                //фон
-//                pixels[(x + y * width)*3] = getAnInt(); //красный цвет пикселя
-//                pixels[(x + y * width)*3 + 1] = getAnInt()*2; //зеленый цвет пикселя
-//                pixels[(x + y * width)*3 + 2] = getAnInt()*3; //синий цвет пикселя
-//
-//
-//            }
-//        }
-//    }
-//
-//
     private void drawBackground() {
-        background9.changeX((int) (-count / 1.5));
-        if (Math.abs(background9.getX()) >= width) {
-            background9.setX(0);
-        }
-        background8.changeX(-count / 2);
-        if (Math.abs(background8.getX()) >= width) {
-            background8.setX(0);
-        }
-        background7.changeX(-count / 3);
-        if (Math.abs(background7.getX()) >= width) {
-            background7.setX(0);
-        }
-        background6.changeX(-count / 4);
-        if (Math.abs(background6.getX()) >= width) {
-            background6.setX(0);
-        }
-        background5.changeX(-count / 5);
-        if (Math.abs(background5.getX()) >= width) {
-            background5.setX(0);
+        if (count % 1 == 0) {
+            background9.changeX((-1));
+            if (Math.abs(background9.getX()) >= width) {
+                background9.setX(0);
+            }
         }
 
+        if (count % 2 == 0) {
+            background8.changeX(-1);
+            if (Math.abs(background8.getX()) >= width) {
+                background8.setX(0);
+            }
+        }
+
+        if (count % 2 == 0) {
+            background7.changeX(-1);
+            if (Math.abs(background7.getX()) >= width) {
+                background7.setX(0);
+            }
+        }
+
+        if (count % 3 == 0) {
+            background6.changeX(-1);
+            if (Math.abs(background6.getX()) >= width) {
+                background6.setX(0);
+            }
+        }
+
+        if (count % 4 == 0) {
+            background5.changeX(-1);
+            if (Math.abs(background5.getX()) >= width) {
+                background5.setX(0);
+            }
+        }
+
+
         count++;
-        if (count > 5) {
+        if (count > 100) {
             count = 1;
         }
     }
