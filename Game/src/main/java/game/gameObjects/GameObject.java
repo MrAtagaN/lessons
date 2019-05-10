@@ -1,18 +1,17 @@
 package game.gameObjects;
 
-import game.gameObjects.GameObjectAction;
 
 import java.awt.image.BufferedImage;
 
 public class GameObject implements GameObjectAction {
 
-    private double x;
-    private double y;
-    private double speedX;
-    private double speedY;
-    private BufferedImage bufferedImage;
-    private int imageWidth;
-    private int imageHeight;
+    protected double x;
+    protected double y;
+    protected double speedX;
+    protected double speedY;
+    protected BufferedImage bufferedImage;
+    protected int imageWidth;
+    protected int imageHeight;
 
     public GameObject(double x, double y, double speedX, double speedY, BufferedImage bufferedImage, int imageWidth, int imageHeight) {
         this.x = x;
@@ -52,9 +51,14 @@ public class GameObject implements GameObjectAction {
         return imageHeight;
     }
 
+    public void setX(double x) {
+        this.x = x;
+    }
+
     public void updateCoordinats() {
         this.x += this.speedX;
         this.y += this.speedY;
     }
+
 
 }

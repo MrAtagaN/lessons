@@ -99,27 +99,34 @@ public class Renderer extends Canvas {
         Graphics graphics = bufferStrategy.getDrawGraphics();
 
         //отрисовка фона
-        int y = -500; //выравнивание фона по высоте
-        graphics.drawImage(backgroundImage1, 0, y, WIDTH, HEIGHT - y, this);
-        graphics.drawImage(backgroundImage2, 0, y, WIDTH, HEIGHT - y, this);
-        graphics.drawImage(backgroundImage3, 0, y, WIDTH, HEIGHT - y, this);
-        graphics.drawImage(backgroundImage4, 0, y, WIDTH, HEIGHT - y, this);
-        graphics.drawImage(backgroundImage5, (int)model.getBackground5().getX(), y, WIDTH, HEIGHT - y, this);
-        graphics.drawImage(backgroundImage5, (int)model.getBackground5().getX() + WIDTH, y, WIDTH, HEIGHT - y, this);
-        graphics.drawImage(backgroundImage6, (int)model.getBackground6().getX(), y, WIDTH, HEIGHT - y, this);
-        graphics.drawImage(backgroundImage6, (int)model.getBackground6().getX() + WIDTH, y, WIDTH, HEIGHT - y, this);
-        graphics.drawImage(backgroundImage7, (int)model.getBackground7().getX(), y, WIDTH, HEIGHT - y, this);
-        graphics.drawImage(backgroundImage7, (int)model.getBackground7().getX() + WIDTH, y, WIDTH, HEIGHT - y, this);
-        graphics.drawImage(backgroundImage8, (int)model.getBackground8().getX(), y, WIDTH, HEIGHT - y, this);
-        graphics.drawImage(backgroundImage8, (int)model.getBackground8().getX() + WIDTH, y, WIDTH, HEIGHT - y, this);
-        graphics.drawImage(backgroundImage9, (int)model.getBackground9().getX(), y, WIDTH, HEIGHT - y, this);
-        graphics.drawImage(backgroundImage9, (int)model.getBackground9().getX() + WIDTH, y, WIDTH, HEIGHT - y, this);
+//        int y = -500; //выравнивание фона по высоте
+//        graphics.drawImage(backgroundImage1, 0, y, WIDTH, HEIGHT - y, this);
+//        graphics.drawImage(backgroundImage2, 0, y, WIDTH, HEIGHT - y, this);
+//        graphics.drawImage(backgroundImage3, 0, y, WIDTH, HEIGHT - y, this);
+//        graphics.drawImage(backgroundImage4, 0, y, WIDTH, HEIGHT - y, this);
+//        graphics.drawImage(backgroundImage5, (int)model.getBackground5().getX(), y, WIDTH, HEIGHT - y, this);
+//        graphics.drawImage(backgroundImage5, (int)model.getBackground5().getX() + WIDTH, y, WIDTH, HEIGHT - y, this);
+//        graphics.drawImage(backgroundImage6, (int)model.getBackground6().getX(), y, WIDTH, HEIGHT - y, this);
+//        graphics.drawImage(backgroundImage6, (int)model.getBackground6().getX() + WIDTH, y, WIDTH, HEIGHT - y, this);
+//        graphics.drawImage(backgroundImage7, (int)model.getBackground7().getX(), y, WIDTH, HEIGHT - y, this);
+//        graphics.drawImage(backgroundImage7, (int)model.getBackground7().getX() + WIDTH, y, WIDTH, HEIGHT - y, this);
+//        graphics.drawImage(backgroundImage8, (int)model.getBackground8().getX(), y, WIDTH, HEIGHT - y, this);
+//        graphics.drawImage(backgroundImage8, (int)model.getBackground8().getX() + WIDTH, y, WIDTH, HEIGHT - y, this);
+//        graphics.drawImage(backgroundImage9, (int)model.getBackground9().getX(), y, WIDTH, HEIGHT - y, this);
+//        graphics.drawImage(backgroundImage9, (int)model.getBackground9().getX() + WIDTH, y, WIDTH, HEIGHT - y, this);
+
+
+        model.getGameObjects().forEach(gameObject -> {
+            graphics.drawImage(gameObject.getBufferedImage(), (int)gameObject.getX(), (int)gameObject.getY(), gameObject.getImageWidth(), gameObject.getImageHeight(), this);
+        });
 
         //отрисовка игровых объектов
-        graphics.drawImage(model.getPlayer().getBufferedImage(), (int)model.getPlayer().getX(), (int)model.getPlayer().getY(), model.getPlayer().getImageWidth(), model.getPlayer().getImageHeight(), this);
+        //graphics.drawImage(model.getPlayer().getBufferedImage(), (int)model.getPlayer().getX(), (int)model.getPlayer().getY(), model.getPlayer().getImageWidth(), model.getPlayer().getImageHeight(), this);
         graphics.drawImage(enemyCarrionImage, (int)model.getEnemyCarrion().getX(),  (int)model.getEnemyCarrion().getY(), 180, 120, this);
         graphics.drawImage(enemyHuskImage, (int)model.getEnemyHusk().getX(),  (int)model.getEnemyHusk().getY(), 180, 160, this);
         graphics.drawImage(enemyPestilenceImage, (int)model.getEnemyPestilence().getX(),  (int)model.getEnemyPestilence().getY(), 120, 140, this);
+
+
 
         graphics.dispose();
         bufferStrategy.show();

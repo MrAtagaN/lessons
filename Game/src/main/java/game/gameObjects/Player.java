@@ -5,31 +5,42 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class Player {
+public class Player extends GameObject {
 
-    private BufferedImage bufferedImage;
-    private int imageWidth = 150;
-    private int imageHeight = 130;
+   // private BufferedImage bufferedImage;
+  //  private int imageWidth = 150;
+   // private int imageHeight = 130;
 
-    private double x;
-    private double y;
+//    private double x;
+//    private double y;
     private double minX = 0;
     private double minY = 810;
 
-    private double speedX;
+    //private double speedX;
     private double minSpeedX = -0.5;
     private double minSpeedY = 2;
-    private double speedY;
+ //   private double speedY;
     private double gravity = 2.6;
 
-    public Player(double x, double y, double speedX, double speedY) throws IOException {
-        this.x = x;
-        this.y = y;
-        this.speedX = speedX;
-        this.speedY = speedY;
-        File playerImageFile = new File("Game\\src\\main\\resources\\images\\Player2.png");
-        bufferedImage = ImageIO.read(playerImageFile);
+    public Player(double x, double y, double speedX, double speedY, BufferedImage bufferedImage, int imageWidth, int imageHeight) {
+        super(x, y, speedX, speedY, bufferedImage, imageWidth, imageHeight);
+//        this.x = x;
+//        this.y = y;
+//        this.speedX = speedX;
+//        this.speedY = speedY;
+//        this.bufferedImage = bufferedImage;
+//        this.imageWidth = imageWidth;
+//        this.imageHeight = imageHeight;
     }
+
+//    public Player(double x, double y, double speedX, double speedY) throws IOException {
+//        this.x = x;
+//        this.y = y;
+//        this.speedX = speedX;
+//        this.speedY = speedY;
+//        File playerImageFile = new File("Game\\src\\main\\resources\\images\\Player2.png");
+//        bufferedImage = ImageIO.read(playerImageFile);
+//    }
 
     public BufferedImage getBufferedImage() {
         return bufferedImage;
