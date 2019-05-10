@@ -10,7 +10,7 @@ public class Game {
     public static final int WINDOW_POSITION_WIDTH = 0;
     public static final int WINDOW_POSITION_HEIGHT = 0;
 
-    public static final double UPDATES = 250;
+    public static final double UPDATES = 500;
     public static final String GAME_TITLE = "My Game";
 
 

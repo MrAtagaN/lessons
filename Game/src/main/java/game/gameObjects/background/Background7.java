@@ -1,22 +1,52 @@
 package game.gameObjects.background;
 
 public class Background7 {
-    private int x;
+    private double x;
+    private double y;
+    private double speedX;
+    private double speedY;
 
-
-    public Background7(int x) {
+    public Background7(double x, double y, double speedX, double speedY) {
         this.x = x;
+        this.y = y;
+        this.speedX = speedX;
+        this.speedY = speedY;
     }
 
-    public int getX() {
+    public double getX() {
         return x;
     }
 
-    public void setX(int x) {
+    public void setX(double x) {
         this.x = x;
     }
 
-    public void changeX(int x) {
-        this.x+=x;
+    public double getY() {
+        return y;
+    }
+
+    public void setY(double y) {
+        this.y = y;
+    }
+
+    public double getSpeedX() {
+        return speedX;
+    }
+
+    public void setSpeedX(double speedX) {
+        this.speedX = speedX;
+    }
+
+    public double getSpeedY() {
+        return speedY;
+    }
+
+    public void setSpeedY(double speedY) {
+        this.speedY = speedY;
+    }
+
+    public void updateCoordinats() {
+        this.x += this.speedX;
+        this.y += this.speedY;
     }
 }

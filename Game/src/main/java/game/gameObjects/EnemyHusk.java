@@ -1,14 +1,12 @@
-package game.gameObjects.background;
+package game.gameObjects;
 
-public class Background5 {
-
-
+public class EnemyHusk {
     private double x;
     private double y;
     private double speedX;
     private double speedY;
 
-    public Background5(double x, double y, double speedX, double speedY) {
+    public EnemyHusk(double x, double y, double speedX, double speedY) {
         this.x = x;
         this.y = y;
         this.speedX = speedX;
@@ -51,5 +49,4 @@ public class Background5 {
         this.x += this.speedX;
         this.y += this.speedY;
     }
-
 }

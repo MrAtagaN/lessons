@@ -24,6 +24,7 @@ public class Renderer extends Canvas {
 
     private BufferedImage playerImage;
     private BufferedImage enemyCarrionImage;
+    private BufferedImage enemyHuskImage;
 
     private BufferedImage backgroundImage1;
     private BufferedImage backgroundImage2;
@@ -56,6 +57,8 @@ public class Renderer extends Canvas {
         playerImage = ImageIO.read(playerImageFile);
         File enemyCarrionImageFile = new File("Game\\src\\main\\resources\\images\\EnemyCarrion.png");
         enemyCarrionImage = ImageIO.read(enemyCarrionImageFile);
+        File enemyHuskImageFile = new File("Game\\src\\main\\resources\\images\\EnemyHusk.png");
+        enemyHuskImage = ImageIO.read(enemyHuskImageFile);
 
         //картинки фона
         File backgroundImageFile9 = new File("Game\\src\\main\\resources\\images\\background\\Layer_0000_9.png");
@@ -97,20 +100,21 @@ public class Renderer extends Canvas {
         graphics.drawImage(backgroundImage2, 0, y, WIDTH, HEIGHT - y, this);
         graphics.drawImage(backgroundImage3, 0, y, WIDTH, HEIGHT - y, this);
         graphics.drawImage(backgroundImage4, 0, y, WIDTH, HEIGHT - y, this);
-        graphics.drawImage(backgroundImage5, model.getBackground5().getX(), y, WIDTH, HEIGHT - y, this);
-        graphics.drawImage(backgroundImage5, model.getBackground5().getX() + WIDTH, y, WIDTH, HEIGHT - y, this);
-        graphics.drawImage(backgroundImage6, model.getBackground6().getX(), y, WIDTH, HEIGHT - y, this);
-        graphics.drawImage(backgroundImage6, model.getBackground6().getX() + WIDTH, y, WIDTH, HEIGHT - y, this);
-        graphics.drawImage(backgroundImage7, model.getBackground7().getX(), y, WIDTH, HEIGHT - y, this);
-        graphics.drawImage(backgroundImage7, model.getBackground7().getX() + WIDTH, y, WIDTH, HEIGHT - y, this);
-        graphics.drawImage(backgroundImage8, model.getBackground8().getX(), y, WIDTH, HEIGHT - y, this);
-        graphics.drawImage(backgroundImage8, model.getBackground8().getX() + WIDTH, y, WIDTH, HEIGHT - y, this);
-        graphics.drawImage(backgroundImage9, model.getBackground9().getX(), y, WIDTH, HEIGHT - y, this);
-        graphics.drawImage(backgroundImage9, model.getBackground9().getX() + WIDTH, y, WIDTH, HEIGHT - y, this);
+        graphics.drawImage(backgroundImage5, (int)model.getBackground5().getX(), y, WIDTH, HEIGHT - y, this);
+        graphics.drawImage(backgroundImage5, (int)model.getBackground5().getX() + WIDTH, y, WIDTH, HEIGHT - y, this);
+        graphics.drawImage(backgroundImage6, (int)model.getBackground6().getX(), y, WIDTH, HEIGHT - y, this);
+        graphics.drawImage(backgroundImage6, (int)model.getBackground6().getX() + WIDTH, y, WIDTH, HEIGHT - y, this);
+        graphics.drawImage(backgroundImage7, (int)model.getBackground7().getX(), y, WIDTH, HEIGHT - y, this);
+        graphics.drawImage(backgroundImage7, (int)model.getBackground7().getX() + WIDTH, y, WIDTH, HEIGHT - y, this);
+        graphics.drawImage(backgroundImage8, (int)model.getBackground8().getX(), y, WIDTH, HEIGHT - y, this);
+        graphics.drawImage(backgroundImage8, (int)model.getBackground8().getX() + WIDTH, y, WIDTH, HEIGHT - y, this);
+        graphics.drawImage(backgroundImage9, (int)model.getBackground9().getX(), y, WIDTH, HEIGHT - y, this);
+        graphics.drawImage(backgroundImage9, (int)model.getBackground9().getX() + WIDTH, y, WIDTH, HEIGHT - y, this);
 
         //отрисовка игровых объектов
         graphics.drawImage(playerImage, model.getPlayer().getX(), model.getPlayer().getY(), 150, 130, this);
-        graphics.drawImage(enemyCarrionImage, model.getEnemyCarrion().getX(),  model.getEnemyCarrion().getY(), 180, 120, this);
+        graphics.drawImage(enemyCarrionImage, (int)model.getEnemyCarrion().getX(),  (int)model.getEnemyCarrion().getY(), 180, 120, this);
+        graphics.drawImage(enemyHuskImage, (int)model.getEnemyHusk().getX(),  (int)model.getEnemyHusk().getY(), 180, 160, this);
 
         graphics.dispose();
         bufferStrategy.show();

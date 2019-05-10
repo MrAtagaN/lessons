@@ -1,6 +1,7 @@
 package game;
 
 import game.gameObjects.EnemyCarrion;
+import game.gameObjects.EnemyHusk;
 import game.gameObjects.background.*;
 import game.gameObjects.Player;
 
@@ -11,10 +12,11 @@ public class Model implements Runnable {
 
     private int height;
     private int width;
-    private int count = 1;
 
     private Player player;
     private EnemyCarrion enemyCarrion;
+    private EnemyHusk enemyHusk;
+
     private Background9 background9;
     private Background8 background8;
     private Background7 background7;
@@ -29,13 +31,16 @@ public class Model implements Runnable {
         this.width = width;
 
         //создание игровых объектов, задание начальных координат
-        this.player = new Player(500, 810,1, 0);
-        this.enemyCarrion = new EnemyCarrion(2000,880,-1,0);
-        this.background9 = new Background9(0);
-        this.background8 = new Background8(0);
-        this.background7 = new Background7(0);
-        this.background6 = new Background6(0);
-        this.background5 = new Background5(0);
+        this.player = new Player(500, 810, 1, 0);
+        this.enemyCarrion = new EnemyCarrion(2000, 880, -0.5, 0);
+        this.enemyHusk = new EnemyHusk(2200, 500, -0.3, 0);
+
+        //int y = -500; //выравнивание фона по высоте
+        this.background9 = new Background9(0, 0, -0.5, 0);
+        this.background8 = new Background8(0, 0, -0.3, 0);
+        this.background7 = new Background7(0, 0, -0.3, 0);
+        this.background6 = new Background6(0, 0, -0.2, 0);
+        this.background5 = new Background5(0, 0, -0.1, 0);
     }
 
     public Background9 getBackground9() {
@@ -66,6 +71,10 @@ public class Model implements Runnable {
         return enemyCarrion;
     }
 
+    public EnemyHusk getEnemyHusk() {
+        return enemyHusk;
+    }
+
     /**
      * Изменение игровой модели
      */
@@ -75,9 +84,14 @@ public class Model implements Runnable {
         drawBackground();
         player.updateCoordinats();
         enemyCarrion.updateCoordinats();
+        enemyHusk.updateCoordinats();
 
         if (enemyCarrion.getX() <= -300) {
-            enemyCarrion.setX((int)(Math.random()*500+2000));
+            enemyCarrion.setX((int) (Math.random() * 500 + 2000));
+        }
+
+        if (enemyHusk.getX() <= -300) {
+            enemyHusk.setX((int) (Math.random() * 500 + 2000));
         }
 
         if (player.getX() >= 1500) {
@@ -92,45 +106,29 @@ public class Model implements Runnable {
 
 
     private void drawBackground() {
-        if (count % 1 == 0) {
-            background9.changeX((-1));
-            if (Math.abs(background9.getX()) >= width) {
-                background9.setX(0);
-            }
+        background9.updateCoordinats();
+        if (Math.abs(background9.getX()) >= width) {
+            background9.setX(0);
         }
 
-        if (count % 2 == 0) {
-            background8.changeX(-1);
-            if (Math.abs(background8.getX()) >= width) {
-                background8.setX(0);
-            }
+        background8.updateCoordinats();
+        if (Math.abs(background8.getX()) >= width) {
+            background8.setX(0);
         }
 
-        if (count % 2 == 0) {
-            background7.changeX(-1);
-            if (Math.abs(background7.getX()) >= width) {
-                background7.setX(0);
-            }
+        background7.updateCoordinats();
+        if (Math.abs(background7.getX()) >= width) {
+            background7.setX(0);
         }
 
-        if (count % 3 == 0) {
-            background6.changeX(-1);
-            if (Math.abs(background6.getX()) >= width) {
-                background6.setX(0);
-            }
+        background6.updateCoordinats();
+        if (Math.abs(background6.getX()) >= width) {
+            background6.setX(0);
         }
 
-        if (count % 4 == 0) {
-            background5.changeX(-1);
-            if (Math.abs(background5.getX()) >= width) {
-                background5.setX(0);
-            }
-        }
-
-
-        count++;
-        if (count > 100) {
-            count = 1;
+        background5.updateCoordinats();
+        if (Math.abs(background5.getX()) >= width) {
+            background5.setX(0);
         }
     }
 
