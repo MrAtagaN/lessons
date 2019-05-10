@@ -1,31 +1,17 @@
-package game.GameObjects;
+package game.gameObjects;
 
-public class Player {
-    private int speedX;
-    private int speedY;
+public class EnemyCarrion {
+
+
     private int x;
     private int y;
+    private int speedX;
+    private int speedY;
 
-    public Player(int speedX, int speedY, int x, int y) {
-        this.speedX = speedX;
-        this.speedY = speedY;
+    public EnemyCarrion(int x, int y, int speedX, int speedY) {
         this.x = x;
         this.y = y;
-    }
-
-    public int getSpeedX() {
-        return speedX;
-    }
-
-    public void setSpeedX(int speedX) {
         this.speedX = speedX;
-    }
-
-    public int getSpeedY() {
-        return speedY;
-    }
-
-    public void setSpeedY(int speedY) {
         this.speedY = speedY;
     }
 
@@ -47,10 +33,6 @@ public class Player {
 
     public void changeX(int x) {
         this.x+=x;
-    }
-
-    public void changeY(int y) {
-        this.y+=y;
     }
 
     public void updateCoordinats() {

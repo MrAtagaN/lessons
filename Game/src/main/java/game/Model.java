@@ -1,7 +1,8 @@
 package game;
 
-import game.GameObjects.background.*;
-import game.GameObjects.Player;
+import game.gameObjects.EnemyCarrion;
+import game.gameObjects.background.*;
+import game.gameObjects.Player;
 
 /**
  * Игровая логика
@@ -13,6 +14,7 @@ public class Model implements Runnable {
     private int count = 1;
 
     private Player player;
+    private EnemyCarrion enemyCarrion;
     private Background9 background9;
     private Background8 background8;
     private Background7 background7;
@@ -20,13 +22,15 @@ public class Model implements Runnable {
     private Background5 background5;
 
     /**
-     * Конструктор, инициализация игровых объектов
+     * Конструктор, создание игровых объектов, задание начальных координат
      */
     public Model(int width, int height) {
         this.height = height;
         this.width = width;
 
-        this.player = new Player(2, 0,500, 810);
+        //создание игровых объектов, задание начальных координат
+        this.player = new Player(500, 810,1, 0);
+        this.enemyCarrion = new EnemyCarrion(2000,880,-1,0);
         this.background9 = new Background9(0);
         this.background8 = new Background8(0);
         this.background7 = new Background7(0);
@@ -58,6 +62,9 @@ public class Model implements Runnable {
         return player;
     }
 
+    public EnemyCarrion getEnemyCarrion() {
+        return enemyCarrion;
+    }
 
     /**
      * Изменение игровой модели
@@ -67,6 +74,11 @@ public class Model implements Runnable {
 
         drawBackground();
         player.updateCoordinats();
+        enemyCarrion.updateCoordinats();
+
+        if (enemyCarrion.getX() <= -300) {
+            enemyCarrion.setX((int)(Math.random()*500+2000));
+        }
 
         if (player.getX() >= 1500) {
             player.setSpeedX(-1);

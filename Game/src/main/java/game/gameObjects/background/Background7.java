@@ -1,11 +1,10 @@
-package game.GameObjects.background;
+package game.gameObjects.background;
 
-public class Background8 {
-
+public class Background7 {
     private int x;
 
 
-    public Background8(int x) {
+    public Background7(int x) {
         this.x = x;
     }
 

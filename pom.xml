@@ -23,6 +23,7 @@
         <module>Git</module>
         <module>MQ</module>
         <module>JUnit</module>
+        <module>Game</module>
     </modules>
 
 </project>

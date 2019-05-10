@@ -1,4 +1,4 @@
-package game.GameObjects.background;
+package game.gameObjects.background;
 
 public class Background5 {
     private int x;
