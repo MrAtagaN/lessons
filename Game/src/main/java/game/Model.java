@@ -3,6 +3,9 @@ package game;
 import game.gameObjects.*;
 import game.gameObjects.background.*;
 import game.gameObjects.enemies.Enemy;
+import game.gameObjects.enemies.EnemyCarrion;
+import game.gameObjects.enemies.EnemyHusk;
+import game.gameObjects.enemies.EnemyPestilence;
 
 import javax.imageio.ImageIO;
 import java.io.File;
@@ -61,11 +64,11 @@ public class Model {
         gameObjects.add(new BackGround(width,y,-0.5,0, ImageIO.read(backgroundImageFile9), width, height - y));  //background9
         // враги
         File enemyCarrionImageFile = new File("Game\\src\\main\\resources\\images\\enemies\\EnemyCarrion.png");
-        gameObjects.add( new EnemyCarrion(2000,880,-0.5,0, ImageIO.read(enemyCarrionImageFile), 180, 120)); //enemyCarrion
+        gameObjects.add( new EnemyCarrion(2000,880,-0.5,0, ImageIO.read(enemyCarrionImageFile), 180, 120, this)); //enemyCarrion
         File enemyHuskImageFile = new File("Game\\src\\main\\resources\\images\\enemies\\EnemyHusk.png");
-        gameObjects.add( new EnemyHusk(2200,500,-0.3,0, ImageIO.read(enemyHuskImageFile), 180, 160)); //enemyHusk
+        gameObjects.add( new EnemyHusk(2200,500,-0.3,0, ImageIO.read(enemyHuskImageFile), 180, 160, this)); //enemyHusk
         File enemyPestilenceImageFile = new File("Game\\src\\main\\resources\\images\\enemies\\EnemyPestilence.png");
-        gameObjects.add(new EnemyPestilence(2200, 300,-0.7, 0, ImageIO.read(enemyPestilenceImageFile), 120, 140));
+        gameObjects.add(new EnemyPestilence(2200, 300,-0.7, 0, ImageIO.read(enemyPestilenceImageFile), 120, 140, this));
 
 
         File playerImageFile = new File("Game\\src\\main\\resources\\images\\Player2.png");
@@ -82,19 +85,9 @@ public class Model {
     public void update() {
         //обновляем координаты у всех объектов
         gameObjects.forEach(GameObject::updateCoordinats);
-        checkClash();
+
     }
 
-    /**
-     * Проверка столкновений
-     */
-    public void checkClash() {
-         gameObjects.forEach(gameObject -> {if (gameObject instanceof Enemy) {
-             if (Math.abs(player.getX() - gameObject.getX()) < 80 && Math.abs(player.getY() - gameObject.getY()) < 80 ) {
-                 clash = true;
-             }
-         } });
-    }
 
 
 
@@ -109,6 +102,10 @@ public class Model {
 
     public boolean isClash() {
         return clash;
+    }
+
+    public void setClash(boolean clash) {
+        this.clash = clash;
     }
 
 }
