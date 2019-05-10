@@ -62,30 +62,35 @@ public class Model {
         gameObjects.add(new BackGround(0,y,0,0, ImageIO.read(backgroundImageFile4), width, height - y));  //background4
 
         File backgroundImageFile5 = new File("Game\\src\\main\\resources\\images\\background\\Layer_0005_5.png");
-        gameObjects.add(new BackGround(0,y,-0.5,0, ImageIO.read(backgroundImageFile5), width, height - y));  //background5
-        gameObjects.add(new BackGround(width,y,-0.5,0, ImageIO.read(backgroundImageFile5), width, height - y));  //background5
+        gameObjects.add(new BackGround(0,y,-0.1,0, ImageIO.read(backgroundImageFile5), width, height - y));  //background5
+        gameObjects.add(new BackGround(width,y,-0.1,0, ImageIO.read(backgroundImageFile5), width, height - y));  //background5
 
         File backgroundImageFile6 = new File("Game\\src\\main\\resources\\images\\background\\Layer_0003_6.png");
-        gameObjects.add(new BackGround(0,y,-0.5,0, ImageIO.read(backgroundImageFile6), width, height - y));  //background6
-        gameObjects.add(new BackGround(width,y,-0.5,0, ImageIO.read(backgroundImageFile6), width, height - y));  //background6
+        gameObjects.add(new BackGround(0,y,-0.2,0, ImageIO.read(backgroundImageFile6), width, height - y));  //background6
+        gameObjects.add(new BackGround(width,y,-0.2,0, ImageIO.read(backgroundImageFile6), width, height - y));  //background6
 
         File backgroundImageFile7 = new File("Game\\src\\main\\resources\\images\\background\\Layer_0002_7.png");
-        gameObjects.add(new BackGround(0,y,-0.5,0, ImageIO.read(backgroundImageFile7), width, height - y));  //background7
-        gameObjects.add(new BackGround(width,y,-0.5,0, ImageIO.read(backgroundImageFile7), width, height - y));  //background7
+        gameObjects.add(new BackGround(0,y,-0.3,0, ImageIO.read(backgroundImageFile7), width, height - y));  //background7
+        gameObjects.add(new BackGround(width,y,-0.3,0, ImageIO.read(backgroundImageFile7), width, height - y));  //background7
 
         File backgroundImageFile8 = new File("Game\\src\\main\\resources\\images\\background\\Layer_0001_8.png");
-        gameObjects.add(new BackGround(0,y,-0.5,0, ImageIO.read(backgroundImageFile8), width, height - y));  //background8
-        gameObjects.add(new BackGround(width,y,-0.5,0, ImageIO.read(backgroundImageFile8), width, height - y));  //background8
+        gameObjects.add(new BackGround(0,y,-0.3,0, ImageIO.read(backgroundImageFile8), width, height - y));  //background8
+        gameObjects.add(new BackGround(width,y,-0.3,0, ImageIO.read(backgroundImageFile8), width, height - y));  //background8
 
         File backgroundImageFile9 = new File("Game\\src\\main\\resources\\images\\background\\Layer_0000_9.png");
         gameObjects.add(new BackGround(0,y,-0.5,0, ImageIO.read(backgroundImageFile9), width, height - y));  //background9
         gameObjects.add(new BackGround(width,y,-0.5,0, ImageIO.read(backgroundImageFile9), width, height - y));  //background9
 
+        File enemyCarrionImageFile = new File("Game\\src\\main\\resources\\images\\enemies\\EnemyCarrion.png");
+        gameObjects.add( new GameObject(2000,880,-0.5,0, ImageIO.read(enemyCarrionImageFile), 180, 120)); //enemyCarrion
+
+        File enemyHuskImageFile = new File("Game\\src\\main\\resources\\images\\enemies\\EnemyHusk.png");
+        gameObjects.add( new GameObject(2200,500,-0.3,0, ImageIO.read(enemyHuskImageFile), 180, 160)); //enemyHusk
 
 
         File playerImageFile = new File("Game\\src\\main\\resources\\images\\Player2.png");
-        Player player = new Player(500,810,-1,0, ImageIO.read(playerImageFile), 150, 130);
-        gameObjects.add(player);  //player
+        Player player = new Player(500,810,-1,0, ImageIO.read(playerImageFile), 150, 130); //player
+        gameObjects.add(player);
         this.player = player;
 
     }
