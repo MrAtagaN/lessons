@@ -20,7 +20,7 @@ public class Renderer extends Canvas {
     private int windowPositionHeight;
     private double UPDATES;
     private String GAME_TITLE;
-
+    private Controller controller;
 
     private BufferedImage playerImage;
     private BufferedImage enemyCarrionImage;
@@ -52,6 +52,7 @@ public class Renderer extends Canvas {
         this.windowPositionWidth = windowPositionWidth;
         this.windowPositionHeight = windowPositionHeight;
         this.model = model;
+        this.controller = new Controller(model);
 
         //картинки игровых объектов
         File playerImageFile = new File("Game\\src\\main\\resources\\images\\Player2.png");
@@ -115,7 +116,7 @@ public class Renderer extends Canvas {
         graphics.drawImage(backgroundImage9, (int)model.getBackground9().getX() + WIDTH, y, WIDTH, HEIGHT - y, this);
 
         //отрисовка игровых объектов
-        graphics.drawImage(playerImage, model.getPlayer().getX(), model.getPlayer().getY(), 150, 130, this);
+        graphics.drawImage(playerImage, (int)model.getPlayer().getX(), (int)model.getPlayer().getY(), 150, 130, this);
         graphics.drawImage(enemyCarrionImage, (int)model.getEnemyCarrion().getX(),  (int)model.getEnemyCarrion().getY(), 180, 120, this);
         graphics.drawImage(enemyHuskImage, (int)model.getEnemyHusk().getX(),  (int)model.getEnemyHusk().getY(), 180, 160, this);
         graphics.drawImage(enemyPestilenceImage, (int)model.getEnemyPestilence().getX(),  (int)model.getEnemyPestilence().getY(), 120, 140, this);
@@ -141,6 +142,7 @@ public class Renderer extends Canvas {
 
         //отрисовка
         jFrame.add(this);
+        jFrame.addKeyListener(controller);
 
         long lastTime = System.nanoTime();
         double ns = 1000_000_000 / UPDATES;

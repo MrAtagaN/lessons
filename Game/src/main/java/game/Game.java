@@ -9,7 +9,6 @@ public class Game {
     public static final int HEIGHT = 1080;
     public static final int WINDOW_POSITION_WIDTH = 0;
     public static final int WINDOW_POSITION_HEIGHT = 0;
-
     public static final double UPDATES = 500;
     public static final String GAME_TITLE = "My Game";
 
@@ -17,8 +16,9 @@ public class Game {
     /**
      * Start game
      */
-    public static void main(String args[]) throws IOException {
+    public static void main(String[] args) throws IOException {
         Model model = new Model(WIDTH, HEIGHT);
+
         new Renderer(
                 WIDTH,
                 HEIGHT,

@@ -33,7 +33,7 @@ public class Model implements Runnable {
         this.width = width;
 
         //создание игровых объектов, задание начальных координат
-        this.player = new Player(500, 810, 1, 0);
+        this.player = new Player(500, 810, -1, 0);
         this.enemyCarrion = new EnemyCarrion(2000, 880, -0.5, 0);
         this.enemyHusk = new EnemyHusk(2200, 500, -0.3, 0);
         this.enemyPestilence = new EnemyPestilence(2200, 300, -0.7, 0);
@@ -108,12 +108,12 @@ public class Model implements Runnable {
             enemyHusk.setY((int) (Math.random() * 700 + 20));
         }
 
-        if (player.getX() >= 1500) {
-            player.setSpeedX(-1);
-        }
-        if (player.getX() <= 300) {
-            player.setSpeedX(1);
-        }
+//        if (player.getX() >= 1500) {
+//            player.setSpeedX(-1);
+//        }
+//        if (player.getX() <= 300) {
+//            player.setSpeedX(1);
+//        }
 
 
     }
