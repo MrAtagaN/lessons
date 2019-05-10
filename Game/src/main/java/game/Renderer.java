@@ -156,7 +156,7 @@ public class Renderer extends Canvas {
             delta += (now - lastTime) / ns;
             lastTime = now;
             if (delta >= 1) {
-                update();
+                updateModel();
                 updates++;
                 delta--;
             }
@@ -177,8 +177,8 @@ public class Renderer extends Canvas {
     /**
      * Изменение игровой модели
      */
-    public void update() {
-        model.run();
+    public void updateModel() {
+        model.update();
     }
 
 

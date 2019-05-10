@@ -11,7 +11,7 @@ import java.io.IOException;
 /**
  * Игровая логика
  */
-public class Model implements Runnable {
+public class Model {
 
     private int height;
     private int width;
@@ -87,8 +87,7 @@ public class Model implements Runnable {
     /**
      * Изменение координат игровых объектов
      */
-    @Override
-    public void run() {
+    public void update() {
 
         drawBackground();
         player.updateCoordinats();
