@@ -21,7 +21,6 @@ public class Player {
     private double minSpeedY = 2;
     private double speedY;
     private double gravity = 2.6;
-    private int charge = 0;
 
     public Player(double x, double y, double speedX, double speedY) throws IOException {
         this.x = x;
