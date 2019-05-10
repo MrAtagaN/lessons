@@ -25,6 +25,7 @@ public class Renderer extends Canvas {
     private BufferedImage playerImage;
     private BufferedImage enemyCarrionImage;
     private BufferedImage enemyHuskImage;
+    private BufferedImage enemyPestilenceImage;
 
     private BufferedImage backgroundImage1;
     private BufferedImage backgroundImage2;
@@ -55,10 +56,12 @@ public class Renderer extends Canvas {
         //картинки игровых объектов
         File playerImageFile = new File("Game\\src\\main\\resources\\images\\Player2.png");
         playerImage = ImageIO.read(playerImageFile);
-        File enemyCarrionImageFile = new File("Game\\src\\main\\resources\\images\\EnemyCarrion.png");
+        File enemyCarrionImageFile = new File("Game\\src\\main\\resources\\images\\enemies\\EnemyCarrion.png");
         enemyCarrionImage = ImageIO.read(enemyCarrionImageFile);
-        File enemyHuskImageFile = new File("Game\\src\\main\\resources\\images\\EnemyHusk.png");
+        File enemyHuskImageFile = new File("Game\\src\\main\\resources\\images\\enemies\\EnemyHusk.png");
         enemyHuskImage = ImageIO.read(enemyHuskImageFile);
+        File enemyPestilenceImageFile = new File("Game\\src\\main\\resources\\images\\enemies\\EnemyPestilence.png");
+        enemyPestilenceImage = ImageIO.read(enemyPestilenceImageFile);
 
         //картинки фона
         File backgroundImageFile9 = new File("Game\\src\\main\\resources\\images\\background\\Layer_0000_9.png");
@@ -115,6 +118,7 @@ public class Renderer extends Canvas {
         graphics.drawImage(playerImage, model.getPlayer().getX(), model.getPlayer().getY(), 150, 130, this);
         graphics.drawImage(enemyCarrionImage, (int)model.getEnemyCarrion().getX(),  (int)model.getEnemyCarrion().getY(), 180, 120, this);
         graphics.drawImage(enemyHuskImage, (int)model.getEnemyHusk().getX(),  (int)model.getEnemyHusk().getY(), 180, 160, this);
+        graphics.drawImage(enemyPestilenceImage, (int)model.getEnemyPestilence().getX(),  (int)model.getEnemyPestilence().getY(), 120, 140, this);
 
         graphics.dispose();
         bufferStrategy.show();
