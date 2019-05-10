@@ -124,7 +124,7 @@ public class Renderer extends Canvas {
         //graphics.drawImage(model.getPlayer().getBufferedImage(), (int)model.getPlayer().getX(), (int)model.getPlayer().getY(), model.getPlayer().getImageWidth(), model.getPlayer().getImageHeight(), this);
 //        graphics.drawImage(enemyCarrionImage, (int)model.getEnemyCarrion().getX(),  (int)model.getEnemyCarrion().getY(), 180, 120, this);
 //        graphics.drawImage(enemyHuskImage, (int)model.getEnemyHusk().getX(),  (int)model.getEnemyHusk().getY(), 180, 160, this);
-        graphics.drawImage(enemyPestilenceImage, (int)model.getEnemyPestilence().getX(),  (int)model.getEnemyPestilence().getY(), 120, 140, this);
+      //  graphics.drawImage(enemyPestilenceImage, (int)model.getEnemyPestilence().getX(),  (int)model.getEnemyPestilence().getY(), 120, 140, this);
 
 
 
