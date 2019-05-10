@@ -1,6 +1,16 @@
 package game.gameObjects;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
 public class Player {
+
+    private BufferedImage bufferedImage;
+    private int imageWidth = 150;
+    private int imageHeight = 130;
+
     private double x;
     private double y;
     private double minX = 0;
@@ -13,11 +23,25 @@ public class Player {
     private double gravity = 2.6;
     private int charge = 0;
 
-    public Player(double x, double y, double speedX, double speedY) {
+    public Player(double x, double y, double speedX, double speedY) throws IOException {
         this.x = x;
         this.y = y;
         this.speedX = speedX;
         this.speedY = speedY;
+        File playerImageFile = new File("Game\\src\\main\\resources\\images\\Player2.png");
+        bufferedImage = ImageIO.read(playerImageFile);
+    }
+
+    public BufferedImage getBufferedImage() {
+        return bufferedImage;
+    }
+
+    public int getImageHeight() {
+        return imageHeight;
+    }
+
+    public int getImageWidth() {
+        return imageWidth;
     }
 
     public double getX() {
@@ -73,10 +97,6 @@ public class Player {
         }
 
 
-        if (charge > 0) {
-            charge--;
-            this.x += 2;
-        }
     }
 
     public void jumpRight() {

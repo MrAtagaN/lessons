@@ -6,6 +6,8 @@ import game.gameObjects.EnemyPestilence;
 import game.gameObjects.background.*;
 import game.gameObjects.Player;
 
+import java.io.IOException;
+
 /**
  * Игровая логика
  */
@@ -28,7 +30,7 @@ public class Model implements Runnable {
     /**
      * Конструктор, создание игровых объектов, задание начальных координат
      */
-    public Model(int width, int height) {
+    public Model(int width, int height) throws IOException {
         this.height = height;
         this.width = width;
 

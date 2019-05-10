@@ -22,7 +22,7 @@ public class Renderer extends Canvas {
     private String GAME_TITLE;
     private Controller controller;
 
-    private BufferedImage playerImage;
+    //private BufferedImage playerImage;
     private BufferedImage enemyCarrionImage;
     private BufferedImage enemyHuskImage;
     private BufferedImage enemyPestilenceImage;
@@ -55,8 +55,8 @@ public class Renderer extends Canvas {
         this.controller = new Controller(model);
 
         //картинки игровых объектов
-        File playerImageFile = new File("Game\\src\\main\\resources\\images\\Player2.png");
-        playerImage = ImageIO.read(playerImageFile);
+//        File playerImageFile = new File("Game\\src\\main\\resources\\images\\Player2.png");
+//        playerImage = ImageIO.read(playerImageFile);
         File enemyCarrionImageFile = new File("Game\\src\\main\\resources\\images\\enemies\\EnemyCarrion.png");
         enemyCarrionImage = ImageIO.read(enemyCarrionImageFile);
         File enemyHuskImageFile = new File("Game\\src\\main\\resources\\images\\enemies\\EnemyHusk.png");
@@ -116,7 +116,7 @@ public class Renderer extends Canvas {
         graphics.drawImage(backgroundImage9, (int)model.getBackground9().getX() + WIDTH, y, WIDTH, HEIGHT - y, this);
 
         //отрисовка игровых объектов
-        graphics.drawImage(playerImage, (int)model.getPlayer().getX(), (int)model.getPlayer().getY(), 150, 130, this);
+        graphics.drawImage(model.getPlayer().getBufferedImage(), (int)model.getPlayer().getX(), (int)model.getPlayer().getY(), model.getPlayer().getImageWidth(), model.getPlayer().getImageHeight(), this);
         graphics.drawImage(enemyCarrionImage, (int)model.getEnemyCarrion().getX(),  (int)model.getEnemyCarrion().getY(), 180, 120, this);
         graphics.drawImage(enemyHuskImage, (int)model.getEnemyHusk().getX(),  (int)model.getEnemyHusk().getY(), 180, 160, this);
         graphics.drawImage(enemyPestilenceImage, (int)model.getEnemyPestilence().getX(),  (int)model.getEnemyPestilence().getY(), 120, 140, this);
