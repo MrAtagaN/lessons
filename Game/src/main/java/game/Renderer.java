@@ -164,6 +164,9 @@ public class Renderer extends Canvas {
             lastTime = now;
             if (delta >= 1) {
                 updateModel();
+                if(model.isClash()) {
+                    break;
+                }
                 updates++;
                 delta--;
             }
@@ -184,7 +187,7 @@ public class Renderer extends Canvas {
     /**
      * Изменение игровой модели
      */
-    public void updateModel() {
+    private void updateModel() {
         model.update();
     }
 
