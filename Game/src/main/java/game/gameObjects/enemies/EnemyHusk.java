@@ -59,6 +59,8 @@ public class EnemyHusk extends Enemy {
 
 
             model.getGameObjects().add(new FireBall(getX(), getY(), -fireBallSpeedX, fireBallSpeedY, fireBallImage, 60, 60, 11, model));
+
+            model.needToSortGameObjects();
         }
 
     }

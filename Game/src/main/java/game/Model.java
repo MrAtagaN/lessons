@@ -21,6 +21,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class Model {
 
     private boolean clash = false;
+    private boolean needToSortGameObjects;
 
     private Player player;
 
@@ -82,6 +83,13 @@ public class Model {
         Collections.sort(gameObjects);
     }
 
+    public boolean isNeedToSortGameObjects() {
+        return needToSortGameObjects;
+    }
+
+    public void needToSortGameObjects() {
+        this.needToSortGameObjects = true;
+    }
 
     public Player getPlayer() {
         return player;
@@ -106,6 +114,12 @@ public class Model {
     public void update() {
         //обновляем координаты у всех объектов
         gameObjects.forEach(GameObject::updateCoordinats);
+
+        if (needToSortGameObjects) {
+            Collections.sort(gameObjects);
+            needToSortGameObjects = false;
+        }
+
     }
 
 }
