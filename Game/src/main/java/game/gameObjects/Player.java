@@ -4,10 +4,10 @@ import java.awt.image.BufferedImage;
 
 public class Player extends GameObject {
 
-    private static final double MIN_X = 0;
-    private static final double MIN_Y = 810;
+    private double MIN_X;
+    private double MIN_Y;
     private double MAX_X;
-    private static final double MAX_Y = 0;
+    private double MAX_Y;
 
     private static final double MIN_SPEED_X = 0;
     private static final double MAX_SPEED_Y = 1.8;
@@ -16,7 +16,11 @@ public class Player extends GameObject {
 
     public Player(double x, double y, double speedX, double speedY, BufferedImage bufferedImage, int imageWidth, int imageHeight, int renderOrder) {
         super(x, y, speedX, speedY, bufferedImage, imageWidth, imageHeight, renderOrder);
-        this.MAX_X = 1920 - imageWidth;
+        
+        this.MAX_X = 1920 - imageWidth/2;
+        this.MAX_Y = imageHeight/2;
+        this.MIN_X = imageWidth/2;
+        this.MIN_Y = 875;
     }
 
 

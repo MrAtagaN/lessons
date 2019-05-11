@@ -16,7 +16,7 @@ public class EnemyPestilence extends Enemy {
         super.updateCoordinats();
         if (x <= -300) {
             x = ((int) (Math.random() * 500 + 2000));
-            y = ((int) (Math.random() * 700 + 20));
+            y = ((int) (Math.random() * 700 + 90));
         }
         //проверка столкновения
         if (Math.abs(model.getPlayer().getX() - getX()) < 80 && Math.abs(model.getPlayer().getY() - getY()) < 80 ) {

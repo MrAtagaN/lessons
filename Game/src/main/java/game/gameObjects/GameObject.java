@@ -57,6 +57,14 @@ public class GameObject implements Comparable{
         return renderOrder;
     }
 
+    public double getRenderX() {
+        return x - imageWidth/2;
+    }
+
+    public double getRenderY() {
+        return y - imageHeight/2;
+    }
+
     public void setRenderOrder(int renderOrder) {
         this.renderOrder = renderOrder;
     }

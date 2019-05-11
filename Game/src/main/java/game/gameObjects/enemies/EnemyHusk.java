@@ -23,7 +23,7 @@ public class EnemyHusk extends Enemy {
         super.updateCoordinats();
         if (x <= -300) {
             x = ((int) (Math.random() * 500 + 2000));
-            y = ((int) (Math.random() * 700 + 20));
+            y = ((int) (Math.random() * 700 + 80));
             fireBallsCount = 4;
             // убираем из модели fireBall'ы
             model.getGameObjects().forEach(gameObject -> {  if (gameObject instanceof FireBall) { model.getGameObjects().remove(gameObject);}});
