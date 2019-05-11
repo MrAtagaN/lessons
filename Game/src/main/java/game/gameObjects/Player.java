@@ -10,8 +10,9 @@ public class Player extends GameObject {
     private static final double MAX_Y = 0;
 
     private static final double MIN_SPEED_X = 0;
-    private static final double MIN_SPEED_Y = 2;
-    private static final double GRAVITY = 2.8;
+    private static final double MAX_SPEED_Y = 1.8;
+    private static final double GRAVITY = 3.5;
+    private static final double JUMP_UP = -1.7;
 
     public Player(double x, double y, double speedX, double speedY, BufferedImage bufferedImage, int imageWidth, int imageHeight) {
         super(x, y, speedX, speedY, bufferedImage, imageWidth, imageHeight);
@@ -78,7 +79,7 @@ public class Player extends GameObject {
 
 
         this.y += speedY;
-        if (speedY < MIN_SPEED_Y) {
+        if (speedY < MAX_SPEED_Y) {
             speedY += GRAVITY / 500;
         }
 
@@ -90,7 +91,7 @@ public class Player extends GameObject {
     }
 
     public void jumpUp() {
-        setSpeedY(-1.6);
+        setSpeedY(JUMP_UP);
     }
 
     public void jumpLeft() {
