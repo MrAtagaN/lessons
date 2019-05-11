@@ -12,6 +12,17 @@ public class Controller extends KeyAdapter {
     }
 
     @Override
+    public void keyReleased(KeyEvent e) {
+        if (e.getKeyCode() == KeyEvent.VK_D) {
+           model.getPlayer().setMoveRight(false);
+        }
+
+        if (e.getKeyCode() == KeyEvent.VK_A) {
+            model.getPlayer().setMoveLeft(false);
+        }
+    }
+
+    @Override
     public void keyPressed(KeyEvent e) {
 
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
@@ -19,11 +30,11 @@ public class Controller extends KeyAdapter {
         }
 
         if (e.getKeyCode() == KeyEvent.VK_D) {
-           model.getPlayer().jumpRight();
+            model.getPlayer().setMoveRight(true);
         }
 
         if (e.getKeyCode() == KeyEvent.VK_A) {
-            model.getPlayer().jumpLeft();
+            model.getPlayer().setMoveLeft(true);
         }
 
     }

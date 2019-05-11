@@ -17,6 +17,8 @@ public class Game {
      * Start game
      */
     public static void main(String[] args) throws IOException {
+
+
         Model model = new Model(WIDTH, HEIGHT);
 
         new Renderer(
@@ -30,9 +32,7 @@ public class Game {
     }
 
     //TODO
-    // 1. Провека столкновения должна отсчитываться от центра картинки, а не от нулевых координат
     // 2. Передвижение вправо и влево должно быть непрерывным при нажатии кнопки
-    // 3. FireBall должен вылетать из центра врага
     // 4. Сделать начало и конец игры
 
 

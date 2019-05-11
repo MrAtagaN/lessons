@@ -4,15 +4,21 @@ import java.awt.image.BufferedImage;
 
 public class Player extends GameObject {
 
+    private boolean moveRight = false;
+    private boolean moveLeft = false;
+
     private double MIN_X;
     private double MIN_Y;
     private double MAX_X;
     private double MAX_Y;
 
     private static final double MIN_SPEED_X = 0;
-    private static final double MAX_SPEED_Y = 1.8;
-    private static final double GRAVITY = 3.8;
+    private static final double MAX_SPEED_Y = 1.7;
+    private static final double GRAVITY = 3;
+    private static final double GRAVITY_X = 4;
     private static final double JUMP_UP = -1.7;
+    private static final double JUMP_RIGHT = 1.4;
+    private static final double JUMP_LEFT = -1.4;
 
     public Player(double x, double y, double speedX, double speedY, BufferedImage bufferedImage, int imageWidth, int imageHeight, int renderOrder) {
         super(x, y, speedX, speedY, bufferedImage, imageWidth, imageHeight, renderOrder);
@@ -70,12 +76,19 @@ public class Player extends GameObject {
 
     public void updateCoordinats() {
 
+        if (moveRight) {
+            jumpRight();
+        }
+        if (moveLeft) {
+            jumpLeft();
+        }
+
         this.x += this.speedX;
         if (speedX > MIN_SPEED_X) {
-            speedX += -GRAVITY / 500;
+            speedX += -GRAVITY_X / 500;
         }
         if (speedX < MIN_SPEED_X) {
-            speedX -= -GRAVITY / 500;
+            speedX -= -GRAVITY_X / 500;
         }
         if (Math.abs(speedX) < 0.1) {
             speedX = 0;
@@ -91,7 +104,7 @@ public class Player extends GameObject {
     }
 
     public void jumpRight() {
-        setSpeedX(1.5);
+        setSpeedX(JUMP_RIGHT);
     }
 
     public void jumpUp() {
@@ -99,7 +112,7 @@ public class Player extends GameObject {
     }
 
     public void jumpLeft() {
-        setSpeedX(-1.5);
+        setSpeedX(JUMP_LEFT);
     }
 
     private void checkBoundariesGameField() {
@@ -123,4 +136,21 @@ public class Player extends GameObject {
             y = MIN_Y;
         }
     }
+
+    public boolean isMoveRight() {
+        return moveRight;
+    }
+
+    public void setMoveRight(boolean moveRight) {
+        this.moveRight = moveRight;
+    }
+
+    public boolean isMoveLeft() {
+        return moveLeft;
+    }
+
+    public void setMoveLeft(boolean moveLeft) {
+        this.moveLeft = moveLeft;
+    }
+
 }
