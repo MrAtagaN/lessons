@@ -1,19 +1,21 @@
 package game.gameObjects.enemies;
 
+import game.ImageLoader;
 import game.Model;
 
 
+import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class EnemyHusk extends Enemy {
 
     private int fireBallsCount = 4;
 
-    private BufferedImage fireBallImage;
 
-    public EnemyHusk(double x, double y, double speedX, double speedY, BufferedImage bufferedImage, int imageWidth, int imageHeight, int renderOrder , Model model, BufferedImage fireBallImage) {
+    public EnemyHusk(double x, double y, double speedX, double speedY, BufferedImage bufferedImage, int imageWidth, int imageHeight, int renderOrder , Model model) throws IOException {
         super(x, y, speedX, speedY, bufferedImage, imageWidth, imageHeight, renderOrder, model);
-        this.fireBallImage = fireBallImage;
     }
 
     @Override
@@ -58,7 +60,7 @@ public class EnemyHusk extends Enemy {
 
 
 
-            model.getGameObjects().add(new FireBall(getX(), getY(), -fireBallSpeedX, fireBallSpeedY, fireBallImage, 60, 60, 11, model));
+            model.getGameObjects().add(new FireBall(getX(), getY(), -fireBallSpeedX, fireBallSpeedY, ImageLoader.getFireBallImage(), 60, 60, 11, model));
 
             model.needToSortGameObjects();
         }

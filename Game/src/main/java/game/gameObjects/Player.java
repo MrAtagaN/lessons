@@ -11,7 +11,7 @@ public class Player extends GameObject {
 
     private static final double MIN_SPEED_X = 0;
     private static final double MAX_SPEED_Y = 1.8;
-    private static final double GRAVITY = 3.5;
+    private static final double GRAVITY = 3.8;
     private static final double JUMP_UP = -1.7;
 
     public Player(double x, double y, double speedX, double speedY, BufferedImage bufferedImage, int imageWidth, int imageHeight, int renderOrder) {
