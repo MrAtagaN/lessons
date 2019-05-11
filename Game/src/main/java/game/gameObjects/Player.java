@@ -1,46 +1,23 @@
 package game.gameObjects;
 
-import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
 public class Player extends GameObject {
 
-   // private BufferedImage bufferedImage;
-  //  private int imageWidth = 150;
-   // private int imageHeight = 130;
+    private static final double MIN_X = 0;
+    private static final double MIN_Y = 810;
+    private double MAX_X;
+    private static final double MAX_Y = 0;
 
-//    private double x;
-//    private double y;
-    private double minX = 0;
-    private double minY = 810;
-
-    //private double speedX;
-    private double minSpeedX = -0.5;
-    private double minSpeedY = 2;
- //   private double speedY;
-    private double gravity = 2.6;
+    private static final double MIN_SPEED_X = 0;
+    private static final double MIN_SPEED_Y = 2;
+    private static final double GRAVITY = 2.8;
 
     public Player(double x, double y, double speedX, double speedY, BufferedImage bufferedImage, int imageWidth, int imageHeight) {
         super(x, y, speedX, speedY, bufferedImage, imageWidth, imageHeight);
-//        this.x = x;
-//        this.y = y;
-//        this.speedX = speedX;
-//        this.speedY = speedY;
-//        this.bufferedImage = bufferedImage;
-//        this.imageWidth = imageWidth;
-//        this.imageHeight = imageHeight;
+        this.MAX_X = 1920 - imageWidth;
     }
 
-//    public Player(double x, double y, double speedX, double speedY) throws IOException {
-//        this.x = x;
-//        this.y = y;
-//        this.speedX = speedX;
-//        this.speedY = speedY;
-//        File playerImageFile = new File("Game\\src\\main\\resources\\images\\Player2.png");
-//        bufferedImage = ImageIO.read(playerImageFile);
-//    }
 
     public BufferedImage getBufferedImage() {
         return bufferedImage;
@@ -89,24 +66,23 @@ public class Player extends GameObject {
     public void updateCoordinats() {
 
         this.x += this.speedX;
-        if (speedX > minSpeedX) {
-            speedX += -gravity / 500;
+        if (speedX > MIN_SPEED_X) {
+            speedX += -GRAVITY / 500;
         }
-        if (x < minX) {
+        if (speedX < MIN_SPEED_X) {
+            speedX -= -GRAVITY / 500;
+        }
+        if (Math.abs(speedX) < 0.1) {
             speedX = 0;
         }
 
 
         this.y += speedY;
-        if (speedY < minSpeedY) {
-            speedY += gravity / 500;
+        if (speedY < MIN_SPEED_Y) {
+            speedY += GRAVITY / 500;
         }
 
-        if (y > minY) {
-            speedY = 0;
-        }
-
-
+        checkBoundariesGameField();
     }
 
     public void jumpRight() {
@@ -114,6 +90,32 @@ public class Player extends GameObject {
     }
 
     public void jumpUp() {
-        setSpeedY(-1.4);
+        setSpeedY(-1.6);
+    }
+
+    public void jumpLeft() {
+        setSpeedX(-1.5);
+    }
+
+    private void checkBoundariesGameField() {
+        if (x < MIN_X) {
+            speedX = 0;
+            x = MIN_X;
+        }
+
+        if (x > MAX_X) {
+            speedX = 0;
+            x = MAX_X;
+        }
+
+        if (y < MAX_Y) {
+            speedY = 0;
+            y = MAX_Y;
+        }
+
+        if (y > MIN_Y) {
+            speedY = 0;
+            y = MIN_Y;
+        }
     }
 }

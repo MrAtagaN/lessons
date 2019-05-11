@@ -10,24 +10,22 @@ import game.gameObjects.enemies.EnemyPestilence;
 import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * Игровая логика
  */
 public class Model {
 
-
     private boolean clash = false;
 
     private Player player;
 
-
-    private List<GameObject> gameObjects = new ArrayList<>();
+    private List<GameObject> gameObjects = new CopyOnWriteArrayList<>();
 
     /**
-     * Конструктор, создание игровых объектов, задание начальных координат
+     * Конструктор, создание игровых объектов, задание начальных координат, скорости, высоты и ширины картинки
      */
     public Model(int width, int height) throws IOException {
 
@@ -62,39 +60,27 @@ public class Model {
         File backgroundImageFile9 = new File("Game\\src\\main\\resources\\images\\background\\Layer_0000_9.png");
         gameObjects.add(new BackGround(0,y,-0.5,0, ImageIO.read(backgroundImageFile9), width, height - y));  //background9
         gameObjects.add(new BackGround(width,y,-0.5,0, ImageIO.read(backgroundImageFile9), width, height - y));  //background9
-        // враги
+
+        // Враги
         File enemyCarrionImageFile = new File("Game\\src\\main\\resources\\images\\enemies\\EnemyCarrion.png");
         gameObjects.add( new EnemyCarrion(2000,880,-0.5,0, ImageIO.read(enemyCarrionImageFile), 180, 120, this)); //enemyCarrion
         File enemyHuskImageFile = new File("Game\\src\\main\\resources\\images\\enemies\\EnemyHusk.png");
-        gameObjects.add( new EnemyHusk(2200,500,-0.3,0, ImageIO.read(enemyHuskImageFile), 180, 160, this)); //enemyHusk
+        File fireBallImageFile = new File("Game\\src\\main\\resources\\images\\enemies\\fireBall.png");
+        gameObjects.add( new EnemyHusk(2200,500,-0.3,0, ImageIO.read(enemyHuskImageFile), 180, 160, this, ImageIO.read(fireBallImageFile))); //enemyHusk
         File enemyPestilenceImageFile = new File("Game\\src\\main\\resources\\images\\enemies\\EnemyPestilence.png");
-        gameObjects.add(new EnemyPestilence(2200, 300,-0.7, 0, ImageIO.read(enemyPestilenceImageFile), 120, 140, this));
+        gameObjects.add(new EnemyPestilence(2200, 300,-0.7, 0, ImageIO.read(enemyPestilenceImageFile), 120, 140, this)); //enemyPestilence
 
-
+        //Player
         File playerImageFile = new File("Game\\src\\main\\resources\\images\\Player2.png");
-        Player player = new Player(500,810,-1,0, ImageIO.read(playerImageFile), 150, 130); //player
+        Player player = new Player(500,810,0,0, ImageIO.read(playerImageFile), 150, 130);
         gameObjects.add(player);
         this.player = player;
-
     }
-
-
-    /**
-     * Изменение координат игровых объектов
-     */
-    public void update() {
-        //обновляем координаты у всех объектов
-        gameObjects.forEach(GameObject::updateCoordinats);
-
-    }
-
-
 
 
     public Player getPlayer() {
         return player;
     }
-
 
     public List<GameObject> getGameObjects() {
         return gameObjects;
@@ -106,6 +92,16 @@ public class Model {
 
     public void setClash(boolean clash) {
         this.clash = clash;
+    }
+
+
+    /**
+     * Изменение координат игровых объектов
+     */
+    public void update() {
+        //обновляем координаты у всех объектов
+        gameObjects.forEach(GameObject::updateCoordinats);
+
     }
 
 }

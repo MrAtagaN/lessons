@@ -22,6 +22,10 @@ public class Controller extends KeyAdapter {
            model.getPlayer().jumpRight();
         }
 
+        if (e.getKeyCode() == KeyEvent.VK_A) {
+            model.getPlayer().jumpLeft();
+        }
+
     }
 
 
