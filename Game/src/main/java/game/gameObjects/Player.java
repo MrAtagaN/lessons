@@ -14,8 +14,8 @@ public class Player extends GameObject {
     private static final double GRAVITY = 3.5;
     private static final double JUMP_UP = -1.7;
 
-    public Player(double x, double y, double speedX, double speedY, BufferedImage bufferedImage, int imageWidth, int imageHeight) {
-        super(x, y, speedX, speedY, bufferedImage, imageWidth, imageHeight);
+    public Player(double x, double y, double speedX, double speedY, BufferedImage bufferedImage, int imageWidth, int imageHeight, int renderOrder) {
+        super(x, y, speedX, speedY, bufferedImage, imageWidth, imageHeight, renderOrder);
         this.MAX_X = 1920 - imageWidth;
     }
 

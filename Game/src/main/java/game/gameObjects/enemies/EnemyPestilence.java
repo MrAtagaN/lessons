@@ -7,8 +7,8 @@ import java.awt.image.BufferedImage;
 
 public class EnemyPestilence extends Enemy {
 
-    public EnemyPestilence(double x, double y, double speedX, double speedY, BufferedImage bufferedImage, int imageWidth, int imageHeight, Model model) {
-        super(x, y, speedX, speedY, bufferedImage, imageWidth, imageHeight, model);
+    public EnemyPestilence(double x, double y, double speedX, double speedY, BufferedImage bufferedImage, int imageWidth, int imageHeight, int renderOrder, Model model) {
+        super(x, y, speedX, speedY, bufferedImage, imageWidth, imageHeight, renderOrder, model);
     }
 
     @Override

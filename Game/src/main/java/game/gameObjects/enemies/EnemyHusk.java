@@ -11,8 +11,8 @@ public class EnemyHusk extends Enemy {
 
     private BufferedImage fireBallImage;
 
-    public EnemyHusk(double x, double y, double speedX, double speedY, BufferedImage bufferedImage, int imageWidth, int imageHeight, Model model, BufferedImage fireBallImage) {
-        super(x, y, speedX, speedY, bufferedImage, imageWidth, imageHeight, model);
+    public EnemyHusk(double x, double y, double speedX, double speedY, BufferedImage bufferedImage, int imageWidth, int imageHeight, int renderOrder , Model model, BufferedImage fireBallImage) {
+        super(x, y, speedX, speedY, bufferedImage, imageWidth, imageHeight, renderOrder, model);
         this.fireBallImage = fireBallImage;
     }
 
@@ -58,7 +58,7 @@ public class EnemyHusk extends Enemy {
 
 
 
-            model.getGameObjects().add(new FireBall(getX(), getY(), -fireBallSpeedX, fireBallSpeedY, fireBallImage, 60, 60, model));
+            model.getGameObjects().add(new FireBall(getX(), getY(), -fireBallSpeedX, fireBallSpeedY, fireBallImage, 60, 60, 11, model));
         }
 
     }

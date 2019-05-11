@@ -3,7 +3,7 @@ package game.gameObjects;
 
 import java.awt.image.BufferedImage;
 
-public class GameObject implements GameObjectAction {
+public class GameObject implements Comparable{
 
     protected double x;
     protected double y;
@@ -12,8 +12,9 @@ public class GameObject implements GameObjectAction {
     protected BufferedImage bufferedImage;
     protected int imageWidth;
     protected int imageHeight;
+    protected int renderOrder;
 
-    public GameObject(double x, double y, double speedX, double speedY, BufferedImage bufferedImage, int imageWidth, int imageHeight) {
+    public GameObject(double x, double y, double speedX, double speedY, BufferedImage bufferedImage, int imageWidth, int imageHeight, int renderOrder) {
         this.x = x;
         this.y = y;
         this.speedX = speedX;
@@ -21,6 +22,7 @@ public class GameObject implements GameObjectAction {
         this.bufferedImage = bufferedImage;
         this.imageWidth = imageWidth;
         this.imageHeight = imageHeight;
+        this.renderOrder = renderOrder;
     }
 
     public double getX() {
@@ -51,8 +53,12 @@ public class GameObject implements GameObjectAction {
         return imageHeight;
     }
 
-    public void setX(double x) {
-        this.x = x;
+    public int getRenderOrder() {
+        return renderOrder;
+    }
+
+    public void setRenderOrder(int renderOrder) {
+        this.renderOrder = renderOrder;
     }
 
     public void updateCoordinats() {
@@ -60,5 +66,15 @@ public class GameObject implements GameObjectAction {
         this.y += this.speedY;
     }
 
-
+    @Override
+    public int compareTo(Object o) {
+        GameObject gameObject = (GameObject) o;
+        if (this.renderOrder > gameObject.getRenderOrder()) {
+            return 1;
+        }
+        if (this.renderOrder < gameObject.getRenderOrder()) {
+            return -1;
+        }
+        return 0;
+    }
 }
