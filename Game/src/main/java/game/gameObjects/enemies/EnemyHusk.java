@@ -1,5 +1,6 @@
 package game.gameObjects.enemies;
 
+import game.Game;
 import game.ImageLoader;
 import game.Model;
 
@@ -11,11 +12,13 @@ import java.io.IOException;
 
 public class EnemyHusk extends Enemy {
 
-    private int fireBallsCount = 4;
+
+    private boolean alreadyShoot = false;
 
 
     public EnemyHusk(double x, double y, double speedX, double speedY, BufferedImage bufferedImage, int imageWidth, int imageHeight, int renderOrder , Model model) throws IOException {
         super(x, y, speedX, speedY, bufferedImage, imageWidth, imageHeight, renderOrder, model);
+        countMax = Game.UPDATES * 2;
     }
 
     @Override
@@ -24,7 +27,7 @@ public class EnemyHusk extends Enemy {
         if (x <= -300) {
             x = ((int) (Math.random() * 500 + 2000));
             y = ((int) (Math.random() * 700 + 80));
-            fireBallsCount = 4;
+
             // убираем из модели fireBall'ы
             model.getGameObjects().forEach(gameObject -> {  if (gameObject instanceof FireBall) { model.getGameObjects().remove(gameObject);}});
         }
@@ -33,37 +36,23 @@ public class EnemyHusk extends Enemy {
             model.setClash(true);
         }
         // летим и стреляем
-        if (x < 1600 && fireBallsCount == 4 || x < 1200 && fireBallsCount == 3 || x < 800 && fireBallsCount == 2 || x < 400 && fireBallsCount == 1) {
-            fireBallsCount--;
+        if (x < 1800 && x > 0 && count > Game.UPDATES * 1 && !alreadyShoot) {
 
-            double triangle;
-            double diffX = model.getPlayer().getX() - x;
-            double diffY = model.getPlayer().getY() - y;
+            alreadyShoot = true;
 
-            double fireBallSpeedY = 0;
-            double fireBallSpeedX = 0;
+            double diffX = model.getPlayer().getX() - x ;
+            double diffY = model.getPlayer().getY() - y ;
 
-            if(Math.abs(diffY) < Math.abs(diffX)) {
-                triangle = Math.abs(diffY/diffX);
-                fireBallSpeedY = triangle * 1;
-                fireBallSpeedX = 1 - fireBallSpeedY;
-            } else {
-                triangle = Math.abs(diffX/diffY);
-                fireBallSpeedX = triangle * 1;
-                fireBallSpeedY = 1 - fireBallSpeedX;
-            }
+            double reduceSpeed =  1/(Math.abs(diffX) + Math.abs(diffY));
 
-            if (diffX <= 0 && diffY <= 0) {
-                fireBallSpeedY = fireBallSpeedY;
-                fireBallSpeedX = fireBallSpeedX;
-            }
-
-
-
-            model.getGameObjects().add(new FireBall(getX(), getY(), -fireBallSpeedX, fireBallSpeedY, ImageLoader.getFireBallImage(), 60, 60, 11, model));
+            model.getGameObjects().add(new FireBall(getX(), getY(), diffX*reduceSpeed, diffY*reduceSpeed, ImageLoader.getFireBallImage(), 60, 60, 11, model));
 
             model.needToSortGameObjects();
         }
+        if (count < Game.UPDATES * 1) {
+            alreadyShoot = false;
+        }
+        incrementCount();
 
     }
 }

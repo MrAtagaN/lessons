@@ -65,9 +65,6 @@ public class Model {
         Collections.sort(gameObjects);
     }
 
-    public boolean isNeedToSortGameObjects() {
-        return needToSortGameObjects;
-    }
 
     public void needToSortGameObjects() {
         this.needToSortGameObjects = true;
