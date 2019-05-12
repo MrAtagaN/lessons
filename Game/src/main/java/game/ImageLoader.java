@@ -21,6 +21,8 @@ public class ImageLoader {
     private static BufferedImage enemyHuskImage;
     private static BufferedImage enemyPestilenceImage;
     private static BufferedImage playerImage;
+    private static BufferedImage playerWoundedImage;
+
 
 
     private static BufferedImage heartImage;
@@ -62,6 +64,8 @@ public class ImageLoader {
             // Игрок
             File playerImageFile = new File("Game\\src\\main\\resources\\images\\Player2.png");
             playerImage = ImageIO.read(playerImageFile);
+            File playerWounded = new File("Game\\src\\main\\resources\\images\\PlayerWounded.png");
+            playerWoundedImage = ImageIO.read(playerWounded);
 
             // Предметы
             File heartImageFile = new File("Game\\src\\main\\resources\\images\\heart.png");
@@ -131,5 +135,9 @@ public class ImageLoader {
 
     public static BufferedImage getHeartImage() {
         return heartImage;
+    }
+
+    public static BufferedImage getPlayerWoundedImage() {
+        return playerWoundedImage;
     }
 }

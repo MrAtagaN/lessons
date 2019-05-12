@@ -9,7 +9,9 @@ import java.awt.image.BufferedImage;
 public class Player extends GameObject {
 
     private int life = 3;
-    private int invulnerability = 2 * (int)Game.UPDATES;
+    private int timeInvulnerability = 2 * (int)Game.UPDATES; // время неуязвимости после столкновения
+    private int invulnerabilityCount;                        // обратный счетчик после столкновения
+    private BufferedImage playerWoundedImage;
 
     private boolean moveRight = false;
     private boolean moveLeft = false;
@@ -26,7 +28,7 @@ public class Player extends GameObject {
     private static final double MIN_SPEED_X = 0;
     private static final double MAX_SPEED_Y = 1.7;
     private static final double GRAVITY = 3;
-    private static final double GRAVITY_X = 4;
+    private static final double GRAVITY_X = 8;
     private static final double JUMP_UP = -1.6;
     private static final double JUMP_RIGHT = 1.4;
     private static final double JUMP_LEFT = -1.4;
@@ -48,63 +50,17 @@ public class Player extends GameObject {
         model.getGameObjects().add(heart2);
         heart3 = new GameObject(190, 50, 0, 0, ImageLoader.getHeartImage(), 55, 66, 90);
         model.getGameObjects().add(heart3);
+        playerWoundedImage = ImageLoader.getPlayerWoundedImage();
 
     }
 
-
-    public BufferedImage getBufferedImage() {
-        return bufferedImage;
-    }
-
-    public int getImageHeight() {
-        return imageHeight;
-    }
-
-    public int getImageWidth() {
-        return imageWidth;
-    }
-
-    public double getX() {
-        return x;
-    }
-
-    public void setX(double x) {
-        this.x = x;
-    }
-
-    public double getY() {
-        return y;
-    }
-
-    public void setY(double y) {
-        this.y = y;
-    }
-
-    public double getSpeedX() {
-        return speedX;
-    }
-
-    public void setSpeedX(double speedX) {
-        this.speedX = speedX;
-    }
-
-    public int getLife() {
-        return life;
-    }
-
-    public void setLife(int life) {
-        this.life = life;
-    }
-
-    public void addLife() {
-        this.life++;
-    }
 
     /**
      * Уменьшение жизни
      */
     public void minusLife() {
-        if (invulnerability > 0) {
+
+        if (invulnerabilityCount > 0) {
             return;
         }
 
@@ -121,20 +77,10 @@ public class Player extends GameObject {
         if (life <= 0) {
             model.setClash(true); //переделать
         }
-        this.invulnerability = (int)Game.UPDATES;
-
-
+        this.invulnerabilityCount = timeInvulnerability;
 
     }
 
-
-    public double getSpeedY() {
-        return speedY;
-    }
-
-    public void setSpeedY(double speedY) {
-        this.speedY = speedY;
-    }
 
     public void updateCoordinats() {
 
@@ -162,11 +108,19 @@ public class Player extends GameObject {
             speedY += GRAVITY / 500;
         }
 
-        if (invulnerability > 0) {
-            invulnerability--;
+        if (invulnerabilityCount > 0) {
+            invulnerabilityCount--;
         }
 
         checkBoundariesGameField();
+    }
+
+    public BufferedImage getBufferedImage() {
+        //                                            мерцание
+        if (invulnerabilityCount > 0 && Math.ceil(invulnerabilityCount / 50) % 2 == 0) {
+            return playerWoundedImage;
+        }
+        return bufferedImage;
     }
 
     public void jumpRight() {
@@ -219,6 +173,56 @@ public class Player extends GameObject {
         this.moveLeft = moveLeft;
     }
 
+    public int getImageHeight() {
+        return imageHeight;
+    }
 
+    public int getImageWidth() {
+        return imageWidth;
+    }
+
+    public double getX() {
+        return x;
+    }
+
+    public void setX(double x) {
+        this.x = x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public void setY(double y) {
+        this.y = y;
+    }
+
+    public double getSpeedX() {
+        return speedX;
+    }
+
+    public void setSpeedX(double speedX) {
+        this.speedX = speedX;
+    }
+
+    public int getLife() {
+        return life;
+    }
+
+    public void setLife(int life) {
+        this.life = life;
+    }
+
+    public void addLife() {
+        this.life++;
+    }
+
+    public double getSpeedY() {
+        return speedY;
+    }
+
+    public void setSpeedY(double speedY) {
+        this.speedY = speedY;
+    }
 
 }
