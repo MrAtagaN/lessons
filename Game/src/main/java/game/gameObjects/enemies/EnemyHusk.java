@@ -5,15 +5,13 @@ import game.ImageLoader;
 import game.Model;
 
 
-import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 
 public class EnemyHusk extends Enemy {
 
 
-    private boolean alreadyShoot = false;
+    private boolean alreadyShooted = false;
 
 
     public EnemyHusk(double x, double y, double speedX, double speedY, BufferedImage bufferedImage, int imageWidth, int imageHeight, int renderOrder , Model model) throws IOException {
@@ -23,6 +21,15 @@ public class EnemyHusk extends Enemy {
 
     @Override
     public void updateCoordinats() {
+
+        //поведение
+        if (count < Game.UPDATES) {
+            speedY = -0.05;
+        } else {
+            speedY = 0.05;
+        }
+
+
         super.updateCoordinats();
         if (x <= -300) {
             x = ((int) (Math.random() * 500 + 2000));
@@ -36,9 +43,15 @@ public class EnemyHusk extends Enemy {
             model.setClash(true);
         }
         // летим и стреляем
-        if (x < 1800 && x > 0 && count > Game.UPDATES * 1 && !alreadyShoot) {
+        shoot();
+        incrementCount();
 
-            alreadyShoot = true;
+    }
+
+    private void shoot() {
+        if (x < 1800 && x > 0 && count > Game.UPDATES * 1 && !alreadyShooted) {
+
+            alreadyShooted = true;
 
             double diffX = model.getPlayer().getX() - x ;
             double diffY = model.getPlayer().getY() - y ;
@@ -50,9 +63,7 @@ public class EnemyHusk extends Enemy {
             model.needToSortGameObjects();
         }
         if (count < Game.UPDATES * 1) {
-            alreadyShoot = false;
+            alreadyShooted = false;
         }
-        incrementCount();
-
     }
 }

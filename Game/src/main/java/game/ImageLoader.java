@@ -22,6 +22,9 @@ public class ImageLoader {
     private static BufferedImage enemyPestilenceImage;
     private static BufferedImage playerImage;
 
+
+    private static BufferedImage heartImage;
+
     static {
         try {
             // Статический фон
@@ -59,6 +62,10 @@ public class ImageLoader {
             // Игрок
             File playerImageFile = new File("Game\\src\\main\\resources\\images\\Player2.png");
             playerImage = ImageIO.read(playerImageFile);
+
+            // Предметы
+            File heartImageFile = new File("Game\\src\\main\\resources\\images\\heart.png");
+            heartImage = ImageIO.read(heartImageFile);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -120,5 +127,9 @@ public class ImageLoader {
 
     public static BufferedImage getBackgroundImage9() {
         return backgroundImage9;
+    }
+
+    public static BufferedImage getHeartImage() {
+        return heartImage;
     }
 }

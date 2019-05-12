@@ -16,7 +16,7 @@ public class Player extends GameObject {
     private static final double MAX_SPEED_Y = 1.7;
     private static final double GRAVITY = 3;
     private static final double GRAVITY_X = 4;
-    private static final double JUMP_UP = -1.7;
+    private static final double JUMP_UP = -1.6;
     private static final double JUMP_RIGHT = 1.4;
     private static final double JUMP_LEFT = -1.4;
 
