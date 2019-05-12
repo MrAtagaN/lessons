@@ -58,15 +58,12 @@ public class Model {
         gameObjects.add(new EnemyPestilence(2200, 370, -0.7, 0, ImageLoader.getEnemyPestilenceImage(), 120, 140, 14, this)); //enemyPestilence
 
         // Игрок
-        Player player = new Player(500, 875, 0, 0, ImageLoader.getPlayerImage(), 150, 130, 100);
+        Player player = new Player(500, 875, 0, 0, ImageLoader.getPlayerImage(), 150, 130, 100, this);
         gameObjects.add(player);
         this.player = player;
 
         // Предметы
 
-        gameObjects.add(new GameObject(50, 50, 0, 0, ImageLoader.getHeartImage(), 55, 66, 90));
-        gameObjects.add(new GameObject(120, 50, 0, 0, ImageLoader.getHeartImage(), 55, 66, 90));
-        gameObjects.add(new GameObject(190, 50, 0, 0, ImageLoader.getHeartImage(), 55, 66, 90));
 
         Collections.sort(gameObjects);
     }

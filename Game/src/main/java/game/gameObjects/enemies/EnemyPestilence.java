@@ -31,7 +31,7 @@ public class EnemyPestilence extends Enemy {
 
         //проверка столкновения
         if (Math.abs(model.getPlayer().getX() - getX()) < 80 && Math.abs(model.getPlayer().getY() - getY()) < 80) {
-            model.setClash(true);
+            model.getPlayer().minusLife();
         }
     }
 

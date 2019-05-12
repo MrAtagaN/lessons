@@ -16,7 +16,7 @@ public class FireBall extends Enemy {
 
         //проверка столкновения
         if (Math.abs(model.getPlayer().getX() - getX()) < 50 && Math.abs(model.getPlayer().getY() - getY()) < 50 ) {
-            model.setClash(true);
+            model.getPlayer().minusLife();
         }
     }
 }

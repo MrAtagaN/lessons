@@ -1,8 +1,15 @@
 package game.gameObjects;
 
+import game.Game;
+import game.ImageLoader;
+import game.Model;
+
 import java.awt.image.BufferedImage;
 
 public class Player extends GameObject {
+
+    private int life = 3;
+    private int invulnerability = 2 * (int)Game.UPDATES;
 
     private boolean moveRight = false;
     private boolean moveLeft = false;
@@ -12,6 +19,10 @@ public class Player extends GameObject {
     private double MAX_X;
     private double MAX_Y;
 
+    private GameObject heart1;
+    private GameObject heart2;
+    private GameObject heart3;
+
     private static final double MIN_SPEED_X = 0;
     private static final double MAX_SPEED_Y = 1.7;
     private static final double GRAVITY = 3;
@@ -20,13 +31,24 @@ public class Player extends GameObject {
     private static final double JUMP_RIGHT = 1.4;
     private static final double JUMP_LEFT = -1.4;
 
-    public Player(double x, double y, double speedX, double speedY, BufferedImage bufferedImage, int imageWidth, int imageHeight, int renderOrder) {
+    private Model model;
+
+    public Player(double x, double y, double speedX, double speedY, BufferedImage bufferedImage, int imageWidth, int imageHeight, int renderOrder, Model model) {
         super(x, y, speedX, speedY, bufferedImage, imageWidth, imageHeight, renderOrder);
         
         this.MAX_X = 1920 - imageWidth/2;
         this.MAX_Y = imageHeight/2;
         this.MIN_X = imageWidth/2;
         this.MIN_Y = 875;
+        this.model = model;
+
+        heart1 = new GameObject(50, 50, 0, 0, ImageLoader.getHeartImage(), 55, 66, 90);
+        model.getGameObjects().add(heart1);
+        heart2 = new GameObject(120, 50, 0, 0, ImageLoader.getHeartImage(), 55, 66, 90);
+        model.getGameObjects().add(heart2);
+        heart3 = new GameObject(190, 50, 0, 0, ImageLoader.getHeartImage(), 55, 66, 90);
+        model.getGameObjects().add(heart3);
+
     }
 
 
@@ -66,6 +88,46 @@ public class Player extends GameObject {
         this.speedX = speedX;
     }
 
+    public int getLife() {
+        return life;
+    }
+
+    public void setLife(int life) {
+        this.life = life;
+    }
+
+    public void addLife() {
+        this.life++;
+    }
+
+    /**
+     * Уменьшение жизни
+     */
+    public void minusLife() {
+        if (invulnerability > 0) {
+            return;
+        }
+
+        switch (life) {
+            case 3 : model.getGameObjects().remove(heart3);
+                break;
+            case 2 : model.getGameObjects().remove(heart2);
+                break;
+            case 1 : model.getGameObjects().remove(heart1);
+                break;
+        }
+
+        this.life--;
+        if (life <= 0) {
+            model.setClash(true); //переделать
+        }
+        this.invulnerability = (int)Game.UPDATES;
+
+
+
+    }
+
+
     public double getSpeedY() {
         return speedY;
     }
@@ -98,6 +160,10 @@ public class Player extends GameObject {
         this.y += speedY;
         if (speedY < MAX_SPEED_Y) {
             speedY += GRAVITY / 500;
+        }
+
+        if (invulnerability > 0) {
+            invulnerability--;
         }
 
         checkBoundariesGameField();
@@ -152,5 +218,7 @@ public class Player extends GameObject {
     public void setMoveLeft(boolean moveLeft) {
         this.moveLeft = moveLeft;
     }
+
+
 
 }

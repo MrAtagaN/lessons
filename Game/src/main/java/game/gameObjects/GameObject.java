@@ -2,6 +2,7 @@ package game.gameObjects;
 
 
 import java.awt.image.BufferedImage;
+import java.util.Objects;
 
 public class GameObject implements Comparable{
 
@@ -84,5 +85,24 @@ public class GameObject implements Comparable{
             return -1;
         }
         return 0;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        GameObject that = (GameObject) o;
+        return Double.compare(that.x, x) == 0 &&
+                Double.compare(that.y, y) == 0 &&
+                Double.compare(that.speedX, speedX) == 0 &&
+                Double.compare(that.speedY, speedY) == 0 &&
+                imageWidth == that.imageWidth &&
+                imageHeight == that.imageHeight &&
+                Objects.equals(bufferedImage, that.bufferedImage);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y, speedX, speedY, bufferedImage, imageWidth, imageHeight);
     }
 }
