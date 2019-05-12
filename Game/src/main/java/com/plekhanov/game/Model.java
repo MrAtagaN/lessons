@@ -1,16 +1,12 @@
-package game;
+package com.plekhanov.game;
 
-import game.gameObjects.*;
-import game.gameObjects.background.*;
-import game.gameObjects.enemies.Enemy;
-import game.gameObjects.enemies.EnemyCarrion;
-import game.gameObjects.enemies.EnemyHusk;
-import game.gameObjects.enemies.EnemyPestilence;
+import com.plekhanov.game.gameObjects.*;
+import com.plekhanov.game.gameObjects.background.*;
+import com.plekhanov.game.gameObjects.enemies.EnemyCarrion;
+import com.plekhanov.game.gameObjects.enemies.EnemyHusk;
+import com.plekhanov.game.gameObjects.enemies.EnemyPestilence;
 
-import javax.imageio.ImageIO;
-import java.io.File;
 import java.io.IOException;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;

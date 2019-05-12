@@ -1,4 +1,4 @@
-package game.gameObjects;
+package com.plekhanov.game.gameObjects;
 
 
 import java.awt.image.BufferedImage;

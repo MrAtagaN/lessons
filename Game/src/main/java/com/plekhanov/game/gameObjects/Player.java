@@ -1,8 +1,8 @@
-package game.gameObjects;
+package com.plekhanov.game.gameObjects;
 
-import game.Game;
-import game.ImageLoader;
-import game.Model;
+import com.plekhanov.game.Game;
+import com.plekhanov.game.ImageLoader;
+import com.plekhanov.game.Model;
 
 import java.awt.image.BufferedImage;
 
@@ -116,7 +116,7 @@ public class Player extends GameObject {
     }
 
     public BufferedImage getBufferedImage() {
-        //                                            мерцание
+        // Мерцание
         if (invulnerabilityCount > 0 && Math.ceil(invulnerabilityCount / 50) % 2 == 0) {
             return playerWoundedImage;
         }

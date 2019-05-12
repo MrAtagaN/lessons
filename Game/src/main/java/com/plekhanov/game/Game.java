@@ -1,4 +1,4 @@
-package game;
+package com.plekhanov.game;
 
 
 import java.io.IOException;
@@ -14,7 +14,7 @@ public class Game {
 
 
     /**
-     * Start game
+     * Start com.plekhanov.game
      */
     public static void main(String[] args) throws IOException {
 

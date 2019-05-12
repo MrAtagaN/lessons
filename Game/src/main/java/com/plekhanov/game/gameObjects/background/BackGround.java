@@ -1,7 +1,7 @@
-package game.gameObjects.background;
+package com.plekhanov.game.gameObjects.background;
 
-import game.Game;
-import game.gameObjects.GameObject;
+import com.plekhanov.game.Game;
+import com.plekhanov.game.gameObjects.GameObject;
 
 import java.awt.image.BufferedImage;
 
