@@ -89,7 +89,7 @@ public class Model implements Runnable{
 
 
     /**
-     * Изменение координат игровых объектов
+     * Цикл изменений координат игровых объектов
      */
     public void run() {
         long lastTime = System.nanoTime();
@@ -98,37 +98,42 @@ public class Model implements Runnable{
         int updates = 0;
         long timer = System.currentTimeMillis();
 
-
         while (true) {
             long now = System.nanoTime();
             delta += (now - lastTime) / ns;
             lastTime = now;
             if (delta >= 1) {
                 updates++;
+                delta--;
 
                 if(isClash()) {
                     break;
                 }
-                delta--;
-                //обновляем координаты у всех объектов
-                gameObjects.forEach(GameObject::updateCoordinats);
 
-                if (needToSortGameObjects) {
-                    Collections.sort(gameObjects);
-                    needToSortGameObjects = false;
-                }
+                //обновляем координаты у всех объектов
+                updateModel();
             }
 
+            //вывод информации
             if (System.currentTimeMillis() - timer > 1000) {
                 timer += 1000;
                 System.out.println("Updates " + updates );
                 updates = 0;
             }
-
         }
+    }
 
 
+    /**
+     * Изменение игровой модели
+     */
+    private void updateModel() {
+        gameObjects.forEach(GameObject::updateCoordinats);
 
+        if (needToSortGameObjects) {
+            Collections.sort(gameObjects);
+            needToSortGameObjects = false;
+        }
     }
 
 }

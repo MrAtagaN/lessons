@@ -13,6 +13,7 @@ public class Renderer extends Canvas {
 
     private int WIDTH;
     private int HEIGHT;
+    private boolean fullScrean;
     private int windowPositionWidth;
     private int windowPositionHeight;
     private String GAME_TITLE;
@@ -22,9 +23,10 @@ public class Renderer extends Canvas {
     /**
      * Конструктор
      */
-    public Renderer(int width, int height, String gameTitle, int windowPositionWidth, int windowPositionHeight, Model model) throws IOException {
+    public Renderer(int width, int height, boolean fullScreen, String gameTitle, int windowPositionWidth, int windowPositionHeight, Model model) {
         this.WIDTH = width;
         this.HEIGHT = height;
+        this.fullScrean = fullScreen;
         this.GAME_TITLE = gameTitle;
         this.windowPositionWidth = windowPositionWidth;
         this.windowPositionHeight = windowPositionHeight;
@@ -55,16 +57,15 @@ public class Renderer extends Canvas {
 
 
     /**
-     * Главный игровой цикл
+     * Цикл рендеринга изображения
      */
     public void run() {
         JFrame jFrame = new JFrame();
-        jFrame.setUndecorated(true); // на весь экран
+        jFrame.setUndecorated(fullScrean); // на весь экран
         jFrame.setVisible(true);
         jFrame.setTitle(GAME_TITLE);
         jFrame.setResizable(false);
         jFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-
         jFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         jFrame.setBounds(windowPositionWidth, windowPositionHeight, WIDTH, HEIGHT);
 
@@ -72,31 +73,23 @@ public class Renderer extends Canvas {
         jFrame.add(this);
         jFrame.addKeyListener(controller);
 
-
         int frames = 0;
         long timer = System.currentTimeMillis();
 
         while (true) {
-
             render();
             frames++;
 
+            //вывод информации
             if (System.currentTimeMillis() - timer > 1000) {
                 timer += 1000;
                 System.out.println("FPS " + frames);
-                jFrame.setTitle(GAME_TITLE + " | FPS " + frames);
+                jFrame.setTitle(GAME_TITLE + "  |   FPS " + frames);
                 frames = 0;
             }
         }
     }
 
-
-//    /**
-//     * Изменение игровой модели
-//     */
-//    private void updateModel() {
-//        model.update();
-//    }
 
 
 }
