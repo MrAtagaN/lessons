@@ -8,8 +8,8 @@ public class Game {
     public static final int WIDTH = 1920;
     public static final int HEIGHT = 1080;
     public static final boolean FULL_SCREEN = true;
-    public static final int WINDOW_POSITION_WIDTH = 0;
-    public static final int WINDOW_POSITION_HEIGHT = 0;
+    public static final int WINDOW_POSITION_X = 0;
+    public static final int WINDOW_POSITION_Y = 0;
     public static final double UPDATES = 500;
     public static final String GAME_TITLE = "My Game";
 
@@ -27,8 +27,8 @@ public class Game {
                 HEIGHT,
                 FULL_SCREEN,
                 GAME_TITLE,
-                WINDOW_POSITION_WIDTH,
-                WINDOW_POSITION_HEIGHT,
+                WINDOW_POSITION_X,
+                WINDOW_POSITION_Y,
                 model).run();
     }
 
