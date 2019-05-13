@@ -14,14 +14,13 @@ import java.util.concurrent.CopyOnWriteArrayList;
 /**
  * Игровая логика
  */
-public class Model implements Runnable{
+public class Model implements Runnable {
 
     private volatile boolean clash = false;
     private volatile boolean needToSortGameObjects;
-    public double UPDATES;
+    private double UPDATES;
 
     private volatile Player player;
-
     //список со всеми игровыми объектами
     private volatile List<GameObject> gameObjects = new CopyOnWriteArrayList<>();
 
@@ -106,10 +105,9 @@ public class Model implements Runnable{
                 updates++;
                 delta--;
 
-                if(isClash()) {
+                if (isClash()) {
                     break;
                 }
-
                 //обновляем координаты у всех объектов
                 updateModel();
             }
@@ -117,7 +115,7 @@ public class Model implements Runnable{
             //вывод информации
             if (System.currentTimeMillis() - timer > 1000) {
                 timer += 1000;
-                System.out.println("Updates " + updates );
+                System.out.println("Updates " + updates);
                 updates = 0;
             }
         }

@@ -48,7 +48,7 @@ public class Renderer extends Canvas {
 
         //Отрисовка всех игровых объектов
         model.getGameObjects().forEach(gameObject -> {
-            graphics.drawImage(gameObject.getBufferedImage(), (int)gameObject.getRenderX(), (int)gameObject.getRenderY(), gameObject.getImageWidth(), gameObject.getImageHeight(), null);
+            graphics.drawImage(gameObject.getBufferedImage(), (int) gameObject.getRenderX(), (int) gameObject.getRenderY(), gameObject.getImageWidth(), gameObject.getImageHeight(), null);
         });
 
         graphics.dispose();
@@ -89,7 +89,6 @@ public class Renderer extends Canvas {
             }
         }
     }
-
 
 
 }

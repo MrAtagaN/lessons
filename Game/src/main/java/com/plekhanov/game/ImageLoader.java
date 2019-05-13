@@ -22,9 +22,6 @@ public class ImageLoader {
     private static BufferedImage enemyPestilenceImage;
     private static BufferedImage playerImage;
     private static BufferedImage playerWoundedImage;
-
-
-
     private static BufferedImage heartImage;
 
     static {

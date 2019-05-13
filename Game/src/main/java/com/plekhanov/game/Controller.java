@@ -14,7 +14,7 @@ public class Controller extends KeyAdapter {
     @Override
     public void keyReleased(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_D) {
-           model.getPlayer().setMoveRight(false);
+            model.getPlayer().setMoveRight(false);
         }
 
         if (e.getKeyCode() == KeyEvent.VK_A) {
@@ -38,8 +38,6 @@ public class Controller extends KeyAdapter {
         }
 
     }
-
-
 
 
 }
