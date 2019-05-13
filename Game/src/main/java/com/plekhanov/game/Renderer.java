@@ -15,7 +15,6 @@ public class Renderer extends Canvas {
     private int HEIGHT;
     private int windowPositionWidth;
     private int windowPositionHeight;
-    private double UPDATES;
     private String GAME_TITLE;
     private Controller controller;
     private Model model;
@@ -23,10 +22,9 @@ public class Renderer extends Canvas {
     /**
      * Конструктор
      */
-    public Renderer(int width, int height, double updates, String gameTitle, int windowPositionWidth, int windowPositionHeight, Model model) throws IOException {
+    public Renderer(int width, int height, String gameTitle, int windowPositionWidth, int windowPositionHeight, Model model) throws IOException {
         this.WIDTH = width;
         this.HEIGHT = height;
-        this.UPDATES = updates;
         this.GAME_TITLE = gameTitle;
         this.windowPositionWidth = windowPositionWidth;
         this.windowPositionHeight = windowPositionHeight;
@@ -74,45 +72,31 @@ public class Renderer extends Canvas {
         jFrame.add(this);
         jFrame.addKeyListener(controller);
 
-        long lastTime = System.nanoTime();
-        double ns = 1000_000_000 / UPDATES;
-        double delta = 0;
-        int updates = 0;
+
         int frames = 0;
         long timer = System.currentTimeMillis();
 
         while (true) {
-            long now = System.nanoTime();
-            delta += (now - lastTime) / ns;
-            lastTime = now;
-            if (delta >= 1) {
-                updateModel();
-                if(model.isClash()) {
-                    break;
-                }
-                updates++;
-                delta--;
-            }
+
             render();
             frames++;
 
             if (System.currentTimeMillis() - timer > 1000) {
                 timer += 1000;
-                System.out.println(updates + " Updates, FPS " + frames);
-                jFrame.setTitle(GAME_TITLE + " | Updates " + updates + ", FPS " + frames);
-                updates = 0;
+                System.out.println("FPS " + frames);
+                jFrame.setTitle(GAME_TITLE + " | FPS " + frames);
                 frames = 0;
             }
         }
     }
 
 
-    /**
-     * Изменение игровой модели
-     */
-    private void updateModel() {
-        model.update();
-    }
+//    /**
+//     * Изменение игровой модели
+//     */
+//    private void updateModel() {
+//        model.update();
+//    }
 
 
 }

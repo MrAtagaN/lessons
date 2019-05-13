@@ -14,20 +14,22 @@ import java.util.concurrent.CopyOnWriteArrayList;
 /**
  * Игровая логика
  */
-public class Model {
+public class Model implements Runnable{
 
-    private boolean clash = false;
-    private boolean needToSortGameObjects;
+    private volatile boolean clash = false;
+    private volatile boolean needToSortGameObjects;
+    public double UPDATES;
 
-    private Player player;
+    private volatile Player player;
 
     //список со всеми игровыми объектами
-    private List<GameObject> gameObjects = new CopyOnWriteArrayList<>();
+    private volatile List<GameObject> gameObjects = new CopyOnWriteArrayList<>();
 
     /**
      * Конструктор, создание игровых объектов, задание начальных координат, скорости, высоты и ширины картинки
      */
-    public Model(int width, int height) throws IOException {
+    public Model(double updates, int width, int height) throws IOException {
+        this.UPDATES = updates;
 
         int y = -500; //выравнивание фона по высоте
         //статический фон
@@ -89,14 +91,43 @@ public class Model {
     /**
      * Изменение координат игровых объектов
      */
-    public void update() {
-        //обновляем координаты у всех объектов
-        gameObjects.forEach(GameObject::updateCoordinats);
+    public void run() {
+        long lastTime = System.nanoTime();
+        double ns = 1000_000_000 / UPDATES;
+        double delta = 0;
+        int updates = 0;
+        long timer = System.currentTimeMillis();
 
-        if (needToSortGameObjects) {
-            Collections.sort(gameObjects);
-            needToSortGameObjects = false;
+
+        while (true) {
+            long now = System.nanoTime();
+            delta += (now - lastTime) / ns;
+            lastTime = now;
+            if (delta >= 1) {
+                updates++;
+
+                if(isClash()) {
+                    break;
+                }
+                delta--;
+                //обновляем координаты у всех объектов
+                gameObjects.forEach(GameObject::updateCoordinats);
+
+                if (needToSortGameObjects) {
+                    Collections.sort(gameObjects);
+                    needToSortGameObjects = false;
+                }
+            }
+
+            if (System.currentTimeMillis() - timer > 1000) {
+                timer += 1000;
+                System.out.println("Updates " + updates );
+                updates = 0;
+            }
+
         }
+
+
 
     }
 

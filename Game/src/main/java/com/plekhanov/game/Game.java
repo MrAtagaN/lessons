@@ -14,17 +14,16 @@ public class Game {
 
 
     /**
-     * Start com.plekhanov.game
+     * Start game
      */
     public static void main(String[] args) throws IOException {
 
-
-        Model model = new Model(WIDTH, HEIGHT);
+        Model model = new Model(UPDATES, WIDTH, HEIGHT);
+        new Thread(model).start();
 
         new Renderer(
                 WIDTH,
                 HEIGHT,
-                UPDATES,
                 GAME_TITLE,
                 WINDOW_POSITION_WIDTH,
                 WINDOW_POSITION_HEIGHT,
