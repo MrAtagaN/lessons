@@ -9,7 +9,7 @@ import java.awt.image.BufferedImage;
 public class Player extends GameObject {
 
     private int life = 3;
-    private int timeInvulnerability = 2 * (int)Game.UPDATES; // время неуязвимости после столкновения
+    private int timeInvulnerability = 2 * (int) Game.UPDATES; // время неуязвимости после столкновения
     private int invulnerabilityCount;                        // обратный счетчик после столкновения
     private BufferedImage playerWoundedImage;
 
@@ -37,10 +37,10 @@ public class Player extends GameObject {
 
     public Player(double x, double y, double speedX, double speedY, BufferedImage bufferedImage, int imageWidth, int imageHeight, int renderOrder, Model model) {
         super(x, y, speedX, speedY, bufferedImage, imageWidth, imageHeight, renderOrder);
-        
-        this.MAX_X = 1920 - imageWidth/2;
-        this.MAX_Y = imageHeight/2;
-        this.MIN_X = imageWidth/2;
+
+        this.MAX_X = 1920 - imageWidth / 2;
+        this.MAX_Y = imageHeight / 2;
+        this.MIN_X = imageWidth / 2;
         this.MIN_Y = 875;
         this.model = model;
 
@@ -59,17 +59,19 @@ public class Player extends GameObject {
      * Уменьшение жизни
      */
     public void minusLife() {
-
         if (invulnerabilityCount > 0) {
             return;
         }
 
         switch (life) {
-            case 3 : model.getGameObjects().remove(heart3);
+            case 3:
+                model.getGameObjects().remove(heart3);
                 break;
-            case 2 : model.getGameObjects().remove(heart2);
+            case 2:
+                model.getGameObjects().remove(heart2);
                 break;
-            case 1 : model.getGameObjects().remove(heart1);
+            case 1:
+                model.getGameObjects().remove(heart1);
                 break;
         }
 
@@ -83,7 +85,6 @@ public class Player extends GameObject {
 
 
     public void updateCoordinats() {
-
         if (moveRight) {
             jumpRight();
         }
@@ -114,6 +115,7 @@ public class Player extends GameObject {
 
         checkBoundariesGameField();
     }
+
 
     public BufferedImage getBufferedImage() {
         // Мерцание

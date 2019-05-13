@@ -20,12 +20,12 @@ public class EnemyCarrion extends Enemy {
             x = ((int) (Math.random() * 500 + 2000));
         }
         //проверка столкновения
-        if (Math.abs(model.getPlayer().getX() - getX()) < 80 && Math.abs(model.getPlayer().getY() - getY()) < 80 ) {
+        if (Math.abs(model.getPlayer().getX() - getX()) < 80 && Math.abs(model.getPlayer().getY() - getY()) < 80) {
             model.getPlayer().minusLife();
         }
 
         //поведение
-        if (count < Game.UPDATES/3) {
+        if (count < Game.UPDATES / 3) {
             speedX = -1.5;
         } else {
             speedX = -0.5;

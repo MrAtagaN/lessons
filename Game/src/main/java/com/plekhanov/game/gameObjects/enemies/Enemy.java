@@ -8,8 +8,7 @@ import java.awt.image.BufferedImage;
 public class Enemy extends GameObject {
 
     protected double countMax; //цикл действий
-    protected double count;
-
+    protected double count;    //счетчик цикла действий
     protected Model model;
 
 

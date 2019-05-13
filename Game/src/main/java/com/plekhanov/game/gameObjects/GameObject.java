@@ -4,7 +4,7 @@ package com.plekhanov.game.gameObjects;
 import java.awt.image.BufferedImage;
 import java.util.Objects;
 
-public class GameObject implements Comparable{
+public class GameObject implements Comparable {
 
     protected double x;
     protected double y;
@@ -59,11 +59,11 @@ public class GameObject implements Comparable{
     }
 
     public double getRenderX() {
-        return x - imageWidth/2;
+        return x - imageWidth / 2;
     }
 
     public double getRenderY() {
-        return y - imageHeight/2;
+        return y - imageHeight / 2;
     }
 
     public void setRenderOrder(int renderOrder) {
