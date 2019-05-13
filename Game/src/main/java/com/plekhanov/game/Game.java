@@ -7,7 +7,7 @@ public class Game {
 
     public static final int WIDTH = 1920;
     public static final int HEIGHT = 1080;
-    public static final boolean FULL_SCREEN = true;
+    public static final boolean FULL_SCREEN = false;
     public static final int WINDOW_POSITION_WIDTH = 0;
     public static final int WINDOW_POSITION_HEIGHT = 0;
     public static final double UPDATES = 500;
