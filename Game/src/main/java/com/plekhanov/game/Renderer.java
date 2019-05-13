@@ -4,7 +4,6 @@ package com.plekhanov.game;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
-import java.io.IOException;
 
 /**
  * Отрисовка изображения
@@ -13,7 +12,7 @@ public class Renderer extends Canvas {
 
     private int WIDTH;
     private int HEIGHT;
-    private boolean fullScrean;
+    private boolean fullScreen;
     private int windowPositionWidth;
     private int windowPositionHeight;
     private String GAME_TITLE;
@@ -26,7 +25,7 @@ public class Renderer extends Canvas {
     public Renderer(int width, int height, boolean fullScreen, String gameTitle, int windowPositionWidth, int windowPositionHeight, Model model) {
         this.WIDTH = width;
         this.HEIGHT = height;
-        this.fullScrean = fullScreen;
+        this.fullScreen = fullScreen;
         this.GAME_TITLE = gameTitle;
         this.windowPositionWidth = windowPositionWidth;
         this.windowPositionHeight = windowPositionHeight;
@@ -61,7 +60,7 @@ public class Renderer extends Canvas {
      */
     public void run() {
         JFrame jFrame = new JFrame();
-        jFrame.setUndecorated(fullScrean); // на весь экран
+        jFrame.setUndecorated(fullScreen); // на весь экран
         jFrame.setVisible(true);
         jFrame.setTitle(GAME_TITLE);
         jFrame.setResizable(false);
