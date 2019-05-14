@@ -18,11 +18,13 @@ public class ImageLoader {
     private static BufferedImage backgroundImage8;
     private static BufferedImage backgroundImage9;
     private static BufferedImage enemyCarrionImage;
+    private static BufferedImage hungryCarrion;
     private static BufferedImage enemyHuskImage;
     private static BufferedImage enemyPestilenceImage;
     private static BufferedImage playerImage;
     private static BufferedImage playerWoundedImage;
     private static BufferedImage heartImage;
+
 
     static {
         try {
@@ -53,6 +55,8 @@ public class ImageLoader {
             fireBallImage = ImageIO.read(fireBallImageFile);
             File enemyCarrionImageFile = new File("Game\\src\\main\\resources\\images\\enemies\\EnemyCarrion.png");
             enemyCarrionImage = ImageIO.read(enemyCarrionImageFile);
+            File carrion2ImageFile = new File("Game\\src\\main\\resources\\images\\enemies\\carrion2.png");
+            hungryCarrion = ImageIO.read(carrion2ImageFile);
             File enemyHuskImageFile = new File("Game\\src\\main\\resources\\images\\enemies\\EnemyHusk.png");
             enemyHuskImage = ImageIO.read(enemyHuskImageFile);
             File enemyPestilenceImageFile = new File("Game\\src\\main\\resources\\images\\enemies\\EnemyPestilence.png");
@@ -136,5 +140,9 @@ public class ImageLoader {
 
     public static BufferedImage getPlayerWoundedImage() {
         return playerWoundedImage;
+    }
+
+    public static BufferedImage getHungryCarrion() {
+        return hungryCarrion;
     }
 }

@@ -1,16 +1,20 @@
 package com.plekhanov.game.gameObjects.enemies;
 
 import com.plekhanov.game.Game;
+import com.plekhanov.game.ImageLoader;
 import com.plekhanov.game.Model;
 
 import java.awt.image.BufferedImage;
 
 public class EnemyCarrion extends Enemy {
 
+   private BufferedImage hungryImage;
+
 
     public EnemyCarrion(double x, double y, double speedX, double speedY, BufferedImage bufferedImage, int imageWidth, int imageHeight, int renderOrder, Model model) {
         super(x, y, speedX, speedY, bufferedImage, imageWidth, imageHeight, renderOrder, model);
-        countMax = Game.UPDATES * 4;
+        countMax = Game.UPDATES * 2;
+        hungryImage = ImageLoader.getHungryCarrion();
     }
 
     @Override
@@ -25,11 +29,20 @@ public class EnemyCarrion extends Enemy {
         }
 
         //поведение
-        if (count < Game.UPDATES / 3) {
-            speedX = -1.5;
+        if (count < Game.UPDATES / 2) {
+            speedX = -1;
         } else {
             speedX = -0.5;
         }
         incrementCount();
+    }
+
+    @Override
+    public BufferedImage getBufferedImage() {
+
+        if ( count < Game.UPDATES / 2) {
+            return hungryImage;
+        }
+        return super.getBufferedImage();
     }
 }
