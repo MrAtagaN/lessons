@@ -4,6 +4,7 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 
 public class ImageLoader {
 
@@ -25,51 +26,55 @@ public class ImageLoader {
     private static BufferedImage playerWoundedImage;
     private static BufferedImage heartImage;
 
+    private static final String FS = File.separator;
+    private static String PATH_TO_RESOURCE = "Game" + FS + "src" + FS + "main" + FS + "resources" + FS + "images" + FS;
+
 
     static {
         try {
             // Статический фон
-            File backgroundImageFile1 = new File("Game\\src\\main\\resources\\images\\background\\Layer_0010_1.png");
+            File backgroundImageFile1 = new File(PATH_TO_RESOURCE + "background" + FS + "Layer_0010_1.png");
             backgroundImage1 = ImageIO.read(backgroundImageFile1);
-            File backgroundImageFile2 = new File("Game\\src\\main\\resources\\images\\background\\Layer_0009_2.png");
+            File backgroundImageFile2 = new File(PATH_TO_RESOURCE + "background" + FS + "Layer_0009_2.png");
             backgroundImage2 = ImageIO.read(backgroundImageFile2);
-            File backgroundImageFile3 = new File("Game\\src\\main\\resources\\images\\background\\Layer_0008_3.png");
+            File backgroundImageFile3 = new File(PATH_TO_RESOURCE + "background" + FS + "Layer_0008_3.png");
             backgroundImage3 = ImageIO.read(backgroundImageFile3);
-            File backgroundImageFile4 = new File("Game\\src\\main\\resources\\images\\background\\Layer_0006_4.png");
+            File backgroundImageFile4 = new File(PATH_TO_RESOURCE + "background" + FS + "Layer_0006_4.png");
             backgroundImage4 = ImageIO.read(backgroundImageFile4);
 
             // Динамический фон
-            File backgroundImageFile5 = new File("Game\\src\\main\\resources\\images\\background\\Layer_0005_5.png");
+            File backgroundImageFile5 = new File(PATH_TO_RESOURCE + "background" + FS + "Layer_0005_5.png");
             backgroundImage5 = ImageIO.read(backgroundImageFile5);
-            File backgroundImageFile6 = new File("Game\\src\\main\\resources\\images\\background\\Layer_0003_6.png");
+            File backgroundImageFile6 = new File(PATH_TO_RESOURCE + "background" + FS + "Layer_0003_6.png");
             backgroundImage6 = ImageIO.read(backgroundImageFile6);
-            File backgroundImageFile7 = new File("Game\\src\\main\\resources\\images\\background\\Layer_0002_7.png");
+            File backgroundImageFile7 = new File(PATH_TO_RESOURCE + "background" + FS + "Layer_0002_7.png");
             backgroundImage7 = ImageIO.read(backgroundImageFile7);
-            File backgroundImageFile8 = new File("Game\\src\\main\\resources\\images\\background\\Layer_0001_8.png");
+            File backgroundImageFile8 = new File(PATH_TO_RESOURCE + "background" + FS + "Layer_0001_8.png");
             backgroundImage8 = ImageIO.read(backgroundImageFile8);
-            File backgroundImageFile9 = new File("Game\\src\\main\\resources\\images\\background\\Layer_0000_9.png");
+            File backgroundImageFile9 = new File(PATH_TO_RESOURCE + "background" + FS + "Layer_0000_9.png");
             backgroundImage9 = ImageIO.read(backgroundImageFile9);
 
             // Враги
-            File fireBallImageFile = new File("Game\\src\\main\\resources\\images\\enemies\\fireBall.png");
+            File fireBallImageFile = new File(PATH_TO_RESOURCE + "enemies" + FS + "fireBall.png");
             fireBallImage = ImageIO.read(fireBallImageFile);
-            File enemyCarrionImageFile = new File("Game\\src\\main\\resources\\images\\enemies\\EnemyCarrion.png");
+            File enemyCarrionImageFile = new File(PATH_TO_RESOURCE + "enemies" + FS + "EnemyCarrion.png");
             enemyCarrionImage = ImageIO.read(enemyCarrionImageFile);
+            File enemyHuskImageFile = new File(PATH_TO_RESOURCE + "enemies" + FS + "EnemyHusk.png");
             File carrion2ImageFile = new File("Game\\src\\main\\resources\\images\\enemies\\carrion2.png");
             hungryCarrion = ImageIO.read(carrion2ImageFile);
             File enemyHuskImageFile = new File("Game\\src\\main\\resources\\images\\enemies\\EnemyHusk.png");
             enemyHuskImage = ImageIO.read(enemyHuskImageFile);
-            File enemyPestilenceImageFile = new File("Game\\src\\main\\resources\\images\\enemies\\EnemyPestilence.png");
+            File enemyPestilenceImageFile = new File(PATH_TO_RESOURCE + "enemies" + FS + "EnemyPestilence.png");
             enemyPestilenceImage = ImageIO.read(enemyPestilenceImageFile);
 
             // Игрок
-            File playerImageFile = new File("Game\\src\\main\\resources\\images\\Player2.png");
+            File playerImageFile = new File(PATH_TO_RESOURCE + "Player2.png");
             playerImage = ImageIO.read(playerImageFile);
-            File playerWounded = new File("Game\\src\\main\\resources\\images\\PlayerWounded.png");
+            File playerWounded = new File(PATH_TO_RESOURCE + "PlayerWounded.png");
             playerWoundedImage = ImageIO.read(playerWounded);
 
             // Предметы
-            File heartImageFile = new File("Game\\src\\main\\resources\\images\\heart.png");
+            File heartImageFile = new File(PATH_TO_RESOURCE + "heart.png");
             heartImage = ImageIO.read(heartImageFile);
 
         } catch (IOException e) {

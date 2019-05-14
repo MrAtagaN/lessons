@@ -12,6 +12,7 @@ public class Player extends GameObject {
     private int timeInvulnerability = 2 * (int) Game.UPDATES; // время неуязвимости после столкновения
     private int invulnerabilityCount;                        // обратный счетчик после столкновения
     private BufferedImage playerWoundedImage;
+    private final int imageShiftRight = 10; //смещение картинки игрока вправо
 
     private boolean moveRight = false;
     private boolean moveLeft = false;
@@ -38,9 +39,9 @@ public class Player extends GameObject {
     public Player(double x, double y, double speedX, double speedY, BufferedImage bufferedImage, int imageWidth, int imageHeight, int renderOrder, Model model) {
         super(x, y, speedX, speedY, bufferedImage, imageWidth, imageHeight, renderOrder);
 
-        this.MAX_X = 1920 - imageWidth / 2;
+        this.MAX_X = 1920 - imageWidth / 2 - imageShiftRight;
         this.MAX_Y = imageHeight / 2;
-        this.MIN_X = imageWidth / 2;
+        this.MIN_X = imageWidth / 2 - imageShiftRight;
         this.MIN_Y = 875;
         this.model = model;
 
@@ -225,6 +226,14 @@ public class Player extends GameObject {
 
     public void setSpeedY(double speedY) {
         this.speedY = speedY;
+    }
+
+    /**
+     * Сместить картинку игрока вправо
+     */
+    @Override
+    public double getRenderX() {
+        return x - imageWidth / 2 + imageShiftRight;
     }
 
 }

@@ -13,8 +13,8 @@ public class Renderer extends Canvas {
     private int WIDTH;
     private int HEIGHT;
     private boolean fullScreen;
-    private int windowPositionWidth;
-    private int windowPositionHeight;
+    private int windowPositionX;
+    private int windowPositionY;
     private String GAME_TITLE;
     private Controller controller;
     private Model model;
@@ -22,13 +22,13 @@ public class Renderer extends Canvas {
     /**
      * Конструктор
      */
-    public Renderer(int width, int height, boolean fullScreen, String gameTitle, int windowPositionWidth, int windowPositionHeight, Model model) {
+    public Renderer(int width, int height, boolean fullScreen, String gameTitle, int windowPositionX, int windowPositionY, Model model) {
         this.WIDTH = width;
         this.HEIGHT = height;
         this.fullScreen = fullScreen;
         this.GAME_TITLE = gameTitle;
-        this.windowPositionWidth = windowPositionWidth;
-        this.windowPositionHeight = windowPositionHeight;
+        this.windowPositionX = windowPositionX;
+        this.windowPositionY = windowPositionY;
         this.model = model;
         this.controller = new Controller(model);
     }
@@ -66,7 +66,7 @@ public class Renderer extends Canvas {
         jFrame.setResizable(false);
         jFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         jFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        jFrame.setBounds(windowPositionWidth, windowPositionHeight, WIDTH, HEIGHT);
+        jFrame.setBounds(windowPositionX, windowPositionY, WIDTH, HEIGHT);
 
         //отрисовка
         jFrame.add(this);
