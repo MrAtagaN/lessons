@@ -60,10 +60,9 @@ public class ImageLoader {
             File enemyCarrionImageFile = new File(PATH_TO_RESOURCE + "enemies" + FS + "EnemyCarrion.png");
             enemyCarrionImage = ImageIO.read(enemyCarrionImageFile);
             File enemyHuskImageFile = new File(PATH_TO_RESOURCE + "enemies" + FS + "EnemyHusk.png");
-            File carrion2ImageFile = new File("Game\\src\\main\\resources\\images\\enemies\\carrion2.png");
-            hungryCarrion = ImageIO.read(carrion2ImageFile);
-            File enemyHuskImageFile = new File("Game\\src\\main\\resources\\images\\enemies\\EnemyHusk.png");
             enemyHuskImage = ImageIO.read(enemyHuskImageFile);
+            File carrion2ImageFile = new File(PATH_TO_RESOURCE + "enemies"+ FS + "carrion2.png");
+            hungryCarrion = ImageIO.read(carrion2ImageFile);
             File enemyPestilenceImageFile = new File(PATH_TO_RESOURCE + "enemies" + FS + "EnemyPestilence.png");
             enemyPestilenceImage = ImageIO.read(enemyPestilenceImageFile);
 
