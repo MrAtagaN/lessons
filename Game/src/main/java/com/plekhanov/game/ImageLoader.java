@@ -33,25 +33,25 @@ public class ImageLoader {
     static {
         try {
             // Статический фон
-            File backgroundImageFile1 = new File(PATH_TO_RESOURCE + "background" + FS + "Layer_0010_1.png");
+            File backgroundImageFile1 = new File(PATH_TO_RESOURCE + "background" + FS + "level_1"  + FS +  "Layer_0010_1.png");
             backgroundImage1 = ImageIO.read(backgroundImageFile1);
-            File backgroundImageFile2 = new File(PATH_TO_RESOURCE + "background" + FS + "Layer_0009_2.png");
+            File backgroundImageFile2 = new File(PATH_TO_RESOURCE + "background" + FS + "level_1"  + FS +  "Layer_0009_2.png");
             backgroundImage2 = ImageIO.read(backgroundImageFile2);
-            File backgroundImageFile3 = new File(PATH_TO_RESOURCE + "background" + FS + "Layer_0008_3.png");
+            File backgroundImageFile3 = new File(PATH_TO_RESOURCE + "background" + FS + "level_1"  + FS +  "Layer_0008_3.png");
             backgroundImage3 = ImageIO.read(backgroundImageFile3);
-            File backgroundImageFile4 = new File(PATH_TO_RESOURCE + "background" + FS + "Layer_0006_4.png");
+            File backgroundImageFile4 = new File(PATH_TO_RESOURCE + "background" + FS + "level_1"  + FS +  "Layer_0006_4.png");
             backgroundImage4 = ImageIO.read(backgroundImageFile4);
 
             // Динамический фон
-            File backgroundImageFile5 = new File(PATH_TO_RESOURCE + "background" + FS + "Layer_0005_5.png");
+            File backgroundImageFile5 = new File(PATH_TO_RESOURCE + "background" + FS + "level_1"  + FS +  "Layer_0005_5.png");
             backgroundImage5 = ImageIO.read(backgroundImageFile5);
-            File backgroundImageFile6 = new File(PATH_TO_RESOURCE + "background" + FS + "Layer_0003_6.png");
+            File backgroundImageFile6 = new File(PATH_TO_RESOURCE + "background" + FS + "level_1"  + FS +  "Layer_0003_6.png");
             backgroundImage6 = ImageIO.read(backgroundImageFile6);
-            File backgroundImageFile7 = new File(PATH_TO_RESOURCE + "background" + FS + "Layer_0002_7.png");
+            File backgroundImageFile7 = new File(PATH_TO_RESOURCE + "background" + FS + "level_1"  + FS +  "Layer_0002_7.png");
             backgroundImage7 = ImageIO.read(backgroundImageFile7);
-            File backgroundImageFile8 = new File(PATH_TO_RESOURCE + "background" + FS + "Layer_0001_8.png");
+            File backgroundImageFile8 = new File(PATH_TO_RESOURCE + "background" + FS + "level_1"  + FS +  "Layer_0001_8.png");
             backgroundImage8 = ImageIO.read(backgroundImageFile8);
-            File backgroundImageFile9 = new File(PATH_TO_RESOURCE + "background" + FS + "Layer_0000_9.png");
+            File backgroundImageFile9 = new File(PATH_TO_RESOURCE + "background" + FS + "level_1"  + FS +  "Layer_0000_9.png");
             backgroundImage9 = ImageIO.read(backgroundImageFile9);
 
             // Враги

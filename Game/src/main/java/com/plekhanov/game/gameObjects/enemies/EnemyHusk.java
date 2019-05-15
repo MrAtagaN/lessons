@@ -12,7 +12,7 @@ public class EnemyHusk extends Enemy {
 
     private boolean alreadyShooted = false;
 
-    public EnemyHusk(double x, double y, double speedX, double speedY, BufferedImage bufferedImage, int imageWidth, int imageHeight, int renderOrder, Model model) throws IOException {
+    public EnemyHusk(double x, double y, double speedX, double speedY, BufferedImage bufferedImage, int imageWidth, int imageHeight, int renderOrder, Model model) {
         super(x, y, speedX, speedY, bufferedImage, imageWidth, imageHeight, renderOrder, model);
         countMax = Game.UPDATES * 2;
     }

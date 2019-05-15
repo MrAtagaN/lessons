@@ -1,6 +1,7 @@
 package com.plekhanov.game;
 
 import com.plekhanov.game.gameLevels.Level_1;
+import com.plekhanov.game.gameLevels.Level_2;
 import com.plekhanov.game.gameObjects.*;
 import com.plekhanov.game.gameObjects.background.*;
 import com.plekhanov.game.gameObjects.enemies.EnemyCarrion;
@@ -24,9 +25,9 @@ public class Model implements Runnable {
     private int width;
     private int height;
 
-    private volatile Player player;
     //список со всеми игровыми объектами
-    private volatile List<GameObject> gameObjects = new CopyOnWriteArrayList<>();
+    private volatile List<GameObject> gameObjects;
+    private volatile Player player;
 
     /**
      * Конструктор, создание игровых объектов, задание начальных координат, скорости, высоты и ширины картинки
@@ -36,12 +37,13 @@ public class Model implements Runnable {
         this.width = width;
         this.height = height;
 
-        // Игрок
-        Player player = new Player(500, 900, 0, 0, ImageLoader.getPlayerImage(), 150, 130, 100, this);
-        gameObjects.add(player);
-        this.player = player;
-
         loadLevel(1);
+        // Игрок
+//        Player player = new Player(500, 900, 0, 0, ImageLoader.getPlayerImage(), 150, 130, 100, this);
+//        gameObjects.add(player);
+//        this.player = player;
+
+
     }
 
 
@@ -65,6 +67,9 @@ public class Model implements Runnable {
         this.clash = clash;
     }
 
+    public void setGameObjects(List<GameObject> gameObjects) {
+        this.gameObjects = gameObjects;
+    }
 
     /**
      * Цикл изменений координат игровых объектов
@@ -117,17 +122,22 @@ public class Model implements Runnable {
     /**
      * Загрузка уровня
      */
-    public void loadLevel(int levelNumber) throws IOException {
+    public void loadLevel(int levelNumber) {
         switch (levelNumber) {
             case 1:
-                gameObjects = new Level_1(width, height, this).getGameObjects();
+                Level_1 level_1 = new Level_1(width, height, this);
+                gameObjects = level_1.getGameObjects();
+                player = level_1.getPlayer();
                 break;
             case 2:
-
+                Level_2 level_2 = new Level_2(width, height, this);
+                gameObjects = level_2.getGameObjects();
+                player = level_2.getPlayer();
                 break;
             default:
                 throw new RuntimeException("No level");
         }
     }
+
 
 }

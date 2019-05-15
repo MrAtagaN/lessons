@@ -38,8 +38,17 @@ public class Controller extends KeyAdapter {
             model.getPlayer().setMoveLeft(true);
         }
 
+        //выход из игры
         if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
             System.exit(0);
+        }
+
+        //смена уровней
+        if (e.getKeyCode() == KeyEvent.VK_1) {
+            model.loadLevel(1);
+        }
+        if (e.getKeyCode() == KeyEvent.VK_2) {
+            model.loadLevel(2);
         }
 
     }

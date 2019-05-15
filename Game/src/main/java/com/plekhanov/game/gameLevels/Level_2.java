@@ -9,17 +9,18 @@ import com.plekhanov.game.gameObjects.enemies.EnemyCarrion;
 import com.plekhanov.game.gameObjects.enemies.EnemyHusk;
 import com.plekhanov.game.gameObjects.enemies.EnemyPestilence;
 
-import java.io.IOException;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-public class Level_1 {
+public class Level_2 {
 
     private List<GameObject> gameObjects;
     private Player player;
 
-    public Level_1(int width, int height, Model model) {
+    public Level_2(int width, int height, Model model) {
+
 
             this.gameObjects = new CopyOnWriteArrayList<>();
             model.setGameObjects(gameObjects);
@@ -49,6 +50,7 @@ public class Level_1 {
             gameObjects.add(new EnemyHusk(2200, 580, -0.3, 0, ImageLoader.getEnemyHuskImage(), 180, 160, 12, model)); //enemyHusk
             gameObjects.add(new EnemyPestilence(2200, 370, -0.7, 0, ImageLoader.getEnemyPestilenceImage(), 120, 140, 14, model)); //enemyPestilence
 
+
             // Игрок
             Player player = new Player(500, 900, 0, 0, ImageLoader.getPlayerImage(), 150, 130, 100, model);
             gameObjects.add(player);
@@ -60,16 +62,14 @@ public class Level_1 {
             Collections.sort(gameObjects);
 
 
-    }
 
-
-    public Player getPlayer() {
-        return player;
     }
 
     public List<GameObject> getGameObjects() {
         return gameObjects;
     }
 
-
+    public Player getPlayer() {
+        return player;
+    }
 }
