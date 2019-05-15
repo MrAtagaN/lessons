@@ -93,15 +93,15 @@ public class ImageLoader {
         //Картинки для уровня 2
         try {
             //Фон
-            File backgroundLevel2ImageFile1 = new File(PATH_TO_RESOURCE + "background" + FS + "level_2"  + FS +  "layer_07_1920 x 1080.png");
+            File backgroundLevel2ImageFile1 = new File(PATH_TO_RESOURCE + "background" + FS + "level_2"  + FS +  "1.png");
             backgroundLevel2Image1 = ImageIO.read(backgroundLevel2ImageFile1);
-            File backgroundLevel2ImageFile2 = new File(PATH_TO_RESOURCE + "background" + FS + "level_2"  + FS +  "layer_06_1920 x 1080.png");
+            File backgroundLevel2ImageFile2 = new File(PATH_TO_RESOURCE + "background" + FS + "level_2"  + FS +  "2.png");
             backgroundLevel2Image2 = ImageIO.read(backgroundLevel2ImageFile2);
-            File backgroundLevel2ImageFile3 = new File(PATH_TO_RESOURCE + "background" + FS + "level_2"  + FS +  "layer_05_1920 x 1080.png");
+            File backgroundLevel2ImageFile3 = new File(PATH_TO_RESOURCE + "background" + FS + "level_2"  + FS +  "3.png");
             backgroundLevel2Image3 = ImageIO.read(backgroundLevel2ImageFile3);
-            File backgroundLevel2ImageFile4 = new File(PATH_TO_RESOURCE + "background" + FS + "level_2"  + FS +  "layer_04_1920 x 1080.png");
+            File backgroundLevel2ImageFile4 = new File(PATH_TO_RESOURCE + "background" + FS + "level_2"  + FS +  "4.png");
             backgroundLevel2Image4 = ImageIO.read(backgroundLevel2ImageFile4);
-            File backgroundLevel2ImageFile5 = new File(PATH_TO_RESOURCE + "background" + FS + "level_2"  + FS +  "layer_03_1920 x 1080.png");
+            File backgroundLevel2ImageFile5 = new File(PATH_TO_RESOURCE + "background" + FS + "level_2"  + FS +  "5.png");
             backgroundLevel2Image5 = ImageIO.read(backgroundLevel2ImageFile5);
             File backgroundLevel2ImageFile6 = new File(PATH_TO_RESOURCE + "background" + FS + "level_2"  + FS +  "layer_02_1920 x 1080.png");
             backgroundLevel2Image6 = ImageIO.read(backgroundLevel2ImageFile6);
