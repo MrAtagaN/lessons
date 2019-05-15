@@ -50,6 +50,9 @@ public class Controller extends KeyAdapter {
         if (e.getKeyCode() == KeyEvent.VK_2) {
             model.loadLevel(2);
         }
+        if (e.getKeyCode() == KeyEvent.VK_3) {
+            model.loadLevel(3);
+        }
 
     }
 

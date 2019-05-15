@@ -2,6 +2,7 @@ package com.plekhanov.game;
 
 import com.plekhanov.game.gameLevels.Level_1;
 import com.plekhanov.game.gameLevels.Level_2;
+import com.plekhanov.game.gameLevels.Level_3;
 import com.plekhanov.game.gameObjects.*;
 import com.plekhanov.game.gameObjects.background.*;
 import com.plekhanov.game.gameObjects.enemies.EnemyCarrion;
@@ -127,6 +128,11 @@ public class Model implements Runnable {
                 Level_2 level_2 = new Level_2(width, height, this);
                 gameObjects = level_2.getGameObjects();
                 player = level_2.getPlayer();
+                break;
+            case 3:
+                Level_3 level_3 = new Level_3(width, height, this);
+                gameObjects = level_3.getGameObjects();
+                player = level_3.getPlayer();
                 break;
             default:
                 throw new RuntimeException("No level");
