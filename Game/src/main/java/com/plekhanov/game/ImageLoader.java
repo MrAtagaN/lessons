@@ -18,6 +18,15 @@ public class ImageLoader {
     private static BufferedImage backgroundImage7;
     private static BufferedImage backgroundImage8;
     private static BufferedImage backgroundImage9;
+
+    private static BufferedImage backgroundLevel2Image1;
+    private static BufferedImage backgroundLevel2Image2;
+    private static BufferedImage backgroundLevel2Image3;
+    private static BufferedImage backgroundLevel2Image4;
+    private static BufferedImage backgroundLevel2Image5;
+    private static BufferedImage backgroundLevel2Image6;
+    private static BufferedImage backgroundLevel2Image7;
+
     private static BufferedImage enemyCarrionImage;
     private static BufferedImage hungryCarrion;
     private static BufferedImage enemyHuskImage;
@@ -31,6 +40,7 @@ public class ImageLoader {
 
 
     static {
+        //Картинки для уровня 1
         try {
             // Статический фон
             File backgroundImageFile1 = new File(PATH_TO_RESOURCE + "background" + FS + "level_1"  + FS +  "Layer_0010_1.png");
@@ -75,6 +85,31 @@ public class ImageLoader {
             // Предметы
             File heartImageFile = new File(PATH_TO_RESOURCE + "heart.png");
             heartImage = ImageIO.read(heartImageFile);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        //Картинки для уровня 2
+        try {
+            //Фон
+            File backgroundLevel2ImageFile1 = new File(PATH_TO_RESOURCE + "background" + FS + "level_2"  + FS +  "layer_07_1920 x 1080.png");
+            backgroundLevel2Image1 = ImageIO.read(backgroundLevel2ImageFile1);
+            File backgroundLevel2ImageFile2 = new File(PATH_TO_RESOURCE + "background" + FS + "level_2"  + FS +  "layer_06_1920 x 1080.png");
+            backgroundLevel2Image2 = ImageIO.read(backgroundLevel2ImageFile2);
+            File backgroundLevel2ImageFile3 = new File(PATH_TO_RESOURCE + "background" + FS + "level_2"  + FS +  "layer_05_1920 x 1080.png");
+            backgroundLevel2Image3 = ImageIO.read(backgroundLevel2ImageFile3);
+            File backgroundLevel2ImageFile4 = new File(PATH_TO_RESOURCE + "background" + FS + "level_2"  + FS +  "layer_04_1920 x 1080.png");
+            backgroundLevel2Image4 = ImageIO.read(backgroundLevel2ImageFile4);
+            File backgroundLevel2ImageFile5 = new File(PATH_TO_RESOURCE + "background" + FS + "level_2"  + FS +  "layer_03_1920 x 1080.png");
+            backgroundLevel2Image5 = ImageIO.read(backgroundLevel2ImageFile5);
+            File backgroundLevel2ImageFile6 = new File(PATH_TO_RESOURCE + "background" + FS + "level_2"  + FS +  "layer_02_1920 x 1080.png");
+            backgroundLevel2Image6 = ImageIO.read(backgroundLevel2ImageFile6);
+            File backgroundLevel2ImageFile7 = new File(PATH_TO_RESOURCE + "background" + FS + "level_2"  + FS +  "layer_01_1920 x 1080.png");
+            backgroundLevel2Image7 = ImageIO.read(backgroundLevel2ImageFile7);
+
+
+
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -148,5 +183,33 @@ public class ImageLoader {
 
     public static BufferedImage getHungryCarrion() {
         return hungryCarrion;
+    }
+
+    public static BufferedImage getBackgroundLevel2Image1() {
+        return backgroundLevel2Image1;
+    }
+
+    public static BufferedImage getBackgroundLevel2Image2() {
+        return backgroundLevel2Image2;
+    }
+
+    public static BufferedImage getBackgroundLevel2Image3() {
+        return backgroundLevel2Image3;
+    }
+
+    public static BufferedImage getBackgroundLevel2Image4() {
+        return backgroundLevel2Image4;
+    }
+
+    public static BufferedImage getBackgroundLevel2Image5() {
+        return backgroundLevel2Image5;
+    }
+
+    public static BufferedImage getBackgroundLevel2Image6() {
+        return backgroundLevel2Image6;
+    }
+
+    public static BufferedImage getBackgroundLevel2Image7() {
+        return backgroundLevel2Image7;
     }
 }

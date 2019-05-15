@@ -1,7 +1,6 @@
 package com.plekhanov.game;
 
 
-import java.io.IOException;
 
 public class Game {
 
@@ -11,13 +10,13 @@ public class Game {
     public static final int WINDOW_POSITION_X = 0;
     public static final int WINDOW_POSITION_Y = 0;
     public static final double UPDATES = 500;
-    public static final String GAME_TITLE = "My Game";
+    public static final String GAME_TITLE = "Horsemen";
 
 
     /**
      * Start game
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
         Model model = new Model(UPDATES, WIDTH, HEIGHT);
         new Thread(model).start();

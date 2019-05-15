@@ -32,18 +32,12 @@ public class Model implements Runnable {
     /**
      * Конструктор, создание игровых объектов, задание начальных координат, скорости, высоты и ширины картинки
      */
-    public Model(double updates, int width, int height) throws IOException {
+    public Model(double updates, int width, int height) {
         this.UPDATES = updates;
         this.width = width;
         this.height = height;
 
         loadLevel(1);
-        // Игрок
-//        Player player = new Player(500, 900, 0, 0, ImageLoader.getPlayerImage(), 150, 130, 100, this);
-//        gameObjects.add(player);
-//        this.player = player;
-
-
     }
 
 
@@ -120,7 +114,7 @@ public class Model implements Runnable {
 
 
     /**
-     * Загрузка уровня
+     * Загрузка игровых объектов уровня
      */
     public void loadLevel(int levelNumber) {
         switch (levelNumber) {
