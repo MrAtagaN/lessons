@@ -38,6 +38,10 @@ public class Controller extends KeyAdapter {
             model.getPlayer().setMoveLeft(true);
         }
 
+        if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            System.exit(0);
+        }
+
     }
 
 
