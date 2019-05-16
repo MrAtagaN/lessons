@@ -5,6 +5,20 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+
+/**
+ *
+ * Возвращают приватные и protected:
+ * getDeclaredField
+ * getDeclaredMethod
+ * getDeclaredConstructor
+ *
+ * Возвращают только public:
+ * getField
+ * getMethod
+ * getConstructor
+ *
+ */
 public class Main {
 
     public static void main(String[] args) throws NoSuchFieldException, IllegalAccessException, NoSuchMethodException, InvocationTargetException, ClassNotFoundException, InstantiationException {
@@ -37,12 +51,15 @@ public class Main {
         person = (Person) clazz.newInstance();
 
 
-        Class clazz = Class.forName(MyClass.class.getName());
-        Class[] params = {int.class, String.class};
-        myClass = (MyClass) clazz.getConstructor(params).newInstance(1, "default2");
+        // Создаем экземпляр класса Person c параметрами
+        Class clazz2 = Class.forName(Person.class.getName());
+        Class[] params = {String.class, int.class };
+        Constructor construct = clazz2.getDeclaredConstructor(params);
+        construct.setAccessible(true);
+        person = (Person) construct.newInstance("default2", 25);
 
 
-        Constructor[] constructors = clazz.getConstructors();
+        Constructor[] constructors = clazz.getDeclaredConstructors();
         for (Constructor constructor : constructors) {
             Class[] paramTypes = constructor.getParameterTypes();
             for (Class paramType : paramTypes) {
