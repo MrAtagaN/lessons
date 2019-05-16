@@ -66,6 +66,10 @@ public class Model implements Runnable {
         this.gameObjects = gameObjects;
     }
 
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
     /**
      * Цикл изменений координат игровых объектов
      */
@@ -120,19 +124,13 @@ public class Model implements Runnable {
     public void loadLevel(int levelNumber) {
         switch (levelNumber) {
             case 1:
-                Level_1 level_1 = new Level_1(width, height, this);
-                gameObjects = level_1.getGameObjects();
-                player = level_1.getPlayer();
+                Level_1.load(width, height, this);
                 break;
             case 2:
-                Level_2 level_2 = new Level_2(width, height, this);
-                gameObjects = level_2.getGameObjects();
-                player = level_2.getPlayer();
+                Level_2.load(width, height, this);
                 break;
             case 3:
-                Level_3 level_3 = new Level_3(width, height, this);
-                gameObjects = level_3.getGameObjects();
-                player = level_3.getPlayer();
+                Level_3.load(width, height, this);
                 break;
             default:
                 throw new RuntimeException("No level");

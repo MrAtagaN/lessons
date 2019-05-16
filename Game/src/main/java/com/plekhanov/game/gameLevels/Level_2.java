@@ -16,13 +16,9 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Level_2 {
 
-    private List<GameObject> gameObjects;
-    private Player player;
+    public static void load(int width, int height, Model model) {
 
-    public Level_2(int width, int height, Model model) {
-
-
-        this.gameObjects = new CopyOnWriteArrayList<>();
+        List<GameObject> gameObjects = new CopyOnWriteArrayList<>();
         model.setGameObjects(gameObjects);
 
         int y = -0; // смещение фона вверх
@@ -51,21 +47,11 @@ public class Level_2 {
         // Игрок
         Player player = new Player(500, 900, 0, 0, ImageLoader.getPlayerImage(), 150, 130, 100, model);
         gameObjects.add(player);
-        this.player = player;
+        model.setPlayer(player);
 
         // Предметы
 
 
         Collections.sort(gameObjects);
-
-
-    }
-
-    public List<GameObject> getGameObjects() {
-        return gameObjects;
-    }
-
-    public Player getPlayer() {
-        return player;
     }
 }

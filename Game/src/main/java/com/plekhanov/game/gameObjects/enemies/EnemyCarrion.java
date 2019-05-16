@@ -30,7 +30,7 @@ public class EnemyCarrion extends Enemy {
 
         //поведение
         if (count < Game.UPDATES / 2) {
-            speedX = -1;
+            speedX = -1.5;
         } else {
             speedX = -0.5;
         }
