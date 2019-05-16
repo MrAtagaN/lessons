@@ -15,7 +15,7 @@ public class Main {
     public static void main(String[] args) {
 
         //Инициализация list числами от 0 до 20
-        ArrayList<Integer> list = new ArrayList();
+        ArrayList<Integer> list = new ArrayList<>();
         for (int i = 0; i <= 20; i++) {
             list.add(i);
         }
@@ -78,6 +78,12 @@ public class Main {
         System.out.println(list.stream().allMatch(x-> x < 50));
         System.out.println();
 
+
+        //Генерация стримов
+        Stream.of(1, 2, 3);
+
+        //Генерация стрима с одинаковыми объектами
+        Stream.generate(() -> new String()).limit(5).count();
 
     }
 
