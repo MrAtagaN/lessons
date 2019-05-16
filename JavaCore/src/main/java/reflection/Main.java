@@ -5,6 +5,27 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+
+/**
+ * Рефлексия позволяет:
+ *
+ * Узнать/определить класс объекта;
+ * Получить информацию о модификаторах класса, полях, методах, константах, конструкторах и суперклассах;
+ * Выяснить, какие методы принадлежат реализуемому интерфейсу/интерфейсам;
+ * Создать экземпляр класса, причем имя класса неизвестно до момента выполнения программы;
+ * Получить и установить значение поля объекта по имени;
+ * Вызвать метод объекта по имени.
+ *
+ * Возвращают все, в том числе и private, protected:
+ * getDeclaredField
+ * getDeclaredMethod
+ * getDeclaredConstructor
+ *
+ * Возвращают только public:
+ * getField
+ * getMethod
+ * getConstructor
+ */
 public class Main {
 
     public static void main(String[] args) throws NoSuchFieldException, IllegalAccessException, NoSuchMethodException, InvocationTargetException, ClassNotFoundException, InstantiationException {
@@ -37,16 +58,24 @@ public class Main {
         person = (Person) clazz.newInstance();
 
 
+        // Создаем экземпляр класса Person c параметрами
+        Class clazz2 = Class.forName(Person.class.getName());
+        Class[] params = {String.class, int.class};
+        Constructor construct = clazz2.getDeclaredConstructor(params);
+        construct.setAccessible(true);
+        person = (Person) construct.newInstance("default2", 25);
 
 
-
-        Constructor[] constructors = clazz.getConstructors();
+        Constructor[] constructors = clazz.getDeclaredConstructors();
+        System.out.println("Параметры конструкторов: ");
         for (Constructor constructor : constructors) {
             Class[] paramTypes = constructor.getParameterTypes();
             for (Class paramType : paramTypes) {
-                System.out.print(paramType.getName() + " ");
+                System.out.print("param: " + paramType.getName() + " ");
             }
             System.out.println();
         }
+
+        System.out.println("Родительский класс: " + Person.class.getSuperclass());
     }
 }

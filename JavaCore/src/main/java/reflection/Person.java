@@ -1,6 +1,6 @@
 package reflection;
 
-public class Person {
+public class Person extends Human{
 
     private String name = "AtagaN";
     private int age = 666;
