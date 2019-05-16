@@ -56,7 +56,7 @@ public class Level_3 {
 
 
         // Игрок
-        Player player = new Player(500, 900, 0, 0, ImageLoader.getPlayerImage(), 150, 130, 100, model);
+        Player player = new Player(500, 900, 0, 0, ImageLoader.getPlayerImage(), 180, 156, 100, model);
         gameObjects.add(player);
         model.setPlayer(player);
 

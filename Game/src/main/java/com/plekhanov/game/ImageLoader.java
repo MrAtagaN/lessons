@@ -41,6 +41,10 @@ public class ImageLoader {
     private static BufferedImage enemyPestilenceImage;
     private static BufferedImage playerImage;
     private static BufferedImage playerWoundedImage;
+    private static BufferedImage playerMoveRightImage;
+    private static BufferedImage playerMoveRightWoundedImage;
+    private static BufferedImage playerJumpImage;
+    private static BufferedImage playerJumpWoundedImage;
     private static BufferedImage heartImage;
 
     private static final String FS = File.separator;
@@ -85,10 +89,18 @@ public class ImageLoader {
             enemyPestilenceImage = ImageIO.read(enemyPestilenceImageFile);
 
             // Игрок
-            File playerImageFile = new File(PATH_TO_RESOURCE + "Player2.png");
+            File playerImageFile = new File(PATH_TO_RESOURCE + "player"+ FS +"Player.png");
             playerImage = ImageIO.read(playerImageFile);
-            File playerWounded = new File(PATH_TO_RESOURCE + "PlayerWounded.png");
+            File playerWounded = new File(PATH_TO_RESOURCE + "player"+ FS + "PlayerWounded.png");
             playerWoundedImage = ImageIO.read(playerWounded);
+            File playerMoveRightImageFile = new File(PATH_TO_RESOURCE + "player" + FS + "PlayerMoveRight.png");
+            playerMoveRightImage = ImageIO.read(playerMoveRightImageFile);
+            File playerMoveRightWoundedImageFile = new File(PATH_TO_RESOURCE + "player" + FS + "PlayerMoveRightWounded.png");
+            playerMoveRightWoundedImage = ImageIO.read(playerMoveRightWoundedImageFile);
+            File playerJump = new File(PATH_TO_RESOURCE + "player" + FS + "PlayerJump.png");
+            playerJumpImage = ImageIO.read(playerJump);
+            File playerJumpWounded = new File(PATH_TO_RESOURCE + "player" + FS + "PlayerJumpWounded.png");
+            playerJumpWoundedImage = ImageIO.read(playerJumpWounded);
 
             // Предметы
             File heartImageFile = new File(PATH_TO_RESOURCE + "heart.png");
@@ -161,6 +173,22 @@ public class ImageLoader {
 
     public static BufferedImage getPlayerImage() {
         return playerImage;
+    }
+
+    public static BufferedImage getPlayerMoveRightImage() {
+        return playerMoveRightImage;
+    }
+
+    public static BufferedImage getPlayerMoveRightWoundedImage() {
+        return playerMoveRightWoundedImage;
+    }
+
+    public static BufferedImage getPlayerJumpImage() {
+        return playerJumpImage;
+    }
+
+    public static BufferedImage getPlayerJumpWoundedImage() {
+        return playerJumpWoundedImage;
     }
 
     public static BufferedImage getFireBallImage() {

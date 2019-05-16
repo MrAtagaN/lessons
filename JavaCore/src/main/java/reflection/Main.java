@@ -37,9 +37,7 @@ public class Main {
         person = (Person) clazz.newInstance();
 
 
-        Class clazz = Class.forName(MyClass.class.getName());
-        Class[] params = {int.class, String.class};
-        myClass = (MyClass) clazz.getConstructor(params).newInstance(1, "default2");
+
 
 
         Constructor[] constructors = clazz.getConstructors();

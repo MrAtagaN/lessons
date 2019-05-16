@@ -46,7 +46,7 @@ public class Level_1 {
         gameObjects.add(new EnemyPestilence(2200, 370, -0.7, 0, ImageLoader.getEnemyPestilenceImage(), 120, 140, 14, model)); //enemyPestilence
 
         // Игрок
-        Player player = new Player(500, 900, 0, 0, ImageLoader.getPlayerImage(), 150, 130, 100, model);
+        Player player = new Player(500, 900, 0, 0, ImageLoader.getPlayerImage(), 180, 156, 100, model);
         gameObjects.add(player);
         model.setPlayer(player);
 

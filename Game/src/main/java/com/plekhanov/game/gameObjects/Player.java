@@ -12,6 +12,10 @@ public class Player extends GameObject {
     private int timeInvulnerability = 2 * (int) Game.UPDATES; // время неуязвимости после столкновения
     private int invulnerabilityCount;                        // обратный счетчик после столкновения
     private BufferedImage playerWoundedImage;
+    private BufferedImage playerMoveRightImage;
+    private BufferedImage playerMoveRightWoundedImage;
+    private BufferedImage playerJumpImage;
+    private BufferedImage playerJumpWoundedImage;
     private final int imageShiftRight = 10; //смещение картинки игрока вправо
 
     private boolean moveRight = false;
@@ -52,7 +56,10 @@ public class Player extends GameObject {
         heart3 = new GameObject(190, 50, 0, 0, ImageLoader.getHeartImage(), 55, 66, 90);
         model.getGameObjects().add(heart3);
         playerWoundedImage = ImageLoader.getPlayerWoundedImage();
-
+        playerMoveRightImage = ImageLoader.getPlayerMoveRightImage();
+        playerMoveRightWoundedImage = ImageLoader.getPlayerMoveRightWoundedImage();
+        playerJumpImage = ImageLoader.getPlayerJumpImage();
+        playerJumpWoundedImage = ImageLoader.getPlayerJumpWoundedImage();
     }
 
 
@@ -119,11 +126,28 @@ public class Player extends GameObject {
 
 
     public BufferedImage getBufferedImage() {
-        // Мерцание
-        if (invulnerabilityCount > 0 && Math.ceil(invulnerabilityCount / 50) % 2 == 0) {
-            return playerWoundedImage;
+
+        if (moveRight) {
+            if(playerWounded()) {
+                return playerMoveRightWoundedImage;
+            } else {
+                return playerMoveRightImage;
+            }
         }
-        return bufferedImage;
+
+        if (speedY < 0) {  // игрок движется вверх
+            if(playerWounded()) {
+                return playerJumpWoundedImage;
+            } else {
+                return playerJumpImage;
+            }
+        }
+
+        if (playerWounded()) {
+            return playerWoundedImage;
+        } else {
+            return bufferedImage;
+        }
     }
 
     public void jumpRight() {
@@ -158,6 +182,10 @@ public class Player extends GameObject {
             speedY = 0;
             y = MIN_Y;
         }
+    }
+
+    private boolean playerWounded() {
+        return invulnerabilityCount > 0 && Math.ceil(invulnerabilityCount / 50) % 2 == 0;
     }
 
     public boolean isMoveRight() {
