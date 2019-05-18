@@ -14,6 +14,8 @@ public class Player extends GameObject {
     private BufferedImage playerWoundedImage;
     private BufferedImage playerMoveRightImage;
     private BufferedImage playerMoveRightWoundedImage;
+    private BufferedImage playerMoveLeftImage;
+    private BufferedImage playerMoveLeftWoundedImage;
     private BufferedImage playerJumpImage;
     private BufferedImage playerJumpWoundedImage;
     private final int imageShiftRight = 10; //смещение картинки игрока вправо
@@ -58,6 +60,8 @@ public class Player extends GameObject {
         playerWoundedImage = ImageLoader.getPlayerWoundedImage();
         playerMoveRightImage = ImageLoader.getPlayerMoveRightImage();
         playerMoveRightWoundedImage = ImageLoader.getPlayerMoveRightWoundedImage();
+        playerMoveLeftImage = ImageLoader.getPlayerMoveLeftImage();
+        playerMoveLeftWoundedImage = ImageLoader.getPlayerMoveLeftWounded();
         playerJumpImage = ImageLoader.getPlayerJumpImage();
         playerJumpWoundedImage = ImageLoader.getPlayerJumpWoundedImage();
     }
@@ -135,7 +139,15 @@ public class Player extends GameObject {
             }
         }
 
-        if (speedY < 0) {  // игрок движется вверх
+        if (moveLeft) {
+           if (playerWounded()) {
+               return playerMoveLeftWoundedImage;
+           } else {
+               return playerMoveLeftImage;
+           }
+        }
+
+        if (playerJump()) {  // игрок движется вверх
             if (playerWounded()) {
                 return playerJumpWoundedImage;
             } else {
@@ -186,6 +198,14 @@ public class Player extends GameObject {
 
     private boolean playerWounded() {
         return invulnerabilityCount > 0 && Math.ceil(invulnerabilityCount / 50) % 2 == 0;
+    }
+
+    private boolean playerJump() {
+        if (speedY < -0.8) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public boolean isMoveRight() {

@@ -42,6 +42,8 @@ public class ImageLoader {
     private static BufferedImage playerWoundedImage;
     private static BufferedImage playerMoveRightImage;
     private static BufferedImage playerMoveRightWoundedImage;
+    private static BufferedImage playerMoveLeftImage;
+    private static BufferedImage playerMoveLeftWoundedImage;
     private static BufferedImage playerJumpImage;
     private static BufferedImage playerJumpWoundedImage;
     private static BufferedImage heartImage;
@@ -96,6 +98,10 @@ public class ImageLoader {
             playerMoveRightImage = ImageIO.read(playerMoveRightImageFile);
             File playerMoveRightWoundedImageFile = new File(PATH_TO_RESOURCE + "player" + FS + "PlayerMoveRightWounded.png");
             playerMoveRightWoundedImage = ImageIO.read(playerMoveRightWoundedImageFile);
+            File playerMoveLeft = new File(PATH_TO_RESOURCE + "player" + FS + "PlayerMoveLeft.png");
+            playerMoveLeftImage = ImageIO.read(playerMoveLeft);
+            File playerMoveLeftWounded = new File(PATH_TO_RESOURCE + "player" + FS + "PlayerMoveLeftWounded.png");
+            playerMoveLeftWoundedImage = ImageIO.read(playerMoveLeftWounded);
             File playerJump = new File(PATH_TO_RESOURCE + "player" + FS + "PlayerJump.png");
             playerJumpImage = ImageIO.read(playerJump);
             File playerJumpWounded = new File(PATH_TO_RESOURCE + "player" + FS + "PlayerJumpWounded.png");
@@ -178,6 +184,14 @@ public class ImageLoader {
 
     public static BufferedImage getPlayerMoveRightWoundedImage() {
         return playerMoveRightWoundedImage;
+    }
+
+    public static BufferedImage getPlayerMoveLeftImage() {
+        return playerMoveLeftImage;
+    }
+
+    public static BufferedImage getPlayerMoveLeftWounded() {
+        return playerMoveLeftWoundedImage;
     }
 
     public static BufferedImage getPlayerJumpImage() {
