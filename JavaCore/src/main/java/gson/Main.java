@@ -24,7 +24,9 @@ public class Main {
     }
 
 
-
+    /**
+     * Получение значения из json
+     */
     private static void jsonElementValue() {
         Address address = new Address("Russia", "Moscow", "Tverskaya", 10);
         Person person = new Person("AtagaN", 24, 43453, address, new Date());
@@ -48,6 +50,9 @@ public class Main {
     }
 
 
+    /**
+     * Кастомный объект gson
+     */
     private static void gsonBuilder() {
         Gson gson = new GsonBuilder()
                 .enableComplexMapKeySerialization()
@@ -66,7 +71,9 @@ public class Main {
         System.out.println("Custom json = " + json);
     }
 
-
+    /**
+     * Маппинг json на Класс
+     */
     private static void jsonObjects() {
         Address address = new Address("Russia", "Moscow", "Tverskaya", 10);
         Person person = new Person("AtagaN", 24, 43453, address, new Date());
