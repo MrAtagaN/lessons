@@ -1,8 +1,6 @@
 package gson;
 
-import com.google.gson.FieldNamingPolicy;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.google.gson.*;
 
 import java.text.DateFormat;
 import java.util.Arrays;
@@ -21,6 +19,32 @@ public class Main {
 
         gsonBuilder();
 
+        jsonElement();
+
+    }
+
+
+
+    private static void jsonElement() {
+        Address address = new Address("Russia", "Moscow", "Tverskaya", 10);
+        Person person = new Person("AtagaN", 24, 43453, address, new Date());
+
+        Gson gson = new Gson();
+        //сериализация
+        String json = gson.toJson(person);
+        System.out.println("json = " + json);
+
+        // Дессериализация
+        // Получаем jsonElement. Это по сути атрибут в json
+        // Из jsonElement можно получить примитив, коллекцию, jsonObject
+        JsonElement jsonElement = gson.fromJson(json, JsonElement.class);
+
+        // Получаем jsonObject. Это по сути сам json (структура)
+        // Из jsonObject можно получить jsonObject, коллекцию jsonObject, jsonElement
+        JsonObject jsonObject = jsonElement.getAsJsonObject().get("address").getAsJsonObject();
+        JsonElement countryElement = jsonObject.get("country");
+
+        System.out.println("country = " + countryElement);
     }
 
 
