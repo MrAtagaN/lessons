@@ -1,8 +1,12 @@
 package gson;
 
+import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
+import java.text.DateFormat;
 import java.util.Arrays;
+import java.util.Date;
 
 /**
  * Gson
@@ -15,12 +19,33 @@ public class Main {
 
         jsonObjects();
 
+        gsonBuilder();
+
+    }
+
+
+    private static void gsonBuilder() {
+        Gson gson = new GsonBuilder()
+                .enableComplexMapKeySerialization()
+                .serializeNulls()
+                .setDateFormat(DateFormat.SHORT, DateFormat.SHORT)
+                .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
+                .setPrettyPrinting()
+                .setVersion(1.0)
+                .create();
+
+        Address address = new Address("Russia", "Moscow", "Tverskaya", 10);
+        Person person = new Person("AtagaN", 24, 43453, address, new Date());
+
+        //Сериализация
+        String json = gson.toJson(person);
+        System.out.println("Custom json = " + json);
     }
 
 
     private static void jsonObjects() {
         Address address = new Address("Russia", "Moscow", "Tverskaya", 10);
-        Person person = new Person("AtagaN", 24, 43453, address);
+        Person person = new Person("AtagaN", 24, 43453, address, new Date());
 
         Gson gson = new Gson();
         //Сериализация
@@ -44,7 +69,7 @@ public class Main {
         System.out.println(gson.fromJson("\"world\"", String.class));
         System.out.println(gson.fromJson("true", Boolean.class));
 
-        System.out.println(gson.toJson(new int[] {10, 100})); // [10,100]
+        System.out.println(gson.toJson(new int[]{10, 100})); // [10,100]
 
         int[] array = gson.fromJson("[10,100]", int[].class);
         Arrays.stream(array).forEach(str -> {

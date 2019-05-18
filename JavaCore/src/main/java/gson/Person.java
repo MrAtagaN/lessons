@@ -1,19 +1,22 @@
 package gson;
 
+import java.util.Date;
+
 public class Person {
 
     private String name;
     private int age;
     private int phone;
     private Address address;
+    private Date birthday;
 
-    public Person(String name, int age, int phone, Address address) {
+    public Person(String name, int age, int phone, Address address, Date birthday) {
         this.name = name;
         this.age = age;
         this.phone = phone;
         this.address = address;
+        this.birthday = birthday;
     }
-
 
     public String getName() {
         return name;
@@ -47,6 +50,14 @@ public class Person {
         this.address = address;
     }
 
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
     @Override
     public String toString() {
         return "{" +
@@ -54,6 +65,7 @@ public class Person {
                 ", age=" + age +
                 ", phone=" + phone +
                 ", address=" + address +
+                ", birthday=" + birthday +
                 '}';
     }
 }
