@@ -1,4 +1,4 @@
-package mail;
+package mailClient;
 
 import javax.mail.*;
 import java.io.*;

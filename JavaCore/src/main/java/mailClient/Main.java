@@ -1,4 +1,4 @@
-package mail;
+package mailClient;
 
 
 import java.io.BufferedReader;
