@@ -9,6 +9,18 @@ import java.util.stream.Stream;
 
 /**
  * Stream API
+ *
+ * getParallelism
+ * filter
+ * map
+ * sorted
+ * max
+ * collect
+ * reduce
+ * limit
+ * mapToInt
+ * allMatch, anyMatch, noneMatch
+ * Stream.of
  */
 public class Main {
 

@@ -36,21 +36,20 @@ public class Main {
         Field field = person.getClass().getDeclaredField("name");
         field.setAccessible(true);
         String name = (String) field.get(person);
-        System.out.println(name);
-
-
-        // Вызываем метод printData у объекта person
-        Method method = person.getClass().getDeclaredMethod("printData");
-        method.setAccessible(true);
-        method.invoke(person);
-
+        System.out.println("name = " + name);
 
         // Сетаем значение поля у объекта person
         Field field2 = person.getClass().getDeclaredField("name");
         field2.setAccessible(true);
         field2.set(person, "new value");
         String name2 = (String) field2.get(person);
-        System.out.println(name2);
+        System.out.println("name2 = " + name2);
+
+
+        // Вызываем метод printData у объекта person
+        Method method = person.getClass().getDeclaredMethod("printData");
+        method.setAccessible(true);
+        method.invoke(person);
 
 
         // Создаем экземпляр класса Person

@@ -5,10 +5,8 @@ import com.plekhanov.game.Model;
 import com.plekhanov.game.gameObjects.GameObject;
 import com.plekhanov.game.gameObjects.Player;
 import com.plekhanov.game.gameObjects.background.BackGround;
-import com.plekhanov.game.gameObjects.enemies.EnemyCarrion;
 import com.plekhanov.game.gameObjects.enemies.EnemyHusk;
 import com.plekhanov.game.gameObjects.enemies.EnemyPestilence;
-
 
 import java.util.Collections;
 import java.util.List;
@@ -18,7 +16,6 @@ public class Level_3 {
 
 
     public static void load(int width, int height, Model model) {
-
         List<GameObject> gameObjects = new CopyOnWriteArrayList<>();
         model.setGameObjects(gameObjects);
 

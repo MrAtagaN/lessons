@@ -1,7 +1,6 @@
 package com.plekhanov.game;
 
 
-
 public class Game {
 
     public static final int WIDTH = 1920;

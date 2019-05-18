@@ -9,7 +9,6 @@ import com.plekhanov.game.gameObjects.enemies.EnemyCarrion;
 import com.plekhanov.game.gameObjects.enemies.EnemyHusk;
 import com.plekhanov.game.gameObjects.enemies.EnemyPestilence;
 
-
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -17,7 +16,6 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class Level_2 {
 
     public static void load(int width, int height, Model model) {
-
         List<GameObject> gameObjects = new CopyOnWriteArrayList<>();
         model.setGameObjects(gameObjects);
 

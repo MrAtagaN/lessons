@@ -128,7 +128,7 @@ public class Player extends GameObject {
     public BufferedImage getBufferedImage() {
 
         if (moveRight) {
-            if(playerWounded()) {
+            if (playerWounded()) {
                 return playerMoveRightWoundedImage;
             } else {
                 return playerMoveRightImage;
@@ -136,7 +136,7 @@ public class Player extends GameObject {
         }
 
         if (speedY < 0) {  // игрок движется вверх
-            if(playerWounded()) {
+            if (playerWounded()) {
                 return playerJumpWoundedImage;
             } else {
                 return playerJumpImage;

@@ -9,7 +9,6 @@ import com.plekhanov.game.gameObjects.enemies.EnemyCarrion;
 import com.plekhanov.game.gameObjects.enemies.EnemyHusk;
 import com.plekhanov.game.gameObjects.enemies.EnemyPestilence;
 
-import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -55,8 +54,6 @@ public class Level_1 {
 
         Collections.sort(gameObjects);
     }
-
-
 
 
 }

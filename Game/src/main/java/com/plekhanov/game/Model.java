@@ -3,16 +3,11 @@ package com.plekhanov.game;
 import com.plekhanov.game.gameLevels.Level_1;
 import com.plekhanov.game.gameLevels.Level_2;
 import com.plekhanov.game.gameLevels.Level_3;
-import com.plekhanov.game.gameObjects.*;
-import com.plekhanov.game.gameObjects.background.*;
-import com.plekhanov.game.gameObjects.enemies.EnemyCarrion;
-import com.plekhanov.game.gameObjects.enemies.EnemyHusk;
-import com.plekhanov.game.gameObjects.enemies.EnemyPestilence;
+import com.plekhanov.game.gameObjects.GameObject;
+import com.plekhanov.game.gameObjects.Player;
 
-import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * Игровая логика
