@@ -19,13 +19,13 @@ public class Main {
 
         gsonBuilder();
 
-        jsonElement();
+        jsonElementValue();
 
     }
 
 
 
-    private static void jsonElement() {
+    private static void jsonElementValue() {
         Address address = new Address("Russia", "Moscow", "Tverskaya", 10);
         Person person = new Person("AtagaN", 24, 43453, address, new Date());
 
