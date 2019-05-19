@@ -48,13 +48,18 @@ public class EnemyHusk extends Enemy {
         }
         // летим и стреляем
         shoot();
-        incrementCount();
+
+        // увеличиваем счетчик действие если Husk в активной зоне или довожим счетчик до 0 если Husk пролетел активную
+        // зону чтобы когда он окажется снова в активной зоне счетчик считал от 0
+        if (huskInActionZone() || actionCount > 0) {
+            incrementCount();
+        }
 
     }
 
 
     private void shoot() {
-        if (x < 1800 && x > 0 && actionCount > Game.UPDATES * 1 && !alreadyShooted) {
+        if (huskInActionZone() && actionCount > Game.UPDATES * 1 && !alreadyShooted) {
 
             alreadyShooted = true;
 
@@ -76,9 +81,20 @@ public class EnemyHusk extends Enemy {
     @Override
     public BufferedImage getBufferedImage() {
 
-        if (actionCount > Game.UPDATES * 1 && actionCount < Game.UPDATES * 1.5 && x < 1800 && x > 0 && alreadyShooted) {
+        if (actionCount > Game.UPDATES * 1 && actionCount < Game.UPDATES * 1.5 && huskInActionZone()) {
             return HuskShootImage;
         }
         return super.getBufferedImage();
+    }
+
+    /**
+     * зона активного действия Husk'а
+     */
+    private boolean huskInActionZone() {
+        if (x > 0 && x < 1800) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

@@ -79,7 +79,7 @@ public class ImageLoader {
             backgroundImage9 = ImageIO.read(backgroundImageFile9);
 
             // Враги
-            File fireBallImageFile = new File(PATH_TO_RESOURCE + "enemies" + FS + "fireBall.png");
+            File fireBallImageFile = new File(PATH_TO_RESOURCE + "enemies" + FS + "FireBall.png");
             fireBallImage = ImageIO.read(fireBallImageFile);
             File enemyCarrionImageFile = new File(PATH_TO_RESOURCE + "enemies" + FS + "EnemyCarrion.png");
             enemyCarrionImage = ImageIO.read(enemyCarrionImageFile);
