@@ -32,7 +32,7 @@ public class SQLite {
         try (Statement statement = connection.createStatement()) {
             String query = "drop table if exists products";
             statement.execute(query);
-            System.out.println(query);
+            System.out.println("DROP TABLE: " + query);
         }
     }
 
@@ -41,9 +41,9 @@ public class SQLite {
      */
     public static void createTable() throws SQLException {
         try (Statement statement = connection.createStatement()) {
-            String query = "create table products (ID int, name varchar(20) not null, price integer)";
+            String query = "create table products (ID integer primary key autoincrement, name varchar(20) not null, price integer)";
             statement.execute(query);
-            System.out.println(query);
+            System.out.println("CREATE TABLE: " + query);
         }
     }
 }
