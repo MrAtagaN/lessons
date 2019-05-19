@@ -37,6 +37,7 @@ public class ImageLoader {
     private static BufferedImage enemyCarrionImage;
     private static BufferedImage hungryCarrion;
     private static BufferedImage enemyHuskImage;
+    private static BufferedImage enemyHuskShootImage;
     private static BufferedImage enemyPestilenceImage;
     private static BufferedImage playerImage;
     private static BufferedImage playerWoundedImage;
@@ -84,6 +85,8 @@ public class ImageLoader {
             enemyCarrionImage = ImageIO.read(enemyCarrionImageFile);
             File enemyHuskImageFile = new File(PATH_TO_RESOURCE + "enemies" + FS + "EnemyHusk.png");
             enemyHuskImage = ImageIO.read(enemyHuskImageFile);
+            File enemyHuskShootImageFile = new File(PATH_TO_RESOURCE + "enemies" + FS + "EnemyHuskShoot.png");
+            enemyHuskShootImage = ImageIO.read(enemyHuskShootImageFile);
             File carrion2ImageFile = new File(PATH_TO_RESOURCE + "enemies" + FS + "carrion2.png");
             hungryCarrion = ImageIO.read(carrion2ImageFile);
             File enemyPestilenceImageFile = new File(PATH_TO_RESOURCE + "enemies" + FS + "EnemyPestilence.png");
@@ -168,6 +171,10 @@ public class ImageLoader {
 
     public static BufferedImage getEnemyHuskImage() {
         return enemyHuskImage;
+    }
+
+    public static BufferedImage getEnemyHuskShootImage() {
+        return enemyHuskShootImage;
     }
 
     public static BufferedImage getEnemyPestilenceImage() {

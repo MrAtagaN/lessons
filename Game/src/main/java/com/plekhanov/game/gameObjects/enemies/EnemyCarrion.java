@@ -13,7 +13,7 @@ public class EnemyCarrion extends Enemy {
 
     public EnemyCarrion(double x, double y, double speedX, double speedY, BufferedImage bufferedImage, int imageWidth, int imageHeight, int renderOrder, Model model) {
         super(x, y, speedX, speedY, bufferedImage, imageWidth, imageHeight, renderOrder, model);
-        countMax = Game.UPDATES * 2;
+        actionCountMax = Game.UPDATES * 2;
         hungryImage = ImageLoader.getHungryCarrion();
     }
 
@@ -29,7 +29,7 @@ public class EnemyCarrion extends Enemy {
         }
 
         //поведение
-        if (count < Game.UPDATES / 2) {
+        if (actionCount < Game.UPDATES / 2) {
             speedX = -1.5;
         } else {
             speedX = -0.5;
@@ -40,7 +40,7 @@ public class EnemyCarrion extends Enemy {
     @Override
     public BufferedImage getBufferedImage() {
 
-        if ( count < Game.UPDATES / 2) {
+        if ( actionCount < Game.UPDATES / 2) {
             return hungryImage;
         }
         return super.getBufferedImage();

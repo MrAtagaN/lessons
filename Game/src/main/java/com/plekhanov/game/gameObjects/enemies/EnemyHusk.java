@@ -6,22 +6,24 @@ import com.plekhanov.game.Model;
 
 
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 
 public class EnemyHusk extends Enemy {
 
     private boolean alreadyShooted = false;
 
+    private BufferedImage HuskShootImage;
+
     public EnemyHusk(double x, double y, double speedX, double speedY, BufferedImage bufferedImage, int imageWidth, int imageHeight, int renderOrder, Model model) {
         super(x, y, speedX, speedY, bufferedImage, imageWidth, imageHeight, renderOrder, model);
-        countMax = Game.UPDATES * 2;
+        HuskShootImage = ImageLoader.getEnemyHuskShootImage();
+        actionCountMax = Game.UPDATES * 2;
     }
 
 
     @Override
     public void updateCoordinats() {
         //поведение
-        if (count < Game.UPDATES) {
+        if (actionCount < Game.UPDATES) {
             speedY = -0.05;
         } else {
             speedY = 0.05;
@@ -52,7 +54,7 @@ public class EnemyHusk extends Enemy {
 
 
     private void shoot() {
-        if (x < 1800 && x > 0 && count > Game.UPDATES * 1 && !alreadyShooted) {
+        if (x < 1800 && x > 0 && actionCount > Game.UPDATES * 1 && !alreadyShooted) {
 
             alreadyShooted = true;
 
@@ -65,8 +67,18 @@ public class EnemyHusk extends Enemy {
 
             model.needToSortGameObjects();
         }
-        if (count < Game.UPDATES * 1) {
+        if (actionCount < Game.UPDATES * 1) {
             alreadyShooted = false;
         }
+    }
+
+
+    @Override
+    public BufferedImage getBufferedImage() {
+
+        if (actionCount > Game.UPDATES * 1 && actionCount < Game.UPDATES * 1.5 && x < 1800 && x > 0 && alreadyShooted) {
+            return HuskShootImage;
+        }
+        return super.getBufferedImage();
     }
 }

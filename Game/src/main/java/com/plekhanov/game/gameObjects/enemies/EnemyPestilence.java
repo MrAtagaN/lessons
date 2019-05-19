@@ -9,7 +9,7 @@ public class EnemyPestilence extends Enemy {
 
     public EnemyPestilence(double x, double y, double speedX, double speedY, BufferedImage bufferedImage, int imageWidth, int imageHeight, int renderOrder, Model model) {
         super(x, y, speedX, speedY, bufferedImage, imageWidth, imageHeight, renderOrder, model);
-        countMax = Game.UPDATES * 2;
+        actionCountMax = Game.UPDATES * 2;
     }
 
 
@@ -22,7 +22,7 @@ public class EnemyPestilence extends Enemy {
         }
 
         //поведение
-        if (count < Game.UPDATES) {
+        if (actionCount < Game.UPDATES) {
             speedY = -0.2;
         } else {
             speedY = 0.2;
