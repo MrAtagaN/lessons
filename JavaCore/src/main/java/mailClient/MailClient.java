@@ -1,7 +1,10 @@
 package mailClient;
 
-import javax.mail.*;
-import java.io.*;
+import javax.mail.Folder;
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.Store;
+import java.io.FileOutputStream;
 import java.util.Properties;
 
 /**
@@ -23,6 +26,9 @@ public class MailClient {
 
 
     public void readMessages() {
+        Store store = null;
+        Folder inFolder = null;
+
         try {
             //create properties field
             Properties properties = new Properties();
@@ -33,23 +39,23 @@ public class MailClient {
             Session emailSession = Session.getDefaultInstance(properties);
 
             //create the POP3 store object and connect with the pop server
-            Store store = emailSession.getStore(mailStoreType);
+            store = emailSession.getStore(mailStoreType);
 
             store.connect(host, userName, password);
 
             //create the folder object and open it
-            Folder emailFolder = store.getFolder("INBOX");
-            emailFolder.open(Folder.READ_ONLY);
+            inFolder = store.getFolder("INBOX");
+            inFolder.open(Folder.READ_ONLY);
 
             // retrieve the messages from the folder in an array and print it
-            Message[] messages = emailFolder.getMessages();
+            Message[] messages = inFolder.getMessages();
             System.out.println("messages.length:  " + messages.length);
 
             for (int i = 0; i < messages.length; i++) {
                 Message message = messages[i];
                 System.out.println("===================================================================================" +
-                "======================================================================================================");
-                System.out.println("Email Number " +  message.getMessageNumber());
+                        "======================================================================================================");
+                System.out.println("Email Number " + message.getMessageNumber());
                 System.out.println("Subject: " + message.getSubject());
                 System.out.println("From: " + message.getFrom()[0]);
                 System.out.println("Text: " + message.getContent().toString());
@@ -64,14 +70,34 @@ public class MailClient {
             }
 
             //close the store and folder objects
-            emailFolder.close(false);
+            inFolder.close(false);
             store.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (inFolder != null && inFolder.isOpen()) {
+                    inFolder.close();
+                }
+                if (store != null && store.isConnected()) {
+                    store.close();
+                }
+            } catch (Exception e) {
+
+            }
+        }
+    }
+
+
+    public void saveMesage() {
+        try {
+
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
 
 
 }
