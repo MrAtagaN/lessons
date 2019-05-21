@@ -16,7 +16,7 @@ public class Main {
 
         //считываем пароль от mail
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("INPUT PASSWORD FOR " + USER_NAME);
+        System.out.println("INPUT PASSWORD FOR: " + USER_NAME);
         String password = reader.readLine();
         reader.close();
 
