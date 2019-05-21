@@ -84,18 +84,32 @@ public class MailClient {
                     store.close();
                 }
             } catch (Exception e) {
-
+                e.printStackTrace();
             }
         }
     }
 
 
     public void saveMesage() {
+        Store store = null;
+        Folder inFolder = null;
+
         try {
 
 
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            try {
+                if (inFolder != null && inFolder.isOpen()) {
+                    inFolder.close();
+                }
+                if (store != null && store.isConnected()) {
+                    store.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
