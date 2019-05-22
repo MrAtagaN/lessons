@@ -16,6 +16,7 @@ public class SQLite {
     private static final String URL = "jdbc:sqlite:JDBC" + FS + "src" + FS + "main" + FS + "resources" + FS + "lessonsJDBC.db";
     private static Connection connection;
 
+
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         Class.forName("org.sqlite.JDBC");
         connection = DriverManager.getConnection(URL);
@@ -23,6 +24,8 @@ public class SQLite {
 
         dropTableIfExists();
         createTable();
+        insertIntoTable();
+
     }
 
 
@@ -55,6 +58,24 @@ public class SQLite {
             String query2 = "create table PERSON (ID integer primary key, name varchar(20) not null, age integer not null, address integer, FOREIGN KEY (address) REFERENCES address (id))";
             statement.execute(query2);
             System.out.println("CREATE TABLE: " + query2);
+        }
+    }
+
+    /**
+     *  Вставка данных в таблицу (Используя executeBatch)
+     */
+    public static void insertIntoTable() throws SQLException {
+        try (Statement statement = connection.createStatement()) {
+            String query = "insert into ADDRESS (country, city, street, home) values ('Russia', 'Moscow', 'Tverskaya', 10)";
+            statement.addBatch(query);
+            System.out.println("INSERT INTO TABLE: " + query);
+
+            String query2 = "insert into ADDRESS (country, city, street, home) values ('Russia', 'Moscow', 'Tverskaya', 10)";
+            statement.addBatch(query2);
+            System.out.println("INSERT INTO TABLE: " + query2);
+
+            statement.executeBatch();
+            statement.clearBatch();
         }
     }
 }
