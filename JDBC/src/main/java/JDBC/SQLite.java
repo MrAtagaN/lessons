@@ -8,12 +8,12 @@ import java.sql.Statement;
 
 
 /**
- * База SQLite  lessons.db
+ * База SQLite  lessonsJDBC.db
  */
 public class SQLite {
 
     private static final String FS = File.separator;
-    private static final String URL = "jdbc:sqlite:JDBC" + FS + "src" + FS + "main" + FS + "resources" + FS + "lessons.db";
+    private static final String URL = "jdbc:sqlite:JDBC" + FS + "src" + FS + "main" + FS + "resources" + FS + "lessonsJDBC.db";
     private static Connection connection;
 
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
