@@ -55,14 +55,14 @@ public class SQLite {
             statement.execute(query);
             System.out.println("CREATE TABLE: " + query);
 
-            String query2 = "create table PERSON (ID integer primary key, name varchar(20) not null, age integer not null, address integer, FOREIGN KEY (address) REFERENCES address (id))";
+            String query2 = "create table PERSON (ID integer primary key, name varchar(20) not null, age integer not null, address_id integer, FOREIGN KEY (address_id) REFERENCES address (id))";
             statement.execute(query2);
             System.out.println("CREATE TABLE: " + query2);
         }
     }
 
     /**
-     *  Вставка данных в таблицу (Используя executeBatch)
+     *  Вставка данных в таблицы (Используя executeBatch)
      */
     public static void insertIntoTable() throws SQLException {
         try (Statement statement = connection.createStatement()) {
@@ -70,9 +70,17 @@ public class SQLite {
             statement.addBatch(query);
             System.out.println("INSERT INTO TABLE: " + query);
 
-            String query2 = "insert into ADDRESS (country, city, street, home) values ('Russia', 'Moscow', 'Tverskaya', 10)";
+            String query2 = "insert into ADDRESS (country, city, street, home) values ('Russia', 'Volgograd', 'Lenina', 5)";
             statement.addBatch(query2);
             System.out.println("INSERT INTO TABLE: " + query2);
+
+            String query3 = "insert into PERSON (name, age, address_id) values ('AtagaN', 25, 1)";
+            statement.addBatch(query3);
+            System.out.println("INSERT INTO TABLE: " + query3);
+
+            String query4 = "insert into PERSON (name, age, address_id) values ('Sasha', 30, 2)";
+            statement.addBatch(query4);
+            System.out.println("INSERT INTO TABLE: " + query4);
 
             statement.executeBatch();
             statement.clearBatch();
