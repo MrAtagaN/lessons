@@ -32,6 +32,7 @@ public class SQLite {
     /**
      * Удаление таблицы ADDRESS, если есть
      * Удаление таблицы PERSON, если есть
+     * Удаление таблицы WORK, если есть
      */
     public static void dropTableIfExists() throws SQLException {
         try (Statement statement = connection.createStatement()) {
@@ -42,12 +43,17 @@ public class SQLite {
             String query2 = "drop table if exists PERSON";
             statement.execute(query2);
             System.out.println("DROP TABLE: " + query2);
+
+            String query3 = "drop table if exists WORK";
+            statement.execute(query3);
+            System.out.println("DROP TABLE: " + query3);
         }
     }
 
     /**
      * Создание таблицы ADDRESS(country, city, street, home)
-     * Создание таблицы PERSON(name, age, address)
+     * Создание таблицы WORK(name, salary, address_id)
+     * Создание таблицы PERSON(name, age, work_id, address_id)
      */
     public static void createTable() throws SQLException {
         try (Statement statement = connection.createStatement()) {
@@ -55,9 +61,13 @@ public class SQLite {
             statement.execute(query);
             System.out.println("CREATE TABLE: " + query);
 
-            String query2 = "create table PERSON (ID integer primary key, name varchar(20) not null, age integer not null, address_id integer, FOREIGN KEY (address_id) REFERENCES address (id))";
+            String query2 = "create table WORK (ID integer primary key, name varchar(20) not null, salary integer not null, address_id integer, FOREIGN KEY (address_id) REFERENCES address (id))";
             statement.execute(query2);
             System.out.println("CREATE TABLE: " + query2);
+
+            String query3 = "create table PERSON (ID integer primary key, name varchar(20) not null, age integer not null, work_id integer, address_id integer, FOREIGN KEY (work_id) REFERENCES address (id), FOREIGN KEY (address_id) REFERENCES address (id))";
+            statement.execute(query3);
+            System.out.println("CREATE TABLE: " + query3);
         }
     }
 
@@ -74,13 +84,31 @@ public class SQLite {
             statement.addBatch(query2);
             System.out.println("INSERT INTO TABLE: " + query2);
 
-            String query3 = "insert into PERSON (name, age, address_id) values ('AtagaN', 25, 1)";
+            String query6 = "insert into ADDRESS (country, city, street, home) values ('Russia', 'Omsk', 'Stroiteley', 7)";
+            statement.addBatch(query6);
+            System.out.println("INSERT INTO TABLE: " + query6);
+
+            String query7 = "insert into WORK (name, salary, address_id) values ('Sberbank', '1000', 1)";
+            statement.addBatch(query7);
+            System.out.println("INSERT INTO TABLE: " + query7);
+
+            String query8 = "insert into WORK (name, salary, address_id) values ('Gazprom', '1500', 3)";
+            statement.addBatch(query8);
+            System.out.println("INSERT INTO TABLE: " + query8);
+
+
+
+            String query3 = "insert into PERSON (name, age, work_id, address_id) values ('AtagaN', 25, 1,  1)";
             statement.addBatch(query3);
             System.out.println("INSERT INTO TABLE: " + query3);
 
-            String query4 = "insert into PERSON (name, age, address_id) values ('Sasha', 30, 2)";
+            String query4 = "insert into PERSON (name, age, work_id, address_id) values ('Sasha', 30, 2,  2)";
             statement.addBatch(query4);
             System.out.println("INSERT INTO TABLE: " + query4);
+
+            String query5 = "insert into PERSON (name, age, work_id, address_id) values ('Valera (Бомж)', 45, null, 3)";
+            statement.addBatch(query5);
+            System.out.println("INSERT INTO TABLE: " + query5);
 
             statement.executeBatch();
             statement.clearBatch();
