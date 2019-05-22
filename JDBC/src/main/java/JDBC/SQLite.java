@@ -86,4 +86,29 @@ public class SQLite {
             statement.clearBatch();
         }
     }
+
+
+    public static void updateTable() throws SQLException {
+        try (Statement statement = connection.createStatement()) {
+
+        }
+    }
+
+    public static void selectFromTable() throws SQLException {
+        try (Statement statement = connection.createStatement()) {
+
+        }
+    }
+
+    public static void alterTable() throws SQLException {
+        try (Statement statement = connection.createStatement()) {
+
+        }
+    }
+
+    public static void deleteFromTable() throws SQLException {
+        try (Statement statement = connection.createStatement()) {
+
+        }
+    }
 }
