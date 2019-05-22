@@ -1,6 +1,9 @@
 package com.plekhanov.game;
 
 
+/**
+ * Игра сделана по паттерну MVC
+ */
 public class Game {
 
     public static final int WIDTH = 1920;
@@ -11,23 +14,43 @@ public class Game {
     public static final double UPDATES = 500;
     public static final String GAME_TITLE = "Horsemen";
 
+    private static Model model;
+    private static Renderer renderer;
+    private static Controller controller;
+
 
     /**
      * Start game
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
-        Model model = new Model(UPDATES, WIDTH, HEIGHT);
+        model = new Model(UPDATES, WIDTH, HEIGHT);
+        controller = new Controller(model);
         new Thread(model).start();
 
-        new Renderer(
+        renderer = new Renderer(
                 WIDTH,
                 HEIGHT,
                 FULL_SCREEN,
                 GAME_TITLE,
                 WINDOW_POSITION_X,
                 WINDOW_POSITION_Y,
-                model).run();
+                model, controller);
+
+        new Thread(renderer).start();
+    }
+
+
+    /**
+     * Перезапуск игры
+     */
+    public static synchronized void startGame() {
+        if (model.isGameOver()) {
+            model = new Model(UPDATES, WIDTH, HEIGHT);
+            controller.setModel(model);
+            renderer.setModel(model);
+            new Thread(model).start();
+        }
     }
 
 

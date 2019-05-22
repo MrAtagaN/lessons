@@ -8,7 +8,7 @@ import java.awt.image.BufferStrategy;
 /**
  * Отрисовка изображения
  */
-public class Renderer extends Canvas {
+public class Renderer extends Canvas implements Runnable {
 
     private int WIDTH;
     private int HEIGHT;
@@ -22,7 +22,7 @@ public class Renderer extends Canvas {
     /**
      * Конструктор
      */
-    public Renderer(int width, int height, boolean fullScreen, String gameTitle, int windowPositionX, int windowPositionY, Model model) {
+    public Renderer(int width, int height, boolean fullScreen, String gameTitle, int windowPositionX, int windowPositionY, Model model, Controller controller) {
         this.WIDTH = width;
         this.HEIGHT = height;
         this.fullScreen = fullScreen;
@@ -30,7 +30,7 @@ public class Renderer extends Canvas {
         this.windowPositionX = windowPositionX;
         this.windowPositionY = windowPositionY;
         this.model = model;
-        this.controller = new Controller(model);
+        this.controller = controller;
     }
 
 
@@ -89,5 +89,7 @@ public class Renderer extends Canvas {
         }
     }
 
-
+    public void setModel(Model model) {
+        this.model = model;
+    }
 }

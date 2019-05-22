@@ -89,7 +89,7 @@ public class Player extends GameObject {
 
         this.life--;
         if (life <= 0) {
-            model.setClash(true); //переделать
+            model.setGameOver();
         }
         this.invulnerabilityCount = timeInvulnerability;
 

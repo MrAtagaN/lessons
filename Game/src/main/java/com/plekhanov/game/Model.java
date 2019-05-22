@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class Model implements Runnable {
 
-    private volatile boolean clash = false;
+    private volatile boolean gameOver = false;
     private volatile boolean needToSortGameObjects;
     private double UPDATES;
 
@@ -49,12 +49,12 @@ public class Model implements Runnable {
         return gameObjects;
     }
 
-    public boolean isClash() {
-        return clash;
+    public boolean isGameOver() {
+        return gameOver;
     }
 
-    public void setClash(boolean clash) {
-        this.clash = clash;
+    public void setGameOver() {
+        this.gameOver = true;
     }
 
     public void setGameObjects(List<GameObject> gameObjects) {
@@ -83,7 +83,7 @@ public class Model implements Runnable {
                 updates++;
                 delta--;
 
-                if (isClash()) { //TODO переделать
+                if (isGameOver()) {
                     break;
                 }
                 //обновляем координаты у всех объектов
