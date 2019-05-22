@@ -1,10 +1,7 @@
 package JDBC;
 
 import java.io.File;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 
 /**
@@ -25,6 +22,9 @@ public class SQLite {
         dropTableIfExists();
         createTable();
         insertIntoTable();
+        updateTable();
+        deleteFromTable();
+        selectFromTable();
 
     }
 
@@ -72,10 +72,11 @@ public class SQLite {
     }
 
     /**
-     *  Вставка данных в таблицы (Используя executeBatch)
+     * INSERT (Используя executeBatch)
      */
     public static void insertIntoTable() throws SQLException {
         try (Statement statement = connection.createStatement()) {
+            //address
             String query = "insert into ADDRESS (country, city, street, home) values ('Russia', 'Moscow', 'Tverskaya', 10)";
             statement.addBatch(query);
             System.out.println("INSERT INTO TABLE: " + query);
@@ -88,6 +89,7 @@ public class SQLite {
             statement.addBatch(query6);
             System.out.println("INSERT INTO TABLE: " + query6);
 
+            //work
             String query7 = "insert into WORK (name, salary, address_id) values ('Sberbank', '1000', 1)";
             statement.addBatch(query7);
             System.out.println("INSERT INTO TABLE: " + query7);
@@ -96,8 +98,7 @@ public class SQLite {
             statement.addBatch(query8);
             System.out.println("INSERT INTO TABLE: " + query8);
 
-
-
+            //person
             String query3 = "insert into PERSON (name, age, work_id, address_id) values ('AtagaN', 25, 1,  1)";
             statement.addBatch(query3);
             System.out.println("INSERT INTO TABLE: " + query3);
@@ -115,28 +116,51 @@ public class SQLite {
         }
     }
 
-
+    /**
+     * UPDATE
+     */
     public static void updateTable() throws SQLException {
         try (Statement statement = connection.createStatement()) {
-
+            String query = "update PERSON set age=29 where name=AtagaN";
+            statement.addBatch(query);
+            System.out.println("UPDATE TABLE: " + query);
         }
     }
 
+    /**
+     * SELECT
+     */
     public static void selectFromTable() throws SQLException {
         try (Statement statement = connection.createStatement()) {
+            String querry = "select * from PERSON";
+            ResultSet resultSet = statement.executeQuery(querry);
+            System.out.println("SELECT FORM TABLE: " + querry);
 
+            while (resultSet.next()) {
+                String name = resultSet.getString("name");
+                int age = resultSet.getInt("age");
+                System.out.println(name + ", " + age);
+            }
         }
     }
 
+    /**
+     * ALTER
+     */
     public static void alterTable() throws SQLException {
         try (Statement statement = connection.createStatement()) {
 
         }
     }
 
+    /**
+     * DELETE
+     */
     public static void deleteFromTable() throws SQLException {
         try (Statement statement = connection.createStatement()) {
-
+            String query = "delete from ADDRESS where id = 1";
+            statement.addBatch(query);
+            System.out.println("DELETE FORM TABLE: " + query);
         }
     }
 }
