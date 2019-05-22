@@ -27,24 +27,34 @@ public class SQLite {
 
 
     /**
-     * Удаление таблицы products, если есть
+     * Удаление таблицы ADDRESS, если есть
+     * Удаление таблицы PERSON, если есть
      */
     public static void dropTableIfExists() throws SQLException {
         try (Statement statement = connection.createStatement()) {
-            String query = "drop table if exists products";
+            String query = "drop table if exists ADDRESS";
             statement.execute(query);
             System.out.println("DROP TABLE: " + query);
+
+            String query2 = "drop table if exists PERSON";
+            statement.execute(query2);
+            System.out.println("DROP TABLE: " + query2);
         }
     }
 
     /**
-     * Создание таблицы products(id, name, price)
+     * Создание таблицы ADDRESS(country, city, street, home)
+     * Создание таблицы PERSON(name, age, address)
      */
     public static void createTable() throws SQLException {
         try (Statement statement = connection.createStatement()) {
-            String query = "create table products (ID integer primary key autoincrement, name varchar(20) not null, price integer)";
+            String query = "create table ADDRESS (ID integer primary key, country varchar(20) not null, city varchar(20) not null, street varchar(20) not null, home integer)";
             statement.execute(query);
             System.out.println("CREATE TABLE: " + query);
+
+            String query2 = "create table PERSON (ID integer primary key, name varchar(20) not null, age integer not null, address integer, FOREIGN KEY (address) REFERENCES address (id))";
+            statement.execute(query2);
+            System.out.println("CREATE TABLE: " + query2);
         }
     }
 }
