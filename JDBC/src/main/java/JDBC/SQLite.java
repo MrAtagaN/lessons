@@ -21,7 +21,8 @@ public class SQLite {
 
         dropTableIfExists();
         createTable();
-        insertIntoTable();
+        insertIntoTableBatch();
+        insertIntoTablePreparedStatement();
         updateTable();
         deleteFromTable();
         selectFromTable();
@@ -74,7 +75,7 @@ public class SQLite {
     /**
      * INSERT (Используя executeBatch)
      */
-    public static void insertIntoTable() throws SQLException {
+    public static void insertIntoTableBatch() throws SQLException {
         try (Statement statement = connection.createStatement()) {
             //address
             String query = "insert into ADDRESS (country, city, street, home) values ('Russia', 'Moscow', 'Tverskaya', 10)";
@@ -107,14 +108,28 @@ public class SQLite {
             statement.addBatch(query4);
             System.out.println("INSERT INTO TABLE: " + query4);
 
-            String query5 = "insert into PERSON (name, age, work_id, address_id) values ('Valera (Бомж)', 45, null, 3)";
-            statement.addBatch(query5);
-            System.out.println("INSERT INTO TABLE: " + query5);
-
             statement.executeBatch();
             statement.clearBatch();
+
+
         }
     }
+
+    /**
+     * INSERT (Используя PreparedStatemet)
+     */
+    public static void insertIntoTablePreparedStatement() throws SQLException {
+        String query = "insert into PERSON (name, age, work_id, address_id) values (?, ?, ?, ?)";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(2, 45);
+            preparedStatement.setString(1, "Valera (Бомж)");
+            preparedStatement.setNull(3, 0);
+            preparedStatement.setNull(4, 0);
+            preparedStatement.execute();
+            System.out.println("INSERT INTO TABLE: " + query);
+        }
+    }
+
 
     /**
      * UPDATE
