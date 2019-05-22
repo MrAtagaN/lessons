@@ -173,7 +173,7 @@ public class SQLite {
      */
     public static void deleteFromTable() throws SQLException {
         try (Statement statement = connection.createStatement()) {
-            String query = "delete from ADDRESS where id = 1";
+            String query = "delete from ADDRESS where id = 10";
             statement.addBatch(query);
             System.out.println("DELETE FORM TABLE: " + query);
         }
