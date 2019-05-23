@@ -58,15 +58,29 @@ public class SQLite {
      */
     public static void createTable() throws SQLException {
         try (Statement statement = connection.createStatement()) {
-            String query = "create table ADDRESS (ID integer primary key, country varchar(20) not null, city varchar(20) not null, street varchar(20) not null, home integer)";
+            String query = "create table ADDRESS (ID integer primary key," +
+                                                " country varchar(20) not null," +
+                                                " city varchar(20) not null," +
+                                                " street varchar(20) not null," +
+                                                " home integer)";
             statement.execute(query);
             System.out.println("CREATE TABLE: " + query);
 
-            String query2 = "create table WORK (ID integer primary key, name varchar(20) not null, salary integer not null, address_id integer, FOREIGN KEY (address_id) REFERENCES address (id))";
+            String query2 = "create table WORK (ID integer primary key," +
+                                              " name varchar(20) not null," +
+                                              " salary integer not null," +
+                                              " address_id integer," +
+                                              " FOREIGN KEY (address_id) REFERENCES address (id))";
             statement.execute(query2);
             System.out.println("CREATE TABLE: " + query2);
 
-            String query3 = "create table PERSON (ID integer primary key, name varchar(20) not null, age integer not null, work_id integer, address_id integer, FOREIGN KEY (work_id) REFERENCES address (id), FOREIGN KEY (address_id) REFERENCES address (id))";
+            String query3 = "create table PERSON (ID integer primary key," +
+                                                " name varchar(20) not null," +
+                                                " age integer not null," +
+                                                " work_id integer," +
+                                                " address_id integer," +
+                                                " FOREIGN KEY (work_id) REFERENCES address (id)," +
+                                                " FOREIGN KEY (address_id) REFERENCES address (id))";
             statement.execute(query3);
             System.out.println("CREATE TABLE: " + query3);
         }
