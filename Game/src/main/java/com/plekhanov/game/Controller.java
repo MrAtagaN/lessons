@@ -34,6 +34,10 @@ public class Controller extends KeyAdapter {
             Game.startGame();
         }
 
+        if (model.isGameOver()) {
+            return;
+        }
+
         if (e.getKeyCode() == KeyEvent.VK_D) {
             model.getPlayer().setMoveRight(true);
         }

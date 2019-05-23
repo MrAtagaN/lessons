@@ -7,7 +7,6 @@ import java.io.IOException;
 
 public class ImageLoader {
 
-    private static BufferedImage fireBallImage;
     private static BufferedImage backgroundImage1;
     private static BufferedImage backgroundImage2;
     private static BufferedImage backgroundImage3;
@@ -34,11 +33,15 @@ public class ImageLoader {
     private static BufferedImage backgroundLevel3Image8;
     private static BufferedImage backgroundLevel3Image9;
 
+    private static BufferedImage gameOverImage;
+
     private static BufferedImage enemyCarrionImage;
     private static BufferedImage hungryCarrion;
     private static BufferedImage enemyHuskImage;
     private static BufferedImage enemyHuskShootImage;
     private static BufferedImage enemyPestilenceImage;
+    private static BufferedImage fireBallImage;
+
     private static BufferedImage playerImage;
     private static BufferedImage playerWoundedImage;
     private static BufferedImage playerMoveRightImage;
@@ -77,6 +80,10 @@ public class ImageLoader {
             backgroundImage8 = ImageIO.read(backgroundImageFile8);
             File backgroundImageFile9 = new File(PATH_TO_RESOURCE + "background" + FS + "level_1" + FS + "Layer_0000_9.png");
             backgroundImage9 = ImageIO.read(backgroundImageFile9);
+
+            //Конец игры
+            File gameOverImageFile = new File(PATH_TO_RESOURCE + "Game_Over.png");
+            gameOverImage = ImageIO.read(gameOverImageFile);
 
             // Враги
             File fireBallImageFile = new File(PATH_TO_RESOURCE + "enemies" + FS + "FireBall.png");
@@ -259,6 +266,10 @@ public class ImageLoader {
 
     public static BufferedImage getHungryCarrion() {
         return hungryCarrion;
+    }
+
+    public static BufferedImage getGameOverImage() {
+        return gameOverImage;
     }
 
     public static BufferedImage getBackgroundLevel2Image1() {
