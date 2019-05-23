@@ -42,13 +42,14 @@ public class Player extends GameObject {
 
     private Model model;
 
-    public Player(double x, double y, double speedX, double speedY, BufferedImage bufferedImage, int imageWidth, int imageHeight, int renderOrder, Model model) {
+    public Player(double x, double y, double speedX, double speedY, BufferedImage bufferedImage, int imageWidth, int imageHeight, int renderOrder, int min_y, Model model) {
         super(x, y, speedX, speedY, bufferedImage, imageWidth, imageHeight, renderOrder);
 
 //        this.MAX_X = 1920 - imageWidth / 2 - imageShiftRight;
 //        this.MAX_Y = imageHeight / 2;
 //        this.MIN_X = imageWidth / 2 - imageShiftRight;
 //        this.MIN_Y = 900;
+        this.MIN_Y = min_y;
         this.model = model;
 
         heart1 = new GameObject(50, 50, 0, 0, ImageLoader.getHeartImage(), 55, 66, 90);

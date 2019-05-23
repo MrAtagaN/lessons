@@ -22,7 +22,7 @@ public class Game {
     /**
      * Start game
      */
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
 
         model = new Model(UPDATES, WIDTH, HEIGHT);
         controller = new Controller(model);
