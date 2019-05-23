@@ -33,6 +33,10 @@ public class Renderer extends Canvas implements Runnable {
         this.controller = controller;
     }
 
+    public void setModel(Model model) {
+        this.model = model;
+    }
+
 
     /**
      * Вывод изображения
@@ -89,7 +93,4 @@ public class Renderer extends Canvas implements Runnable {
         }
     }
 
-    public void setModel(Model model) {
-        this.model = model;
-    }
 }
