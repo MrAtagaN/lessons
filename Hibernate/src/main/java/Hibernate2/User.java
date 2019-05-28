@@ -1,7 +1,6 @@
 package Hibernate2;
 
 
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -19,13 +18,8 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Auto> autos;
 
-    public User() {
-    }
 
-    public User(String name, int age, List<Auto> autos) {
-        this.name = name;
-        this.age = age;
-        this.autos = autos;
+    public User() {
     }
 
     public int getId() {

@@ -1,10 +1,11 @@
 package mailClient;
 
-import javax.mail.Folder;
-import javax.mail.Message;
-import javax.mail.Session;
-import javax.mail.Store;
+import org.jsoup.Jsoup;
+
+import javax.mail.*;
+import javax.mail.internet.MimeMultipart;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Properties;
 
 /**
@@ -13,65 +14,46 @@ import java.util.Properties;
 public class MailClient {
 
     private String host;
+    private int port;
     private String userName;
     private String mailStoreType;
     private String password;
 
-    public MailClient(String host, String userName, String mailStoreType, String password) {
+
+    public MailClient(String host, int port, String userName, String mailStoreType, String password) {
         this.host = host;
+        this.port = port;
         this.userName = userName;
         this.mailStoreType = mailStoreType;
         this.password = password;
     }
 
 
-    public void readMessages() {
+    public void readMessages(String folderName, int numberOfReadMessages) {
         Store store = null;
         Folder inFolder = null;
 
         try {
-            //create properties field
-            Properties properties = new Properties();
-
-            properties.put("mail.pop3.host", host);
-            properties.put("mail.pop3.port", "995");
-            properties.put("mail.pop3.starttls.enable", "true");
-            Session emailSession = Session.getDefaultInstance(properties);
-
-            //create the POP3 store object and connect with the pop server
+            Session emailSession = Session.getDefaultInstance(new Properties());
             store = emailSession.getStore(mailStoreType);
+            store.connect(host, port, userName, password);
 
-            store.connect(host, userName, password);
+            inFolder = store.getFolder(folderName);
 
-            //create the folder object and open it
-            inFolder = store.getFolder("INBOX");
             inFolder.open(Folder.READ_ONLY);
+            UIDFolder uidFolder = (UIDFolder) inFolder;
 
-            // retrieve the messages from the folder in an array and print it
             Message[] messages = inFolder.getMessages();
             System.out.println("messages.length:  " + messages.length);
 
-            for (int i = 0; i < messages.length; i++) {
+            for (int i = 0; i < numberOfReadMessages && i < messages.length; i++) {
                 Message message = messages[i];
-                System.out.println("===================================================================================" +
+                long messageUID = uidFolder.getUID(message); //уникальный ID в folder
+
+                System.out.println("\n===================================================================================" +
                         "======================================================================================================");
-                System.out.println("Email Number " + message.getMessageNumber());
-                System.out.println("Subject: " + message.getSubject());
-                System.out.println("From: " + message.getFrom()[0]);
-                System.out.println("Text: " + message.getContent().toString());
-
-                //сохранить письмо
-                if (i == 10) {
-                    FileOutputStream fileOutputStream = new FileOutputStream("MyEmail.eml");
-                    message.writeTo(fileOutputStream);
-                    fileOutputStream.close();
-                }
-
+                log(message, messageUID);
             }
-
-            //close the store and folder objects
-            inFolder.close(false);
-            store.close();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -90,12 +72,30 @@ public class MailClient {
     }
 
 
-    public void saveMesage() {
+    public void saveMessage(String folderName, long messageUID) {
         Store store = null;
         Folder inFolder = null;
 
         try {
+            Session emailSession = Session.getDefaultInstance(new Properties());
+            store = emailSession.getStore(mailStoreType);
+            store.connect(host, port, userName, password);
 
+            inFolder = store.getFolder(folderName);
+
+            inFolder.open(Folder.READ_ONLY);
+            UIDFolder uidFolder = (UIDFolder) inFolder;
+
+            Message message = uidFolder.getMessageByUID(messageUID);
+
+            System.out.println("\n================================================================== DOWNLOAD MESSAGE " +
+                    "============================================================================================");
+            log(message, messageUID);
+
+            //Сохраняем письмо
+            try (FileOutputStream fileOutputStream = new FileOutputStream("MyEmail_" + messageUID + ".eml")) {
+                message.writeTo(fileOutputStream);
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -113,5 +113,53 @@ public class MailClient {
         }
     }
 
+
+    private void log(Message message, long messageUID) throws MessagingException, IOException {
+        System.out.println("Email Number: " + message.getMessageNumber());
+        System.out.println("Date: " + message.getSentDate());
+        System.out.println("UID: " + messageUID);
+        System.out.println("Subject: " + message.getSubject());
+        System.out.println("From: " + message.getFrom()[0]);
+        System.out.println("Content: " + getTextFromMessage(message));
+    }
+
+
+    /**
+     * Получение текста из письма
+     */
+    private String getTextFromMessage(Message message) throws MessagingException, IOException {
+        String result = "";
+        if (message.isMimeType("text/plain")) {
+            result = message.getContent().toString();
+        } else if (message.isMimeType("text/html")) {
+            String html = (String) message.getContent();
+            result = result + "\n" + Jsoup.parse(html).text();
+        } else if (message.isMimeType("multipart/*")) {
+            MimeMultipart mimeMultipart = (MimeMultipart) message.getContent();
+            result = getTextFromMimeMultipart(mimeMultipart);
+        }
+        return result;
+    }
+
+
+    /**
+     * Получение текста из MimeMultipart
+     */
+    private String getTextFromMimeMultipart(MimeMultipart mimeMultipart) throws MessagingException, IOException {
+        String result = "";
+        for (int i = 0; i < mimeMultipart.getCount(); i++) {
+            BodyPart bodyPart = mimeMultipart.getBodyPart(i);
+            if (bodyPart.isMimeType("text/plain")) {
+                result = result + "\n" + bodyPart.getContent();
+                break;
+            } else if (bodyPart.isMimeType("text/html")) {
+                String html = (String) bodyPart.getContent();
+                result = result + "\n" + Jsoup.parse(html).text();
+            } else if (bodyPart.getContent() instanceof MimeMultipart) {
+                result = result + getTextFromMimeMultipart((MimeMultipart) bodyPart.getContent());
+            }
+        }
+        return result;
+    }
 
 }

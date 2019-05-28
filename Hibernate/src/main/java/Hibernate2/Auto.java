@@ -2,6 +2,7 @@ package Hibernate2;
 
 import javax.persistence.*;
 
+
 @Entity
 @Table(name = "autos")
 public class Auto {
@@ -22,11 +23,6 @@ public class Auto {
 
 
     public Auto() {
-    }
-
-    public Auto(String model, String color, User user) {
-        this.model = model;
-        this.color = color;
     }
 
     public int getId() {
