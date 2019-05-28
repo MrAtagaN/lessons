@@ -7,6 +7,8 @@ public class Main {
     public static void main(String[] args) {
 
         User userMasha = new User();
+        userMasha.setName("Masha");
+        userMasha.setAge(34);
 
         Auto lada = new Auto();
         lada.setColor("Red");
@@ -18,12 +20,9 @@ public class Main {
         mersedes.setModel("Mersedes");
         mersedes.setUser(userMasha);
 
-       userMasha.setName("Masha");
-       userMasha.setAge(34);
-       userMasha.setAutos(Arrays.asList(lada, mersedes));
+        userMasha.setAutos(Arrays.asList(lada, mersedes));
 
-       UserDAO userDAO = new UserDAO();
-
-       userDAO.seveUser(userMasha);
+        UserDAO userDAO = new UserDAO();
+        userDAO.saveUser(userMasha);
     }
 }
