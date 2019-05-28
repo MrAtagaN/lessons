@@ -8,8 +8,9 @@ import java.io.InputStreamReader;
 public class Main {
 
     private static final String USER_NAME = "atagan@rambler.ru";
-    private static final String HOST = "pop.rambler.ru";
-    private static final String MAIL_STORE_TYPE = "pop3s";
+    private static final String HOST = "imap.rambler.ru";
+    private static final String MAIL_STORE_TYPE = "imaps";
+    private static final int PORT = 993;
 
 
     public static void main(String[] args) throws IOException {
@@ -20,8 +21,9 @@ public class Main {
         String password = reader.readLine();
         reader.close();
 
-        MailClient mailClient = new MailClient(HOST, USER_NAME, MAIL_STORE_TYPE, password);
+        MailClient mailClient = new MailClient(HOST, PORT, USER_NAME, MAIL_STORE_TYPE, password);
 
-        mailClient.readMessages();
+        mailClient.readMessages(50);
+        mailClient.saveMessage(11);
     }
 }
