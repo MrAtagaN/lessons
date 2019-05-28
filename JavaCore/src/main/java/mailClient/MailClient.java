@@ -55,10 +55,6 @@ public class MailClient {
                 log(message, messageUID);
             }
 
-            //close the store and folder objects
-            inFolder.close(false);
-            store.close();
-
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -96,7 +92,7 @@ public class MailClient {
                     "============================================================================================");
             log(message, messageUID);
 
-            //Путь к сохраненному письму
+            //Сохраняем письмо
             try (FileOutputStream fileOutputStream = new FileOutputStream("MyEmail_" + messageUID + ".eml")) {
                 message.writeTo(fileOutputStream);
             }
@@ -144,6 +140,7 @@ public class MailClient {
         }
         return result;
     }
+
 
     /**
      * Получение текста из MimeMultipart
