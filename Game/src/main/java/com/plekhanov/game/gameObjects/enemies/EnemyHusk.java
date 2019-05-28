@@ -91,10 +91,6 @@ public class EnemyHusk extends Enemy {
      * зона активного действия Husk'а
      */
     private boolean huskInActionZone() {
-        if (x > 0 && x < 1800) {
-            return true;
-        } else {
-            return false;
-        }
+        return x > 0 && x < 1800;
     }
 }
