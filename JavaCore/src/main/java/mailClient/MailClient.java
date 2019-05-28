@@ -29,7 +29,7 @@ public class MailClient {
     }
 
 
-    public void readMessages(int numberOfReadMessages) {
+    public void readMessages(String folderName, int numberOfReadMessages) {
         Store store = null;
         Folder inFolder = null;
 
@@ -38,7 +38,7 @@ public class MailClient {
             store = emailSession.getStore(mailStoreType);
             store.connect(host, port, userName, password);
 
-            inFolder = store.getFolder("INBOX");
+            inFolder = store.getFolder(folderName);
 
             inFolder.open(Folder.READ_ONLY);
             UIDFolder uidFolder = (UIDFolder) inFolder;
@@ -50,7 +50,7 @@ public class MailClient {
                 Message message = messages[i];
                 long messageUID = uidFolder.getUID(message); //уникальный ID в folder
 
-                System.out.println("===================================================================================" +
+                System.out.println("\n===================================================================================" +
                         "======================================================================================================");
                 log(message, messageUID);
             }
@@ -72,7 +72,7 @@ public class MailClient {
     }
 
 
-    public void saveMessage(long messageUID) {
+    public void saveMessage(String folderName, long messageUID) {
         Store store = null;
         Folder inFolder = null;
 
@@ -81,14 +81,14 @@ public class MailClient {
             store = emailSession.getStore(mailStoreType);
             store.connect(host, port, userName, password);
 
-            inFolder = store.getFolder("INBOX");
+            inFolder = store.getFolder(folderName);
 
             inFolder.open(Folder.READ_ONLY);
             UIDFolder uidFolder = (UIDFolder) inFolder;
 
             Message message = uidFolder.getMessageByUID(messageUID);
 
-            System.out.println("================================================================== DOWNLOAD MESSAGE " +
+            System.out.println("\n================================================================== DOWNLOAD MESSAGE " +
                     "============================================================================================");
             log(message, messageUID);
 

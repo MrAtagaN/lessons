@@ -23,7 +23,7 @@ public class Main {
 
         MailClient mailClient = new MailClient(HOST, PORT, USER_NAME, MAIL_STORE_TYPE, password);
 
-        mailClient.readMessages(50);
-        mailClient.saveMessage(11);
+        mailClient.readMessages("INBOX",20);
+        mailClient.saveMessage("INBOX",11);
     }
 }
