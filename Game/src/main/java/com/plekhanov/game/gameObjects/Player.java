@@ -11,6 +11,7 @@ public class Player extends GameObject {
     private int life = 3;
     private int timeInvulnerability = 2 * (int) Game.UPDATES; // время неуязвимости после столкновения
     private int invulnerabilityCount;                        // обратный счетчик после столкновения
+    private BufferedImage playerImage;
     private BufferedImage playerWoundedImage;
     private BufferedImage playerMoveRightImage;
     private BufferedImage playerMoveRightWoundedImage;
@@ -20,7 +21,7 @@ public class Player extends GameObject {
     private BufferedImage playerJumpWoundedImage;
     private final int imageShiftRight = 10; //смещение картинки игрока вправо
     private double shootTimer;    // счетчик интервала стрельбы
-    private static final double SHOOT_INTERVAL = 0.5;
+    private static final double SHOOT_INTERVAL = 0.7;
 
 
     private boolean moveRight = false;
@@ -62,6 +63,7 @@ public class Player extends GameObject {
         model.getGameObjects().add(heart2);
         heart3 = new GameObject(190, 50, 0, 0, ImageLoader.getHeartImage(), 55, 66, 90);
         model.getGameObjects().add(heart3);
+        playerImage = bufferedImage;
         playerWoundedImage = ImageLoader.getPlayerWoundedImage();
         playerMoveRightImage = ImageLoader.getPlayerMoveRightImage();
         playerMoveRightWoundedImage = ImageLoader.getPlayerMoveRightWoundedImage();
@@ -138,39 +140,34 @@ public class Player extends GameObject {
         }
 
         checkBoundariesGameField();
+        setPlayerImage();
+
     }
 
 
-    public BufferedImage getBufferedImage() {
-
+    private void setPlayerImage() {
         if (moveRight) {
             if (playerWounded()) {
-                return playerMoveRightWoundedImage;
+                bufferedImage = playerMoveRightWoundedImage;
             } else {
-                return playerMoveRightImage;
+                bufferedImage = playerMoveRightImage;
             }
-        }
-
-        if (moveLeft) {
-           if (playerWounded()) {
-               return playerMoveLeftWoundedImage;
-           } else {
-               return playerMoveLeftImage;
-           }
-        }
-
-        if (playerJump()) {  // игрок движется вверх
+        } else if (moveLeft) {
             if (playerWounded()) {
-                return playerJumpWoundedImage;
+                bufferedImage = playerMoveLeftWoundedImage;
             } else {
-                return playerJumpImage;
+                bufferedImage = playerMoveLeftImage;
             }
-        }
-
-        if (playerWounded()) {
-            return playerWoundedImage;
+        } else if (playerJump()) {
+            if (playerWounded()) {
+                bufferedImage = playerJumpWoundedImage;
+            } else {
+                bufferedImage = playerJumpImage;
+            }
+        } else if (playerWounded()) {
+            bufferedImage = playerWoundedImage;
         } else {
-            return bufferedImage;
+            bufferedImage = playerImage;
         }
     }
 
