@@ -19,9 +19,13 @@ public class Player extends GameObject {
     private BufferedImage playerJumpImage;
     private BufferedImage playerJumpWoundedImage;
     private final int imageShiftRight = 10; //смещение картинки игрока вправо
+    private double shootTimer;    // счетчик интервала стрельбы
+    private static final double SHOOT_INTERVAL = 0.5;
+
 
     private boolean moveRight = false;
     private boolean moveLeft = false;
+    private boolean shoot = false;
 
     private double MIN_X = 57;
     private double MIN_Y = 900;
@@ -104,6 +108,9 @@ public class Player extends GameObject {
         if (moveLeft) {
             jumpLeft();
         }
+        if (shoot) {
+            shoot();
+        }
 
         this.x += this.speedX;
         if (speedX > MIN_SPEED_X) {
@@ -124,6 +131,10 @@ public class Player extends GameObject {
 
         if (invulnerabilityCount > 0) {
             invulnerabilityCount--;
+        }
+
+        if (shootTimer > 0) {
+            shootTimer--;
         }
 
         checkBoundariesGameField();
@@ -209,6 +220,32 @@ public class Player extends GameObject {
         }
     }
 
+    /**
+     * Сместить картинку игрока вправо
+     */
+    @Override
+    public double getRenderX() {
+        return x - imageWidth / 2 + imageShiftRight;
+    }
+
+    public void shoot() {
+        if (shootTimer <= 0) {
+            shootTimer = Game.UPDATES * SHOOT_INTERVAL;
+            model.getGameObjects().add(new GameObject(getX(), getY(), 2, 0, ImageLoader.getFireBallImage(), 60, 60, 11));
+        }
+    }
+
+    //=============================//
+
+
+    public boolean isShoot() {
+        return shoot;
+    }
+
+    public void setShoot(boolean shoot) {
+        this.shoot = shoot;
+    }
+
     public boolean isMoveRight() {
         return moveRight;
     }
@@ -277,12 +314,5 @@ public class Player extends GameObject {
         this.speedY = speedY;
     }
 
-    /**
-     * Сместить картинку игрока вправо
-     */
-    @Override
-    public double getRenderX() {
-        return x - imageWidth / 2 + imageShiftRight;
-    }
 
 }
