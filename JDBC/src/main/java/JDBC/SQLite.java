@@ -26,6 +26,7 @@ public class SQLite {
         updateTable();
         deleteFromTable();
         selectFromTable();
+        transaction();
 
     }
 
@@ -122,6 +123,10 @@ public class SQLite {
             statement.addBatch(query4);
             System.out.println("INSERT INTO TABLE: " + query4);
 
+            String query5 = "insert into PERSON (name, age, work_id, address_id) values ('Sergey', 30, 3,  2)";
+            statement.addBatch(query5);
+            System.out.println("INSERT INTO TABLE: " + query5);
+
             statement.executeBatch();
             statement.clearBatch();
 
@@ -191,5 +196,27 @@ public class SQLite {
             statement.addBatch(query);
             System.out.println("DELETE FORM TABLE: " + query);
         }
+    }
+
+    /**
+     * Транзакции
+     */
+    public static void transaction() throws SQLException {
+        try (Statement statement = connection.createStatement()) {
+            connection.setAutoCommit(false);
+            Savepoint savepoint = connection.setSavepoint();
+
+            String query = "insert into WORK (name, salary, address_id) values ('Raiffeisen', '3000', 2)";
+
+            try {
+                statement.execute(query);
+                System.out.println("TRANSACTION: " + query);
+            } catch (Exception e){
+                e.printStackTrace();
+                connection.rollback(savepoint);
+            }
+            connection.commit();
+        }
+
     }
 }
