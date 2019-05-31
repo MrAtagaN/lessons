@@ -223,7 +223,7 @@ public class Player extends GameObject {
     public void shoot() {
         if (shootTimer <= 0) {
             shootTimer = Game.UPDATES * SHOOT_INTERVAL;
-            model.getGameObjects().add(new PlayerShoot(getX(), getY(), 2, 0, ImageLoader.getFireBallImage(), 60, 60, 20));
+            model.getGameObjects().add(new PlayerShoot(getX() + 100, getY(), 2, 0, ImageLoader.getPlayerFireBallImage_1(), 200, 200, 20));
             model.needToSortGameObjects();
         }
     }

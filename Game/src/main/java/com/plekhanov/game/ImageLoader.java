@@ -50,6 +50,13 @@ public class ImageLoader {
     private static BufferedImage playerMoveLeftWoundedImage;
     private static BufferedImage playerJumpImage;
     private static BufferedImage playerJumpWoundedImage;
+
+    private static BufferedImage playerFireBallImage_1;
+    private static BufferedImage playerFireBallImage_2;
+    private static BufferedImage playerFireBallImage_3;
+    private static BufferedImage playerFireBallImage_4;
+    private static BufferedImage playerFireBallImage_5;
+
     private static BufferedImage heartImage;
 
     private static final String FS = File.separator;
@@ -116,6 +123,17 @@ public class ImageLoader {
             playerJumpImage = ImageIO.read(playerJump);
             File playerJumpWounded = new File(PATH_TO_RESOURCE + "player" + FS + "PlayerJumpWounded.png");
             playerJumpWoundedImage = ImageIO.read(playerJumpWounded);
+            // огненные шары игрока
+            File playerFireBall_1 = new File(PATH_TO_RESOURCE + "player" + FS + "player_fire_balls" + FS + "PlayerFireBall_1.png");
+            playerFireBallImage_1 = ImageIO.read(playerFireBall_1);
+            File playerFireBall_2 = new File(PATH_TO_RESOURCE + "player" + FS + "player_fire_balls" + FS + "PlayerFireBall_2.png");
+            playerFireBallImage_2 = ImageIO.read(playerFireBall_2);
+            File playerFireBall_3 = new File(PATH_TO_RESOURCE + "player" + FS + "player_fire_balls" + FS + "PlayerFireBall_3.png");
+            playerFireBallImage_3 = ImageIO.read(playerFireBall_3);
+            File playerFireBall_4 = new File(PATH_TO_RESOURCE + "player" + FS + "player_fire_balls" + FS + "PlayerFireBall_4.png");
+            playerFireBallImage_4 = ImageIO.read(playerFireBall_4);
+            File playerFireBall_5 = new File(PATH_TO_RESOURCE + "player" + FS + "player_fire_balls" + FS + "PlayerFireBall_5.png");
+            playerFireBallImage_5 = ImageIO.read(playerFireBall_5);
 
             // Предметы
             File heartImageFile = new File(PATH_TO_RESOURCE + "heart.png");
@@ -215,6 +233,27 @@ public class ImageLoader {
     public static BufferedImage getPlayerJumpWoundedImage() {
         return playerJumpWoundedImage;
     }
+
+    public static BufferedImage getPlayerFireBallImage_1() {
+        return playerFireBallImage_1;
+    }
+
+    public static BufferedImage getPlayerFireBallImage_2() {
+        return playerFireBallImage_2;
+    }
+
+    public static BufferedImage getPlayerFireBallImage_3() {
+        return playerFireBallImage_3;
+    }
+
+    public static BufferedImage getPlayerFireBallImage_4() {
+        return playerFireBallImage_4;
+    }
+
+    public static BufferedImage getPlayerFireBallImage_5() {
+        return playerFireBallImage_5;
+    }
+
 
     public static BufferedImage getFireBallImage() {
         return fireBallImage;
