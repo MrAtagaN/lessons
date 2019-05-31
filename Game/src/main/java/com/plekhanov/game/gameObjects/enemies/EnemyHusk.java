@@ -10,20 +10,24 @@ import java.awt.image.BufferedImage;
 
 public class EnemyHusk extends Enemy {
 
+    private static final BufferedImage bufferedImage = ImageLoader.getEnemyHuskImage();
+    private static final BufferedImage huskShootImage = ImageLoader.getEnemyHuskShootImage();
+    private static final int imageWidth = 180;
+    private static final int imageHeight = 160;
+    private static final int renderOrder = 12;
+
     private boolean alreadyShooted = false;
 
-    private BufferedImage HuskShootImage;
 
-    public EnemyHusk(double x, double y, double speedX, double speedY, BufferedImage bufferedImage, int imageWidth, int imageHeight, int renderOrder, Model model) {
+    public EnemyHusk(double x, double y, double speedX, double speedY, Model model) {
         super(x, y, speedX, speedY, bufferedImage, imageWidth, imageHeight, renderOrder, model);
-        HuskShootImage = ImageLoader.getEnemyHuskShootImage();
         actionCountMax = Game.UPDATES * 2;
         life = 3;
     }
 
 
     @Override
-    public void updateCoordinats() {
+    public void updateCoordinates() {
         //поведение
         if (actionCount < Game.UPDATES) {
             speedY = -0.05;
@@ -31,7 +35,7 @@ public class EnemyHusk extends Enemy {
             speedY = 0.05;
         }
 
-        super.updateCoordinats();
+        super.updateCoordinates();
         if (x <= -300) {
             x = ((int) (Math.random() * 500 + 2000));
             y = ((int) (Math.random() * 600 + 180));
@@ -103,7 +107,7 @@ public class EnemyHusk extends Enemy {
     public BufferedImage getBufferedImage() {
 
         if (actionCount > Game.UPDATES * 1 && actionCount < Game.UPDATES * 1.5 && huskInActionZone()) {
-            return HuskShootImage;
+            return huskShootImage;
         }
         return super.getBufferedImage();
     }

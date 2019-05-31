@@ -1,6 +1,7 @@
 package com.plekhanov.game.gameObjects.enemies;
 
 import com.plekhanov.game.Game;
+import com.plekhanov.game.ImageLoader;
 import com.plekhanov.game.Model;
 import com.plekhanov.game.gameObjects.PlayerShoot;
 
@@ -8,7 +9,13 @@ import java.awt.image.BufferedImage;
 
 public class EnemyPestilence extends Enemy {
 
-    public EnemyPestilence(double x, double y, double speedX, double speedY, BufferedImage bufferedImage, int imageWidth, int imageHeight, int renderOrder, Model model) {
+    private static final BufferedImage bufferedImage = ImageLoader.getEnemyPestilenceImage();
+    private static final int imageWidth = 120;
+    private static final int imageHeight = 140;
+    private static final int renderOrder = 14;
+
+
+    public EnemyPestilence(double x, double y, double speedX, double speedY, Model model) {
         super(x, y, speedX, speedY, bufferedImage, imageWidth, imageHeight, renderOrder, model);
         actionCountMax = Game.UPDATES * 2;
         life = 3;
@@ -16,8 +23,8 @@ public class EnemyPestilence extends Enemy {
 
 
     @Override
-    public void updateCoordinats() {
-        super.updateCoordinats();
+    public void updateCoordinates() {
+        super.updateCoordinates();
         if (x <= -300) {
             x = ((int) (Math.random() * 500 + 2000));
             y = ((int) (Math.random() * 700 + 90));

@@ -20,8 +20,8 @@ public class EnemyCarrion extends Enemy {
     }
 
     @Override
-    public void updateCoordinats() {
-        super.updateCoordinats();
+    public void updateCoordinates() {
+        super.updateCoordinates();
         if (x <= -300) {
             x = ((int) (Math.random() * 500 + 2000));
         }

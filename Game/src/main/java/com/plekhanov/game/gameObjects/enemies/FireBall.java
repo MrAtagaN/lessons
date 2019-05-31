@@ -11,8 +11,8 @@ public class FireBall extends Enemy {
 
 
     @Override
-    public void updateCoordinats() {
-        super.updateCoordinats();
+    public void updateCoordinates() {
+        super.updateCoordinates();
 
         //проверка столкновения
         if (Math.abs(model.getPlayer().getX() - getX()) < 50 && Math.abs(model.getPlayer().getY() - getY()) < 50) {

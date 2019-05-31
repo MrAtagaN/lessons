@@ -107,7 +107,7 @@ public class Model implements Runnable {
      */
     private void updateModel() {
         gameObjects.forEach(gameObject -> {
-            gameObject.updateCoordinats();
+            gameObject.updateCoordinates();
             //удаление лишних объектов
             if ( gameObject.getX() < -10000 || gameObject.getX() > 10000 || gameObject.getY() > 10000 || gameObject.getY() < -10000 ) {
                 gameObjects.remove(gameObject);

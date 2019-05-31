@@ -38,8 +38,8 @@ public class Level_2 {
 
         // Враги
         gameObjects.add(new EnemyCarrion(2000, 965, -0.5, 0, ImageLoader.getEnemyCarrionImage(), 180, 120, 13, model)); //enemyCarrion
-        gameObjects.add(new EnemyHusk(2200, 580, -0.3, 0, ImageLoader.getEnemyHuskImage(), 180, 160, 12, model)); //enemyHusk
-        gameObjects.add(new EnemyPestilence(2200, 370, -0.7, 0, ImageLoader.getEnemyPestilenceImage(), 120, 140, 14, model)); //enemyPestilence
+        gameObjects.add(new EnemyHusk(2200, 580, -0.3, 0, model)); //enemyHusk
+        gameObjects.add(new EnemyPestilence(2200, 370, -0.7, 0, model)); //enemyPestilence
 
 
         // Игрок

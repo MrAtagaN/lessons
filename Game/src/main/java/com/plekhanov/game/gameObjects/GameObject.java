@@ -71,7 +71,7 @@ public class GameObject implements Comparable {
         this.renderOrder = renderOrder;
     }
 
-    public void updateCoordinats() {
+    public void updateCoordinates() {
         this.x += this.speedX;
         this.y += this.speedY;
     }

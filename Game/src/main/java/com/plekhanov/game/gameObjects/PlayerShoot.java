@@ -15,8 +15,8 @@ public class PlayerShoot extends GameObject {
     }
 
     @Override
-    public void updateCoordinats() {
-        super.updateCoordinats();
+    public void updateCoordinates() {
+        super.updateCoordinates();
 
         liveCycle++;
 

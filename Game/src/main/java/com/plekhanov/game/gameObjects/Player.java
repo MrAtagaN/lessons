@@ -97,8 +97,8 @@ public class Player extends GameObject {
 
     }
 
-
-    public void updateCoordinats() {
+    @Override
+    public void updateCoordinates() {
         if (moveRight) {
             jumpRight();
         }
@@ -136,7 +136,6 @@ public class Player extends GameObject {
 
         checkBoundariesGameField();
         setPlayerImage();
-
     }
 
 
