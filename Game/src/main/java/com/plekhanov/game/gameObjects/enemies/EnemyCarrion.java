@@ -3,18 +3,20 @@ package com.plekhanov.game.gameObjects.enemies;
 import com.plekhanov.game.Game;
 import com.plekhanov.game.ImageLoader;
 import com.plekhanov.game.Model;
+import com.plekhanov.game.gameObjects.PlayerShoot;
 
 import java.awt.image.BufferedImage;
 
 public class EnemyCarrion extends Enemy {
 
-   private BufferedImage hungryImage;
+    private BufferedImage hungryImage;
 
 
     public EnemyCarrion(double x, double y, double speedX, double speedY, BufferedImage bufferedImage, int imageWidth, int imageHeight, int renderOrder, Model model) {
         super(x, y, speedX, speedY, bufferedImage, imageWidth, imageHeight, renderOrder, model);
         actionCountMax = Game.UPDATES * 1;
         hungryImage = ImageLoader.getHungryCarrion();
+        life = 3;
     }
 
     @Override
@@ -28,6 +30,8 @@ public class EnemyCarrion extends Enemy {
             model.getPlayer().minusLife();
         }
 
+        checkPlayerShoot();
+
         //поведение
         if (actionCount < Game.UPDATES * 0.6) {
             speedX = -1.5;
@@ -40,9 +44,26 @@ public class EnemyCarrion extends Enemy {
     @Override
     public BufferedImage getBufferedImage() {
 
-        if ( actionCount < Game.UPDATES / 2) {
+        if (actionCount < Game.UPDATES / 2) {
             return hungryImage;
         }
         return super.getBufferedImage();
+    }
+
+    /**
+     * проверка столкновения c выстрелом игрока
+     */
+    private void checkPlayerShoot() {
+        model.getGameObjects().forEach(gameObject -> {
+            if (gameObject instanceof PlayerShoot) {
+                if (Math.abs(gameObject.getX() - getX()) < 60 && Math.abs(gameObject.getY() - getY()) < 60) {
+                    life--;
+                    model.getGameObjects().remove(gameObject);
+                    if (life <= 0) {
+                        model.getGameObjects().remove(this);
+                    }
+                }
+            }
+        });
     }
 }

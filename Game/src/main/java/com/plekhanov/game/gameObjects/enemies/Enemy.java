@@ -10,6 +10,7 @@ public class Enemy extends GameObject {
     protected double actionCountMax; //цикл действий
     protected double actionCount;    //счетчик цикла действий
     protected Model model;
+    protected int life;
 
 
     public Enemy(double x, double y, double speedX, double speedY, BufferedImage bufferedImage, int imageWidth, int imageHeight, int renderOrder, Model model) {

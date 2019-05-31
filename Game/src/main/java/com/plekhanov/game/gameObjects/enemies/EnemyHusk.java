@@ -3,6 +3,7 @@ package com.plekhanov.game.gameObjects.enemies;
 import com.plekhanov.game.Game;
 import com.plekhanov.game.ImageLoader;
 import com.plekhanov.game.Model;
+import com.plekhanov.game.gameObjects.PlayerShoot;
 
 
 import java.awt.image.BufferedImage;
@@ -17,6 +18,7 @@ public class EnemyHusk extends Enemy {
         super(x, y, speedX, speedY, bufferedImage, imageWidth, imageHeight, renderOrder, model);
         HuskShootImage = ImageLoader.getEnemyHuskShootImage();
         actionCountMax = Game.UPDATES * 2;
+        life = 3;
     }
 
 
@@ -42,6 +44,8 @@ public class EnemyHusk extends Enemy {
             });
         }
 
+        checkPlayerShoot();
+
         //проверка столкновения
         if (Math.abs(model.getPlayer().getX() - getX()) < 80 && Math.abs(model.getPlayer().getY() - getY()) < 80) {
             model.getPlayer().minusLife();
@@ -55,6 +59,23 @@ public class EnemyHusk extends Enemy {
             incrementCount();
         }
 
+    }
+
+    /**
+     * проверка столкновения c выстрелом игрока
+     */
+    private void checkPlayerShoot() {
+        model.getGameObjects().forEach(gameObject -> {
+            if (gameObject instanceof PlayerShoot) {
+                if (Math.abs(gameObject.getX() - getX()) < 60 && Math.abs(gameObject.getY() - getY()) < 60) {
+                    life--;
+                    model.getGameObjects().remove(gameObject);
+                    if (life <= 0) {
+                        model.getGameObjects().remove(this);
+                    }
+                }
+            }
+        });
     }
 
 

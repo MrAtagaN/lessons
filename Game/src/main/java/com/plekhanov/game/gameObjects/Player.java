@@ -21,8 +21,6 @@ public class Player extends GameObject {
     private BufferedImage playerJumpWoundedImage;
     private final int imageShiftRight = 10; //смещение картинки игрока вправо
     private double shootTimer;    // счетчик интервала стрельбы
-    private static final double SHOOT_INTERVAL = 0.7;
-
 
     private boolean moveRight = false;
     private boolean moveLeft = false;
@@ -44,16 +42,13 @@ public class Player extends GameObject {
     private static final double JUMP_UP = -1.6;
     private static final double JUMP_RIGHT = 1.4;
     private static final double JUMP_LEFT = -1.4;
+    private static final double SHOOT_INTERVAL = 0.7;
 
     private Model model;
 
     public Player(double x, double y, double speedX, double speedY, BufferedImage bufferedImage, int imageWidth, int imageHeight, int renderOrder, int min_y, Model model) {
         super(x, y, speedX, speedY, bufferedImage, imageWidth, imageHeight, renderOrder);
 
-//        this.MAX_X = 1920 - imageWidth / 2 - imageShiftRight;
-//        this.MAX_Y = imageHeight / 2;
-//        this.MIN_X = imageWidth / 2 - imageShiftRight;
-//        this.MIN_Y = 900;
         this.MIN_Y = min_y;
         this.model = model;
 
@@ -228,11 +223,11 @@ public class Player extends GameObject {
     public void shoot() {
         if (shootTimer <= 0) {
             shootTimer = Game.UPDATES * SHOOT_INTERVAL;
-            model.getGameObjects().add(new GameObject(getX(), getY(), 2, 0, ImageLoader.getFireBallImage(), 60, 60, 11));
+            model.getGameObjects().add(new PlayerShoot(getX(), getY(), 2, 0, ImageLoader.getFireBallImage(), 60, 60, 11));
         }
     }
 
-    //=============================//
+    //============ Getters, Setters =================//
 
 
     public boolean isShoot() {

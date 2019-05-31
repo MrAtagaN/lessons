@@ -4,6 +4,7 @@ package com.plekhanov.game.gameObjects;
 import java.awt.image.BufferedImage;
 import java.util.Objects;
 
+
 public class GameObject implements Comparable {
 
     protected double x;
