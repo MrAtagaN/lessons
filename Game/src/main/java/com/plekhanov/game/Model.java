@@ -106,7 +106,13 @@ public class Model implements Runnable {
      * Изменение игровой модели
      */
     private void updateModel() {
-        gameObjects.forEach(GameObject::updateCoordinats);
+        gameObjects.forEach(gameObject -> {
+            gameObject.updateCoordinats();
+            //удаление лишних объектов
+            if ( gameObject.getX() < -10000 || gameObject.getX() > 10000 || gameObject.getY() > 10000 || gameObject.getY() < -10000 ) {
+                gameObjects.remove(gameObject);
+            }
+        });
 
         if (needToSortGameObjects) {
             Collections.sort(gameObjects);

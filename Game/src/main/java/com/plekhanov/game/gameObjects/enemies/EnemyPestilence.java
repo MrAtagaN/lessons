@@ -46,7 +46,7 @@ public class EnemyPestilence extends Enemy {
     private void checkPlayerShoot() {
         model.getGameObjects().forEach(gameObject -> {
             if (gameObject instanceof PlayerShoot) {
-                if (Math.abs(gameObject.getX() - getX()) < 80 && Math.abs(gameObject.getY() - getY()) < 80) {
+                if (Math.abs(gameObject.getX() - getX()) < 40 && Math.abs(gameObject.getY() - getY()) < 80) {
                     life--;
                     model.getGameObjects().remove(gameObject);
                     if (life <= 0) {
