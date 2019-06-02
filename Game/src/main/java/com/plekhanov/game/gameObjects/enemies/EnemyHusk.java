@@ -65,23 +65,6 @@ public class EnemyHusk extends Enemy {
 
     }
 
-    /**
-     * проверка столкновения c выстрелом игрока
-     */
-    private void checkPlayerShoot() {
-        model.getGameObjects().forEach(gameObject -> {
-            if (gameObject instanceof PlayerShoot) {
-                if (Math.abs(gameObject.getX() - getX()) < 40 && Math.abs(gameObject.getY() - getY()) < 80) {
-                    life--;
-                    model.getGameObjects().remove(gameObject);
-                    if (life <= 0) {
-                        model.getGameObjects().remove(this);
-                    }
-                }
-            }
-        });
-    }
-
 
     private void shoot() {
         if (huskInActionZone() && actionCount > Game.UPDATES * 1 && !alreadyShooted) {

@@ -2,6 +2,7 @@ package com.plekhanov.game.gameObjects.enemies;
 
 import com.plekhanov.game.Model;
 import com.plekhanov.game.gameObjects.GameObject;
+import com.plekhanov.game.gameObjects.PlayerShoot;
 
 import java.awt.image.BufferedImage;
 
@@ -23,5 +24,22 @@ public class Enemy extends GameObject {
         if (actionCount > actionCountMax) {
             actionCount = 0;
         }
+    }
+
+    /**
+     * проверка столкновения c выстрелом игрока
+     */
+    protected void checkPlayerShoot() {
+        model.getGameObjects().forEach(gameObject -> {
+            if (gameObject instanceof PlayerShoot) {
+                if (Math.abs(gameObject.getX() - getX()) < 40 && Math.abs(gameObject.getY() - getY()) < 80) {
+                    life--;
+                    model.getGameObjects().remove(gameObject);
+                    if (life <= 0) {
+                        model.getGameObjects().remove(this);
+                    }
+                }
+            }
+        });
     }
 }

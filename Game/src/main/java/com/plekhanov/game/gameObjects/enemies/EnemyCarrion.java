@@ -9,13 +9,16 @@ import java.awt.image.BufferedImage;
 
 public class EnemyCarrion extends Enemy {
 
-    private BufferedImage hungryImage;
+    private static BufferedImage bufferedImage = ImageLoader.getEnemyCarrionImage();
+    private static BufferedImage hungryImage = ImageLoader.getHungryCarrion();
+    private static final int imageWidth = 180;
+    private static final int imageHeight = 120;
+    private static final int renderOrder = 13;
 
 
-    public EnemyCarrion(double x, double y, double speedX, double speedY, BufferedImage bufferedImage, int imageWidth, int imageHeight, int renderOrder, Model model) {
+    public EnemyCarrion(double x, double y, double speedX, double speedY, Model model) {
         super(x, y, speedX, speedY, bufferedImage, imageWidth, imageHeight, renderOrder, model);
         actionCountMax = Game.UPDATES * 1;
-        hungryImage = ImageLoader.getHungryCarrion();
         life = 3;
     }
 
@@ -50,20 +53,4 @@ public class EnemyCarrion extends Enemy {
         return super.getBufferedImage();
     }
 
-    /**
-     * проверка столкновения c выстрелом игрока
-     */
-    private void checkPlayerShoot() {
-        model.getGameObjects().forEach(gameObject -> {
-            if (gameObject instanceof PlayerShoot) {
-                if (Math.abs(gameObject.getX() - getX()) < 40 && Math.abs(gameObject.getY() - getY()) < 80) {
-                    life--;
-                    model.getGameObjects().remove(gameObject);
-                    if (life <= 0) {
-                        model.getGameObjects().remove(this);
-                    }
-                }
-            }
-        });
-    }
 }
