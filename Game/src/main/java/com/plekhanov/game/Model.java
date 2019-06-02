@@ -26,9 +26,7 @@ public class Model implements Runnable {
     private volatile List<GameObject> gameObjects;
     private volatile Player player;
 
-    /**
-     * Конструктор, создание игровых объектов, задание начальных координат, скорости, высоты и ширины картинки
-     */
+
     public Model(double updates, int width, int height) {
         this.UPDATES = updates;
         this.width = width;

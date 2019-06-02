@@ -11,7 +11,7 @@ public class Player extends GameObject {
     private int life = 3;
     private int timeInvulnerability = 2 * (int) Game.UPDATES; // время неуязвимости после столкновения
     private int invulnerabilityCount;                        // обратный счетчик после столкновения
-    private BufferedImage playerImage;
+    private static BufferedImage playerImage = ImageLoader.getPlayerImage();
     private BufferedImage playerWoundedImage;
     private BufferedImage playerMoveRightImage;
     private BufferedImage playerMoveRightWoundedImage;
@@ -19,6 +19,9 @@ public class Player extends GameObject {
     private BufferedImage playerMoveLeftWoundedImage;
     private BufferedImage playerJumpImage;
     private BufferedImage playerJumpWoundedImage;
+    private static final int imageWidth = 180;
+    private static final int imageHeight = 156;
+    private static final int renderOrder = 100;
     private final int imageShiftRight = 10; //смещение картинки игрока вправо
     private double shootTimer;    // счетчик интервала стрельбы
 
@@ -46,8 +49,8 @@ public class Player extends GameObject {
 
     private Model model;
 
-    public Player(double x, double y, double speedX, double speedY, BufferedImage bufferedImage, int imageWidth, int imageHeight, int renderOrder, int min_y, Model model) {
-        super(x, y, speedX, speedY, bufferedImage, imageWidth, imageHeight, renderOrder);
+    public Player(double x, double y, double speedX, double speedY, int min_y, Model model) {
+        super(x, y, speedX, speedY, playerImage, imageWidth, imageHeight, renderOrder);
 
         this.MIN_Y = min_y;
         this.model = model;
@@ -58,7 +61,7 @@ public class Player extends GameObject {
         model.getGameObjects().add(heart2);
         heart3 = new GameObject(190, 50, 0, 0, ImageLoader.getHeartImage(), 55, 66, 90);
         model.getGameObjects().add(heart3);
-        playerImage = bufferedImage;
+
         playerWoundedImage = ImageLoader.getPlayerWoundedImage();
         playerMoveRightImage = ImageLoader.getPlayerMoveRightImage();
         playerMoveRightWoundedImage = ImageLoader.getPlayerMoveRightWoundedImage();
@@ -200,7 +203,7 @@ public class Player extends GameObject {
     }
 
     private boolean playerWounded() {
-        return invulnerabilityCount > 0 && Math.ceil(invulnerabilityCount / 50) % 2 == 0;
+        return invulnerabilityCount > 0 && invulnerabilityCount / 50 % 2 == 0;
     }
 
     private boolean playerJump() {

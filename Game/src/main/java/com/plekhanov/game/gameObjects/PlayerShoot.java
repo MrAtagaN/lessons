@@ -1,6 +1,5 @@
 package com.plekhanov.game.gameObjects;
 
-import com.plekhanov.game.Game;
 import com.plekhanov.game.ImageLoader;
 
 import java.awt.image.BufferedImage;
@@ -19,24 +18,16 @@ public class PlayerShoot extends GameObject {
         super.updateCoordinates();
 
         liveCycle++;
-
         setImage();
-
     }
 
     private void setImage() {
-
-        if  (blink()) {
+        if ((liveCycle / 50 % 2) == 0) {
             bufferedImage = ImageLoader.getPlayerFireBallImage_1();
-        }
-
-        if (!blink()) {
+        } else {
             bufferedImage = ImageLoader.getPlayerFireBallImage_2();
         }
     }
 
 
-    private boolean blink() {
-        return (liveCycle / 50) % 2 == 0;
-    }
 }

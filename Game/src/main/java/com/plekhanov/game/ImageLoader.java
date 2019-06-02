@@ -61,8 +61,10 @@ public class ImageLoader {
 
 
     static {
-        //Картинки для уровня 1
+
         try {
+            //Картинки для уровня 1
+
             // Статический фон
             File backgroundImageFile1 = new File(PATH_TO_RESOURCE + "background" + FS + "level_1" + FS + "Layer_0010_1.png");
             backgroundImage1 = ImageIO.read(backgroundImageFile1);
@@ -130,12 +132,24 @@ public class ImageLoader {
             File heartImageFile = new File(PATH_TO_RESOURCE + "heart.png");
             heartImage = ImageIO.read(heartImageFile);
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
-        //Картинки для уровня 3
-        try {
+            //Картинки для уровня 2
+
+            //Фон
+            File backgroundLevel2ImageFile1 = new File(PATH_TO_RESOURCE + "background" + FS + "level_2" + FS + "1.png");
+            backgroundLevel2Image1 = ImageIO.read(backgroundLevel2ImageFile1);
+            File backgroundLevel2ImageFile2 = new File(PATH_TO_RESOURCE + "background" + FS + "level_2" + FS + "2.png");
+            backgroundLevel2Image2 = ImageIO.read(backgroundLevel2ImageFile2);
+            File backgroundLevel2ImageFile3 = new File(PATH_TO_RESOURCE + "background" + FS + "level_2" + FS + "3.png");
+            backgroundLevel2Image3 = ImageIO.read(backgroundLevel2ImageFile3);
+            File backgroundLevel2ImageFile4 = new File(PATH_TO_RESOURCE + "background" + FS + "level_2" + FS + "4.png");
+            backgroundLevel2Image4 = ImageIO.read(backgroundLevel2ImageFile4);
+            File backgroundLevel2ImageFile5 = new File(PATH_TO_RESOURCE + "background" + FS + "level_2" + FS + "5.png");
+            backgroundLevel2Image5 = ImageIO.read(backgroundLevel2ImageFile5);
+
+
+            //Картинки для уровня 3
+
             //Фон
             File backgroundLevel3ImageFile1 = new File(PATH_TO_RESOURCE + "background" + FS + "level_3" + FS + "sky.png");
             backgroundLevel3Image1 = ImageIO.read(backgroundLevel3ImageFile1);
@@ -155,25 +169,6 @@ public class ImageLoader {
             backgroundLevel3Image8 = ImageIO.read(backgroundLevel3ImageFile8);
             File backgroundLevel3ImageFile9 = new File(PATH_TO_RESOURCE + "background" + FS + "level_3" + FS + "layer_01_1920 x 1080.png");
             backgroundLevel3Image9 = ImageIO.read(backgroundLevel3ImageFile9);
-
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        //Картинки для уровня 2
-        try {
-            //Фон
-            File backgroundLevel2ImageFile1 = new File(PATH_TO_RESOURCE + "background" + FS + "level_2" + FS + "1.png");
-            backgroundLevel2Image1 = ImageIO.read(backgroundLevel2ImageFile1);
-            File backgroundLevel2ImageFile2 = new File(PATH_TO_RESOURCE + "background" + FS + "level_2" + FS + "2.png");
-            backgroundLevel2Image2 = ImageIO.read(backgroundLevel2ImageFile2);
-            File backgroundLevel2ImageFile3 = new File(PATH_TO_RESOURCE + "background" + FS + "level_2" + FS + "3.png");
-            backgroundLevel2Image3 = ImageIO.read(backgroundLevel2ImageFile3);
-            File backgroundLevel2ImageFile4 = new File(PATH_TO_RESOURCE + "background" + FS + "level_2" + FS + "4.png");
-            backgroundLevel2Image4 = ImageIO.read(backgroundLevel2ImageFile4);
-            File backgroundLevel2ImageFile5 = new File(PATH_TO_RESOURCE + "background" + FS + "level_2" + FS + "5.png");
-            backgroundLevel2Image5 = ImageIO.read(backgroundLevel2ImageFile5);
 
         } catch (IOException e) {
             e.printStackTrace();
