@@ -23,6 +23,7 @@
         <module>MQ</module>
         <module>JUnit</module>
         <module>Game</module>
+        <module>WebService</module>
     </modules>
 
 </project>
