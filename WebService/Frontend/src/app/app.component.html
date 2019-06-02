@@ -9,18 +9,19 @@
 
 <div class="leftMenu">
   <h3 class="widget-title">Категории</h3>
-  <div >
-    <div>
-      <button (click)="changeTitle1()"> Кнопка 1 </button>
-    </div>
-    <div>
-      <button (click)="changeTitle2()"> Кнопка 2 </button>
-    </div>
+  <ol>
+    <ul >
+      <li>
+        <button (click)="changeTitle1()"> Кнопка 1 </button>
+      </li>
+      <li>
+        <button (click)="changeTitle2()"> Кнопка 2 </button>
+      </li>
 
-  </div>
+    </ul>
+  </ol>
+
 </div>
-<div > sdadf</div>
-<p>dasdasdasd</p>
 
 
 <app-page1 *ngIf="page == 1"></app-page1>
