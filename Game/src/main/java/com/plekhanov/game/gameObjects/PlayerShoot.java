@@ -21,24 +21,17 @@ public class PlayerShoot extends GameObject {
         liveCycle++;
 
         setImage();
+
     }
 
     private void setImage() {
 
-//        if (liveCycle > Game.UPDATES * 0.05 && liveCycle <= Game.UPDATES * 0.15 ) {
-//            bufferedImage = ImageLoader.getPlayerFireBallImage_2();
-//        }
-//
-//        if (liveCycle > Game.UPDATES * 0.15 && liveCycle <= Game.UPDATES * 0.3 ) {
-//            bufferedImage = ImageLoader.getPlayerFireBallImage_3();
-//        }
-
-        if (liveCycle > Game.UPDATES * 0 && blink() ) {
-            bufferedImage = ImageLoader.getPlayerFireBallImage_4();
+        if  (blink()) {
+            bufferedImage = ImageLoader.getPlayerFireBallImage_1();
         }
 
-        if (liveCycle > Game.UPDATES * 0 && !blink() ) {
-            bufferedImage = ImageLoader.getPlayerFireBallImage_5();
+        if (!blink()) {
+            bufferedImage = ImageLoader.getPlayerFireBallImage_2();
         }
     }
 
