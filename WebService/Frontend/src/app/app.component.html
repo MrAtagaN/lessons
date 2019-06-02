@@ -10,21 +10,20 @@
 <div class="leftMenu">
   <h3 class="widget-title">Категории</h3>
   <ol>
-    <ul >
+    <ul>
       <li>
-        <button (click)="changeTitle1()"> Кнопка 1 </button>
+        <a routerLink="page1"> Страница 1 </a>
       </li>
       <li>
-        <button (click)="changeTitle2()"> Кнопка 2 </button>
+        <a routerLink="page2"> Страница 2 </a>
       </li>
-
     </ul>
   </ol>
 
 </div>
 
+<div class = "container">
+  <router-outlet></router-outlet>
+</div>
 
-<app-page1 *ngIf="page == 1"></app-page1>
-<app-page2 *ngIf="page == 2"></app-page2>
 
-<router-outlet></router-outlet>

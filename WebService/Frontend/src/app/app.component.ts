@@ -7,13 +7,5 @@ import{Component}from'@angular/core';
 })
 export class AppComponent {
   title = 'ui';
-  page = 1;
 
-    changeTitle1() {
-      this.page = 1;
-    }
-
-    changeTitle2() {
-      this.page = 2;
-    }
 }

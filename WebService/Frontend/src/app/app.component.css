@@ -2,8 +2,8 @@
   float: left; /*Задаем обтекание*/
   line-height: 10px;/*Высота строки +  верт. центрирования текста*/
   /*font-size: 40px;*/
-  background: dodgerblue;
-  color: white;
+  background: #2B2B2B;
+  color: antiquewhite;
   margin: 10px;
   width: 100px; /*Фиксируем ширину блока*/
   /*margin-right: 10px;*/
@@ -12,9 +12,23 @@
 
 li {
   list-style-type: none; /* Убираем маркеры */
+  margin: 10px;
 }
 
 ol li {
   margin-left: -80px;
+
+}
+
+a {
+  text-decoration: none;
+  color: antiquewhite;
+}
+
+.container {
+  margin-left: 110px;
+  padding: 10px;
+  background: #3B3B3B;
+  color: antiquewhite;
 }
 
