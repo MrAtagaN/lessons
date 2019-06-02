@@ -8,12 +8,15 @@
 <h2>Here are some links to help you start: </h2>
 <ul>
   <li>
-    <app-page1></app-page1>
+    <button (click)="changeTitle1()"> Кнопка 1 </button>
   </li>
   <li>
-    <app-page2></app-page2>
+    <button (click)="changeTitle2()"> Кнопка 2 </button>
   </li>
 
 </ul>
+
+<app-page1 *ngIf="page == 1"></app-page1>
+<app-page2 *ngIf="page == 2"></app-page2>
 
 <router-outlet></router-outlet>
