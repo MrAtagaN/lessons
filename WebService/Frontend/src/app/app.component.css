@@ -1,0 +1,11 @@
+.leftMenu {
+  float: left; /*Задаем обтекание*/
+  line-height: 120px;/*Высота строки +  верт. центрирования текста*/
+  /*font-size: 40px;*/
+  background: dodgerblue;
+  color: white;
+  margin: 10px;
+  width: 100px; /*Фиксируем ширину блока*/
+  /*margin-right: 10px;*/
+  text-align: center; /*Центрируем текст по горизонтали*/
+}
