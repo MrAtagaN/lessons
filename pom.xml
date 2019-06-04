@@ -24,6 +24,7 @@
         <module>JUnit</module>
         <module>Game</module>
         <module>WebService</module>
+        <module>SpringData</module>
     </modules>
 
 </project>
