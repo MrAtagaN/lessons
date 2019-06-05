@@ -1,7 +1,9 @@
 package SpringData.Entities;
 
+
 public class Address {
 
+    long id;
     private String country;
     private String city;
     private String street;
@@ -15,6 +17,14 @@ public class Address {
         this.city = city;
         this.street = street;
         this.home = home;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getCountry() {

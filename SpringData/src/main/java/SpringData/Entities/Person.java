@@ -2,8 +2,10 @@ package SpringData.Entities;
 
 import java.util.Date;
 
+
 public class Person {
 
+    long id;
     private String name;
     private int age;
     private int phone;
@@ -19,6 +21,14 @@ public class Person {
         this.phone = phone;
         this.address = address;
         this.birthday = birthday;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {

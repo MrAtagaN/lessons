@@ -19,7 +19,7 @@ public class PersonRepository {
     JdbcTemplate jdbcTemplate;
 
     public List<Person> getAllUsers() {
-        return jdbcTemplate.query("select * from PERSON", rowMapper);
+        return jdbcTemplate.query("select * from PERSON join ADDRESS on PERSON.address_id = ADDRESS.id", rowMapper);
     }
 }
 

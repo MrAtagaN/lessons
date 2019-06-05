@@ -80,7 +80,7 @@ public class SQLite {
                                                 " age integer not null," +
                                                 " work_id integer," +
                                                 " address_id integer," +
-                                                " FOREIGN KEY (work_id) REFERENCES address (id)," +
+                                                " FOREIGN KEY (work_id) REFERENCES work (id)," +
                                                 " FOREIGN KEY (address_id) REFERENCES address (id))";
             statement.execute(query3);
             System.out.println("CREATE TABLE: " + query3);
