@@ -1,15 +1,15 @@
 .leftMenu {
   float: left; /*Задаем обтекание*/
-  line-height: 50px;/*Высота строки +  верт. центрирования текста*/
+  line-height: 50px; /*Высота строки +  верт. центрирования текста*/
   /*font-size: 40px;*/
   margin-left: -8px;
-  padding-top: 150px;
+  padding-top: 40px;
 
   width: 110px;
   height: 1000px;
 
-  text-align: center; /*Центрируем текст по горизонтали*/
-  background: #203646;
+  text-align: center;
+  background: #1b2b37;
 }
 
 li {
@@ -18,28 +18,32 @@ li {
 }
 
 ol li {
+  padding-top: 40px;
   margin-left: -80px;
 
 }
 
-a {
-  text-decoration: none;
-}
-
 .container {
-  margin-left: 110px;
-  padding: 10px;
-  /*background: #3B3B3B;*/
-  color: antiquewhite;
+  margin-left: 102px;
+  padding: 20px;
 }
 
 .header {
-  background-image: linear-gradient(to right,#263339,#074f6f 46%,#074f6f 56%,#263339);
- padding-top: 20px;
- padding-bottom: 20px;
+  background-image: linear-gradient(to right, #243039, #074f6f 46%, #074f6f 56%, #243039);
+  padding-top: 20px;
+  padding-bottom: 20px;
   margin-top: -8px;
   margin-right: -8px;
   margin-left: 92px;
 }
 
-h1 {}
+A {
+  text-decoration: none;
+  color: #bcbec1; /* Цвет ссылок */
+}
+A:visited {
+  color: #bcbec1; /* Цвет посещенных ссылок */
+}
+A:active {
+  color: #bcbec1; /* Цвет активных ссылок */
+}
