@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {PageContextService} from "../../services/page-context.service";
 
 @Component({
   selector: 'app-page1',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Page1Component implements OnInit {
 
-  constructor() { }
+  constructor( context : PageContextService) {
+    context.pageName = "page1";
+  }
 
   ngOnInit() {
   }

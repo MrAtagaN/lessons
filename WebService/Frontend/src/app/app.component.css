@@ -47,3 +47,11 @@ A:visited {
 A:active {
   color: #bcbec1; /* Цвет активных ссылок */
 }
+
+.lineBlock {
+  display:inline-block
+}
+
+h1 {
+  text-align:center
+}
