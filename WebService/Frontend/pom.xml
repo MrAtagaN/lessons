@@ -20,13 +20,33 @@
         <artifactId>exec-maven-plugin</artifactId>
         <version>1.6.0</version>
         <executions>
+<!--          <execution>-->
+<!--            <id>angularbuild</id>-->
+<!--            <configuration>-->
+<!--              <executable>-->
+<!--                ${basedir}/node_modules/.bin/webpack.cmd-->
+<!--              </executable>-->
+<!--            </configuration>-->
+<!--            <phase>generate-resources</phase>-->
+<!--            <goals>-->
+<!--              <goal>exec</goal>-->
+<!--            </goals>-->
+<!--          </execution>-->
+
           <execution>
-            <id>angularbuild</id>
+            <id>exec-npm-ng-build</id>
+            <phase>generate-sources</phase>
             <configuration>
-              <executable>
-                ${basedir}/node_modules/.bin/webpack.cmd
-              </executable>
+              <workingDirectory>${basedir}</workingDirectory>
+              <executable>ng</executable>
+              <arguments>
+                <argument>build</argument>
+<!--                <argument>&#45;&#45;base-href=/web</argument>-->
+              </arguments>
             </configuration>
+            <goals>
+              <goal>exec</goal>
+            </goals>
           </execution>
         </executions>
       </plugin>
@@ -42,10 +62,10 @@
               <goal>copy-resources</goal>
             </goals>
             <configuration>
-              <outputDirectory>${basedir}../Backend/src/main/resources/static</outputDirectory>
+              <outputDirectory>../Backend/src/main/resources/static</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${basedir}/dest/ui</directory>
+                  <directory>${basedir}/dist/ui</directory>
                   <filtering>true</filtering>
                 </resource>
               </resources>
