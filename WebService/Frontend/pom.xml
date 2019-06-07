@@ -66,7 +66,9 @@
               <resources>
                 <resource>
                   <directory>${basedir}/dist/ui</directory>
-                  <filtering>true</filtering>
+                  <excludes>
+                    <exclude>*.map</exclude>
+                  </excludes>
                 </resource>
               </resources>
             </configuration>
