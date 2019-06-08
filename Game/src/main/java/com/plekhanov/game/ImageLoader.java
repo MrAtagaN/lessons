@@ -41,6 +41,13 @@ public class ImageLoader {
     private static BufferedImage enemyHuskShootImage;
     private static BufferedImage enemyPestilenceImage;
     private static BufferedImage fireBallImage;
+    private static BufferedImage enemyMummyZombieLeftImage;
+    private static BufferedImage enemyMummyZombieRightImage;
+
+    private static BufferedImage enemyMummyZombieRageLeftImage_1;
+    private static BufferedImage enemyMummyZombieRageLeftImage_2;
+    private static BufferedImage enemyMummyZombieRageRightImage_1;
+    private static BufferedImage enemyMummyZombieRageRightImage_2;
 
     private static BufferedImage playerImage;
     private static BufferedImage playerWoundedImage;
@@ -104,6 +111,20 @@ public class ImageLoader {
             hungryCarrion = ImageIO.read(carrion2ImageFile);
             File enemyPestilenceImageFile = new File(PATH_TO_RESOURCE + "enemies" + FS + "EnemyPestilence.png");
             enemyPestilenceImage = ImageIO.read(enemyPestilenceImageFile);
+            File enemyMummyZombieLeftFile = new File(PATH_TO_RESOURCE + "enemies" + FS + "mummy_zombie" + FS +"MummyZombieLeft.png");
+            enemyMummyZombieLeftImage = ImageIO.read(enemyMummyZombieLeftFile);
+            File enemyMummyZombieRightFile = new File(PATH_TO_RESOURCE + "enemies" + FS + "mummy_zombie" + FS +"MummyZombieRight.png");
+            enemyMummyZombieRightImage = ImageIO.read(enemyMummyZombieRightFile);
+
+            File enemyMummyZombieRageLeftFile_1 = new File(PATH_TO_RESOURCE + "enemies" + FS + "mummy_zombie" + FS +"MummyZombieRageLeft_1.png");
+            enemyMummyZombieRageLeftImage_1 = ImageIO.read(enemyMummyZombieRageLeftFile_1);
+            File enemyMummyZombieRageLeftFile_2 = new File(PATH_TO_RESOURCE + "enemies" + FS + "mummy_zombie" + FS +"MummyZombieRageLeft_2.png");
+            enemyMummyZombieRageLeftImage_2 = ImageIO.read(enemyMummyZombieRageLeftFile_2);
+
+            File enemyMummyZombieRageRightFile_1 = new File(PATH_TO_RESOURCE + "enemies" + FS + "mummy_zombie" + FS +"MummyZombieRageRight_1.png");
+            enemyMummyZombieRageRightImage_1 = ImageIO.read(enemyMummyZombieRageRightFile_1);
+            File enemyMummyZombieRageRightFile_2 = new File(PATH_TO_RESOURCE + "enemies" + FS + "mummy_zombie" + FS +"MummyZombieRageRight_2.png");
+            enemyMummyZombieRageRightImage_2 = ImageIO.read(enemyMummyZombieRageRightFile_2);
 
             // Игрок
             File playerImageFile = new File(PATH_TO_RESOURCE + "player" + FS + "Player.png");
@@ -190,6 +211,30 @@ public class ImageLoader {
 
     public static BufferedImage getEnemyPestilenceImage() {
         return enemyPestilenceImage;
+    }
+
+    public static BufferedImage getEnemyMummyZombieLeftImage() {
+        return enemyMummyZombieLeftImage;
+    }
+
+    public static BufferedImage getEnemyMummyZombieRightImage() {
+        return enemyMummyZombieRightImage;
+    }
+
+    public static BufferedImage getEnemyMummyZombieRageLeftImage_1() {
+        return enemyMummyZombieRageLeftImage_1;
+    }
+
+    public static BufferedImage getEnemyMummyZombieRageLeftImage_2() {
+        return enemyMummyZombieRageLeftImage_2;
+    }
+
+    public static BufferedImage getEnemyMummyZombieRageRightImage_1() {
+        return enemyMummyZombieRageRightImage_1;
+    }
+
+    public static BufferedImage getEnemyMummyZombieRageRightImage_2() {
+        return enemyMummyZombieRageRightImage_2;
     }
 
     public static BufferedImage getPlayerImage() {

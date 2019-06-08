@@ -7,6 +7,7 @@ import com.plekhanov.game.gameObjects.Player;
 import com.plekhanov.game.gameObjects.background.BackGround;
 import com.plekhanov.game.gameObjects.enemies.EnemyCarrion;
 import com.plekhanov.game.gameObjects.enemies.EnemyHusk;
+import com.plekhanov.game.gameObjects.enemies.EnemyMummyZombie;
 import com.plekhanov.game.gameObjects.enemies.EnemyPestilence;
 
 import java.util.Collections;
@@ -40,6 +41,7 @@ public class Level_2 {
         gameObjects.add(new EnemyCarrion(2000, 965, -0.5, 0, model)); //enemyCarrion
         gameObjects.add(new EnemyHusk(2200, 580, -0.3, 0, model)); //enemyHusk
         gameObjects.add(new EnemyPestilence(2200, 370, -0.7, 0, model)); //enemyPestilence
+        gameObjects.add(new EnemyMummyZombie(2200, 500, -0.7, 0, model)); //enemyMummuZombie
 
 
         // Игрок
