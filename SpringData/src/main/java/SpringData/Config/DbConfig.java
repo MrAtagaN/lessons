@@ -1,5 +1,6 @@
 package SpringData.Config;
 
+import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,6 +26,20 @@ public class DbConfig {
         dataSource.setUrl(URL);
         dataSource.setUsername("");
         dataSource.setPassword("");
+        return dataSource;
+    }
+
+    /** Пул соединений */
+    @Bean("BasicDataSource")
+    public DataSource getBasicDataSource() {
+        BasicDataSource dataSource = new BasicDataSource();
+        dataSource.setDriverClassName("org.sqlite.JDBC");
+        dataSource.setUrl(URL);
+        dataSource.setUsername("");
+        dataSource.setPassword("");
+        dataSource.setInitialSize(10);
+        dataSource.setMaxTotal(20);
+
         return dataSource;
     }
 
