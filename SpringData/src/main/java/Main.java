@@ -23,7 +23,9 @@ public class Main {
         address.setId(2);
         Person person = new Person("Mike",  34, 223132, address, new Date());
 
-        personRepository.createUser(person);
+        //personRepository.createUser(person);
+
+        System.out.println("person with id 2 = " +  personRepository.getPerson(2));
 
     }
 }

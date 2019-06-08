@@ -21,6 +21,10 @@ public class PersonRepository {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
+    public Person getPerson(int id) {
+        return (Person) jdbcTemplate.queryForObject("select * from PERSON join ADDRESS on PERSON.address_id = ADDRESS.id where PERSON.id = ?", rowMapper, id);
+    }
+
     public List<Person> getAllUsers() {
         return jdbcTemplate.query("select * from PERSON join ADDRESS on PERSON.address_id = ADDRESS.id", rowMapper);
     }
