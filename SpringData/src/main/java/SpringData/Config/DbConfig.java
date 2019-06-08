@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
+import org.springframework.jndi.JndiObjectFactoryBean;
 
 import javax.sql.DataSource;
 import java.io.File;
@@ -42,6 +43,17 @@ public class DbConfig {
 
         return dataSource;
     }
+
+//    /** Получение через JNDI */
+//    @Bean("JNDI")
+//    public JndiObjectFactoryBean getDataSource() {
+//        JndiObjectFactoryBean jndiObjectFactoryBean = new JndiObjectFactoryBean();
+//        jndiObjectFactoryBean.setJndiName("name JNDI");
+//        jndiObjectFactoryBean.setResourceRef(true);
+//        jndiObjectFactoryBean.setProxyInterface(DataSource.class);
+//
+//        return jndiObjectFactoryBean;
+//    }
 
     @Bean
     public JdbcTemplate getJdbcTemplate(@Qualifier("SQLite")DataSource getDataSource) {
