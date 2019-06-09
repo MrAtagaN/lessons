@@ -38,7 +38,7 @@ public class Level_2 {
         gameObjects.add(new EnemyHusk(2200, 580, -0.3, 0, model)); //enemyHusk
        // gameObjects.add(new EnemyPestilence(2200, 370, -0.7, 0, model)); //enemyPestilence
         gameObjects.add(new EnemyMummyZombie(2200, 500, -0.7, 0, model)); //enemyMummyZombie
-        gameObjects.add(new EnemyOgre(2200, 900, -0.7, 0, model)); //enemyOgre
+        gameObjects.add(new EnemyOgre(2200, 900, -0.75, 0, model)); //enemyOgre
 
 
         // Игрок

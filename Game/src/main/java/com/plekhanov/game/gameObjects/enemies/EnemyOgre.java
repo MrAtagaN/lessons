@@ -39,11 +39,12 @@ public class EnemyOgre extends Enemy {
     private int maxWalkCount = 300;
     private static final double JUMP_UP = -1.6;
     private static final double GRAVITY = 3;
-    private double MIN_Y = 900;
+    private double MIN_Y;
 
 
     public EnemyOgre(double x, double y, double speedX, double speedY, Model model) {
         super(x, y, speedX, speedY, walk1, imageWidth, imageHeight, renderOrder, model);
+        MIN_Y = y;
         actionCountMax = 300;
         life = 3;
     }
@@ -58,7 +59,7 @@ public class EnemyOgre extends Enemy {
             model.getPlayer().minusLife();
         }
 
-        if ( x - model.getPlayer().getX() <= 400 && x - model.getPlayer().getX() >= 0 && y - model.getPlayer().getY() >= 100) {
+        if (x - model.getPlayer().getX() <= 400 && x - model.getPlayer().getX() >= 0 && y - model.getPlayer().getY() >= 100) {
             if (!jump) {
                 jumpUp();
             }
@@ -101,7 +102,7 @@ public class EnemyOgre extends Enemy {
         }
 
 
-        if ( 0 <= jumpCount && jumpCount < 50 && jump) {
+        if (0 <= jumpCount && jumpCount < 50 && jump) {
             this.bufferedImage = jump1;
         }
         if (50 <= jumpCount && jumpCount < 100 && jump) {
@@ -110,7 +111,7 @@ public class EnemyOgre extends Enemy {
         if (100 <= jumpCount && jumpCount < 150 && jump) {
             this.bufferedImage = jump3;
         }
-        if ( 150 <= jumpCount && jumpCount < 200 && jump) {
+        if (150 <= jumpCount && jumpCount < 200 && jump) {
             this.bufferedImage = jump4;
         }
 //        if (jumpCount % 250 == 0 && jump) {
