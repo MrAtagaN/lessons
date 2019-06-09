@@ -49,6 +49,14 @@ public class ImageLoader {
     private static BufferedImage enemyMummyZombieRageRightImage_1;
     private static BufferedImage enemyMummyZombieRageRightImage_2;
 
+    private static BufferedImage enemyOgreWalkImage_1;
+    private static BufferedImage enemyOgreWalkImage_2;
+    private static BufferedImage enemyOgreWalkImage_3;
+    private static BufferedImage enemyOgreWalkImage_4;
+    private static BufferedImage enemyOgreWalkImage_5;
+    private static BufferedImage enemyOgreWalkImage_6;
+    private static BufferedImage enemyOgreWalkImage_7;
+
     private static BufferedImage playerImage;
     private static BufferedImage playerWoundedImage;
     private static BufferedImage playerMoveRightImage;
@@ -126,6 +134,15 @@ public class ImageLoader {
             File enemyMummyZombieRageRightFile_2 = new File(PATH_TO_RESOURCE + "enemies" + FS + "mummy_zombie" + FS +"MummyZombieRageRight_2.png");
             enemyMummyZombieRageRightImage_2 = ImageIO.read(enemyMummyZombieRageRightFile_2);
 
+            enemyOgreWalkImage_1 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "ogre" + FS +"walk" + FS + "ogre_walk_1.png"));
+            enemyOgreWalkImage_2 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "ogre" + FS +"walk" + FS + "ogre_walk_2.png"));
+            enemyOgreWalkImage_3 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "ogre" + FS +"walk" + FS + "ogre_walk_3.png"));
+            enemyOgreWalkImage_4 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "ogre" + FS +"walk" + FS + "ogre_walk_4.png"));
+            enemyOgreWalkImage_5 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "ogre" + FS +"walk" + FS + "ogre_walk_5.png"));
+            enemyOgreWalkImage_6 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "ogre" + FS +"walk" + FS + "ogre_walk_6.png"));
+            enemyOgreWalkImage_7 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "ogre" + FS +"walk" + FS + "ogre_walk_7.png"));
+
+
             // Игрок
             File playerImageFile = new File(PATH_TO_RESOURCE + "player" + FS + "Player.png");
             playerImage = ImageIO.read(playerImageFile);
@@ -196,6 +213,33 @@ public class ImageLoader {
         }
     }
 
+    public static BufferedImage getEnemyOgreWalkImage_1() {
+        return enemyOgreWalkImage_1;
+    }
+
+    public static BufferedImage getEnemyOgreWalkImage_2() {
+        return enemyOgreWalkImage_2;
+    }
+
+    public static BufferedImage getEnemyOgreWalkImage_3() {
+        return enemyOgreWalkImage_3;
+    }
+
+    public static BufferedImage getEnemyOgreWalkImage_4() {
+        return enemyOgreWalkImage_4;
+    }
+
+    public static BufferedImage getEnemyOgreWalkImage_5() {
+        return enemyOgreWalkImage_5;
+    }
+
+    public static BufferedImage getEnemyOgreWalkImage_6() {
+        return enemyOgreWalkImage_6;
+    }
+
+    public static BufferedImage getEnemyOgreWalkImage_7() {
+        return enemyOgreWalkImage_7;
+    }
 
     public static BufferedImage getEnemyCarrionImage() {
         return enemyCarrionImage;
