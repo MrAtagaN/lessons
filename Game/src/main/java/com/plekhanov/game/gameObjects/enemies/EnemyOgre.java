@@ -47,25 +47,25 @@ public class EnemyOgre extends Enemy {
 
 
     private void changeImage() {
-         if ( 0 <= actionCount && actionCount < 50 && bufferedImage != walk1) {
+         if (  actionCount % 50 == 0  && bufferedImage != walk1) {
              this.bufferedImage = walk1;
          }
-         if (50 <= actionCount && actionCount < 100 && bufferedImage != walk2) {
+         if (actionCount % 100 == 0 && bufferedImage != walk2) {
              this.bufferedImage = walk2;
          }
-        if (100 <= actionCount && actionCount < 150 && bufferedImage != walk3) {
+        if (actionCount % 150 == 0 && bufferedImage != walk3) {
             this.bufferedImage = walk3;
         }
-        if (150 <= actionCount && actionCount < 200 && bufferedImage != walk4) {
+        if (actionCount % 200 == 0 && bufferedImage != walk4) {
             this.bufferedImage = walk4;
         }
 //        if (600 <= actionCount && actionCount < 750 && bufferedImage != walk5) { //картинка почти не отличается от четвертой
 //            this.bufferedImage = walk5;
 //        }
-        if (200 <= actionCount && actionCount < 250 && bufferedImage != walk6) {
+        if (actionCount % 250 == 0 && bufferedImage != walk6) {
             this.bufferedImage = walk6;
         }
-        if (250 <= actionCount && actionCount < 300 && bufferedImage != walk7) {
+        if (actionCount % 300 == 0 && bufferedImage != walk7) {
             this.bufferedImage = walk7;
         }
 
