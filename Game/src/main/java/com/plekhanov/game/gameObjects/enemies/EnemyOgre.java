@@ -10,8 +10,8 @@ import java.awt.image.BufferedImage;
 public class EnemyOgre extends Enemy {
 
 
-    private static final int imageWidth = 400;
-    private static final int imageHeight = 400;
+    private static final int imageWidth = 500;
+    private static final int imageHeight = 500;
     private static final int renderOrder = 13;
 
     private static final BufferedImage walk1 = ImageLoader.getEnemyOgreWalkImage_1();
@@ -21,6 +21,26 @@ public class EnemyOgre extends Enemy {
     private static final BufferedImage walk5 = ImageLoader.getEnemyOgreWalkImage_5();
     private static final BufferedImage walk6 = ImageLoader.getEnemyOgreWalkImage_6();
     private static final BufferedImage walk7 = ImageLoader.getEnemyOgreWalkImage_7();
+
+    private static final BufferedImage jump1 = ImageLoader.getEnemyOgreJumpImage_1();
+    private static final BufferedImage jump2 = ImageLoader.getEnemyOgreJumpImage_2();
+    private static final BufferedImage jump3 = ImageLoader.getEnemyOgreJumpImage_3();
+    private static final BufferedImage jump4 = ImageLoader.getEnemyOgreJumpImage_4();
+    private static final BufferedImage jump5 = ImageLoader.getEnemyOgreJumpImage_5();
+    private static final BufferedImage jump6 = ImageLoader.getEnemyOgreJumpImage_6();
+    private static final BufferedImage jump7 = ImageLoader.getEnemyOgreJumpImage_7();
+
+    private boolean walk = true;
+    private boolean jump = false;
+
+    private int walkCount;
+    private int jumpCount;
+    private int maxJumpCount = 500;
+    private int maxWalkCount = 300;
+    private static final double JUMP_UP = -1.6;
+    private static final double GRAVITY = 3;
+    private double MIN_Y = 900;
+
 
     public EnemyOgre(double x, double y, double speedX, double speedY, Model model) {
         super(x, y, speedX, speedY, walk1, imageWidth, imageHeight, renderOrder, model);
@@ -34,8 +54,22 @@ public class EnemyOgre extends Enemy {
         super.updateCoordinates();
 
         //проверка столкновения
-        if (Math.abs(model.getPlayer().getX() - getX()) < 80 && Math.abs(model.getPlayer().getY() - getY()) < 80) {
+        if (Math.abs(model.getPlayer().getX() - getX()) < 160 && Math.abs(model.getPlayer().getY() - getY()) < 160) {
             model.getPlayer().minusLife();
+        }
+
+        if ( x - model.getPlayer().getX() <= 400 && x - model.getPlayer().getX() >= 0 && y - model.getPlayer().getY() >= 100) {
+            if (!jump) {
+                jumpUp();
+            }
+        }
+
+        speedY += GRAVITY / 500;
+        if (y > MIN_Y) {
+            speedY = 0;
+            y = MIN_Y;
+            jump = false;
+            walk = true;
         }
 
         checkPlayerShoot();
@@ -47,34 +81,59 @@ public class EnemyOgre extends Enemy {
 
 
     private void changeImage() {
-         if (  actionCount % 50 == 0  && bufferedImage != walk1) {
-             this.bufferedImage = walk1;
-         }
-         if (actionCount % 100 == 0 && bufferedImage != walk2) {
-             this.bufferedImage = walk2;
-         }
-        if (actionCount % 150 == 0 && bufferedImage != walk3) {
+        if (walkCount % 50 == 0 && walk) {
+            this.bufferedImage = walk1;
+        }
+        if (walkCount % 100 == 0 && walk) {
+            this.bufferedImage = walk2;
+        }
+        if (walkCount % 150 == 0 && walk) {
             this.bufferedImage = walk3;
         }
-        if (actionCount % 200 == 0 && bufferedImage != walk4) {
+        if (walkCount % 200 == 0 && walk) {
             this.bufferedImage = walk4;
         }
-//        if (600 <= actionCount && actionCount < 750 && bufferedImage != walk5) { //картинка почти не отличается от четвертой
-//            this.bufferedImage = walk5;
-//        }
-        if (actionCount % 250 == 0 && bufferedImage != walk6) {
-            this.bufferedImage = walk6;
+        if (walkCount % 250 == 0 && walk) {
+            this.bufferedImage = walk6; //пятая картинка почти не отличается от четвертой
         }
-        if (actionCount % 300 == 0 && bufferedImage != walk7) {
+        if (walkCount % 300 == 0 && walk) {
             this.bufferedImage = walk7;
         }
 
 
-
+        if ( 0 <= jumpCount && jumpCount < 50 && jump) {
+            this.bufferedImage = jump1;
+        }
+        if (50 <= jumpCount && jumpCount < 100 && jump) {
+            this.bufferedImage = jump2;
+        }
+        if (100 <= jumpCount && jumpCount < 150 && jump) {
+            this.bufferedImage = jump3;
+        }
+        if ( 150 <= jumpCount && jumpCount < 200 && jump) {
+            this.bufferedImage = jump4;
+        }
+//        if (jumpCount % 250 == 0 && jump) {
+//            this.bufferedImage = jump5;
+//        }
+//        if (jumpCount % 250 == 0 && jump) {
+//            this.bufferedImage = jump6;
+//        }
+//        if (jumpCount % 300 == 0 && jump) {
+//            this.bufferedImage = jump7;
+//        }
 
     }
 
+    private void jumpUp() {
+        jump = true;
+        walk = false;
+        setSpeedY(JUMP_UP);
+    }
 
+    private void setSpeedY(double speedY) {
+        this.speedY = speedY;
+    }
 
     @Override
     protected void checkPlayerShoot() {
@@ -89,5 +148,27 @@ public class EnemyOgre extends Enemy {
                 }
             }
         });
+    }
+
+    @Override
+    protected void incrementCount() {
+        if (walk) {
+            walkCount++;
+            if (walkCount > maxWalkCount) {
+                walkCount = 0;
+            }
+        } else {
+            walkCount = 0;
+        }
+
+        if (jump) {
+            jumpCount++;
+//            if (jumpCount > maxJumpCount) {
+//                jumpCount = 0;
+//            }
+        } else {
+            jumpCount = 0;
+        }
+
     }
 }

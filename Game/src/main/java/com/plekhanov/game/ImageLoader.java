@@ -56,6 +56,14 @@ public class ImageLoader {
     private static BufferedImage enemyOgreWalkImage_5;
     private static BufferedImage enemyOgreWalkImage_6;
     private static BufferedImage enemyOgreWalkImage_7;
+    private static BufferedImage enemyOgreJumpImage_1;
+    private static BufferedImage enemyOgreJumpImage_2;
+    private static BufferedImage enemyOgreJumpImage_3;
+    private static BufferedImage enemyOgreJumpImage_4;
+    private static BufferedImage enemyOgreJumpImage_5;
+    private static BufferedImage enemyOgreJumpImage_6;
+    private static BufferedImage enemyOgreJumpImage_7;
+
 
     private static BufferedImage playerImage;
     private static BufferedImage playerWoundedImage;
@@ -119,29 +127,37 @@ public class ImageLoader {
             hungryCarrion = ImageIO.read(carrion2ImageFile);
             File enemyPestilenceImageFile = new File(PATH_TO_RESOURCE + "enemies" + FS + "EnemyPestilence.png");
             enemyPestilenceImage = ImageIO.read(enemyPestilenceImageFile);
-            File enemyMummyZombieLeftFile = new File(PATH_TO_RESOURCE + "enemies" + FS + "mummy_zombie" + FS +"MummyZombieLeft.png");
+            File enemyMummyZombieLeftFile = new File(PATH_TO_RESOURCE + "enemies" + FS + "mummy_zombie" + FS + "MummyZombieLeft.png");
             enemyMummyZombieLeftImage = ImageIO.read(enemyMummyZombieLeftFile);
-            File enemyMummyZombieRightFile = new File(PATH_TO_RESOURCE + "enemies" + FS + "mummy_zombie" + FS +"MummyZombieRight.png");
+            File enemyMummyZombieRightFile = new File(PATH_TO_RESOURCE + "enemies" + FS + "mummy_zombie" + FS + "MummyZombieRight.png");
             enemyMummyZombieRightImage = ImageIO.read(enemyMummyZombieRightFile);
 
-            File enemyMummyZombieRageLeftFile_1 = new File(PATH_TO_RESOURCE + "enemies" + FS + "mummy_zombie" + FS +"MummyZombieRageLeft_1.png");
+            File enemyMummyZombieRageLeftFile_1 = new File(PATH_TO_RESOURCE + "enemies" + FS + "mummy_zombie" + FS + "MummyZombieRageLeft_1.png");
             enemyMummyZombieRageLeftImage_1 = ImageIO.read(enemyMummyZombieRageLeftFile_1);
-            File enemyMummyZombieRageLeftFile_2 = new File(PATH_TO_RESOURCE + "enemies" + FS + "mummy_zombie" + FS +"MummyZombieRageLeft_2.png");
+            File enemyMummyZombieRageLeftFile_2 = new File(PATH_TO_RESOURCE + "enemies" + FS + "mummy_zombie" + FS + "MummyZombieRageLeft_2.png");
             enemyMummyZombieRageLeftImage_2 = ImageIO.read(enemyMummyZombieRageLeftFile_2);
 
-            File enemyMummyZombieRageRightFile_1 = new File(PATH_TO_RESOURCE + "enemies" + FS + "mummy_zombie" + FS +"MummyZombieRageRight_1.png");
+            File enemyMummyZombieRageRightFile_1 = new File(PATH_TO_RESOURCE + "enemies" + FS + "mummy_zombie" + FS + "MummyZombieRageRight_1.png");
             enemyMummyZombieRageRightImage_1 = ImageIO.read(enemyMummyZombieRageRightFile_1);
-            File enemyMummyZombieRageRightFile_2 = new File(PATH_TO_RESOURCE + "enemies" + FS + "mummy_zombie" + FS +"MummyZombieRageRight_2.png");
+            File enemyMummyZombieRageRightFile_2 = new File(PATH_TO_RESOURCE + "enemies" + FS + "mummy_zombie" + FS + "MummyZombieRageRight_2.png");
             enemyMummyZombieRageRightImage_2 = ImageIO.read(enemyMummyZombieRageRightFile_2);
 
-            enemyOgreWalkImage_1 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "ogre" + FS +"walk" + FS + "ogre_walk_1.png"));
-            enemyOgreWalkImage_2 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "ogre" + FS +"walk" + FS + "ogre_walk_2.png"));
-            enemyOgreWalkImage_3 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "ogre" + FS +"walk" + FS + "ogre_walk_3.png"));
-            enemyOgreWalkImage_4 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "ogre" + FS +"walk" + FS + "ogre_walk_4.png"));
-            enemyOgreWalkImage_5 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "ogre" + FS +"walk" + FS + "ogre_walk_5.png"));
-            enemyOgreWalkImage_6 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "ogre" + FS +"walk" + FS + "ogre_walk_6.png"));
-            enemyOgreWalkImage_7 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "ogre" + FS +"walk" + FS + "ogre_walk_7.png"));
+            // Enemy Ogre
+            enemyOgreWalkImage_1 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "ogre" + FS + "walk" + FS + "ogre_walk_1.png"));
+            enemyOgreWalkImage_2 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "ogre" + FS + "walk" + FS + "ogre_walk_2.png"));
+            enemyOgreWalkImage_3 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "ogre" + FS + "walk" + FS + "ogre_walk_3.png"));
+            enemyOgreWalkImage_4 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "ogre" + FS + "walk" + FS + "ogre_walk_4.png"));
+            enemyOgreWalkImage_5 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "ogre" + FS + "walk" + FS + "ogre_walk_5.png"));
+            enemyOgreWalkImage_6 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "ogre" + FS + "walk" + FS + "ogre_walk_6.png"));
+            enemyOgreWalkImage_7 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "ogre" + FS + "walk" + FS + "ogre_walk_7.png"));
 
+            enemyOgreJumpImage_1 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "ogre" + FS + "jump" + FS + "ogre_jump_1.png"));
+            enemyOgreJumpImage_2 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "ogre" + FS + "jump" + FS + "ogre_jump_2.png"));
+            enemyOgreJumpImage_3 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "ogre" + FS + "jump" + FS + "ogre_jump_3.png"));
+            enemyOgreJumpImage_4 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "ogre" + FS + "jump" + FS + "ogre_jump_4.png"));
+            enemyOgreJumpImage_5 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "ogre" + FS + "jump" + FS + "ogre_jump_5.png"));
+            enemyOgreJumpImage_6 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "ogre" + FS + "jump" + FS + "ogre_jump_6.png"));
+            enemyOgreJumpImage_7 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "ogre" + FS + "jump" + FS + "ogre_jump_7.png"));
 
             // Игрок
             File playerImageFile = new File(PATH_TO_RESOURCE + "player" + FS + "Player.png");
@@ -211,6 +227,34 @@ public class ImageLoader {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static BufferedImage getEnemyOgreJumpImage_1() {
+        return enemyOgreJumpImage_1;
+    }
+
+    public static BufferedImage getEnemyOgreJumpImage_2() {
+        return enemyOgreJumpImage_2;
+    }
+
+    public static BufferedImage getEnemyOgreJumpImage_3() {
+        return enemyOgreJumpImage_3;
+    }
+
+    public static BufferedImage getEnemyOgreJumpImage_4() {
+        return enemyOgreJumpImage_4;
+    }
+
+    public static BufferedImage getEnemyOgreJumpImage_5() {
+        return enemyOgreJumpImage_5;
+    }
+
+    public static BufferedImage getEnemyOgreJumpImage_6() {
+        return enemyOgreJumpImage_6;
+    }
+
+    public static BufferedImage getEnemyOgreJumpImage_7() {
+        return enemyOgreJumpImage_7;
     }
 
     public static BufferedImage getEnemyOgreWalkImage_1() {
