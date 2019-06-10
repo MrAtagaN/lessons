@@ -14,9 +14,9 @@ public class Main {
         ApplicationContext context = new AnnotationConfigApplicationContext("SpringData");
         PersonRepository personRepository = context.getBean(PersonRepository.class);
 
-        List<Person> allUsers = personRepository.getAllUsers();
+        List<Person> allUsers = personRepository.findAllUsers();
         allUsers.forEach(user -> {
-            System.out.println("user = " + user);
+            System.out.println("person = " + user);
         });
 
         Address address = new Address();
@@ -25,7 +25,11 @@ public class Main {
 
         //personRepository.createUser(person);
 
-        System.out.println("person with id 2 = " +  personRepository.getPerson(2));
+        System.out.println("person with id 2 = " +  personRepository.findPersonById(2));
+
+        personRepository.findUsersByName("AtagaN").forEach( person1 -> {
+            System.out.println("person with name AtagaN = " + person1);
+        });
 
     }
 }

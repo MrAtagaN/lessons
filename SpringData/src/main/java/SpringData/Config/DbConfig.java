@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
@@ -59,6 +60,11 @@ public class DbConfig {
     @Bean
     public JdbcTemplate getJdbcTemplate(@Qualifier("SQLite")DataSource getDataSource) {
         return new JdbcTemplate(getDataSource);
+    }
+
+    @Bean
+    public NamedParameterJdbcTemplate getNamedParameterJdbcTemplate(@Qualifier("SQLite")DataSource getDataSource) {
+        return new NamedParameterJdbcTemplate(getDataSource);
     }
 
     /** База в памяти */
