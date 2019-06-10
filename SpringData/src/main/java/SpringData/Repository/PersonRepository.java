@@ -11,7 +11,17 @@ import org.springframework.stereotype.Repository;
 import java.util.Date;
 import java.util.List;
 
-
+/**
+ * Методы jdbcTemplate:
+ *
+ * execute - выполнить sql запрос
+ * update - возвращает количество измененных строк
+ * queryForObject - возвращает один объект или кидает Exception
+ * batchUpdate
+ * query
+ * queryForList - возвращает List<Map<String, Object>>. Sql возвращает несколько строк
+ * queryForMap - возвращает map, (название колонки - значение). Sql должен вернуть одну строку
+ */
 @Repository
 public class PersonRepository {
 
