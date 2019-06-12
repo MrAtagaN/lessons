@@ -13,7 +13,7 @@ public class EnemyFoxMummy extends Enemy {
     private final int maxWalkCount = 300;
     private int shootingCount = 0;
     private int shootChardge = 0;
-    private boolean mummyShooting = false;
+    private boolean mummyShootingPhase = false;  // мумия в фазе стрельбы
 
 
     public EnemyFoxMummy(double x, double y, double speedX, double speedY, Model model) {
@@ -27,24 +27,25 @@ public class EnemyFoxMummy extends Enemy {
 
         if (x <= -300) {   // обновляем муммию
             x = 2100;
-            mummyShooting = false;
+            mummyShootingPhase = false;
             shootChardge = 0;
             shootingCount = 0;
         }
 
         incrementWalkCount();
 
-        if(walkCount == 0 && x < 1900 && x > 100 && mummyShooting) {
+        if(MummyInShootingZone() && mummyShootingPhase) {
             shoot();
         }
 
-        if (!mummyShooting) {
+        if (!mummyShootingPhase) {
             speedX = -0.6;
         }
 
         setImage();
+        checkPlayerShoot();
 
-        //проверка столкновения
+        //проверка столкновения c игроком
         if (Math.abs(model.getPlayer().getX() - getX()) < 80 && Math.abs(model.getPlayer().getY() - getY()) < 80) {
             model.getPlayer().minusLife();
         }
@@ -52,7 +53,7 @@ public class EnemyFoxMummy extends Enemy {
 
     private void setImage() {
 
-        if (mummyShooting) {
+        if (mummyShootingPhase) {
             bufferedImage = ImageLoader.getEnemyFoxMummyShoot_Image();
         } else {
             if (walkCount < 50) {
@@ -78,11 +79,11 @@ public class EnemyFoxMummy extends Enemy {
             walkCount = 0;
             shootChardge++; // накапливаем заряд для стрельбы
             if (shootChardge == 3) {
-                mummyShooting = true;
+                mummyShootingPhase = true;
             }
         }
 
-        if(!mummyShooting) {
+        if(!mummyShootingPhase) {
             walkCount++;
         }
 
@@ -95,7 +96,7 @@ public class EnemyFoxMummy extends Enemy {
 
         if (shootChardge == 3) {
 
-            double shiftX = 60;
+            double shiftX = 60;  // смещение для того чтобы fire ball вылетал из посоха
             double shiftY = 20;
 
             double diffX = model.getPlayer().getX() - (x - shiftX);
@@ -112,10 +113,17 @@ public class EnemyFoxMummy extends Enemy {
 
         shootingCount++;
         if (shootingCount > 300) {
-            mummyShooting = false;
+            mummyShootingPhase = false;
             shootingCount = 0;
         }
 
 
+    }
+
+    /**
+     * зона стрельбы для мумии
+     */
+    private boolean MummyInShootingZone() {
+       return (x < 1900 && x > 100);
     }
 }

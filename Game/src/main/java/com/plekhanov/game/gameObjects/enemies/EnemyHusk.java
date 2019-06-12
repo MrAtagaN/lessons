@@ -3,7 +3,6 @@ package com.plekhanov.game.gameObjects.enemies;
 import com.plekhanov.game.Game;
 import com.plekhanov.game.ImageLoader;
 import com.plekhanov.game.Model;
-import com.plekhanov.game.gameObjects.PlayerShoot;
 
 
 import java.awt.image.BufferedImage;
@@ -59,7 +58,7 @@ public class EnemyHusk extends Enemy {
 
         // увеличиваем счетчик действие если Husk в активной зоне или довожим счетчик до 0 если Husk пролетел активную
         // зону чтобы когда он окажется снова в активной зоне счетчик считал от 0
-        if (huskInActionZone() || actionCount > 0) {
+        if (huskInShootingZone() || actionCount > 0) {
             incrementCount();
         }
 
@@ -67,7 +66,7 @@ public class EnemyHusk extends Enemy {
 
 
     private void shoot() {
-        if (huskInActionZone() && actionCount > Game.UPDATES * 1 && !alreadyShooted) {
+        if (huskInShootingZone() && actionCount > Game.UPDATES * 1 && !alreadyShooted) {
 
             alreadyShooted = true;
 
@@ -89,16 +88,16 @@ public class EnemyHusk extends Enemy {
     @Override
     public BufferedImage getBufferedImage() {
 
-        if (actionCount > Game.UPDATES * 1 && actionCount < Game.UPDATES * 1.5 && huskInActionZone()) {
+        if (actionCount > Game.UPDATES * 1 && actionCount < Game.UPDATES * 1.5 && huskInShootingZone()) {
             return huskShootImage;
         }
         return super.getBufferedImage();
     }
 
     /**
-     * зона активного действия Husk'а
+     * зона стрельбы для  Husk'а
      */
-    private boolean huskInActionZone() {
+    private boolean huskInShootingZone() {
         return x > 0 && x < 1800;
     }
 }
