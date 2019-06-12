@@ -16,8 +16,7 @@ import java.util.Properties;
 @EnableTransactionManagement
 public class HibernateConfig {
 
-
-    @Bean
+    @Bean("sessionFactoryBuilder")
     public LocalSessionFactoryBean sessionFactoryBuilder(@Qualifier("SQLite")DataSource dataSource) {
         LocalSessionFactoryBean localSessionFactoryBean = new LocalSessionFactoryBean();
         localSessionFactoryBean.setDataSource(dataSource);

@@ -19,7 +19,7 @@ import java.util.Map;
  * update - возвращает количество измененных строк
  * queryForObject - возвращает один объект или кидает Exception
  * batchUpdate
- * query
+ * query - возвращает List объектов
  * queryForList - возвращает List<Map<String, Object>>. Sql возвращает несколько строк
  * queryForMap - возвращает map, (название колонки - значение). Sql должен вернуть одну строку
  */
