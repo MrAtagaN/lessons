@@ -167,9 +167,7 @@ public class ImageLoader {
 
             //Фон
             backgroundLevel3Image1 = ImageIO.read(new File(PATH_TO_RESOURCE + "background" + FS + "level_3" + FS + "sky.png"));
-
             backgroundLevel3Image2 = ImageIO.read(new File(PATH_TO_RESOURCE + "background" + FS + "level_3" + FS + "rocks.png"));
-
             backgroundLevel3Image3 = ImageIO.read(new File(PATH_TO_RESOURCE + "background" + FS + "level_3" + FS + "clouds_1.png"));
             backgroundLevel3Image4 = ImageIO.read(new File(PATH_TO_RESOURCE + "background" + FS + "level_3" + FS + "clouds_2.png"));
             backgroundLevel3Image5 = ImageIO.read(new File(PATH_TO_RESOURCE + "background" + FS + "level_3" + FS + "ground_1.png"));
