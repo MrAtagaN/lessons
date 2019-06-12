@@ -49,11 +49,28 @@ public class ImageLoader {
     private static BufferedImage enemyMummyZombieRageRightImage_1;
     private static BufferedImage enemyMummyZombieRageRightImage_2;
 
-    private static BufferedImage enemyFoxMummyWalk_1_Image;
-    private static BufferedImage enemyFoxMummyWalk_2_Image;
-    private static BufferedImage enemyFoxMummyWalk_3_Image;
-    private static BufferedImage enemyFoxMummyWalk_4_Image;
+    private static BufferedImage enemyFoxMummyWalkImage_1;
+    private static BufferedImage enemyFoxMummyWalkImage_2;
+    private static BufferedImage enemyFoxMummyWalkImage_3;
+    private static BufferedImage enemyFoxMummyWalkImage_4;
     private static BufferedImage enemyFoxMummyShoot_Image;
+
+    private static BufferedImage mummyFireBallImage_1;
+    private static BufferedImage mummyFireBallImage_2;
+    private static BufferedImage mummyFireBallImage_3;
+    private static BufferedImage mummyFireBallImage_4;
+    private static BufferedImage mummyFireBallImage_5;
+    private static BufferedImage mummyFireBallImage_6;
+    private static BufferedImage mummyFireBallImage_7;
+    private static BufferedImage mummyFireBallImage_8;
+    private static BufferedImage mummyFireBallImage_9;
+    private static BufferedImage mummyFireBallImage_10;
+    private static BufferedImage mummyFireBallImage_11;
+    private static BufferedImage mummyFireBallImage_12;
+    private static BufferedImage mummyFireBallImage_13;
+    private static BufferedImage mummyFireBallImage_14;
+    private static BufferedImage mummyFireBallImage_15;
+    private static BufferedImage mummyFireBallImage_16;
 
     private static BufferedImage enemyOgreWalkImage_1;
     private static BufferedImage enemyOgreWalkImage_2;
@@ -127,11 +144,28 @@ public class ImageLoader {
             enemyMummyZombieRageRightImage_2 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "mummy_zombie" + FS + "MummyZombieRageRight_2.png"));
 
             //Fox Mummy
-            enemyFoxMummyWalk_1_Image = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "fox_mummy" + FS + "FoxMummyWalk_1.png"));
-            enemyFoxMummyWalk_2_Image = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "fox_mummy" + FS + "FoxMummyWalk_2.png"));
-            enemyFoxMummyWalk_3_Image = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "fox_mummy" + FS + "FoxMummyWalk_3.png"));
-            enemyFoxMummyWalk_4_Image = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "fox_mummy" + FS + "FoxMummyWalk_4.png"));
+            enemyFoxMummyWalkImage_1 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "fox_mummy" + FS + "FoxMummyWalk_1.png"));
+            enemyFoxMummyWalkImage_2 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "fox_mummy" + FS + "FoxMummyWalk_2.png"));
+            enemyFoxMummyWalkImage_3 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "fox_mummy" + FS + "FoxMummyWalk_3.png"));
+            enemyFoxMummyWalkImage_4 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "fox_mummy" + FS + "FoxMummyWalk_4.png"));
             enemyFoxMummyShoot_Image = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "fox_mummy" + FS + "FoxMummyShoot.png"));
+
+            mummyFireBallImage_1 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "fox_mummy" + FS + "mummy_fire_balls" + FS + "MummyFireBall_1.png"));
+            mummyFireBallImage_2 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "fox_mummy" + FS + "mummy_fire_balls" + FS + "MummyFireBall_2.png"));
+            mummyFireBallImage_3 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "fox_mummy" + FS + "mummy_fire_balls" + FS + "MummyFireBall_3.png"));
+            mummyFireBallImage_4 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "fox_mummy" + FS + "mummy_fire_balls" + FS + "MummyFireBall_4.png"));
+            mummyFireBallImage_5 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "fox_mummy" + FS + "mummy_fire_balls" + FS + "MummyFireBall_5.png"));
+            mummyFireBallImage_6 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "fox_mummy" + FS + "mummy_fire_balls" + FS + "MummyFireBall_6.png"));
+            mummyFireBallImage_7 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "fox_mummy" + FS + "mummy_fire_balls" + FS + "MummyFireBall_7.png"));
+            mummyFireBallImage_8 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "fox_mummy" + FS + "mummy_fire_balls" + FS + "MummyFireBall_8.png"));
+            mummyFireBallImage_9 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "fox_mummy" + FS + "mummy_fire_balls" + FS + "MummyFireBall_9.png"));
+            mummyFireBallImage_10 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "fox_mummy" + FS + "mummy_fire_balls" + FS + "MummyFireBall_10.png"));
+            mummyFireBallImage_11 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "fox_mummy" + FS + "mummy_fire_balls" + FS + "MummyFireBall_11.png"));
+            mummyFireBallImage_12 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "fox_mummy" + FS + "mummy_fire_balls" + FS + "MummyFireBall_12.png"));
+            mummyFireBallImage_13 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "fox_mummy" + FS + "mummy_fire_balls" + FS + "MummyFireBall_13.png"));
+            mummyFireBallImage_14 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "fox_mummy" + FS + "mummy_fire_balls" + FS + "MummyFireBall_14.png"));
+            mummyFireBallImage_15 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "fox_mummy" + FS + "mummy_fire_balls" + FS + "MummyFireBall_15.png"));
+            mummyFireBallImage_16 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "fox_mummy" + FS + "mummy_fire_balls" + FS + "MummyFireBall_16.png"));
 
 
             // Enemy Ogre
@@ -292,24 +326,88 @@ public class ImageLoader {
         return enemyMummyZombieRageRightImage_2;
     }
 
-    public static BufferedImage getEnemyFoxMummyWalk_1_Image() {
-        return enemyFoxMummyWalk_1_Image;
+    public static BufferedImage getEnemyFoxMummyWalkImage_1() {
+        return enemyFoxMummyWalkImage_1;
     }
 
-    public static BufferedImage getEnemyFoxMummyWalk_2_Image() {
-        return enemyFoxMummyWalk_2_Image;
+    public static BufferedImage getEnemyFoxMummyWalkImage_2() {
+        return enemyFoxMummyWalkImage_2;
     }
 
-    public static BufferedImage getEnemyFoxMummyWalk_3_Image() {
-        return enemyFoxMummyWalk_3_Image;
+    public static BufferedImage getEnemyFoxMummyWalkImage_3() {
+        return enemyFoxMummyWalkImage_3;
     }
 
-    public static BufferedImage getEnemyFoxMummyWalk_4_Image() {
-        return enemyFoxMummyWalk_4_Image;
+    public static BufferedImage getEnemyFoxMummyWalkImage_4() {
+        return enemyFoxMummyWalkImage_4;
     }
 
     public static BufferedImage getEnemyFoxMummyShoot_Image() {
         return enemyFoxMummyShoot_Image;
+    }
+
+    public static BufferedImage getMummyFireBallImage_1() {
+        return mummyFireBallImage_1;
+    }
+
+    public static BufferedImage getMummyFireBallImage_2() {
+        return mummyFireBallImage_2;
+    }
+
+    public static BufferedImage getMummyFireBallImage_3() {
+        return mummyFireBallImage_3;
+    }
+
+    public static BufferedImage getMummyFireBallImage_4() {
+        return mummyFireBallImage_4;
+    }
+
+    public static BufferedImage getMummyFireBallImage_5() {
+        return mummyFireBallImage_5;
+    }
+
+    public static BufferedImage getMummyFireBallImage_6() {
+        return mummyFireBallImage_6;
+    }
+
+    public static BufferedImage getMummyFireBallImage_7() {
+        return mummyFireBallImage_7;
+    }
+
+    public static BufferedImage getMummyFireBallImage_8() {
+        return mummyFireBallImage_8;
+    }
+
+    public static BufferedImage getMummyFireBallImage_9() {
+        return mummyFireBallImage_9;
+    }
+
+    public static BufferedImage getMummyFireBallImage_10() {
+        return mummyFireBallImage_10;
+    }
+
+    public static BufferedImage getMummyFireBallImage_11() {
+        return mummyFireBallImage_11;
+    }
+
+    public static BufferedImage getMummyFireBallImage_12() {
+        return mummyFireBallImage_12;
+    }
+
+    public static BufferedImage getMummyFireBallImage_13() {
+        return mummyFireBallImage_13;
+    }
+
+    public static BufferedImage getMummyFireBallImage_14() {
+        return mummyFireBallImage_14;
+    }
+
+    public static BufferedImage getMummyFireBallImage_15() {
+        return mummyFireBallImage_15;
+    }
+
+    public static BufferedImage getMummyFireBallImage_16() {
+        return mummyFireBallImage_16;
     }
 
     public static BufferedImage getPlayerImage() {

@@ -43,8 +43,8 @@ public class Player extends GameObject {
     private static final double GRAVITY = 3;
     private static final double GRAVITY_X = 8;
     private static final double JUMP_UP = -1.6;
-    private static final double JUMP_RIGHT = 1.4;
-    private static final double JUMP_LEFT = -1.4;
+    private static final double JUMP_RIGHT = 1.5;
+    private static final double JUMP_LEFT = -1.5;
     private static final double SHOOT_INTERVAL = 0.7;
 
     private Model model;

@@ -17,7 +17,7 @@ public class EnemyFoxMummy extends Enemy {
 
 
     public EnemyFoxMummy(double x, double y, double speedX, double speedY, Model model) {
-        super(x, y, speedX, speedY, ImageLoader.getEnemyFoxMummyWalk_1_Image(), imageWidth, imageHeight, renderOrder, model);
+        super(x, y, speedX, speedY, ImageLoader.getEnemyFoxMummyWalkImage_1(), imageWidth, imageHeight, renderOrder, model);
         life = 3;
     }
 
@@ -56,17 +56,17 @@ public class EnemyFoxMummy extends Enemy {
             bufferedImage = ImageLoader.getEnemyFoxMummyShoot_Image();
         } else {
             if (walkCount < 50) {
-                bufferedImage = ImageLoader.getEnemyFoxMummyWalk_1_Image();
+                bufferedImage = ImageLoader.getEnemyFoxMummyWalkImage_1();
             } else if (walkCount < 100) {
-                bufferedImage = ImageLoader.getEnemyFoxMummyWalk_2_Image();
+                bufferedImage = ImageLoader.getEnemyFoxMummyWalkImage_2();
             } else if (walkCount < 150) {
-                bufferedImage = ImageLoader.getEnemyFoxMummyWalk_3_Image();
+                bufferedImage = ImageLoader.getEnemyFoxMummyWalkImage_3();
             } else if (walkCount < 200) {
-                bufferedImage = ImageLoader.getEnemyFoxMummyWalk_4_Image();
+                bufferedImage = ImageLoader.getEnemyFoxMummyWalkImage_4();
             } else if (walkCount < 250) {
-                bufferedImage = ImageLoader.getEnemyFoxMummyWalk_3_Image(); //сетим картики в обратном направлении
+                bufferedImage = ImageLoader.getEnemyFoxMummyWalkImage_3(); //сетим картики в обратном направлении
             } else if (walkCount < 300) {
-                bufferedImage = ImageLoader.getEnemyFoxMummyWalk_2_Image();
+                bufferedImage = ImageLoader.getEnemyFoxMummyWalkImage_2();
             }
         }
     }
@@ -94,15 +94,16 @@ public class EnemyFoxMummy extends Enemy {
         speedX = -0.5;
 
         if (shootChardge == 3) {
-            double diffX = model.getPlayer().getX() - x;
-            double diffY = model.getPlayer().getY() - y;
 
-            double reduceSpeed = 1 / (Math.abs(diffX) + Math.abs(diffY));
+            double shiftX = 60;
+            double shiftY = 20;
 
-            final double xSpeed = diffX * reduceSpeed;
-            final double ySpeed = diffY * reduceSpeed;
+            double diffX = model.getPlayer().getX() - (x - shiftX);
+            double diffY = model.getPlayer().getY() - (y - shiftY);
 
-            model.getGameObjects().add(new FireBall(getX(), getY(), xSpeed, ySpeed, ImageLoader.getFireBallImage(), 60, 60, 11, model));
+            double reduceSpeed = 1.5 / (Math.abs(diffX) + Math.abs(diffY));
+
+            model.getGameObjects().add(new MummyFireBall(getX() - shiftX, getY() - shiftY, diffX * reduceSpeed, diffY * reduceSpeed, ImageLoader.getMummyFireBallImage_1(), 60, 60, 15, model));
 
             model.needToSortGameObjects();
         }

@@ -42,7 +42,7 @@ public class EnemyMummyZombie extends Enemy {
         double coefficient ;
 
         if (zombieEnrage()) {
-            coefficient = 1.2;  // ускоряем мумию
+            coefficient = 1;  // ускоряем мумию
         } else {
             coefficient = 0.8;
         }
