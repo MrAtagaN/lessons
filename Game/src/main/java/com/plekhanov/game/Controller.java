@@ -15,6 +15,7 @@ public class Controller extends KeyAdapter {
         this.model = model;
     }
 
+
     @Override
     public void keyReleased(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_D) {

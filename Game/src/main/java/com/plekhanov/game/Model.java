@@ -31,7 +31,6 @@ public class Model implements Runnable {
         this.UPDATES = updates;
         this.width = width;
         this.height = height;
-
         loadLevel(1);
     }
 
@@ -64,6 +63,7 @@ public class Model implements Runnable {
         this.player = player;
     }
 
+
     /**
      * Цикл изменений координат игровых объектов
      */
@@ -83,7 +83,15 @@ public class Model implements Runnable {
                 delta--;
 
                 if (isGameOver()) {
-                    gameObjects.add(new BackGround(width / 2, height / 2 , 0, 0, ImageLoader.getGameOverImage(), width, height, 110));
+                    gameObjects.add(new BackGround(
+                            width / 2,
+                            height / 2,
+                            0,
+                            0,
+                            ImageLoader.getGameOverImage(),
+                            width,
+                            height,
+                            110));
                     break;
                 }
                 //обновляем координаты у всех объектов
@@ -107,11 +115,10 @@ public class Model implements Runnable {
         gameObjects.forEach(gameObject -> {
             gameObject.updateCoordinates();
             //удаление лишних объектов
-            if ( gameObject.getX() < -10000 || gameObject.getX() > 10000 || gameObject.getY() > 10000 || gameObject.getY() < -10000 ) {
+            if (gameObject.getX() < -10000 || gameObject.getX() > 10000 || gameObject.getY() > 10000 || gameObject.getY() < -10000) {
                 gameObjects.remove(gameObject);
             }
         });
-
         if (needToSortGameObjects) {
             Collections.sort(gameObjects);
             needToSortGameObjects = false;
