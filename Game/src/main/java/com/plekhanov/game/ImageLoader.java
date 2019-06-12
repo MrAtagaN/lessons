@@ -64,7 +64,6 @@ public class ImageLoader {
     private static BufferedImage enemyOgreJumpImage_6;
     private static BufferedImage enemyOgreJumpImage_7;
 
-
     private static BufferedImage playerImage;
     private static BufferedImage playerWoundedImage;
     private static BufferedImage playerMoveRightImage;
@@ -89,58 +88,36 @@ public class ImageLoader {
             //Картинки для уровня 1
 
             // Статический фон
-            File backgroundImageFile1 = new File(PATH_TO_RESOURCE + "background" + FS + "level_1" + FS + "Layer_0010_1.png");
-            backgroundImage1 = ImageIO.read(backgroundImageFile1);
-            File backgroundImageFile2 = new File(PATH_TO_RESOURCE + "background" + FS + "level_1" + FS + "Layer_0009_2.png");
-            backgroundImage2 = ImageIO.read(backgroundImageFile2);
-            File backgroundImageFile3 = new File(PATH_TO_RESOURCE + "background" + FS + "level_1" + FS + "Layer_0008_3.png");
-            backgroundImage3 = ImageIO.read(backgroundImageFile3);
-            File backgroundImageFile4 = new File(PATH_TO_RESOURCE + "background" + FS + "level_1" + FS + "Layer_0006_4.png");
-            backgroundImage4 = ImageIO.read(backgroundImageFile4);
+            backgroundImage1 = ImageIO.read(new File(PATH_TO_RESOURCE + "background" + FS + "level_1" + FS + "Layer_0010_1.png"));
+            backgroundImage2 = ImageIO.read(new File(PATH_TO_RESOURCE + "background" + FS + "level_1" + FS + "Layer_0009_2.png"));
+            backgroundImage3 = ImageIO.read(new File(PATH_TO_RESOURCE + "background" + FS + "level_1" + FS + "Layer_0008_3.png"));
+            backgroundImage4 = ImageIO.read(new File(PATH_TO_RESOURCE + "background" + FS + "level_1" + FS + "Layer_0006_4.png"));
 
             // Динамический фон
-            File backgroundImageFile5 = new File(PATH_TO_RESOURCE + "background" + FS + "level_1" + FS + "Layer_0005_5.png");
-            backgroundImage5 = ImageIO.read(backgroundImageFile5);
-            File backgroundImageFile6 = new File(PATH_TO_RESOURCE + "background" + FS + "level_1" + FS + "Layer_0003_6.png");
-            backgroundImage6 = ImageIO.read(backgroundImageFile6);
-            File backgroundImageFile7 = new File(PATH_TO_RESOURCE + "background" + FS + "level_1" + FS + "Layer_0002_7.png");
-            backgroundImage7 = ImageIO.read(backgroundImageFile7);
-            File backgroundImageFile8 = new File(PATH_TO_RESOURCE + "background" + FS + "level_1" + FS + "Layer_0001_8.png");
-            backgroundImage8 = ImageIO.read(backgroundImageFile8);
-            File backgroundImageFile9 = new File(PATH_TO_RESOURCE + "background" + FS + "level_1" + FS + "Layer_0000_9.png");
-            backgroundImage9 = ImageIO.read(backgroundImageFile9);
+            backgroundImage5 = ImageIO.read(new File(PATH_TO_RESOURCE + "background" + FS + "level_1" + FS + "Layer_0005_5.png"));
+            backgroundImage6 = ImageIO.read(new File(PATH_TO_RESOURCE + "background" + FS + "level_1" + FS + "Layer_0003_6.png"));
+            backgroundImage7 = ImageIO.read(new File(PATH_TO_RESOURCE + "background" + FS + "level_1" + FS + "Layer_0002_7.png"));
+            backgroundImage8 = ImageIO.read(new File(PATH_TO_RESOURCE + "background" + FS + "level_1" + FS + "Layer_0001_8.png"));
+            backgroundImage9 = ImageIO.read(new File(PATH_TO_RESOURCE + "background" + FS + "level_1" + FS + "Layer_0000_9.png"));
 
             //Конец игры
-            File gameOverImageFile = new File(PATH_TO_RESOURCE + "Game_Over.png");
-            gameOverImage = ImageIO.read(gameOverImageFile);
+            gameOverImage = ImageIO.read(new File(PATH_TO_RESOURCE + "Game_Over.png"));
 
             // Враги
-            File fireBallImageFile = new File(PATH_TO_RESOURCE + "enemies" + FS + "FireBall.png");
-            fireBallImage = ImageIO.read(fireBallImageFile);
-            File enemyCarrionImageFile = new File(PATH_TO_RESOURCE + "enemies" + FS + "EnemyCarrion.png");
-            enemyCarrionImage = ImageIO.read(enemyCarrionImageFile);
-            File enemyHuskImageFile = new File(PATH_TO_RESOURCE + "enemies" + FS + "EnemyHusk.png");
-            enemyHuskImage = ImageIO.read(enemyHuskImageFile);
-            File enemyHuskShootImageFile = new File(PATH_TO_RESOURCE + "enemies" + FS + "EnemyHuskShoot.png");
-            enemyHuskShootImage = ImageIO.read(enemyHuskShootImageFile);
-            File carrion2ImageFile = new File(PATH_TO_RESOURCE + "enemies" + FS + "carrion2.png");
-            hungryCarrion = ImageIO.read(carrion2ImageFile);
-            File enemyPestilenceImageFile = new File(PATH_TO_RESOURCE + "enemies" + FS + "EnemyPestilence.png");
-            enemyPestilenceImage = ImageIO.read(enemyPestilenceImageFile);
-            File enemyMummyZombieLeftFile = new File(PATH_TO_RESOURCE + "enemies" + FS + "mummy_zombie" + FS + "MummyZombieLeft.png");
-            enemyMummyZombieLeftImage = ImageIO.read(enemyMummyZombieLeftFile);
-            File enemyMummyZombieRightFile = new File(PATH_TO_RESOURCE + "enemies" + FS + "mummy_zombie" + FS + "MummyZombieRight.png");
-            enemyMummyZombieRightImage = ImageIO.read(enemyMummyZombieRightFile);
+            fireBallImage = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "FireBall.png"));
+            enemyCarrionImage = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "EnemyCarrion.png"));
+            enemyHuskImage = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "EnemyHusk.png"));
+            enemyHuskShootImage = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "EnemyHuskShoot.png"));
+            hungryCarrion = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "carrion2.png"));
+            enemyPestilenceImage = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "EnemyPestilence.png"));
+            enemyMummyZombieLeftImage = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "mummy_zombie" + FS + "MummyZombieLeft.png"));
+            enemyMummyZombieRightImage = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "mummy_zombie" + FS + "MummyZombieRight.png"));
 
-            File enemyMummyZombieRageLeftFile_1 = new File(PATH_TO_RESOURCE + "enemies" + FS + "mummy_zombie" + FS + "MummyZombieRageLeft_1.png");
-            enemyMummyZombieRageLeftImage_1 = ImageIO.read(enemyMummyZombieRageLeftFile_1);
-            File enemyMummyZombieRageLeftFile_2 = new File(PATH_TO_RESOURCE + "enemies" + FS + "mummy_zombie" + FS + "MummyZombieRageLeft_2.png");
-            enemyMummyZombieRageLeftImage_2 = ImageIO.read(enemyMummyZombieRageLeftFile_2);
+            enemyMummyZombieRageLeftImage_1 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "mummy_zombie" + FS + "MummyZombieRageLeft_1.png"));
+            enemyMummyZombieRageLeftImage_2 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "mummy_zombie" + FS + "MummyZombieRageLeft_2.png"));
 
-            File enemyMummyZombieRageRightFile_1 = new File(PATH_TO_RESOURCE + "enemies" + FS + "mummy_zombie" + FS + "MummyZombieRageRight_1.png");
-            enemyMummyZombieRageRightImage_1 = ImageIO.read(enemyMummyZombieRageRightFile_1);
-            File enemyMummyZombieRageRightFile_2 = new File(PATH_TO_RESOURCE + "enemies" + FS + "mummy_zombie" + FS + "MummyZombieRageRight_2.png");
-            enemyMummyZombieRageRightImage_2 = ImageIO.read(enemyMummyZombieRageRightFile_2);
+            enemyMummyZombieRageRightImage_1 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "mummy_zombie" + FS + "MummyZombieRageRight_1.png"));
+            enemyMummyZombieRageRightImage_2 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "mummy_zombie" + FS + "MummyZombieRageRight_2.png"));
 
             // Enemy Ogre
             enemyOgreWalkImage_1 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "ogre" + FS + "walk" + FS + "ogre_walk_1.png"));
@@ -160,69 +137,46 @@ public class ImageLoader {
             enemyOgreJumpImage_7 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "ogre" + FS + "jump" + FS + "ogre_jump_7.png"));
 
             // Игрок
-            File playerImageFile = new File(PATH_TO_RESOURCE + "player" + FS + "Player.png");
-            playerImage = ImageIO.read(playerImageFile);
-            File playerWounded = new File(PATH_TO_RESOURCE + "player" + FS + "PlayerWounded.png");
-            playerWoundedImage = ImageIO.read(playerWounded);
-            File playerMoveRightImageFile = new File(PATH_TO_RESOURCE + "player" + FS + "PlayerMoveRight.png");
-            playerMoveRightImage = ImageIO.read(playerMoveRightImageFile);
-            File playerMoveRightWoundedImageFile = new File(PATH_TO_RESOURCE + "player" + FS + "PlayerMoveRightWounded.png");
-            playerMoveRightWoundedImage = ImageIO.read(playerMoveRightWoundedImageFile);
-            File playerMoveLeft = new File(PATH_TO_RESOURCE + "player" + FS + "PlayerMoveLeft.png");
-            playerMoveLeftImage = ImageIO.read(playerMoveLeft);
-            File playerMoveLeftWounded = new File(PATH_TO_RESOURCE + "player" + FS + "PlayerMoveLeftWounded.png");
-            playerMoveLeftWoundedImage = ImageIO.read(playerMoveLeftWounded);
-            File playerJump = new File(PATH_TO_RESOURCE + "player" + FS + "PlayerJump.png");
-            playerJumpImage = ImageIO.read(playerJump);
-            File playerJumpWounded = new File(PATH_TO_RESOURCE + "player" + FS + "PlayerJumpWounded.png");
-            playerJumpWoundedImage = ImageIO.read(playerJumpWounded);
+            playerImage = ImageIO.read(new File(PATH_TO_RESOURCE + "player" + FS + "Player.png"));
+            playerWoundedImage = ImageIO.read(new File(PATH_TO_RESOURCE + "player" + FS + "PlayerWounded.png"));
+            playerMoveRightImage = ImageIO.read(new File(PATH_TO_RESOURCE + "player" + FS + "PlayerMoveRight.png"));
+            playerMoveRightWoundedImage = ImageIO.read(new File(PATH_TO_RESOURCE + "player" + FS + "PlayerMoveRightWounded.png"));
+            playerMoveLeftImage = ImageIO.read(new File(PATH_TO_RESOURCE + "player" + FS + "PlayerMoveLeft.png"));
+            playerMoveLeftWoundedImage = ImageIO.read(new File(PATH_TO_RESOURCE + "player" + FS + "PlayerMoveLeftWounded.png"));
+            playerJumpImage = ImageIO.read(new File(PATH_TO_RESOURCE + "player" + FS + "PlayerJump.png"));
+            playerJumpWoundedImage = ImageIO.read(new File(PATH_TO_RESOURCE + "player" + FS + "PlayerJumpWounded.png"));
             // огненные шары игрока
-            File playerFireBall_1 = new File(PATH_TO_RESOURCE + "player" + FS + "player_fire_balls" + FS + "PlayerFireBall_1.png");
-            playerFireBallImage_1 = ImageIO.read(playerFireBall_1);
-            File playerFireBall_2 = new File(PATH_TO_RESOURCE + "player" + FS + "player_fire_balls" + FS + "PlayerFireBall_2.png");
-            playerFireBallImage_2 = ImageIO.read(playerFireBall_2);
+            playerFireBallImage_1 = ImageIO.read(new File(PATH_TO_RESOURCE + "player" + FS + "player_fire_balls" + FS + "PlayerFireBall_1.png"));
+            playerFireBallImage_2 = ImageIO.read(new File(PATH_TO_RESOURCE + "player" + FS + "player_fire_balls" + FS + "PlayerFireBall_2.png"));
 
             // Предметы
-            File heartImageFile = new File(PATH_TO_RESOURCE + "heart.png");
-            heartImage = ImageIO.read(heartImageFile);
+            heartImage = ImageIO.read(new File(PATH_TO_RESOURCE + "heart.png"));
 
 
             //Картинки для уровня 2
 
             //Фон
-            File backgroundLevel2ImageFile1 = new File(PATH_TO_RESOURCE + "background" + FS + "level_2" + FS + "1.png");
-            backgroundLevel2Image1 = ImageIO.read(backgroundLevel2ImageFile1);
-            File backgroundLevel2ImageFile2 = new File(PATH_TO_RESOURCE + "background" + FS + "level_2" + FS + "2.png");
-            backgroundLevel2Image2 = ImageIO.read(backgroundLevel2ImageFile2);
-            File backgroundLevel2ImageFile3 = new File(PATH_TO_RESOURCE + "background" + FS + "level_2" + FS + "3.png");
-            backgroundLevel2Image3 = ImageIO.read(backgroundLevel2ImageFile3);
-            File backgroundLevel2ImageFile4 = new File(PATH_TO_RESOURCE + "background" + FS + "level_2" + FS + "4.png");
-            backgroundLevel2Image4 = ImageIO.read(backgroundLevel2ImageFile4);
-            File backgroundLevel2ImageFile5 = new File(PATH_TO_RESOURCE + "background" + FS + "level_2" + FS + "5.png");
-            backgroundLevel2Image5 = ImageIO.read(backgroundLevel2ImageFile5);
+            backgroundLevel2Image1 = ImageIO.read(new File(PATH_TO_RESOURCE + "background" + FS + "level_2" + FS + "1.png"));
+            backgroundLevel2Image2 = ImageIO.read(new File(PATH_TO_RESOURCE + "background" + FS + "level_2" + FS + "2.png"));
+            backgroundLevel2Image3 = ImageIO.read(new File(PATH_TO_RESOURCE + "background" + FS + "level_2" + FS + "3.png"));
+            backgroundLevel2Image4 = ImageIO.read(new File(PATH_TO_RESOURCE + "background" + FS + "level_2" + FS + "4.png"));
+            backgroundLevel2Image5 = ImageIO.read(new File(PATH_TO_RESOURCE + "background" + FS + "level_2" + FS + "5.png"));
 
 
             //Картинки для уровня 3
 
             //Фон
-            File backgroundLevel3ImageFile1 = new File(PATH_TO_RESOURCE + "background" + FS + "level_3" + FS + "sky.png");
-            backgroundLevel3Image1 = ImageIO.read(backgroundLevel3ImageFile1);
-            File backgroundLevel3ImageFile2 = new File(PATH_TO_RESOURCE + "background" + FS + "level_3" + FS + "rocks.png");
-            backgroundLevel3Image2 = ImageIO.read(backgroundLevel3ImageFile2);
-            File backgroundLevel3ImageFile3 = new File(PATH_TO_RESOURCE + "background" + FS + "level_3" + FS + "clouds_1.png");
-            backgroundLevel3Image3 = ImageIO.read(backgroundLevel3ImageFile3);
-            File backgroundLevel3ImageFile4 = new File(PATH_TO_RESOURCE + "background" + FS + "level_3" + FS + "clouds_2.png");
-            backgroundLevel3Image4 = ImageIO.read(backgroundLevel3ImageFile4);
-            File backgroundLevel3ImageFile5 = new File(PATH_TO_RESOURCE + "background" + FS + "level_3" + FS + "ground_1.png");
-            backgroundLevel3Image5 = ImageIO.read(backgroundLevel3ImageFile5);
-            File backgroundLevel3ImageFile6 = new File(PATH_TO_RESOURCE + "background" + FS + "level_3" + FS + "ground_2.png");
-            backgroundLevel3Image6 = ImageIO.read(backgroundLevel3ImageFile6);
-            File backgroundLevel3ImageFile7 = new File(PATH_TO_RESOURCE + "background" + FS + "level_3" + FS + "ground_3.png");
-            backgroundLevel3Image7 = ImageIO.read(backgroundLevel3ImageFile7);
-            File backgroundLevel3ImageFile8 = new File(PATH_TO_RESOURCE + "background" + FS + "level_3" + FS + "plant.png");
-            backgroundLevel3Image8 = ImageIO.read(backgroundLevel3ImageFile8);
-            File backgroundLevel3ImageFile9 = new File(PATH_TO_RESOURCE + "background" + FS + "level_3" + FS + "layer_01_1920 x 1080.png");
-            backgroundLevel3Image9 = ImageIO.read(backgroundLevel3ImageFile9);
+            backgroundLevel3Image1 = ImageIO.read(new File(PATH_TO_RESOURCE + "background" + FS + "level_3" + FS + "sky.png"));
+
+            backgroundLevel3Image2 = ImageIO.read(new File(PATH_TO_RESOURCE + "background" + FS + "level_3" + FS + "rocks.png"));
+
+            backgroundLevel3Image3 = ImageIO.read(new File(PATH_TO_RESOURCE + "background" + FS + "level_3" + FS + "clouds_1.png"));
+            backgroundLevel3Image4 = ImageIO.read(new File(PATH_TO_RESOURCE + "background" + FS + "level_3" + FS + "clouds_2.png"));
+            backgroundLevel3Image5 = ImageIO.read(new File(PATH_TO_RESOURCE + "background" + FS + "level_3" + FS + "ground_1.png"));
+            backgroundLevel3Image6 = ImageIO.read(new File(PATH_TO_RESOURCE + "background" + FS + "level_3" + FS + "ground_2.png"));
+            backgroundLevel3Image7 = ImageIO.read(new File(PATH_TO_RESOURCE + "background" + FS + "level_3" + FS + "ground_3.png"));
+            backgroundLevel3Image8 = ImageIO.read(new File(PATH_TO_RESOURCE + "background" + FS + "level_3" + FS + "plant.png"));
+            backgroundLevel3Image9 = ImageIO.read(new File(PATH_TO_RESOURCE + "background" + FS + "level_3" + FS + "layer_01_1920 x 1080.png"));
 
         } catch (IOException e) {
             e.printStackTrace();
