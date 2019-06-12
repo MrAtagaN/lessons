@@ -49,6 +49,12 @@ public class ImageLoader {
     private static BufferedImage enemyMummyZombieRageRightImage_1;
     private static BufferedImage enemyMummyZombieRageRightImage_2;
 
+    private static BufferedImage enemyFoxMummyWalk_1_Image;
+    private static BufferedImage enemyFoxMummyWalk_2_Image;
+    private static BufferedImage enemyFoxMummyWalk_3_Image;
+    private static BufferedImage enemyFoxMummyWalk_4_Image;
+    private static BufferedImage enemyFoxMummyShoot_Image;
+
     private static BufferedImage enemyOgreWalkImage_1;
     private static BufferedImage enemyOgreWalkImage_2;
     private static BufferedImage enemyOgreWalkImage_3;
@@ -113,11 +119,20 @@ public class ImageLoader {
             enemyMummyZombieLeftImage = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "mummy_zombie" + FS + "MummyZombieLeft.png"));
             enemyMummyZombieRightImage = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "mummy_zombie" + FS + "MummyZombieRight.png"));
 
+            // Mummy zombie
             enemyMummyZombieRageLeftImage_1 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "mummy_zombie" + FS + "MummyZombieRageLeft_1.png"));
             enemyMummyZombieRageLeftImage_2 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "mummy_zombie" + FS + "MummyZombieRageLeft_2.png"));
 
             enemyMummyZombieRageRightImage_1 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "mummy_zombie" + FS + "MummyZombieRageRight_1.png"));
             enemyMummyZombieRageRightImage_2 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "mummy_zombie" + FS + "MummyZombieRageRight_2.png"));
+
+            //Fox Mummy
+            enemyFoxMummyWalk_1_Image = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "fox_mummy" + FS + "FoxMummyWalk_1.png"));
+            enemyFoxMummyWalk_2_Image = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "fox_mummy" + FS + "FoxMummyWalk_2.png"));
+            enemyFoxMummyWalk_3_Image = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "fox_mummy" + FS + "FoxMummyWalk_3.png"));
+            enemyFoxMummyWalk_4_Image = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "fox_mummy" + FS + "FoxMummyWalk_4.png"));
+            enemyFoxMummyShoot_Image = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "fox_mummy" + FS + "FoxMummyShoot.png"));
+
 
             // Enemy Ogre
             enemyOgreWalkImage_1 = ImageIO.read(new File(PATH_TO_RESOURCE + "enemies" + FS + "ogre" + FS + "walk" + FS + "ogre_walk_1.png"));
@@ -275,6 +290,26 @@ public class ImageLoader {
 
     public static BufferedImage getEnemyMummyZombieRageRightImage_2() {
         return enemyMummyZombieRageRightImage_2;
+    }
+
+    public static BufferedImage getEnemyFoxMummyWalk_1_Image() {
+        return enemyFoxMummyWalk_1_Image;
+    }
+
+    public static BufferedImage getEnemyFoxMummyWalk_2_Image() {
+        return enemyFoxMummyWalk_2_Image;
+    }
+
+    public static BufferedImage getEnemyFoxMummyWalk_3_Image() {
+        return enemyFoxMummyWalk_3_Image;
+    }
+
+    public static BufferedImage getEnemyFoxMummyWalk_4_Image() {
+        return enemyFoxMummyWalk_4_Image;
+    }
+
+    public static BufferedImage getEnemyFoxMummyShoot_Image() {
+        return enemyFoxMummyShoot_Image;
     }
 
     public static BufferedImage getPlayerImage() {

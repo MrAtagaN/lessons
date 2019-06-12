@@ -41,11 +41,11 @@ public class EnemyHusk extends Enemy {
             y = ((int) (Math.random() * 600 + 180));
 
             // убираем из модели fireBall'ы
-            model.getGameObjects().forEach(gameObject -> {
-                if (gameObject instanceof FireBall) {
-                    model.getGameObjects().remove(gameObject);
-                }
-            });
+//            model.getGameObjects().forEach(gameObject -> {
+//                if (gameObject instanceof FireBall) {
+//                    model.getGameObjects().remove(gameObject);
+//                }
+//            });
         }
 
         checkPlayerShoot();

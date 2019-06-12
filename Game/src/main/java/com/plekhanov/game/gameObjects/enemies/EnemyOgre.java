@@ -82,36 +82,36 @@ public class EnemyOgre extends Enemy {
 
 
     private void changeImage() {
-        if (walkCount % 50 == 0 && walk) {
+        if (walkCount < 50  && walk) {
             this.bufferedImage = walk1;
         }
-        if (walkCount % 100 == 0 && walk) {
+        else if (walkCount < 100 && walk) {
             this.bufferedImage = walk2;
         }
-        if (walkCount % 150 == 0 && walk) {
+        else if (walkCount < 150 && walk) {
             this.bufferedImage = walk3;
         }
-        if (walkCount % 200 == 0 && walk) {
+        else if (walkCount < 200 && walk) {
             this.bufferedImage = walk4;
         }
-        if (walkCount % 250 == 0 && walk) {
+        else if (walkCount < 250 && walk) {
             this.bufferedImage = walk6; //пятая картинка почти не отличается от четвертой
         }
-        if (walkCount % 300 == 0 && walk) {
+        else if (walkCount < 300  && walk) {
             this.bufferedImage = walk7;
         }
 
 
-        if (0 <= jumpCount && jumpCount < 50 && jump) {
+        if (jumpCount < 50 && jump) {
             this.bufferedImage = jump1;
         }
-        if (50 <= jumpCount && jumpCount < 100 && jump) {
+        else if (jumpCount < 100 && jump) {
             this.bufferedImage = jump2;
         }
-        if (100 <= jumpCount && jumpCount < 150 && jump) {
+        else if (jumpCount < 150 && jump) {
             this.bufferedImage = jump3;
         }
-        if (150 <= jumpCount && jumpCount < 200 && jump) {
+        else if (jumpCount < 200 && jump) {
             this.bufferedImage = jump4;
         }
 //        if (jumpCount % 250 == 0 && jump) {
