@@ -10,6 +10,9 @@ import java.util.List;
 
 public class Main {
 
+    /**
+     * Работа с JdbcTemplate
+     */
     public static void main(String[] args) {
         ApplicationContext context = new AnnotationConfigApplicationContext("SpringData");
         PersonRepository personRepository = context.getBean(PersonRepository.class);
