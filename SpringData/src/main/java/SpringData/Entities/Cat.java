@@ -51,4 +51,14 @@ public class Cat {
     public void setColor(String color) {
         this.color = color;
     }
+
+    @Override
+    public String toString() {
+        return "Cat{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", color='" + color + '\'' +
+                '}';
+    }
 }

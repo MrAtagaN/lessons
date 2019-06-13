@@ -1,7 +1,7 @@
 import SpringData.Config.DbConfig;
 import SpringData.Config.JpaConfig;
 import SpringData.Entities.Cat;
-import SpringData.Repository.JpaRepository;
+import SpringData.Repository.CatJpaRepositoryImpl;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -12,10 +12,10 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class Main3 {
 
     public static void main(String[] args) {
-        ApplicationContext context = new AnnotationConfigApplicationContext(JpaConfig.class, Cat.class, JpaRepository.class, DbConfig.class);
+        ApplicationContext context = new AnnotationConfigApplicationContext(JpaConfig.class, Cat.class, CatJpaRepositoryImpl.class, DbConfig.class);
 
         Cat cat = new Cat("Murka", 5, "white");
-        JpaRepository jpaRepository = context.getBean(JpaRepository.class);
+        CatJpaRepositoryImpl jpaRepository = context.getBean(CatJpaRepositoryImpl.class);
         jpaRepository.saveCat(cat);
     }
 }

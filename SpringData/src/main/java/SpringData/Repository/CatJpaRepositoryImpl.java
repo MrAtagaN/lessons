@@ -13,7 +13,7 @@ import javax.transaction.Transactional;
 
 @Repository
 @Transactional
-public class JpaRepository {
+public class CatJpaRepositoryImpl {
 
     @PersistenceUnit
     @Qualifier("entityManagerFactory")
