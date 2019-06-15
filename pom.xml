@@ -25,6 +25,7 @@
         <module>Game</module>
         <module>WebService</module>
         <module>SpringData</module>
+        <module>SpringSecurity</module>
     </modules>
 
 </project>
