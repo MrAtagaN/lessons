@@ -10,8 +10,8 @@ import java.io.Serializable;
 @Component
 public class User implements Serializable {
 
-    String name = "AtagaN";
-    int age = 30;
+    private String name = "AtagaN";
+    private int age = 30;
 
     public User() {
     }
