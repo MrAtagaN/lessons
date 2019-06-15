@@ -10,7 +10,7 @@ import java.util.List;
 
 
 @Configuration
-public class ConfigMapper extends WebMvcConfigurationSupport {
+public class ConfigMVC extends WebMvcConfigurationSupport {
 
     @Override
     protected void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
