@@ -12,7 +12,7 @@ import java.io.File;
 public class ConfigDB {
 
     private static final String FS = File.separator;
-    private static final String URL = "jdbc:sqlite:lessonsSpringSecurity.db";
+    private static final String URL = "jdbc:sqlite:lessonsSpringSecurity.db"; //база должна быть в  apache-tomcat-9.0.17\bin
 
 
     @Bean("SQLite")
