@@ -22,7 +22,6 @@
         <module>Git</module>
         <module>MQ</module>
         <module>JUnit</module>
-        <module>Game</module>
         <module>WebService</module>
         <module>SpringData</module>
         <module>SpringSecurity</module>
