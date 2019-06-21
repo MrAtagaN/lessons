@@ -7,6 +7,7 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import java.util.Properties;
 
+
 public class MailSender {
 
     Session session;

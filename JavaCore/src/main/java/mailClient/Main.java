@@ -1,6 +1,5 @@
 package mailClient;
 
-
 import javax.mail.MessagingException;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -23,12 +22,12 @@ public class Main {
         reader.close();
 
         //чтение почты
-        MailClient mailClient = new MailClient(IMAP_HOST, IMAP_PORT, USER_NAME, MAIL_STORE_TYPE, password);
-        mailClient.readMessages("INBOX",20);
-        mailClient.saveMessage("INBOX",11);
+//        MailClient mailClient = new MailClient(IMAP_HOST, IMAP_PORT, USER_NAME, MAIL_STORE_TYPE, password);
+//        mailClient.readMessages("INBOX",20);
+//        mailClient.saveMessage("INBOX",11);
 
         //отправка почты
-        MailSender mailSender = new MailSender("smtp.rambler.ru", 465,  "atagan@rambler.ru", USER_NAME, password);
+        MailSender mailSender = new MailSender("smtp.rambler.ru", 465,  "atagan@rambler.ru", "atagan", password);
         mailSender.sendMail("atagan@rambler.ru");
     }
 }
