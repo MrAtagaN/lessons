@@ -22,12 +22,25 @@ public class Main {
         reader.close();
 
         //чтение почты
-//        MailClient mailClient = new MailClient(IMAP_HOST, IMAP_PORT, USER_NAME, MAIL_STORE_TYPE, password);
-//        mailClient.readMessages("INBOX",20);
-//        mailClient.saveMessage("INBOX",11);
+        MailClient mailClient = new MailClient(IMAP_HOST, IMAP_PORT, USER_NAME, MAIL_STORE_TYPE, password);
 
         //отправка почты
         MailSender mailSender = new MailSender("smtp.rambler.ru", 465,  "atagan@rambler.ru", "atagan", password);
+
+        //отправка почты через Spring client
+        SpringMailSender springMailSender = new SpringMailSender("smtp.rambler.ru", 465, "atagan", password);
+
+
+
         mailSender.sendMail("atagan@rambler.ru");
+
+        mailClient.readMessages("INBOX",20);
+        mailClient.saveMessage("INBOX",11);
+
+        springMailSender.sendMail("atagan@rambler.ru");
+        springMailSender.sendMailWithAttachments("atagan@rambler.ru");
     }
+
+
+
 }
