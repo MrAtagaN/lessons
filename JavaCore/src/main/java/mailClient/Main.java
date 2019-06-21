@@ -13,7 +13,7 @@ public class Main {
     private static final int IMAP_PORT = 993;
 
 
-    public static void main(String[] args) throws IOException, MessagingException {
+    public static void main(String[] args) throws Exception {
 
         //считываем пароль от mail
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
