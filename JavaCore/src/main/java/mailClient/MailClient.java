@@ -129,7 +129,9 @@ public class MailClient {
      */
     private String getTextFromMessage(Message message) throws MessagingException, IOException {
         String result = "";
-        if (message.isMimeType("text/plain")) {
+        if (message.getContent() instanceof MimeMultipart) {
+            result = getTextFromMimeMultipart((MimeMultipart) message.getContent());
+        } else if (message.isMimeType("text/plain")) {
             result = message.getContent().toString();
         } else if (message.isMimeType("text/html")) {
             String html = (String) message.getContent();
@@ -149,14 +151,14 @@ public class MailClient {
         String result = "";
         for (int i = 0; i < mimeMultipart.getCount(); i++) {
             BodyPart bodyPart = mimeMultipart.getBodyPart(i);
-            if (bodyPart.isMimeType("text/plain")) {
-                result = result + "\n" + bodyPart.getContent();
+            if (bodyPart.getContent() instanceof MimeMultipart) {
+                result = result + getTextFromMimeMultipart((MimeMultipart) bodyPart.getContent());
                 break;
             } else if (bodyPart.isMimeType("text/html")) {
                 String html = (String) bodyPart.getContent();
                 result = result + "\n" + Jsoup.parse(html).text();
-            } else if (bodyPart.getContent() instanceof MimeMultipart) {
-                result = result + getTextFromMimeMultipart((MimeMultipart) bodyPart.getContent());
+            } else if (bodyPart.isMimeType("text/plain")) {
+                result = result + bodyPart.getContent();
             }
         }
         return result;
