@@ -37,7 +37,7 @@ public class SpringMailSender {
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.ssl.enable", "true");
         props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.debug", "true");
+        //props.put("mail.debug", "true");
     }
 
     //simple Message
@@ -75,9 +75,10 @@ public class SpringMailSender {
      */
     private String getTextFromMessage(Message message) throws MessagingException, IOException {
         String result = "";
-        if (message.isMimeType("text/plain")) {
-            MimeMultipart mimeMultipart = (MimeMultipart) message.getContent();
-            result = getTextFromMimeMultipart(mimeMultipart);
+        if (message.getContent() instanceof MimeMultipart) {
+            result = getTextFromMimeMultipart((MimeMultipart) message.getContent());
+        } else if (message.isMimeType("text/plain")) {
+            result = message.getContent().toString();
         } else if (message.isMimeType("text/html")) {
             String html = (String) message.getContent();
             result = result + "\n" + Jsoup.parse(html).text();
@@ -103,7 +104,7 @@ public class SpringMailSender {
                 String html = (String) bodyPart.getContent();
                 result = result + "\n" + Jsoup.parse(html).text();
             } else if (bodyPart.isMimeType("text/plain")) {
-                result = result + "\n" + bodyPart.getContent();
+                result = result + bodyPart.getContent();
             }
         }
         return result;
