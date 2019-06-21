@@ -32,12 +32,12 @@ public class Main {
 
 
 
-        mailSender.sendMail("atagan@rambler.ru");
-
-        mailClient.readMessages("INBOX",20);
-        mailClient.saveMessage("INBOX",11);
-
-        springMailSender.sendMail("atagan@rambler.ru");
+//        mailSender.sendMail("atagan@rambler.ru");
+//
+//        mailClient.readMessages("INBOX",20);
+//        mailClient.saveMessage("INBOX",11);
+//
+//        springMailSender.sendMail("atagan@rambler.ru");
         springMailSender.sendMailWithAttachments("atagan@rambler.ru");
     }
 

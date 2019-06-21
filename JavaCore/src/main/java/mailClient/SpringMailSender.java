@@ -1,6 +1,7 @@
 package mailClient;
 
 
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
@@ -9,6 +10,12 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Properties;
 
 public class SpringMailSender {
@@ -42,7 +49,7 @@ public class SpringMailSender {
         mailSender.send(message);
     }
 
-    public void sendMailWithAttachments(String mailRecipient) throws MessagingException {
+    public void sendMailWithAttachments(String mailRecipient) throws MessagingException, IOException {
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true);
 
@@ -51,8 +58,10 @@ public class SpringMailSender {
         message.setFrom("atagan@rambler.ru");
         helper.setText("text");
 
-        FileSystemResource file = new FileSystemResource(new File("JavaCore/src/main/resources/GenieMoveRight_1.png"));
-        helper.addAttachment("GenieMoveRight_1.png", file);
+        byte[] bytes = Files.readAllBytes(Paths.get("JavaCore/src/main/resources/GenieMoveRight_1.png"));
+        ByteArrayResource byteArrayResource = new ByteArrayResource(bytes);
+
+        helper.addAttachment("GenieMoveRight_1.png", byteArrayResource);
 
         mailSender.send(message);
     }
