@@ -8,10 +8,12 @@ import {PageContextService} from "./services/page-context.service";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ui';
-  context;
+  private title = 'ui';
+  private context;
+  private router: Router;
 
-  constructor(private router: Router, context : PageContextService){
+  constructor(router: Router, context : PageContextService){
     this.context = context;
+    this.router = router;
   }
 }
