@@ -65,48 +65,9 @@ public class SpringMailSender {
 
         helper.addAttachment("GenieMoveRight_1.png", byteArrayResource);
 
-        System.out.println(getTextFromMessage(message));
+        System.out.println(MailUtils.getTextFromMessage(message));
 
         mailSender.send(message);
     }
 
-    /**
-     * Получение текста из письма
-     */
-    private String getTextFromMessage(Message message) throws MessagingException, IOException {
-        String result = "";
-        if (message.getContent() instanceof MimeMultipart) {
-            result = getTextFromMimeMultipart((MimeMultipart) message.getContent());
-        } else if (message.isMimeType("text/plain")) {
-            result = message.getContent().toString();
-        } else if (message.isMimeType("text/html")) {
-            String html = (String) message.getContent();
-            result = result + "\n" + Jsoup.parse(html).text();
-        } else if (message.isMimeType("multipart/*")) {
-            MimeMultipart mimeMultipart = (MimeMultipart) message.getContent();
-            result = getTextFromMimeMultipart(mimeMultipart);
-        }
-        return result;
-    }
-
-
-    /**
-     * Получение текста из MimeMultipart
-     */
-    private String getTextFromMimeMultipart(MimeMultipart mimeMultipart) throws MessagingException, IOException {
-        String result = "";
-        for (int i = 0; i < mimeMultipart.getCount(); i++) {
-            BodyPart bodyPart = mimeMultipart.getBodyPart(i);
-            if (bodyPart.getContent() instanceof MimeMultipart) {
-                result = result + getTextFromMimeMultipart((MimeMultipart) bodyPart.getContent());
-                break;
-            } else if (bodyPart.isMimeType("text/html")) {
-                String html = (String) bodyPart.getContent();
-                result = result + "\n" + Jsoup.parse(html).text();
-            } else if (bodyPart.isMimeType("text/plain")) {
-                result = result + bodyPart.getContent();
-            }
-        }
-        return result;
-    }
 }
