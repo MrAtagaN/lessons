@@ -9,7 +9,7 @@
   height: 1000px;
 
   text-align: center;
-  background: #1b2b37;
+  background: #172a39;
 }
 
 li {
@@ -29,9 +29,9 @@ ol li {
 }
 
 .header {
-  background-image: linear-gradient(to right, #243039, #074f6f 46%, #074f6f 56%, #243039);
-  padding-top: 20px;
-  padding-bottom: 20px;
+  background-image: linear-gradient(to right, #181818, #074f6f 46%, #074f6f 56%, #181818);
+  padding-top: 10px;
+  padding-bottom: 10px;
   margin-top: -8px;
   margin-right: -8px;
   margin-left: 92px;
