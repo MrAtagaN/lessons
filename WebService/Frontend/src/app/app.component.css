@@ -30,11 +30,15 @@ ol li {
 
 .header {
   background-image: linear-gradient(to right, #181818, #074f6f 46%, #074f6f 56%, #181818);
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin-top: -8px;
+  padding-top: 30px;
+  padding-bottom: 30px;
   margin-right: -8px;
   margin-left: 92px;
+}
+
+span {
+  margin-right: 30px;
+  margin-left: 30px;
 }
 
 A {
@@ -49,7 +53,7 @@ A:active {
 }
 
 .lineBlock {
-  display:inline-block
+  display:inline
 }
 
 h1 {

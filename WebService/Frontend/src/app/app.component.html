@@ -1,5 +1,3 @@
-
-
 <div class="leftMenu">
   <a class="homeLink" routerLink="/"> Домой </a>
   <ol>
@@ -15,17 +13,19 @@
 
 </div>
 
-<div class="header">
-   <span class="lineBlock">
+<div class="header ">
+
+   <span>
       {{ context.pageName }}
     </span>
-  <h1>
+  <span>
     Welcome to {{ title }}!
-  </h1>
+  </span>
+
 </div>
 
-<div class = "container">
-  <app-home *ngIf="router.url === '/'" ></app-home>
+<div class="container">
+  <app-home *ngIf="router.url === '/'"></app-home>
   <router-outlet></router-outlet>
 </div>
 
