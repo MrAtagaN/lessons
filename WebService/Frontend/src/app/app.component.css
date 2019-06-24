@@ -32,13 +32,13 @@ ol li {
   background-image: linear-gradient(to right, #181818, #074f6f 46%, #074f6f 56%, #181818);
   padding-top: 30px;
   padding-bottom: 30px;
-  margin-right: -8px;
   margin-left: 92px;
+  width: auto;
 }
 
 span {
   margin-right: 30px;
-  margin-left: 30px;
+  margin-left: 50px;
 }
 
 A {
