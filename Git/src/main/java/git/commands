@@ -3,19 +3,19 @@
 CONFIG FILE
 
 Изменение параметра user.name (user.email, и т.д.)
-git config --global user.name <USER_NAME>
+    git config --global user.name <USER_NAME>
 
 Просмотр всех параметров git
-git config --list
+    git config --list
 
 ключи для команды config
---global параметры для пользователя в системе
---system общие параметры системы
---local по умолчанию, параметры в директории .git
+    --global параметры для пользователя в системе
+    --system общие параметры системы
+    --local по умолчанию, параметры в директории .git
 
 
 
 PUSH
 
 Запушить в репозиторий с именем и паролем
-https://username:password@github.com/username/repository.git
+    https://username:password@github.com/username/repository.git

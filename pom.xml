@@ -25,6 +25,7 @@
         <module>WebService</module>
         <module>SpringData</module>
         <module>SpringSecurity</module>
+        <module>Bash</module>
     </modules>
 
 </project>
