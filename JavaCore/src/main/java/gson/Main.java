@@ -32,13 +32,8 @@ public class Main {
      * Получение значения из json
      */
     private static void jsonElementValue() {
-        Address address = new Address("Russia", "Moscow", "Tverskaya", 10);
-        Person person = new Person("AtagaN", 24, 43453, address, new Date());
-
         Gson gson = new Gson();
-        //сериализация
-        String json = gson.toJson(person);
-        System.out.println("json = " + json);
+        String json = createJson();
 
         // Дессериализация
         // Получаем jsonElement. Это по сути атрибут в json
@@ -58,13 +53,8 @@ public class Main {
      * Получение значения из json (Плохой способ)
      */
     private static void jsonElementValue2() {
-        Address address = new Address("Russia", "Moscow", "Tverskaya", 10);
-        Person person = new Person("AtagaN", 24, 43453, address, new Date());
-
         Gson gson = new Gson();
-        //сериализация
-        String json = gson.toJson(person);
-        System.out.println("json = " + json);
+        String json = createJson();
 
         // Дессериализация
         // Получаем jsonElement. Это по сути атрибут в json
@@ -79,7 +69,7 @@ public class Main {
 
 
     /**
-     * Кастомный объект gson
+     * Кастомный объект gson (сериализатор)
      */
     private static void gsonBuilder() {
         Gson gson = new GsonBuilder()
@@ -103,14 +93,8 @@ public class Main {
      * Маппинг json на Класс
      */
     private static void jsonObjects() {
-        Address address = new Address("Russia", "Moscow", "Tverskaya", 10);
-        Person person = new Person("AtagaN", 24, 43453, address, new Date());
-
         Gson gson = new Gson();
-        //Сериализация
-        String json = gson.toJson(person);
-
-        System.out.println("json = " + json);
+        String json = createJson();
 
         //Десериализация
         Person person2 = gson.fromJson(json, Person.class);
@@ -136,6 +120,20 @@ public class Main {
         });
 
         System.out.println();
+    }
+
+
+    private static String createJson() {
+        Address address = new Address("Russia", "Moscow", "Tverskaya", 10);
+        Person person = new Person("AtagaN", 24, 43453, address, new Date());
+
+        Gson gson = new Gson();
+        //Сериализация
+        String json = gson.toJson(person);
+
+        System.out.println("json = " + json);
+
+        return json;
     }
 
 
