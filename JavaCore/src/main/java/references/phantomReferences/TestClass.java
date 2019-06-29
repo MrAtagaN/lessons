@@ -7,7 +7,7 @@ public class TestClass {
 
     public TestClass() {
         this.data = new StringBuffer();
-        for (long i = 0; i < 50000000; i++) {
+        for (long i = 0; i < 50_000_000; i++) {
             this.data.append('x');
         }
     }

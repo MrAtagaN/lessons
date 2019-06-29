@@ -3,8 +3,11 @@ package references.phantomReferences;
 import java.lang.ref.Reference;
 import java.lang.ref.ReferenceQueue;
 
-
+/**
+ * Поток вызывающий Reference.clear(), когда в referenceQueue появляется ссылка
+ */
 public class QueueReadingThread<TestClass> extends Thread {
+
     private ReferenceQueue<TestClass> referenceQueue;
 
     public QueueReadingThread(ReferenceQueue<TestClass> referenceQueue) {
@@ -13,13 +16,11 @@ public class QueueReadingThread<TestClass> extends Thread {
 
     @Override
     public void run() {
-
         System.out.println("Поток, отслеживающий очередь, стартовал!");
         Reference ref;
 
         //ждем, пока в очереди появятся ссылки
         while ((ref = referenceQueue.poll()) == null) {
-
             try {
                 Thread.sleep(50);
             }
