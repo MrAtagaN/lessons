@@ -15,6 +15,8 @@ public class User {
     private String name;
     @Column(name = "age")
     private int age;
+    //двунаправленая связь, т.е. у Auto есть ссылка на User, а у User есть ссылка на Auto
+    //чтобы Hibernate понимал эту связь, нужно указывать mappedBy, в котором указать имя атрибута ссылающегося на данный объект
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Auto> autos;
 
