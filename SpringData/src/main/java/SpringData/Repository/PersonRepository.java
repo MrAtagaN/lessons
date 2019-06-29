@@ -20,8 +20,8 @@ import java.util.Map;
  * queryForObject - возвращает один объект или кидает Exception
  * batchUpdate
  * query - возвращает List объектов
- * queryForList - возвращает List<Map<String, Object>>. Sql возвращает несколько строк
- * queryForMap - возвращает map, (название колонки - значение). Sql должен вернуть одну строку
+ * queryForList - возвращает List<Map<String, Object>>. Sql возвращает несколько строк  (Используется для поиска нескольких объектов)
+ * queryForMap - возвращает map, (название колонки - значение). Sql должен вернуть одну строку (Используется для поиска одного объекта)
  */
 @Repository
 public class PersonRepository {
