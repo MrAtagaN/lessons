@@ -11,7 +11,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.sql.DataSource;
 
-
+/**
+ * Настройка Security
+ */
 @Configuration
 @EnableWebSecurity  //configures spring security from the class WebSecurityConfigurerAdapter
 public class ConfigSecurity extends WebSecurityConfigurerAdapter {
