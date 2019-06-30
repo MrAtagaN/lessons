@@ -16,7 +16,6 @@ public class ConfigMVC extends WebMvcConfigurationSupport {
 
     @Override
     protected void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-
         converters.add(new MappingJackson2HttpMessageConverter());
         //converters.add(new MappingJackson2HttpMessageConverter(objectMapper)); //Можно добавить кастомный  ObjectMapper
     }
