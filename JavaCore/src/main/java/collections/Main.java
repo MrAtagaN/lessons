@@ -36,8 +36,8 @@ public class Main {
     /**
      * Реализации {@link Queue}
      */
-    Queue linkedList2 = new LinkedList<>(); //List ,Queue, Deque
     Queue priorityQueue = new PriorityQueue(); //Queue
+    Queue linkedList2 = new LinkedList<>(); //List ,Queue, Deque
     Queue arrayDeque = new ArrayDeque(); //Queue, Deque
 
 

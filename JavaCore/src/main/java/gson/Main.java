@@ -29,7 +29,7 @@ public class Main {
 
 
     /**
-     * Получение значения из json
+     * Получение значения атрибута из json
      */
     private static void jsonElementValue() {
         Gson gson = new Gson();
@@ -50,7 +50,7 @@ public class Main {
 
 
     /**
-     * Получение значения из json (Плохой способ)
+     * Получение значения атрибута из json (Плохой способ)
      */
     private static void jsonElementValue2() {
         Gson gson = new Gson();
@@ -119,7 +119,6 @@ public class Main {
             System.out.print(str + " ");
         });
 
-        System.out.println();
     }
 
 
