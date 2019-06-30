@@ -6,8 +6,10 @@
          http://www.springframework.org/schema/context
           http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <!--    Можно заменить в коде на: -->
+    <!--    AbstractAnnotationConfigDispatcherServletInitializer  -->
 
-    <context:component-scan base-package="com.plekhanov"/>
+    <!--    <context:component-scan base-package="com.plekhanov"/>-->
 
 
     <!--    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" >-->

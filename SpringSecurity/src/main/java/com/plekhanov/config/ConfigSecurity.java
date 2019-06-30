@@ -13,7 +13,7 @@ import javax.sql.DataSource;
 
 
 @Configuration
-@EnableWebSecurity
+@EnableWebSecurity  //configures spring security from the class WebSecurityConfigurerAdapter
 public class ConfigSecurity extends WebSecurityConfigurerAdapter {
 
     @Autowired
