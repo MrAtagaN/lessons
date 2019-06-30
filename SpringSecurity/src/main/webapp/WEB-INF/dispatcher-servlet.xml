@@ -10,11 +10,14 @@
     <context:component-scan base-package="com.plekhanov"/>
 
 
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
-        <property name="prefix" value="/WEB-INF/pages/"/>
-        <property name="suffix" value=".jsp"/>
-    </bean>
+    <!--    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" >-->
+    <!--        <property name="prefix" value="/WEB-INF/pages/"/>-->
+    <!--        <property name="suffix" value=".jsp"/>-->
+    <!--    </bean>-->
 
+    <!--    Можно заменить в коде на: -->
+    <!--    @EnableWebMvc  -->
+    <!--    @ComponentScan(basePackages = "com.plekhanov")  -->
 
 
 </beans>
