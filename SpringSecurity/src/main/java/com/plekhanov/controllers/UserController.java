@@ -1,10 +1,7 @@
 package com.plekhanov.controllers;
 
-
-
 import com.plekhanov.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.web.bind.annotation.*;
 
 

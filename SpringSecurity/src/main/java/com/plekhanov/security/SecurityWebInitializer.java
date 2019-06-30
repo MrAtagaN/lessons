@@ -6,6 +6,7 @@ import org.springframework.security.web.context.AbstractSecurityWebApplicationIn
 
 /**
  * Класс нужен для включения Фильтра запросов
+ * Можно настроить действия перед и после обработки фильтром
  *
  * Registers the DelegatingFilterProxy to use the springSecurityFilterChain before any other registered Filter
  */

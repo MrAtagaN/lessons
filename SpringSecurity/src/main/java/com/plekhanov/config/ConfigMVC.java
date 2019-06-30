@@ -11,7 +11,7 @@ import java.util.List;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "com.plekhanov")
+//@ComponentScan(basePackages = "com.plekhanov")
 public class ConfigMVC extends WebMvcConfigurationSupport {
 
     @Override
