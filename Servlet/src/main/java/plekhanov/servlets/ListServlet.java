@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-
+/**
+ * http://localhost:8080/MyServlet/list
+ */
 @WebServlet("/list")
 public class ListServlet extends HttpServlet {
 

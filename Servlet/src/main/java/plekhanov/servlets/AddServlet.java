@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
+/**
+ * http://localhost:8080/MyServlet/add
+ */
 @WebServlet("/add")
 public class AddServlet extends HttpServlet {
 
