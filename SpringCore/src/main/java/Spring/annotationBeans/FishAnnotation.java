@@ -1,12 +1,19 @@
 package Spring.annotationBeans;
 
 import org.springframework.stereotype.Component;
+import javax.annotation.PostConstruct;
+
 
 @Component
 public class FishAnnotation {
 
     private int speed;
     public FishAnnotation() {
+    }
+
+    @PostConstruct
+    public void init() {
+        speed = 13;
     }
 
     public void say() {

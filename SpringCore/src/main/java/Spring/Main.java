@@ -10,7 +10,8 @@ import java.io.IOException;
 
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+
+    public static void main(String[] args) {
 
         ApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext("Spring.annotationBeans");
         ApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext("spring.xml");
@@ -22,9 +23,9 @@ public class Main {
         cat.say();
 
         //бин с другим id
-        MouseAnnotation mouseAnnotation = annotationConfigApplicationContext.getBean("Mikkie", MouseAnnotation.class);
+        MouseAnnotation mouseAnnotation = annotationConfigApplicationContext.getBean("mouse", MouseAnnotation.class);
         mouseAnnotation.say();
-        Mouse mouse = classPathXmlApplicationContext.getBean("Mikkie", Mouse.class);
+        Mouse mouse = classPathXmlApplicationContext.getBean("mouse", Mouse.class);
         mouse.say();
 
         //бин созданный фабричным методом
@@ -48,12 +49,6 @@ public class Main {
         //DogAnnotation dog = annotationConfigApplicationContext.getBean("dogAnnotation", DogAnnotation.class);
         TigerAnnotation tiger =  annotationConfigApplicationContext.getBean("tigerAnnotation", TigerAnnotation.class );
         tiger.say();
-
-
-
-
-
-
 
 
 

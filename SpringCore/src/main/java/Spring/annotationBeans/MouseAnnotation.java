@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 /**
  * Бин создаваемый через xml конфиг  <context:annotation-config />
  */
-@Component("Mikkie")
+@Component("mouse")
 public class MouseAnnotation {
 
     public MouseAnnotation() {

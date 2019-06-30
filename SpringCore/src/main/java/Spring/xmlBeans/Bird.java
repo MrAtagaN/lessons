@@ -3,10 +3,10 @@ package Spring.xmlBeans;
 
 /**
  * Бин созданный через xml конфиг, фабричным методом
- *
  */
 
 public class Bird {
+
     private Bird() {
     }
 
