@@ -16,7 +16,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * Spliterator<T> spliterator();
  * void forEach(Consumer<? super T> action)
  */
-public class Main {
+public class CollectionsImpl {
 
     /***
      * Реализации {@link List}
