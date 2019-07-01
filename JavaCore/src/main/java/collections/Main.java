@@ -6,6 +6,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 
 /**
+ * https://javarush.ru/groups/posts/2308-korotko-o-glavnom---java-collections-framework
+ *
  * Реализации {@link Collection},  {@link Iterable}
  *
  * Методы Iterable:
