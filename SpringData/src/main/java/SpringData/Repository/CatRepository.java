@@ -1,6 +1,5 @@
 package SpringData.Repository;
 
-
 import SpringData.Entities.Cat;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
