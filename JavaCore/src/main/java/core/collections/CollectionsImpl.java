@@ -7,16 +7,22 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * https://javarush.ru/groups/posts/2308-korotko-o-glavnom---java-collections-framework
- *
+ * <p>
  * Реализации {@link Collection},  {@link Iterable}
- *
+ * <p>
  * Методы Iterable:
- *
+ * <p>
  * Iterator<T> iterator();
  * Spliterator<T> spliterator();
  * void forEach(Consumer<? super T> action)
  */
 public class CollectionsImpl {
+
+    public static void main(String[] args) {
+        // Collections.checkedMap()
+        // Collections.disjoint()
+
+    }
 
     /***
      * Реализации {@link List}
