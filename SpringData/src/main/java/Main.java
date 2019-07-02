@@ -36,5 +36,7 @@ public class Main {
             System.out.println("person with name AtagaN = " + person1);
         });
 
+        System.out.println(personRepository.getRowList());
+
     }
 }
