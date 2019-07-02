@@ -25,6 +25,12 @@ public class ScheduleTask {
      *
      * 7.Year(необязательное поле)
      */
+    @Scheduled(cron="* * * * * *", zone="Europe/Istanbul")
+    public void doScheduledWork2() {
+        LOG.info("DO SCHEDULED WORK: cron = \"* * * * * *\"");
+    }
+
+
     @Scheduled(fixedRate = 1000)
     public void doScheduledWork() {
         LOG.info("DO SCHEDULED WORK: fixedRate = 1000");
