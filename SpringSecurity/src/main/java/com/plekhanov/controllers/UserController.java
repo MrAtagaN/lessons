@@ -14,7 +14,16 @@ public class UserController {
 
     @GetMapping(value = "/getUser")
     public User getUser() {
-
         return user;
+    }
+
+    @GetMapping(value = "/getInfo")
+    public String getInfo() {
+        return "SOME INFO";
+    }
+
+    @GetMapping(value = "/getSec")
+    public String getSec() {
+        return "SOME SECURITY CHANNEL";
     }
 }

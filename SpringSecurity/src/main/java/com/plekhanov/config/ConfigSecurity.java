@@ -33,6 +33,13 @@ public class ConfigSecurity extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().anyRequest().authenticated().and().httpBasic().and().formLogin();
+        //http.authorizeRequests().anyRequest().authenticated().and().httpBasic().and().formLogin();
+        http.authorizeRequests().
+                antMatchers("/users/getUser")
+                .hasRole("ADMIN").anyRequest()
+                .authenticated().anyRequest()
+                .permitAll()
+                .and().formLogin();
+
     }
 }
