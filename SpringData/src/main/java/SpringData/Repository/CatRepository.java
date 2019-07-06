@@ -13,7 +13,7 @@ import javax.transaction.Transactional;
 public class CatRepository {
 
     @Autowired
-    SessionFactory sessionFactory;
+    private SessionFactory sessionFactory;
 
 
     public void saveCat(Cat cat ) {
