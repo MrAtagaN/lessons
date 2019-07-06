@@ -1,11 +1,14 @@
 package Hibernate2;
 
 
+import org.hibernate.annotations.BatchSize;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "users")
+@BatchSize(size = 10) //аннотация Hibernate, объекты загружаются пачками (среднее между ленивой и не ленивой загрузкой)
 public class User {
 
     @Id
@@ -17,7 +20,7 @@ public class User {
     private int age;
     //двунаправленая связь, т.е. у Auto есть ссылка на User, а у User есть ссылка на Auto
     //чтобы Hibernate понимал эту связь, нужно указывать mappedBy, в котором указать имя атрибута ссылающегося на данный объект
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Auto> autos;
 
 
