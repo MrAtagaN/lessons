@@ -1,4 +1,4 @@
-package core.multithreading.callable;
+package core.multithreading.executors;
 
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Lock;
