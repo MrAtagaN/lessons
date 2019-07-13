@@ -1,5 +1,4 @@
-package core.multithreading.core;
-
+package core.multithreading.callable;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
