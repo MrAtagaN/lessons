@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 public class Main {
 
     //logback.xml
-    public static Logger LOG = LoggerFactory.getLogger(Main.class);
+    public static final Logger LOG = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) {
 
