@@ -22,6 +22,9 @@ public class Transfer implements Callable<Boolean> {
         if (accountFrom.getBalance() < amount) {
             throw new RuntimeException("NO MONEY ON ACCOUNT");
         }
+        if (Math.random() > 0.9) {
+            throw new RuntimeException("RANDOM EXCEPTION");  //случайный Exception
+        }
         LOG.info("TRY TO LOCK accountFrom");
         if (accountFrom.getLock().tryLock()) {
             try {

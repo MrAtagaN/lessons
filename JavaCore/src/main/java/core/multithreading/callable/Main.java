@@ -24,7 +24,7 @@ public class Main {
                     Thread.sleep(1000);
                     System.out.println(future.get());
                 } catch (InterruptedException | ExecutionException e) {
-                    e.printStackTrace();
+                    System.out.println("EXCEPTION IN TASK");
                 }
             }).start();
 
