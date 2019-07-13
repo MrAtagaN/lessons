@@ -1,11 +1,8 @@
 package core.multithreading.callable;
 
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.util.concurrent.Callable;
-
 
 public class Transfer implements Callable<Boolean> {
 
@@ -25,23 +22,34 @@ public class Transfer implements Callable<Boolean> {
         if (accountFrom.getBalance() < amount) {
             throw new RuntimeException("NO MONEY ON ACCOUNT");
         }
-
-        if (accountFrom.getLock().tryLock() && accountTo.getLock().tryLock()) {
+        LOG.info("TRY TO LOCK accountFrom");
+        if (accountFrom.getLock().tryLock()) {
             try {
-                accountFrom.withdraw(amount);
-                accountTo.deposit(amount);
-                LOG.info("TRANSFER MONEY: {}", amount);
+                LOG.info("TRY TO LOCK accountTo");
+                if (accountTo.getLock().tryLock()) {
+                    try {
+                        accountFrom.withdraw(amount);
+                        accountTo.deposit(amount);
+                        LOG.info("TRANSFER MONEY: {}", amount);
+                        return true;
+                    } finally {
+                        LOG.info("UNLOCK accountTo");
+                        accountTo.getLock().unlock();
+                    }
+                } else {
+                    return false;
+                }
             } finally {
+                LOG.info("UNLOCK accountFrom");
                 accountFrom.getLock().unlock();
-                accountTo.getLock().unlock();
-                return true;
             }
-
         } else {
-            accountFrom.getLock().unlock();
-            accountTo.getLock().unlock();
             return false;
         }
 
+//        accountFrom.withdraw(amount);
+//        accountTo.deposit(amount);
+//        LOG.info("TRANSFER MONEY: {}", amount);
+//        return true;
     }
 }
