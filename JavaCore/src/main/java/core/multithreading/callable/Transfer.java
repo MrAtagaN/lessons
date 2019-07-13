@@ -3,9 +3,8 @@ package core.multithreading.callable;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import java.util.concurrent.Callable;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
 
 
 public class Transfer implements Callable<Boolean> {
@@ -27,19 +26,22 @@ public class Transfer implements Callable<Boolean> {
             throw new RuntimeException("NO MONEY ON ACCOUNT");
         }
 
-        Lock lock = new ReentrantLock();
-        if (lock.tryLock()) {
+        if (accountFrom.getLock().tryLock() && accountTo.getLock().tryLock()) {
             try {
                 accountFrom.withdraw(amount);
                 accountTo.deposit(amount);
                 LOG.info("TRANSFER MONEY: {}", amount);
+            } finally {
+                accountFrom.getLock().unlock();
+                accountTo.getLock().unlock();
+                return true;
             }
-            finally {
-                lock.unlock();
-            }
+
         } else {
+            accountFrom.getLock().unlock();
+            accountTo.getLock().unlock();
             return false;
         }
-        return true;
+
     }
 }

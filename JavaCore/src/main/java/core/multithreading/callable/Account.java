@@ -1,9 +1,12 @@
 package core.multithreading.callable;
 
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class Account {
 
+    Lock lock = new ReentrantLock();
     private volatile int balance;
     private AtomicInteger failTransactions;
 
@@ -37,5 +40,7 @@ public class Account {
         return failTransactions;
     }
 
-
+    public Lock getLock() {
+        return lock;
+    }
 }
