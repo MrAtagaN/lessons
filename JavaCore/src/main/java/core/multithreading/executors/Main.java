@@ -29,7 +29,7 @@ public class Main {
             new Thread(() -> {
                 try {
                     Thread.sleep(1000);
-                    System.out.println(future.get());
+                    System.out.println(future.get());  // получаем значение или ждём его , или получаем исключение нити
                 } catch (InterruptedException | ExecutionException e) {
                     System.out.println("EXCEPTION IN TASK");
                 }
