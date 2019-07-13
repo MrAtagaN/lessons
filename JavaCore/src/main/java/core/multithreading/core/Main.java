@@ -42,7 +42,7 @@ public class Main {
             throw new RuntimeException("NO MONEY ON ACCOUNT");
         }
 
-        //DEAD LOCK
+        //DEAD LOCK  , чтобы избежать нужно блокировать объекты в одном порядке (например по id)
         synchronized (acc1) {
             synchronized (acc2) {
                 acc1.withdraw(amount);
