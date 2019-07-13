@@ -26,15 +26,15 @@ public class Main {
             Future<Boolean> future = executorService.submit(new Transfer(account_1, account_2, 1));
 
             // выводим ответ
-            new Thread(() -> {
+            Thread thread = new Thread(() -> {
                 try {
                     Thread.sleep(1000);
                     System.out.println(future.get());
                 } catch (InterruptedException | ExecutionException e) {
                     System.out.println("EXCEPTION IN TASK");
                 }
-            }).start();
-
+            });
+            thread.start();
         }
 
         executorService.shutdown();
