@@ -10,7 +10,6 @@ public class Main {
 
     public static final Logger LOG = LoggerFactory.getLogger(Main.class);
 
-
     public static void main(String[] args) throws InterruptedException {
         final Account account_1 = new Account(10_000);
         final Account account_2 = new Account(10_000);
