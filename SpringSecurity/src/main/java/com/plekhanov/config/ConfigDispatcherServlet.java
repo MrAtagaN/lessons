@@ -14,11 +14,13 @@ public class ConfigDispatcherServlet extends AbstractAnnotationConfigDispatcherS
         return null;
     }
 
+
     // DispatcherServlet application context  ( @EnableWebMvc ) ViewResolver
     @Override
     protected Class<?>[] getServletConfigClasses() {
         return new Class<?>[]{ConfigMVC.class};
     }
+
 
     @Override
     protected String[] getServletMappings() {
