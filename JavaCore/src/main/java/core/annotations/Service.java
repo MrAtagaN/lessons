@@ -17,7 +17,7 @@ public @interface Service {
 
     String name(); //обязательный параметр в аннотации (нужно задавать)
 
-    boolean lazyLoad() default false; //возвращаемое значение по умолчанию
+    boolean lazyLoad() default false; //возвращаемое значение по умолчанию (необязательное значение)
 }
 
 
