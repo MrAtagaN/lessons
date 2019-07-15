@@ -20,9 +20,11 @@ public class Main {
         tClass.isAnnotationPresent(Service.class); // есть ли у класса аннотация
         //Service annotation = tClass.getAnnotation(Service.class);// возвращает аннотацию в виде объекта
 
-        if (tClass .isAnnotationPresent(Service.class)) {
+        if (tClass.isAnnotationPresent(Service.class)) {
             Service annotation = tClass.getAnnotation(Service.class);
-            System.out.println(annotation.name());
+            System.out.println("Значение name аннотации: " + annotation.name() + " над классом " + tClass.getSimpleName());
+        } else {
+            System.out.println("Аннотации Service у класса " + tClass.getSimpleName() + "не найдено");
         }
 
     }
