@@ -15,9 +15,9 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME) //Время жизни аннотации
 public @interface Service {
 
-    String name(); //???
+    String name(); //обязательный параметр в аннотации (нужно задавать)
 
-    boolean lazyLoad() default false; //????
+    boolean lazyLoad() default false; //возвращаемое значение по умолчанию
 }
 
 
