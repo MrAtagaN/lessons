@@ -2,7 +2,6 @@ package com.plekhanov.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-
 /**
  *  Конфиг DispatcherServlet
  */
@@ -13,7 +12,6 @@ public class ConfigDispatcherServlet extends AbstractAnnotationConfigDispatcherS
     protected Class<?>[] getRootConfigClasses() {
         return null;
     }
-
 
     // DispatcherServlet application context  ( @EnableWebMvc ) ViewResolver
     @Override
