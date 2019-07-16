@@ -17,6 +17,7 @@ public class NavigableSetTest {
         treeSet.add(4);
         treeSet.add(5);
 
+
         treeSet.descendingSet(); // развернутый сет
 
         treeSet.ceiling(3); // ближайший элемент в большую сторону
