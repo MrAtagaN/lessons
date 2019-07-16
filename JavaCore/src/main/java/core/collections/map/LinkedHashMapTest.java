@@ -18,27 +18,9 @@ public class LinkedHashMapTest {
         map.put(2, "d");
         map.put(1, "e");
 
-        // методы java 1.8
-
-        // сделать вычисление значения для определенного ключа
-        map.compute(1, (key, value) -> {
-            return "compute" + value;
-        });
-
-        // сделать вычисление значения для определенного ключа, если он есть
-        map.computeIfPresent(2, (key, value) -> {
-            return "computeIfPresent " + key + " " + value;
-        });
-
-        // сделать вычисление значения для ключа, если кго нет
-        map.computeIfAbsent(6, (key) -> {
-            return "computeIfAbsent value " + 2;
-        });
-
-        // вычисляет и заменяет старое значение ключа на новое
-        map.merge(3, "newValue", (oldValue, newValue) -> {
-            return "merge " + oldValue + " replace " + newValue;
-        });
+        map.get(3);
+        map.get(1);
+        map.get(3);
 
         map.forEach((key, value) -> {
             System.out.println(key + " | " + value);
