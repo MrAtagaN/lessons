@@ -1,10 +1,9 @@
-package core.references;
+package core.collections.list;
 
 
-public class Main {
+public class ListTest {
 
     public static void main(String[] args) {
-
 
     }
 }
