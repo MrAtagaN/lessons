@@ -22,11 +22,11 @@ import java.util.Map;
 public class Main {
 
     public static void main(String[] args) throws JRException, FileNotFoundException {
-        InputStream inputStream = new FileInputStream("JavaCore\\src\\main\\resources\\jasperTemplate.jrxml");
+        InputStream inputStream = new FileInputStream("JavaCore\\src\\main\\resources\\Blank_A4.jrxml");
         JasperReport jasperReport = JasperCompileManager.compileReport(inputStream);
 
         Map<String, Object> parameters = new HashMap<>();
-        parameters.put("Author", "Employee Report");
+        parameters.put("REPORT_CONTEXT", "Employee Report");
         parameters.put("LAST_NAME", "Employee Report");
         parameters.put("SALARY", "15000.0");
         //parameters.put("condition", " LAST_NAME ='Smith' ORDER BY FIRST_NAME");
