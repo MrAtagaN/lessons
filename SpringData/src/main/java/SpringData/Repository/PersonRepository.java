@@ -20,7 +20,7 @@ import java.util.List;
  * queryForObject - возвращает один объект или кидает Exception
  * batchUpdate
  * query - возвращает List объектов
- * queryForList - возвращает List<Map<String, Object>>. Sql возвращает несколько строк  (Используется для поиска нескольких объектов)
+ * queryForList - возвращает List<T>. Sql возвращает несколько строк  (Используется для поиска нескольких объектов)
  * queryForMap - возвращает map, (название колонки - значение). Sql должен вернуть одну строку (Используется для поиска одного объекта)
  */
 @Repository
@@ -36,7 +36,7 @@ public class PersonRepository {
         return (Person) jdbcTemplate.queryForObject("select * from PERSON join ADDRESS on PERSON.address_id = ADDRESS.id where PERSON.id = ?", rowMapper, id);
     }
 
-    public List<Person> findAllUsers() {
+    public List<Person> findAllPersons() {
         return jdbcTemplate.query("select * from PERSON join ADDRESS on PERSON.address_id = ADDRESS.id", rowMapper);
     }
 
@@ -44,15 +44,15 @@ public class PersonRepository {
         jdbcTemplate.update("insert into PERSON (name, age, phone, address_id, birthday) values (?, ?, ?, ?, ?)", person.getName(), person.getAge(), person.getPhone(), person.getAddress().getId(), person.getBirthday());
     }
 
-    public List<Person> findUsersByName(String name) {
+    public List<Person> findPersonsByName(String name) {
         HashMap<String, Object> map = new HashMap<>();
         map.put("name", name);
         return namedParameterJdbcTemplate.query("select * from PERSON join ADDRESS on PERSON.address_id = ADDRESS.id where name = :name", map, rowMapper);
     }
 
-    public int getRowList() {
-        MapSqlParameterSource params = getMapSqlParametersForUpdate();
-        return namedParameterJdbcTemplate.update("update PERSON set age = 28  where name = :name", params);
+    public int updatePersonAgeByName(final int age, final String name) {
+        MapSqlParameterSource params = new MapSqlParameterSource("name", name).addValue("age", age);
+        return namedParameterJdbcTemplate.update("update PERSON set age = :age  where name = :name", params);
     }
 
 
@@ -74,12 +74,5 @@ public class PersonRepository {
         return person;
     };
 
-    private MapSqlParameterSource getMapSqlParametersForUpdate() {
-        MapSqlParameterSource result = new MapSqlParameterSource();
-
-        result.addValue("name", "AtagaN");
-
-        return result;
-    }
 }
 

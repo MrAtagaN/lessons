@@ -19,7 +19,7 @@ public class Main {
         ApplicationContext context = new AnnotationConfigApplicationContext(PersonRepository.class, DbConfig.class);
         PersonRepository personRepository = context.getBean(PersonRepository.class);
 
-        List<Person> allUsers = personRepository.findAllUsers();
+        List<Person> allUsers = personRepository.findAllPersons();
         allUsers.forEach(user -> {
             System.out.println("person = " + user);
         });
@@ -32,11 +32,11 @@ public class Main {
 
         System.out.println("person with id 2 = " + personRepository.findPersonById(2));
 
-        personRepository.findUsersByName("AtagaN").forEach(person1 -> {
+        personRepository.findPersonsByName("AtagaN").forEach(person1 -> {
             System.out.println("person with name AtagaN = " + person1);
         });
 
-        System.out.println(personRepository.getRowList());
+        System.out.println(personRepository.updatePersonAgeByName(26, "AtagaN"));
 
     }
 }
