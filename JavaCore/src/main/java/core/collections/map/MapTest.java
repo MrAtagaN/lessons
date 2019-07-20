@@ -39,7 +39,7 @@ public class MapTest {
             return "computeIfPresent " + key + " " + value;
         });
 
-        // сделать вычисление значения для ключа, если кго нет
+        // сделать вычисление значения для ключа, если его нет
         map.computeIfAbsent(6, (key) -> {
             return "computeIfAbsent value " + 2;
         });
