@@ -7,14 +7,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * https://javarush.ru/groups/posts/2308-korotko-o-glavnom---java-collections-framework
+ * https://habr.com/ru/company/luxoft/blog/256877/
  *
- * Методы Collections:
- *
- * Методы Iterable:
- *
- * iterator -
- * spliterator -
- * forEach -
  */
 public class CollectionsTest {
 
