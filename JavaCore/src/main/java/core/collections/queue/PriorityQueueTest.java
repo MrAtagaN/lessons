@@ -4,7 +4,9 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 
 /**
- *  {@link PriorityQueue}
+ * PriorityQueue
+ *
+ * Сортирует элементы в очереди
  */
 public class PriorityQueueTest {
 
@@ -21,7 +23,6 @@ public class PriorityQueueTest {
                 return -1;
             }
             return o1 - o2;
-
         });
 
         queue.add(5);

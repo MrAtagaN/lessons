@@ -5,6 +5,8 @@ import java.util.Map;
 
 /**
  * LinkedHashMap
+ *
+ * Сохраняет порядок вставки или порядок доступа к ключам
  */
 public class LinkedHashMapTest {
 
