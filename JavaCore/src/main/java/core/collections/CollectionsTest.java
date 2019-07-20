@@ -9,6 +9,8 @@ import java.util.concurrent.*;
  * https://javarush.ru/groups/posts/2308-korotko-o-glavnom---java-collections-framework
  * https://habr.com/ru/company/luxoft/blog/256877/
  *
+ * Методы Collections:
+ *
  */
 public class CollectionsTest {
 
@@ -32,10 +34,10 @@ public class CollectionsTest {
     /**
      * Реализации Map
      */
-    Map hashMap = new HashMap();
-    Map treeMap = new TreeMap();
-    Map concurrentHashMap = new ConcurrentHashMap();
-    Map concurrentSkipListMap = new ConcurrentSkipListMap();
+    Map hashMap = new HashMap(); //Map
+    Map treeMap = new TreeMap(); //Map
+    Map concurrentHashMap = new ConcurrentHashMap(); //Map, ConcurrentMap
+    Map concurrentSkipListMap = new ConcurrentSkipListMap(); //Map, ConcurrentMap
 
 
     /**
@@ -43,9 +45,9 @@ public class CollectionsTest {
      */
     Set hashSet = new HashSet(); //Set
     Set linkedHashSet = new LinkedHashSet(); //Set
-    Set treeSet = new TreeSet(); //Set //NavigableSet
+    Set treeSet = new TreeSet(); //Set, NavigableSet
     Set copyOnWriteArraySet = new CopyOnWriteArraySet(); //Set
-    Set concurrentSkipListSet = new ConcurrentSkipListSet(); //Set //NavigableSet
+    Set concurrentSkipListSet = new ConcurrentSkipListSet(); //Set, NavigableSet
 
 
     /**
