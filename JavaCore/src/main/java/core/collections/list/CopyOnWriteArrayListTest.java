@@ -42,6 +42,7 @@ public class CopyOnWriteArrayListTest {
         executorService.shutdown();
     }
 
+
     private static class ListRunner implements Callable<Long> {
 
         private int start;

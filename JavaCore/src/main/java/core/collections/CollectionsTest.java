@@ -7,25 +7,26 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * https://javarush.ru/groups/posts/2308-korotko-o-glavnom---java-collections-framework
- * <p>
- * Реализации {@link Collection},  {@link Iterable}
- * <p>
+ *
+ * Методы Collections:
+ *
  * Методы Iterable:
- * <p>
- * Iterator<T> iterator();
- * Spliterator<T> spliterator();
- * void forEach(Consumer<? super T> action)
+ *
+ * iterator -
+ * spliterator -
+ * forEach -
  */
-public class CollectionsImpl {
+public class CollectionsTest {
 
     public static void main(String[] args) {
         // Collections.checkedMap()
         // Collections.disjoint()
 
+
     }
 
     /***
-     * Реализации {@link List}
+     * Реализации List
      */
     List arrayList = new ArrayList<>(); //List
     List copyOnWriteArrayList = new CopyOnWriteArrayList(); //List
@@ -35,14 +36,14 @@ public class CollectionsImpl {
 
 
     /**
-     * Set
+     * Реализации Set
      */
     Set hashSet = new HashSet(); //Set
     Set linkedHashSet = new LinkedHashSet(); //Set
 
 
     /**
-     * Реализации {@link Queue}
+     * Реализации Queue
      */
     Queue priorityQueue = new PriorityQueue(); //Queue
     Queue linkedList2 = new LinkedList<>(); //List ,Queue, Deque
@@ -50,7 +51,7 @@ public class CollectionsImpl {
 
 
     /**
-     * Реализации {@link Deque}
+     * Реализации Deque
      */
     Deque arrayDeque2 = new ArrayDeque(); //Queue, Deque
     Deque linkedList3 = new LinkedList<>(); //List ,Queue, Deque
