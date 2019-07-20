@@ -16,12 +16,23 @@ import java.lang.reflect.Method;
  * Получить и установить значение поля объекта по имени;
  * Вызвать метод объекта по имени.
  *
+ * Методы:
+ * getSimpleName
+ * getAnnotation
+ * isAnnotation
+ * isAnnotationPresent
+ * desiredAssertionStatus
+ * getClassLoader
+ * getCanonicalName
+ * getSigners
+ * isAssignableFrom
+ *
  * Возвращают все, в том числе и private, protected:
  * getDeclaredField
  * getDeclaredMethod
  * getDeclaredConstructor
  *
- * Возвращают только public:
+ * Возвращают только public, в том числе родительских классов:
  * getField
  * getMethod
  * getConstructor

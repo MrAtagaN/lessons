@@ -2,7 +2,7 @@ package core.collections;
 
 
 import java.util.*;
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.*;
 
 
 /**
@@ -30,10 +30,22 @@ public class CollectionsTest {
 
 
     /**
+     * Реализации Map
+     */
+    Map hashMap = new HashMap();
+    Map treeMap = new TreeMap();
+    Map concurrentHashMap = new ConcurrentHashMap();
+    Map concurrentSkipListMap = new ConcurrentSkipListMap();
+
+
+    /**
      * Реализации Set
      */
     Set hashSet = new HashSet(); //Set
     Set linkedHashSet = new LinkedHashSet(); //Set
+    Set treeSet = new TreeSet(); //Set //NavigableSet
+    Set copyOnWriteArraySet = new CopyOnWriteArraySet(); //Set
+    Set concurrentSkipListSet = new ConcurrentSkipListSet(); //Set //NavigableSet
 
 
     /**

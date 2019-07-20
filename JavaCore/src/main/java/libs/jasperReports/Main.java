@@ -32,6 +32,7 @@ public class Main {
         //parameters.put("condition", " LAST_NAME ='Smith' ORDER BY FIRST_NAME");
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters);
 
+        // создание отчета
         JRPdfExporter exporter = new JRPdfExporter();
 
         exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
