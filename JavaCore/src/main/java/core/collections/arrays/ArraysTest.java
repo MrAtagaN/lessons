@@ -4,10 +4,15 @@ import java.util.Arrays;
 
 /**
  * https://javarush.ru/groups/posts/massivy-java
+ *
+ * Методы Arrays:
+ * asList -
+ *
  */
 public class ArraysTest {
 
     public static void main(String[] args) {
+        //Arrays.asList()
 
         String[] seasons  = new String[] {"Winter", "Spring", "Summer", "Autumn"};
         String[] seasons2  = {"Winter", "Spring", "Summer", "Autumn"};

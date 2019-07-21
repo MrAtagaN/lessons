@@ -115,7 +115,7 @@ public class Main {
     }
 
     /**
-     * Json для тестов
+     * Json для тестов, сериализация объектов Address, Person
      */
     private static String createJson() {
         Address address = new Address("Russia", "Moscow", "Tverskaya", 10);
