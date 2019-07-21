@@ -10,25 +10,26 @@ public class Main {
 
     public static final Logger LOG = LoggerFactory.getLogger(Main.class);
 
-
     public static void main(String[] args) throws InterruptedException {
         final Account account_1 = new Account(10_000);
         final Account account_2 = new Account(10_000);
 
-        new Thread(() -> {
+        Thread thread = new Thread(() -> {
             for (int i = 0; i < 10000; i++) {
                 transfer(account_1, account_2, 1);
             }
-        }).start();
+        });
+        thread.start();
 
-        new Thread(() -> {
+        Thread thread2 = new Thread(() -> {
             for (int i = 0; i < 10000; i++) {
                 transfer(account_2, account_1, 1);
             }
-        }).start();
+        });
+        thread2.start();
 
-
-        Thread.sleep(1000);
+        thread.join();
+        thread2.join();
         LOG.info("ACCOUNT 1 AMOUNT: {}", account_1.getBalance());
         LOG.info("ACCOUNT 2 AMOUNT: {}", account_2.getBalance());
     }

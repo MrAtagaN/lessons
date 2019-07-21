@@ -7,24 +7,17 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.Map;
 
-
 /**
  * Gson
  */
 public class Main {
 
     public static void main(String[] args) {
-
         //primitives();
-
-        jsonObjects();
-
-        gsonBuilder();
-
         jsonElementValue();
-
+        jsonObjects();
+        gsonBuilder();
         jsonElementValue2();
-
     }
 
 
@@ -69,7 +62,7 @@ public class Main {
 
 
     /**
-     * Кастомный объект libs.gson (сериализатор)
+     * Кастомный объект gson (сериализатор)
      */
     private static void gsonBuilder() {
         Gson gson = new GsonBuilder()
@@ -121,7 +114,9 @@ public class Main {
 
     }
 
-
+    /**
+     * Json для тестов, сериализация объектов Address, Person
+     */
     private static String createJson() {
         Address address = new Address("Russia", "Moscow", "Tverskaya", 10);
         Person person = new Person("AtagaN", 24, 43453, address, new Date());

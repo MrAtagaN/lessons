@@ -1,7 +1,10 @@
 package libs.gson;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Address {
 
+    @SerializedName("COUNTRY")
     private String country;
     private String city;
     private String street;

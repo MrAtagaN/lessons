@@ -1,8 +1,7 @@
-package core.collections;
+package core.collections.queue;
 
 import java.util.ArrayDeque;
 import java.util.Queue;
-
 
 /**
  * Методы {@link Queue}
@@ -11,7 +10,6 @@ public class QueueTest {
 
     @SuppressWarnings(value = {"all"})
     public static void main(String[] args) {
-
         Queue arrayDeque = new ArrayDeque();
 
         arrayDeque.element(); //Retrieves, but does not remove,  NoSuchElementException if this queue is empty

@@ -1,8 +1,6 @@
 package com.plekhanov.security;
 
-
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
-
 
 /**
  * Класс нужен для включения Фильтра запросов

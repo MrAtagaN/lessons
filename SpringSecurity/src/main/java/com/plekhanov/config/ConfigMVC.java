@@ -8,7 +8,6 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import java.util.List;
 
-
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "com.plekhanov")

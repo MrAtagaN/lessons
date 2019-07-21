@@ -12,17 +12,11 @@ public class ScheduleTask {
 
     /**
      * 1.Seconds
-     *
      * 2.Minutes
-     *
      * 3.Hours
-     *
      * 4.Day-оф-Месяц
-     *
      * 5.Month
-     *
      * 6.Day-недельного
-     *
      * 7.Year(необязательное поле)
      */
     @Scheduled(cron="* * * * * *", zone="Europe/Istanbul")
