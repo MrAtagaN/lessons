@@ -50,6 +50,7 @@ public class CollectionsTest {
      */
     Map hashMap = new HashMap(); // Map
     Map treeMap = new TreeMap(); // Map
+    // синхронизированные
     Map concurrentHashMap = new ConcurrentHashMap(); // Map, ConcurrentMap
     Map concurrentSkipListMap = new ConcurrentSkipListMap(); // Map, ConcurrentMap
 
@@ -60,6 +61,7 @@ public class CollectionsTest {
     Set hashSet = new HashSet(); // Set
     Set linkedHashSet = new LinkedHashSet(); // Set
     Set treeSet = new TreeSet(); // Set, NavigableSet
+    // синхронизированные
     Set copyOnWriteArraySet = new CopyOnWriteArraySet(); // Set
     Set concurrentSkipListSet = new ConcurrentSkipListSet(); // Set, NavigableSet
 
@@ -70,6 +72,11 @@ public class CollectionsTest {
     Queue priorityQueue = new PriorityQueue(); // Queue
     Queue linkedList2 = new LinkedList<>(); // List ,Queue, Deque
     Queue arrayDeque = new ArrayDeque(); // Queue, Deque
+    // синхронизированные
+    Queue arrayBlockingQueue = new ArrayBlockingQueue(10);
+    Queue linkedTransferQueue = new LinkedTransferQueue();
+    Queue priorityBlockingQueue = new PriorityBlockingQueue();
+    Queue linkedBlockingQueue = new LinkedBlockingQueue();
     Queue synchronousQueue = new SynchronousQueue(); // Queue, BlockingQueue
 
 
