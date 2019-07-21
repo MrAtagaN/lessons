@@ -1,9 +1,7 @@
 package core.collections;
 
-
 import java.util.*;
 import java.util.concurrent.*;
-
 
 /**
  * https://javarush.ru/groups/posts/2308-korotko-o-glavnom---java-collections-framework
