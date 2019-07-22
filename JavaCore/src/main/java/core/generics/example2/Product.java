@@ -1,7 +1,9 @@
 package core.generics.example2;
 
-
-public class Product<T> implements Comparable<T> {
+/**
+ * Рекурсивное расширение типа
+ */
+public class Product<T extends Product<T>> implements Comparable<T> {
 
     protected String name;
     protected int price;
