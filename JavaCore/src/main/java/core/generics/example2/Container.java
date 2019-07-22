@@ -3,7 +3,7 @@ package core.generics.example2;
 /**
  * Параметризированный тип. Наследование типа, интерфейса
  */
-public class Container<T extends Product & Comparable<T>> {
+public class Container<T extends Product> {
 
     private T item;
 

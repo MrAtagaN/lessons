@@ -1,7 +1,7 @@
 package core.generics.example2;
 
 
-public class Phone extends Product implements Comparable<Phone> {
+public class Phone extends Product<Phone> {
 
     protected String model;
 

@@ -21,7 +21,7 @@ public class Main {
     }
 
     /**
-     * ? extends Product - лююой тип ограниченный сверху
+     * ? extends - лююой тип ограниченный сверху
      * T - конкретный тип без наследования
      */
     private static boolean find(List<? extends Product> list, Product findingProduct) {
@@ -31,5 +31,15 @@ public class Main {
             }
         }
         return false;
+    }
+
+    /**
+     * IN - ограничение сверху, ? extends - для потребителя
+     * OUT - ограничение снизу, ? super - для записи
+     */
+    private void copy(List<? extends Product> src, List<? super Product> dest) {
+        for (Product product : src) {
+            dest.add(product);
+        }
     }
 }

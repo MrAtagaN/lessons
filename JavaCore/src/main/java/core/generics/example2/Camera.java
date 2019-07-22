@@ -1,7 +1,7 @@
 package core.generics.example2;
 
 
-public class Camera extends Product implements Comparable<Camera> {
+public class Camera extends Product<Camera> {
 
     protected int pixel;
 
