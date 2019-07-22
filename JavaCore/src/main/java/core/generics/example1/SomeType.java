@@ -1,4 +1,4 @@
-package core.generics;
+package core.generics.example1;
 
 import java.util.ArrayList;
 import java.util.Collection;
