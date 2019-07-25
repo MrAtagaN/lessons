@@ -15,69 +15,72 @@ public class UserDAO {
 
     private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 
+
     public List<User> getAllUsers() {
         List<User> result = new ArrayList();
-        Session session = sessionFactory.openSession();
-        try {
-            Query query = session.createQuery("FROM user");
+        try (Session session = sessionFactory.openSession()) {
+            Query query = session.createQuery("FROM User");
             result = query.list();
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            if (session != null) {
-                session.close();
-            }
         }
-
         return result;
     }
 
-    public User findById(int id) {
+
+    public User findById(int id) { //Query query = session.createQuery("FROM user");
         User result = null;
-        Session session = sessionFactory.openSession();
-        try {
-            result = (User) session.get(User.class, id);
+        try (Session session = sessionFactory.openSession()) {
+            result = session.get(User.class, id);
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            if (session != null) {
-                session.close();
-            }
         }
-
         return result;
     }
 
+
     public void saveUser(User user) {
-        Session session = sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();
-        try {
+        Transaction transaction = null;
+        try (Session session = sessionFactory.openSession()) {
+            transaction = session.beginTransaction();
             session.save(user);
             transaction.commit();
         } catch (Exception e) {
             e.printStackTrace();
-            transaction.rollback();
-        } finally {
-            if (session != null) {
-                session.close();
+            if (transaction != null) {
+                transaction.rollback();
             }
         }
     }
 
+
     public void update(User user) {
-        Session session = sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();
-        session.update(user);
-        transaction.commit();
-        session.close();
+        Transaction transaction = null;
+        try (Session session = sessionFactory.openSession()) {
+            transaction = session.beginTransaction();
+            session.update(user);
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
     }
 
+
     public void delete(User user) {
-        Session session = sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();
-        session.delete(user);
-        transaction.commit();
-        session.close();
+        Transaction transaction = null;
+        try (Session session = sessionFactory.openSession()) {
+            transaction = session.beginTransaction();
+            session.delete(user);
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
     }
 
 
