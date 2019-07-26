@@ -13,6 +13,10 @@
         <property name="dialect">org.hibernate.dialect.SQLiteDialect</property>
         <property name="hbm2ddl.auto">create</property>
 
+        <!--    Таймзона    -->
+        <property name="hibernate.jdbc.time_zone">UTC</property>
+
+
 <!--        <mapping resource="user.cfg.xml"/>-->
 
     </session-factory>

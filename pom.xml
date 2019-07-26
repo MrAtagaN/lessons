@@ -26,6 +26,7 @@
         <module>SpringData</module>
         <module>SpringSecurity</module>
         <module>Bash</module>
+        <module>SQL</module>
     </modules>
 
 </project>

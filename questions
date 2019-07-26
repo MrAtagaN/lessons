@@ -1,0 +1,5 @@
+JavaCore:
+- Чем отличаются Date, LocalDate,
+
+JPA:
+- Нужно ли в методе equals сравнивать поля id
