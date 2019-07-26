@@ -2,6 +2,9 @@ package Hibernate2;
 
 import java.util.Arrays;
 
+/**
+ * Postgres
+ */
 public class Main {
 
     public static void main(String[] args) {
