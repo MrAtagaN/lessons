@@ -66,6 +66,7 @@ public class UserDAO {
             }
         } finally {
             if (session != null) {
+                System.out.println(session.isOpen());
                 session.close();
             }
         }

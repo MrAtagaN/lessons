@@ -12,5 +12,9 @@ public class Main {
 
         UserDAO userDAO = new UserDAO();
         userDAO.saveUser(user);
+
+
+
+        HibernateUtil.getSessionFactory().close();
     }
 }
