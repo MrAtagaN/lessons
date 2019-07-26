@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * HQL
+ *
  */
 public class UserDAO {
 
@@ -19,45 +19,63 @@ public class UserDAO {
 
     public List<User> getAllUsers() {
         List<User> result = new ArrayList();
-        try (Session session = sessionFactory.openSession()) {
+        Session session = null;
+        try {
+            session = sessionFactory.openSession();
             Query query = session.createQuery("FROM User");
             result = query.list();
         } catch (Exception e) {
             e.printStackTrace();
+            if (session != null) {
+                session.close();
+            }
         }
         return result;
     }
 
 
-    public User findById(int id) { //Query query = session.createQuery("FROM user");
+    public User findById(int id) {
         User result = null;
-        try (Session session = sessionFactory.openSession()) {
+        Session session = null;
+        try {
+            session = sessionFactory.openSession();
             result = session.get(User.class, id);
         } catch (Exception e) {
             e.printStackTrace();
+            if (session != null) {
+                session.close();
+            }
         }
         return result;
     }
 
 
     public void saveUser(User user) {
+        Session session = null;
         Transaction transaction = null;
-        try (Session session = sessionFactory.openSession()) {
+        try {
+            session = sessionFactory.openSession();
             transaction = session.beginTransaction();
-            session.save(user);
+            session.persist(user);
             transaction.commit();
+            session.close();
         } catch (Exception e) {
             e.printStackTrace();
             if (transaction != null) {
                 transaction.rollback();
+            }
+            if (session != null) {
+                session.close();
             }
         }
     }
 
 
     public void update(User user) {
+        Session session = null;
         Transaction transaction = null;
-        try (Session session = sessionFactory.openSession()) {
+        try {
+            session = sessionFactory.openSession();
             transaction = session.beginTransaction();
             session.update(user);
             transaction.commit();
@@ -66,13 +84,18 @@ public class UserDAO {
             if (transaction != null) {
                 transaction.rollback();
             }
+            if (session != null) {
+                session.close();
+            }
         }
     }
 
 
     public void delete(User user) {
+        Session session = null;
         Transaction transaction = null;
-        try (Session session = sessionFactory.openSession()) {
+        try {
+            session = sessionFactory.openSession();
             transaction = session.beginTransaction();
             session.delete(user);
             transaction.commit();
@@ -81,10 +104,14 @@ public class UserDAO {
             if (transaction != null) {
                 transaction.rollback();
             }
+            if (session != null) {
+                session.close();
+            }
         }
     }
 
 
 }
+
 
 
