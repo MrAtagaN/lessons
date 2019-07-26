@@ -20,12 +20,19 @@ public class References {
     //@GeneratedValue(strategy = GenerationType.IDENTITY) //
     //@GeneratedValue(strategy = GenerationType.SEQUENCE) //
     //@GeneratedValue(strategy = GenerationType.TABLE) //
-    private int id;
+    private long id;
 
+    @Column(name = "date")
     @Temporal(TemporalType.DATE) //yyyy-MM-dd
     Date date;
+
+    @Column(name = "time")
     @Temporal(TemporalType.TIME) //HH:mm:ss
     Date time;
+
+    @Column(name = "timestamp")
     @Temporal(TemporalType.TIMESTAMP) //yyyy-MM-dd HH:mm:ss.SSS  Timestamp - точность до наносекунд
     Timestamp timestamp;
+
+
 }
