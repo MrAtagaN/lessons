@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * TRY CATCH FINALLY
  */
 public class UserDAO {
 
@@ -25,6 +25,7 @@ public class UserDAO {
             result = query.list();
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
             if (session != null) {
                 session.close();
             }
@@ -41,6 +42,7 @@ public class UserDAO {
             result = session.get(User.class, id);
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
             if (session != null) {
                 session.close();
             }
@@ -57,12 +59,12 @@ public class UserDAO {
             transaction = session.beginTransaction();
             session.persist(user);
             transaction.commit();
-            session.close();
         } catch (Exception e) {
             e.printStackTrace();
             if (transaction != null) {
                 transaction.rollback();
             }
+        } finally {
             if (session != null) {
                 session.close();
             }
@@ -83,6 +85,7 @@ public class UserDAO {
             if (transaction != null) {
                 transaction.rollback();
             }
+        } finally {
             if (session != null) {
                 session.close();
             }
@@ -103,6 +106,7 @@ public class UserDAO {
             if (transaction != null) {
                 transaction.rollback();
             }
+        } finally {
             if (session != null) {
                 session.close();
             }
