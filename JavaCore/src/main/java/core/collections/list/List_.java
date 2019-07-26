@@ -7,7 +7,7 @@ package core.collections.list;
  *
  *
  */
-public class ListTest {
+public class List_ {
 
     public static void main(String[] args) {
 

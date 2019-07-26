@@ -18,7 +18,7 @@ import java.util.Arrays;
  * stream - получить стрим
  *
  */
-public class ArraysTest {
+public class Arrays_ {
 
     public static void main(String[] args) {
         String[] seasons  = new String[] {"Winter", "Spring", "Summer", "Autumn"};

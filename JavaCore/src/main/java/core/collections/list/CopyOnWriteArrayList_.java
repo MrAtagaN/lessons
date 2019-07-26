@@ -10,7 +10,7 @@ import java.util.concurrent.*;
  *
  * Тест скорости чтения CopyOnWriteArrayList двумя потоками
  */
-public class CopyOnWriteArrayListTest {
+public class CopyOnWriteArrayList_ {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         List<Integer> list1 = Collections.synchronizedList(new ArrayList<>());

@@ -8,7 +8,7 @@ import java.util.Map;
  *
  * Сохраняет порядок вставки или порядок доступа к ключам
  */
-public class LinkedHashMapTest {
+public class LinkedHashMap_ {
 
     public static void main(String[] args) {
         // accessOrder: элементы к которым был доступ(get, put), перемещаются в конец. Может использоваться как кэш

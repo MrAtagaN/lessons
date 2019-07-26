@@ -29,7 +29,7 @@ import java.util.concurrent.*;
  * synchronizedCollection - обертка, синхронизированная коллекция (устаревшия)
  * unmodifiableCollection - обертка, неизменяемая коллекция
  */
-public class CollectionsTest {
+public class Collections_ {
 
     public static void main(String[] args) {
 

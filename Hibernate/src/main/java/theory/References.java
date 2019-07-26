@@ -10,7 +10,6 @@ import java.util.Date;
  * https://habr.com/ru/post/265061/
  *
  */
-
 @Entity
 @Table(name = "references")
 public class References {

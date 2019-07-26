@@ -6,7 +6,7 @@ import java.util.Set;
 /**
  * Set
  */
-public class SetTest {
+public class Set_ {
 
     public static void main(String[] args) {
         Set<Integer> set = new HashSet();

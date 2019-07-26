@@ -6,7 +6,7 @@ import java.util.Queue;
 /**
  * Методы {@link Queue}
  */
-public class QueueTest {
+public class Queue_ {
 
     @SuppressWarnings(value = {"all"})
     public static void main(String[] args) {

@@ -20,7 +20,7 @@ import java.util.TreeMap;
  * headMap - возвращает Map идущий до определенного числа
  * tailMap - возвращает Map идущий после определенного числа
  */
-public class NavigableMapTest {
+public class NavigableMap_ {
 
     public static void main(String[] args) {
         NavigableMap<Integer, String> map = new TreeMap<>();

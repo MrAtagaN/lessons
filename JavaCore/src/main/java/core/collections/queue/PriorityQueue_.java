@@ -8,7 +8,7 @@ import java.util.Queue;
  *
  * Сортирует элементы в очереди
  */
-public class PriorityQueueTest {
+public class PriorityQueue_ {
 
     public static void main(String[] args) {
         // сначала идут нечетные числа, потом четные

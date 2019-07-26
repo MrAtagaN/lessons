@@ -14,7 +14,7 @@ import java.util.Map;
  * merge - вычисляет и заменяет старое значение ключа на новое
  * getOrDefault
  */
-public class MapTest {
+public class Map_ {
 
     private static Map<Integer, String> map = new HashMap<>();
 

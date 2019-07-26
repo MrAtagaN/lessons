@@ -21,7 +21,7 @@ import java.util.TreeSet;
  * tailSet - возвращает сет идущий после определенного числа
  *
  */
-public class NavigableSetTest {
+public class NavigableSet_ {
 
     @SuppressWarnings(value = "all")
     public static void main(String[] args) {
