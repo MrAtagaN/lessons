@@ -16,7 +16,10 @@ import java.util.Date;
 public class References {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO) //
+    //@GeneratedValue(strategy = GenerationType.IDENTITY) //
+    //@GeneratedValue(strategy = GenerationType.SEQUENCE) //
+    //@GeneratedValue(strategy = GenerationType.TABLE) //
     private int id;
 
     @Temporal(TemporalType.DATE) //yyyy-MM-dd
