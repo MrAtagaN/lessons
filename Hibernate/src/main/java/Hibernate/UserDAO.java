@@ -16,6 +16,24 @@ public class UserDAO {
 
     private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 
+    public List<User> getUsersWithName(String name) {
+        List<User> result = new ArrayList();
+        Session session = null;
+        try {
+            session = sessionFactory.openSession();
+            Query query = session.createQuery("FROM User u where u.name = :name");
+            query.setParameter("name", name);
+            result = query.list();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+        return result;
+    }
+
 
     public List<User> getAllUsers() {
         List<User> result = new ArrayList();
