@@ -23,7 +23,7 @@ public class User {
 
     @Column(name = "birthday")
     //@Temporal(TemporalType.TIMESTAMP) //yyyy-MM-dd HH:mm:ss.SSS
-    private long birthday;
+    private LocalDateTime birthday;
 
     @Column(name = "state")
     @Enumerated(EnumType.STRING)
@@ -46,11 +46,11 @@ public class User {
         this.state = state;
     }
 
-    public long getBirthday() {
+    public LocalDateTime getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(long birthday) {
+    public void setBirthday(LocalDateTime birthday) {
         this.birthday = birthday;
     }
 
