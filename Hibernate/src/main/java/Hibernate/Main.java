@@ -1,7 +1,7 @@
 package Hibernate;
 
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * SQLite
@@ -11,7 +11,7 @@ public class Main {
         User user = new User();
         user.setAge(31);
         user.setName("AtagaN");
-        user.setBirthday(LocalDateTime.now());
+        user.setBirthday(new Date().getTime());
         user.setState(User.State.MALE);
 
         UserDAO userDAO = new UserDAO();

@@ -1,7 +1,10 @@
 package Hibernate;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 
 @Entity
@@ -19,8 +22,8 @@ public class User {
     private int age;
 
     @Column(name = "birthday")
-    @Temporal(TemporalType.TIMESTAMP) //yyyy-MM-dd HH:mm:ss.SSS
-    private LocalDateTime birthday;
+    //@Temporal(TemporalType.TIMESTAMP) //yyyy-MM-dd HH:mm:ss.SSS
+    private long birthday;
 
     @Column(name = "state")
     @Enumerated(EnumType.STRING)
@@ -43,11 +46,11 @@ public class User {
         this.state = state;
     }
 
-    public LocalDateTime getBirthday() {
+    public long getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(LocalDateTime birthday) {
+    public void setBirthday(long birthday) {
         this.birthday = birthday;
     }
 
