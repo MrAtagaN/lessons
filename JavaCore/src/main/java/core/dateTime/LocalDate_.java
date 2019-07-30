@@ -3,6 +3,9 @@ package core.dateTime;
 import java.time.*;
 import java.time.temporal.ChronoUnit;
 
+/**
+ *
+ */
 public class LocalDate_ {
 
     public static void main(String[] args) {
@@ -11,6 +14,9 @@ public class LocalDate_ {
         LocalDate.ofEpochDay(150);  // middle of 1970
         LocalTime.of(17, 18);
         LocalTime.parse("10:15:30");
+
+        //Получить миллисекунды
+        LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
 
         //Геттеры
         LocalDate theDate = localDateTime.toLocalDate();

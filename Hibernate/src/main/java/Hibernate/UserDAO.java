@@ -17,7 +17,7 @@ public class UserDAO {
     private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 
     public List<User> getUsersWithName(String name) {
-        List<User> result = new ArrayList();
+        List<User> result = new ArrayList<>();
         Session session = null;
         try {
             session = sessionFactory.openSession();
@@ -36,7 +36,7 @@ public class UserDAO {
 
 
     public List<User> getAllUsers() {
-        List<User> result = new ArrayList();
+        List<User> result = new ArrayList<>();
         Session session = null;
         try {
             session = sessionFactory
