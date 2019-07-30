@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 /**
  * https://github.com/eugenp/tutorials/tree/master/java-dates
  */
-public class Main {
+public class Date_ {
 
     public static void main(String[] args) {
         LocalDateTime localDateTime = LocalDateTime.now();
