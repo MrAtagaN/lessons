@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.sql.DataSource;
@@ -18,16 +19,17 @@ import javax.sql.DataSource;
 @EnableWebSecurity  //configures spring security from the class WebSecurityConfigurerAdapter
 public class ConfigSecurity extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    DataSource dataSource;
+//    @Autowired
+//    DataSource dataSource;
 
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(12);
-        //auth.inMemoryAuthentication().withUser("admin").password(encoder.encode("admin")).roles("admin");
+        PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+        auth.inMemoryAuthentication().withUser("admin").password(encoder.encode("admin")).roles("admin");
 
-        auth.jdbcAuthentication().passwordEncoder(passwordEncoder).dataSource(dataSource);
+       // auth.jdbcAuthentication().passwordEncoder(passwordEncoder).dataSource(dataSource);
     }
 
 
@@ -36,7 +38,7 @@ public class ConfigSecurity extends WebSecurityConfigurerAdapter {
         //http.authorizeRequests().anyRequest().authenticated().and().httpBasic().and().formLogin();
         http.authorizeRequests().
                 antMatchers("/users/getUser")
-                .hasRole("ADMIN").anyRequest()
+                .hasRole("admin").anyRequest()
                 .authenticated().anyRequest()
                 .permitAll()
                 .and().formLogin();
