@@ -27,24 +27,24 @@ public class Map_ {
     }
 
     public static void main(String[] args) {
-        // методы java 1.8
+        //Методы java 1.8
 
-        // сделать вычисление значения для определенного ключа
+        //Сделать вычисление значения для определенного ключа
         map.compute(1, (key, value) -> {
             return "compute" + value;
         });
 
-        // сделать вычисление значения для определенного ключа, если он есть
+        //Сделать вычисление значения для определенного ключа, если он есть
         map.computeIfPresent(2, (key, value) -> {
             return "computeIfPresent " + key + " " + value;
         });
 
-        // сделать вычисление значения для ключа, если его нет
+        //Сделать вычисление значения для ключа, если его нет
         map.computeIfAbsent(6, (key) -> {
             return "computeIfAbsent value " + 2;
         });
 
-        // вычисляет и заменяет старое значение ключа на новое
+        //Вычисляет и заменяет старое значение ключа на новое
         map.merge(3, "newValue", (oldValue, newValue) -> {
             return "merge " + oldValue + " replace " + newValue;
         });

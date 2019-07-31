@@ -6,7 +6,7 @@ import java.time.temporal.ChronoUnit;
 /**
  *
  */
-public class LocalDate_ {
+public class LocalDateTime_ {
 
     public static void main(String[] args) {
         //Сеттеры

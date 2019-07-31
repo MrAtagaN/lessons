@@ -38,53 +38,53 @@ public class Collections_ {
     /***
      * Реализации List
      */
-    List arrayList = new ArrayList<>(); // List
-    List copyOnWriteArrayList = new CopyOnWriteArrayList(); // List
-    List linkedList = new LinkedList<>(); // List ,Queue, Deque
-    List vector = new Vector(); // List
-    List stack = new Stack(); // List
+    List arrayList = new ArrayList<>(); //List
+    List copyOnWriteArrayList = new CopyOnWriteArrayList(); //List
+    List linkedList = new LinkedList<>(); //List ,Queue, Deque
+    List vector = new Vector(); //List
+    List stack = new Stack(); //List
 
 
     /**
      * Реализации Map
      */
-    Map hashMap = new HashMap(); // Map
-    Map treeMap = new TreeMap(); // Map
+    Map hashMap = new HashMap(); //Map
+    Map treeMap = new TreeMap(); //Map
     // синхронизированные
-    Map concurrentHashMap = new ConcurrentHashMap(); // Map, ConcurrentMap
-    Map concurrentSkipListMap = new ConcurrentSkipListMap(); // Map, ConcurrentMap
+    Map concurrentHashMap = new ConcurrentHashMap(); //Map, ConcurrentMap
+    Map concurrentSkipListMap = new ConcurrentSkipListMap(); //Map, ConcurrentMap
 
 
     /**
      * Реализации Set
      */
-    Set hashSet = new HashSet(); // Set
-    Set linkedHashSet = new LinkedHashSet(); // Set
-    Set treeSet = new TreeSet(); // Set, NavigableSet
+    Set hashSet = new HashSet(); //Set
+    Set linkedHashSet = new LinkedHashSet(); //Set
+    Set treeSet = new TreeSet(); //Set, NavigableSet
     // синхронизированные
-    Set copyOnWriteArraySet = new CopyOnWriteArraySet(); // Set
-    Set concurrentSkipListSet = new ConcurrentSkipListSet(); // Set, NavigableSet
+    Set copyOnWriteArraySet = new CopyOnWriteArraySet(); //Set
+    Set concurrentSkipListSet = new ConcurrentSkipListSet(); //Set, NavigableSet
 
 
     /**
      * Реализации Queue
      */
-    Queue priorityQueue = new PriorityQueue(); // Queue
-    Queue linkedList2 = new LinkedList<>(); // List ,Queue, Deque
-    Queue arrayDeque = new ArrayDeque(); // Queue, Deque
+    Queue priorityQueue = new PriorityQueue(); //Queue
+    Queue linkedList2 = new LinkedList<>(); //List ,Queue, Deque
+    Queue arrayDeque = new ArrayDeque(); //Queue, Deque
     // синхронизированные
     Queue arrayBlockingQueue = new ArrayBlockingQueue(10);
     Queue linkedTransferQueue = new LinkedTransferQueue();
     Queue priorityBlockingQueue = new PriorityBlockingQueue();
     Queue linkedBlockingQueue = new LinkedBlockingQueue();
-    Queue synchronousQueue = new SynchronousQueue(); // Queue, BlockingQueue
+    Queue synchronousQueue = new SynchronousQueue(); //Queue, BlockingQueue
 
 
     /**
      * Реализации Deque
      */
-    Deque arrayDeque2 = new ArrayDeque(); // Queue, Deque
-    Deque linkedList3 = new LinkedList<>(); // List ,Queue, Deque
+    Deque arrayDeque2 = new ArrayDeque(); //Queue, Deque
+    Deque linkedList3 = new LinkedList<>(); //List ,Queue, Deque
 
 
 }

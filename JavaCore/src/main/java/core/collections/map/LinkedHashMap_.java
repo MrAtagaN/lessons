@@ -11,8 +11,8 @@ import java.util.Map;
 public class LinkedHashMap_ {
 
     public static void main(String[] args) {
-        // accessOrder: элементы к которым был доступ(get, put), перемещаются в конец. Может использоваться как кэш
-        // если false (по умолчанию), то сохраняет порядок вставки
+        //accessOrder: элементы к которым был доступ(get, put), перемещаются в конец. Может использоваться как кэш
+        //если false (по умолчанию), то сохраняет порядок вставки
         Map<Integer, String> map = new LinkedHashMap<>(16, 1, true);
         map.put(5, "a");
         map.put(4, "b");
@@ -29,7 +29,7 @@ public class LinkedHashMap_ {
             System.out.println(key + " | " + value);
         });
 
-        // простой кэш
+        //Простой кэш
         SimpleLRUCache<Integer, String> cache = new SimpleLRUCache<>(2);
         cache.put(1, "");
         cache.put(2, "");
@@ -48,13 +48,13 @@ public class LinkedHashMap_ {
         private final int capacity;
 
         public SimpleLRUCache(int capacity) {
-            super(capacity + 1, 1.1f, true); // мапа никогда не увеличивает свой размер
+            super(capacity + 1, 1.1f, true);  //Мапа никогда не увеличивает свой размер
             this.capacity = capacity;
         }
 
         @Override
         protected boolean removeEldestEntry(Map.Entry<K,V> eldest) {
-            return this.size() > capacity; // проверка происходит после вставки
+            return this.size() > capacity;  //Проверка происходит после вставки
         }
     }
 }
