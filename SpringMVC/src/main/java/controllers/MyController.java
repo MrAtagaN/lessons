@@ -1,24 +1,24 @@
 package controllers;
 
+import model.Product;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-/**
- * Created by AtagaN on 28.01.2019.
- */
 
-@Controller
+@RestController
 public class MyController {
 
-    @RequestMapping(value = "/myForm", method= RequestMethod.GET)
-    public String myForm(Model model) {
-        return "myForm";
+
+    @RequestMapping(value = "/myForm", method = RequestMethod.GET)
+    public Product myForm(Model model) {
+        return new Product("chesse","Russian", 25); //TODO добавить конвертер
     }
+
 
     @PostMapping(value = "/myForm")
     @ResponseBody
-    public String myForm(@RequestParam String name,@RequestParam int age) {
+    public String myForm(@RequestParam String name, @RequestParam int age) {
         return name + "  " + age;
     }
 }
