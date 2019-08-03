@@ -23,6 +23,10 @@ public class ConfigSecurity extends WebSecurityConfigurerAdapter {
 //    DataSource dataSource;
 
 
+    /**
+     * password encoder:
+     * https://www.baeldung.com/spring-security-5-default-password-encoder
+     */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(12);
