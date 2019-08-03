@@ -1,8 +1,14 @@
 package Hibernate;
 
 
+import Hibernate.dao.UserDAO;
+import Hibernate.entities.User;
+import Hibernate.entities.bank_details.CreditCard;
+import Hibernate.entities.bank_details.DebitCard;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -10,28 +16,39 @@ import java.util.List;
  */
 public class Main {
     public static void main(String[] args) {
-        User user = new User();
-        user.setAge(31);
-        user.setName("AtagaN");
-        user.setBirthday(LocalDateTime.now());
-        user.setState(User.State.MALE);
+
+            User user = new User();
+            user.setAge(31);
+            user.setName("Mike");
+            user.setBirthday(LocalDateTime.now());
+            user.setState(User.State.MALE);
 
 
-        User user2 = new User();
-        user2.setName("aaa");
-        User user3 = new User();
-        user3.setName("bbb");
+            User user2 = new User();
+            user2.setName("Jonn");
+            user2.setBankDetails(new DebitCard("Jonn_owner"));
 
-        List<User> list = new ArrayList<>();
-        list.add(user2);
-        list.add(user3);
 
-        UserDAO userDAO = new UserDAO();
-        userDAO.saveUser(user);
-        userDAO.saveOrUpdateListObjects(list);
+            User user3 = new User();
+            user3.setName("Lena");
+            user3.setState(User.State.FEMALE);
+            CreditCard creditCard = new CreditCard("Lena_owner");
+            user3.setBankDetails(creditCard);
 
-        System.out.println(userDAO.getUsersWithName("AtagaN").get(0).getAge());
 
-        HibernateUtil.getSessionFactory().close();
+            List<User> list = new ArrayList<>();
+            list.add(user2);
+            list.add(user3);
+
+            UserDAO userDAO = new UserDAO();
+            userDAO.saveUser(user);
+            userDAO.saveUser(user2);
+            userDAO.saveUser(user3);
+          ///  userDAO.saveOrUpdateListObjects(list);
+
+
+          //  System.out.println(userDAO.getUsersWithName("Mike").get(0).getAge());
+
+           HibernateUtil.getSessionFactory().close();
     }
 }

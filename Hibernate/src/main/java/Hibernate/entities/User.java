@@ -1,18 +1,23 @@
-package Hibernate;
+package Hibernate.entities;
 
+import Hibernate.entities.bank_details.BankDetails;
+import com.sun.istack.internal.Nullable;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.Objects;
 
 
 @Entity
 @Table(name = "users")
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
 
     @Basic //
     @Column(name = "name")
@@ -29,6 +34,9 @@ public class User {
     @Enumerated(EnumType.STRING)
     private State state;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "bankDetailsID", referencedColumnName = "id")
+    BankDetails bankDetails;
 
     public User() {
     }
@@ -54,7 +62,7 @@ public class User {
         this.birthday = birthday;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -73,4 +81,14 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
+
+//    public BankDetails getBankDetails() {
+//        return bankDetails;
+//    }
+//
+    public void setBankDetails(BankDetails bankDetails) {
+        this.bankDetails = bankDetails;
+    }
+
+
 }

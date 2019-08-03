@@ -1,5 +1,7 @@
-package Hibernate;
+package Hibernate.dao;
 
+import Hibernate.HibernateUtil;
+import Hibernate.entities.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -19,12 +21,18 @@ public class UserDAO {
     public List<User> getUsersWithName(String name) {
         List<User> result = new ArrayList<>();
         Session session = null;
+        Transaction transaction = null;
         try {
             session = sessionFactory.openSession();
+            transaction = session.beginTransaction();
             Query query = session.createQuery("FROM User u where u.name = :name");
             query.setParameter("name", name);
             result = query.list();
+            transaction.commit();
         } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
             e.printStackTrace();
         } finally {
             if (session != null) {
@@ -38,14 +46,20 @@ public class UserDAO {
     public List<User> getAllUsers() {
         List<User> result = new ArrayList<>();
         Session session = null;
+        Transaction transaction = null;
         try {
+            transaction = session.beginTransaction();
             session = sessionFactory
                     .withOptions()
                     .jdbcTimeZone(TimeZone.getTimeZone("UTC")) //Таймзона, указывается один раз в файле hibernate.cfg.xml
                     .openSession();                            //Здесь для примера
             Query query = session.createQuery("FROM User");
             result = query.list();
+            transaction.commit();
         } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
             e.printStackTrace();
         } finally {
             if (session != null) {
@@ -59,10 +73,16 @@ public class UserDAO {
     public User findById(int id) {
         User result = null;
         Session session = null;
+        Transaction transaction = null;
         try {
+            transaction = session.beginTransaction();
             session = sessionFactory.openSession();
             result = session.get(User.class, id);
+            transaction.commit();
         } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
             e.printStackTrace();
         } finally {
             if (session != null) {
@@ -99,7 +119,7 @@ public class UserDAO {
         try {
             session = sessionFactory.openSession();
             transaction = session.beginTransaction();
-            for (Object obj: list) {
+            for (Object obj : list) {
                 session.saveOrUpdate(obj);
             }
             transaction.commit();
