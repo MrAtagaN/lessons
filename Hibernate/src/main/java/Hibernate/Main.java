@@ -4,6 +4,8 @@ import Hibernate.dao.UserDAO;
 import Hibernate.entities.User;
 import Hibernate.entities.bank_details.CreditCard;
 import Hibernate.entities.bank_details.DebitCard;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -16,16 +18,43 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
+          Session session = HibernateUtil.getSessionFactory().openSession();
+          Transaction transaction =   session.beginTransaction();
+
             User user = new User();
             user.setAge(31);
             user.setName("Mike");
             user.setBirthday(LocalDateTime.now());
             user.setState(User.State.MALE);
+            session.persist(user);       // переводим объект в состояние persistent
 
 
             User user2 = new User();
             user2.setName("Jonn");
             user2.setBankDetails(new DebitCard("Jonn_owner"));
+
+            long id =  (long)session.save(user2);  // сохраняем объект и получаем id
+
+
+
+          transaction.commit();
+          session.close();      // сохраняются обекты привязанные к сессии и переводятся в состояние detached
+
+
+
+
+
+//
+//            User user = new User();
+//            user.setAge(31);
+//            user.setName("Mike");
+//            user.setBirthday(LocalDateTime.now());
+//            user.setState(User.State.MALE);
+//
+//
+//            User user2 = new User();
+//            user2.setName("Jonn");
+//            user2.setBankDetails(new DebitCard("Jonn_owner"));
 
 
             User user3 = new User();
