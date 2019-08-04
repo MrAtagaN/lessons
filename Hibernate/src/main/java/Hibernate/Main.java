@@ -26,52 +26,48 @@ public class Main {
         user.setName("Mike");
         user.setBirthday(LocalDateTime.now());
         user.setState(User.State.MALE);
-        session.persist(user);  //Переводим объект в состояние persistent
-
+        session.persist(user);       // переводим объект в состояние persistent
+        session.save(user);  // обект в состоянии persistent, save не меняет состояние
 
         User user2 = new User();
         user2.setName("Jonn");
         user2.setBankDetails(new DebitCard("Jonn_owner"));
-
-        long id = (long) session.save(user2);  //Сохраняем объект и получаем id
-
-
-        transaction.commit();  //Сохраняются обекты привязанные к сессии и переводятся в состояние detached
-        session.close();
-
-
-//
-//            User user = new User();
-//            user.setAge(31);
-//            user.setName("Mike");
-//            user.setBirthday(LocalDateTime.now());
-//            user.setState(User.State.MALE);
-//
-//
-//            User user2 = new User();
-//            user2.setName("Jonn");
-//            user2.setBankDetails(new DebitCard("Jonn_owner"));
-
+        int id = (int) session.save(user2);  // сохраняем объект и получаем id
+        System.out.println("user2 id = " + id);
 
         User user3 = new User();
         user3.setName("Lena");
         user3.setState(User.State.FEMALE);
         CreditCard creditCard = new CreditCard("Lena_owner");
         user3.setBankDetails(creditCard);
+        session.saveOrUpdate(user3);
 
 
-        List<User> list = new ArrayList<>();
-        list.add(user2);
-        list.add(user3);
+        session.flush(); // объекты хранящиеся в сессии инсертятся в базу сессия очищается от объектоа находящихся в ней
+                         // (при откате вставленные в базу объекты удалятся из базы )
+        transaction.commit(); // сохраняются обекты привязанные к сессии и переводятся в состояние detached
+        session.close();      // объекты соъраняются при  transaction.commit() и при session.close()
 
-        UserDAO userDAO = new UserDAO();
-        userDAO.saveUser(user);
-        userDAO.saveUser(user2);
-        userDAO.saveUser(user3);
-        ///  userDAO.saveOrUpdateListObjects(list);
+        // НАЧИНАЕМ НОВУЮ СЕССИЮ
+        Session session2 = HibernateUtil.getSessionFactory().openSession();
+        transaction = session2.beginTransaction();
+
+        //   session2.persist(user); будет брошен Exceptoin т.к. объект в состоянии detached
+        //   session2.save(user);    объект будет сохранём в базе (появится дублирующая строка)
+
+        user2.setName("Jonn_name_after_update");
+        session2.update(user2);  //находим по id обект и сохраняем новые поля в базу, переводим объект в состояние persistent
+        user2.setName("Jonn_name_after_update_and_state_persistent"); // без session.update(user2)
+        // состояние объекта было бы detached и изменение в базе не проихошло
 
 
-        //  System.out.println(userDAO.getUsersWithName("Mike").get(0).getAge());
+        user3.setName("Lena_new_name");
+        User mergedPerson = (User)session2.merge(user3);
+        System.out.println("Lena name is " + mergedPerson.getName());
+
+        transaction.commit();
+        session2.close();
+
 
         HibernateUtil.getSessionFactory().close();
     }

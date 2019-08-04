@@ -18,7 +18,7 @@ import java.util.Objects;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private int id;
 
     @Basic //
     @Column(name = "name")
@@ -63,7 +63,7 @@ public class User {
         this.birthday = birthday;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
