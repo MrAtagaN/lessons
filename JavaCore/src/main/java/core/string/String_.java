@@ -1,6 +1,6 @@
 package core.string;
 
-public class Main {
+public class String_ {
 
     public static void main(String[] args) {
         String a ="Hello";
