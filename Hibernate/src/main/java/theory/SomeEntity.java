@@ -1,8 +1,11 @@
 package theory;
 
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Date;
+import org.hibernate.annotations.Cache;
 
 /**
  * ТЕОРИЯ
@@ -17,7 +20,8 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "references")
-public class References {
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+public class SomeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO) //
