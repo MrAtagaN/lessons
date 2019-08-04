@@ -7,6 +7,10 @@ import java.util.Date;
 /**
  * ТЕОРИЯ
  *
+ * persist - переводим объект в состояние persistent
+ * save - сохраняем объект и получаем id
+ * commit - сохраняются обекты привязанные к сессии и переводятся в состояние detached
+ *
  * https://habr.com/ru/post/265061/
  * Топ 20 вопросов https://www.java67.com/2016/02/top-20-hibernate-interview-questions.html
  *

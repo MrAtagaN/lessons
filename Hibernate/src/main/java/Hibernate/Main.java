@@ -26,19 +26,19 @@ public class Main {
             user.setName("Mike");
             user.setBirthday(LocalDateTime.now());
             user.setState(User.State.MALE);
-            session.persist(user);       // переводим объект в состояние persistent
+            session.persist(user);       //Переводим объект в состояние persistent
 
 
             User user2 = new User();
             user2.setName("Jonn");
             user2.setBankDetails(new DebitCard("Jonn_owner"));
 
-            long id =  (long)session.save(user2);  // сохраняем объект и получаем id
+            long id =  (long)session.save(user2);  //Сохраняем объект и получаем id
 
 
 
-          transaction.commit();
-          session.close();      // сохраняются обекты привязанные к сессии и переводятся в состояние detached
+          transaction.commit(); //Сохраняются обекты привязанные к сессии и переводятся в состояние detached
+          session.close();
 
 
 
