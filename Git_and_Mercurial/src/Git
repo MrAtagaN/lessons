@@ -1,21 +1,17 @@
+GIT CONFIG - Конфигурация:
+git config <параметр> <значение>
 
-
-GIT CONFIG   git config <параметр> <значение>
-
-Изменение параметра user.name (user.email, и т.д.)
+    Изменение параметра user.name (user.email, и т.д.)
     git config --global user.name <USER_NAME>
 
-Просмотр всех параметров git
+    Просмотр всех параметров git
     git config --list
 
-ключи для команды config
+    ключи для команды config
     --global параметры для пользователя в системе
     --system общие параметры системы
     --local по умолчанию, параметры в директории .git
 
 
-
-GIT PUSH
-
-Запушить в репозиторий с именем и паролем
+GIT PUSH - Запушить в репозиторий с именем и паролем:
     git push https://username:password@github.com/username/repository.git

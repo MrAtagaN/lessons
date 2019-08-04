@@ -1,6 +1,5 @@
 package Hibernate;
 
-
 import Hibernate.dao.UserDAO;
 import Hibernate.entities.User;
 import Hibernate.entities.bank_details.CreditCard;

@@ -8,6 +8,7 @@ import java.util.Date;
  * ТЕОРИЯ
  *
  * https://habr.com/ru/post/265061/
+ * Топ 20 вопросов https://www.java67.com/2016/02/top-20-hibernate-interview-questions.html
  *
  */
 @Entity
@@ -22,15 +23,15 @@ public class References {
     private long id;
 
     @Column(name = "date")
-    @Temporal(TemporalType.DATE) //yyyy-MM-dd
+    @Temporal(TemporalType.DATE) //Отображение в базе: yyyy-MM-dd
     Date date;
 
     @Column(name = "time")
-    @Temporal(TemporalType.TIME) //HH:mm:ss
+    @Temporal(TemporalType.TIME) //Отображение в базе: HH:mm:ss
     Date time;
 
     @Column(name = "timestamp")
-    @Temporal(TemporalType.TIMESTAMP) //yyyy-MM-dd HH:mm:ss.SSS  Timestamp - точность до наносекунд
+    @Temporal(TemporalType.TIMESTAMP) //Отображение в базе: yyyy-MM-dd HH:mm:ss.SSS  Timestamp - точность до наносекунд
     Timestamp timestamp;
 
 

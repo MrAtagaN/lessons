@@ -1,5 +1,9 @@
 package algorithms;
 
+
+/**
+ * Сортировки: https://habr.com/ru/company/otus/blog/460087/
+ */
 public class Main {
 
     public static void main(String[] args) {
