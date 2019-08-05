@@ -8,9 +8,6 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * SQLite
@@ -28,6 +25,8 @@ public class Main {
         user.setState(User.State.MALE);
         session.persist(user);       // переводим объект в состояние persistent
         session.save(user);  // обект в состоянии persistent, save не меняет состояние
+        user.setName("Mike_merge");
+        session.merge(user);
 
         User user2 = new User();
         user2.setName("Jonn");
@@ -41,6 +40,10 @@ public class Main {
         CreditCard creditCard = new CreditCard("Lena_owner");
         user3.setBankDetails(creditCard);
         session.saveOrUpdate(user3);
+
+        User user4 = new User();
+        user4.setName("Anna, save with merge");
+        session.merge(user4); // если объект в состоянии transient merge сохраняет его в базу, update кидает exception
 
 
         session.flush(); // объекты хранящиеся в сессии инсертятся в базу сессия очищается от объектоа находящихся в ней
@@ -62,8 +65,8 @@ public class Main {
 
 
         user3.setName("Lena_new_name");
-        User mergedPerson = (User)session2.merge(user3);
-        System.out.println("Lena name is " + mergedPerson.getName());
+        User mergedUser = (User)session2.merge(user3); // объект user3 остаётся detached,а mergedUser в в состоянии persistent
+        mergedUser.setName("Lena_new_name_after_marge");
 
         transaction.commit();
         session2.close();
