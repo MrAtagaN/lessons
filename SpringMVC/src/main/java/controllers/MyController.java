@@ -1,6 +1,7 @@
 package controllers;
 
 import model.MyException;
+import model.MyException2;
 import model.Product;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +26,6 @@ public class MyController {
     @GetMapping(value = "/exception")
     @ResponseBody
     public String myForm() {
-        throw new MyException();
+        throw new MyException2();
     }
 }
