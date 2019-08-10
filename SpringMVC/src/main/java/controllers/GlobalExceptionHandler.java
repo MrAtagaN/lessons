@@ -16,7 +16,7 @@ public class GlobalExceptionHandler {
 
     @ResponseStatus(value= HttpStatus.CONFLICT, reason="Data integrity violation")  // 409
     @ExceptionHandler(MyException.class)
-    public void runtimeException() {
+    public void handleMyException() {
         System.out.println("GlobalExceptionHandler ERROR");
     }
 
