@@ -1,7 +1,7 @@
 package controllers;
 
+import model.MyException;
 import model.Product;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,5 +20,11 @@ public class MyController {
     @ResponseBody
     public String myForm(@RequestParam String name, @RequestParam int age) {
         return name + "  " + age;
+    }
+
+    @GetMapping(value = "/exception")
+    @ResponseBody
+    public String myForm() {
+        throw new MyException();
     }
 }
