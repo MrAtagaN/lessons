@@ -2,6 +2,11 @@ package Hibernate;
 
 import Hibernate.dao.UserDAO;
 import Hibernate.entities.User;
+import Hibernate.entities.animal.Cat;
+import Hibernate.entities.animal.Dog;
+import Hibernate.entities.autos.Auto;
+import Hibernate.entities.autos.Bmw;
+import Hibernate.entities.autos.Tesla;
 import Hibernate.entities.bank_details.CreditCard;
 import Hibernate.entities.bank_details.DebitCard;
 import org.hibernate.Session;
@@ -64,9 +69,29 @@ public class Main {
         // состояние объекта было бы detached и изменение в базе не проихошло
 
 
-        user3.setName("Lena_new_name");
-        User mergedUser = (User)session2.merge(user3); // объект user3 остаётся detached,а mergedUser в в состоянии persistent
-        mergedUser.setName("Lena_new_name_after_marge");
+        // сохраняем объекты для примера стратегий наследования
+        Tesla tesla = new Tesla();
+        tesla.setColor("White");
+        tesla.setBattaryCharge(500);
+        session2.merge(tesla);
+
+        Bmw bmw = new Bmw();
+        bmw.setColor("Black");
+        bmw.setGasTankValume(60);
+        session2.merge(bmw);
+
+        Cat cat = new Cat();
+        cat.setCanClimbing(true);
+        cat.setName("Barsik");
+        session2.merge(cat);
+
+        Dog dog = new Dog();
+        dog.setCanGuard(false);
+        dog.setName("Bobik");
+        session2.persist(dog);
+
+
+
 
         transaction.commit();
         session2.close();
