@@ -17,7 +17,7 @@ public class MergeSort {
 
     public static void mergeSort(int[] array, int startArrayIndex, int lastArrayIndex) {
         if (startArrayIndex < lastArrayIndex) {
-            int middleArrayIndex = (lastArrayIndex + startArrayIndex) / 2;
+            int middleArrayIndex = (startArrayIndex + lastArrayIndex) / 2;
             mergeSort(array, startArrayIndex, middleArrayIndex);
             mergeSort(array, middleArrayIndex + 1, lastArrayIndex);
             mergeArrays(array, startArrayIndex, middleArrayIndex, lastArrayIndex);
