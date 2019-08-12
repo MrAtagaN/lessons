@@ -1,6 +1,5 @@
 Упражнения: http://www.sql-ex.ru/?Lang=0
-
-
+SELECT: https://postgrespro.ru/docs/postgresql/9.6/sql-select
 
 (INNER) JOIN - соединяет строки двух таблиц по предикату <алиас1.колонка> = <алиас2.колонка>
 
