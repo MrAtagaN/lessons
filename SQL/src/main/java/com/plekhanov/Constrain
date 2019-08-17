@@ -1,1 +1,4 @@
-//https://postgrespro.ru/docs/postgresql/9.6/ddl
+//https://postgrespro.ru/docs/postgresql/9.6/ddl-constraints
+//https://www.sql.ru/docs/sql/u_sql/ch18.shtml
+
+CONSTRAINT company_pkey PRIMARY KEY (id) - эквивалентно PRIMARY KEY (id)
