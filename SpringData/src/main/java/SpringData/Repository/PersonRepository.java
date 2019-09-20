@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -53,6 +54,11 @@ public class PersonRepository {
     public int updatePersonAgeByName(final int age, final String name) {
         MapSqlParameterSource params = new MapSqlParameterSource("name", name).addValue("age", age);
         return namedParameterJdbcTemplate.update("update PERSON set age = :age  where name = :name", params);
+    }
+
+    public void insert(final int age, final String name) {
+        MapSqlParameterSource params = new MapSqlParameterSource("name", name).addValue("age", age).addValue("phone",5).addValue("birthday", new Date()).addValue("address_id", 2).addValue("id",null);
+        namedParameterJdbcTemplate.update("insert into PERSON (name, age, phone, birthday, address_id) values (:name, :age, :phone, :birthday, :address_id)", params);
     }
 
 

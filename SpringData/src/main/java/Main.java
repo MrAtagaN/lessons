@@ -24,19 +24,7 @@ public class Main {
             System.out.println("person = " + user);
         });
 
-        Address address = new Address();
-        address.setId(2);
-        Person person = new Person("Mike", 34, 223132, address, new Date());
-
-        //personRepository.createUser(person);
-
-        System.out.println("person with id 2 = " + personRepository.findPersonById(2));
-
-        personRepository.findPersonsByName("AtagaN").forEach(person1 -> {
-            System.out.println("person with name AtagaN = " + person1);
-        });
-
-        System.out.println(personRepository.updatePersonAgeByName(26, "AtagaN"));
+        personRepository.insert(233, "32");
 
     }
 }
