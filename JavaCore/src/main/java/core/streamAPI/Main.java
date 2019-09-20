@@ -9,17 +9,23 @@ import java.util.stream.Stream;
 /**
  * Stream API
  *
- * getParallelism
- * filter
- * map
- * sorted
- * max
- * collect
- * reduce
- * limit
- * mapToInt
- * allMatch, anyMatch, noneMatch
- * Stream.of
+ * Промежуточные:
+ * parallel - получить парралельный стрим
+ * filter - оставляет элементы которые удовлетворяют условию
+ * map - один объект превращает в другой
+ * sorted - сортирует элементы
+ * reduce - сложение элементов
+ * limit - первые n элементов
+ * mapToInt - превращает элементы в примитивы
+ *
+ * Терминальные:
+ * forEach - сделать действие для каждого элемента
+ * collect - собрать в коллекцию
+ * max - максимальный элемент
+ * allMatch, anyMatch, noneMatch - все совпадения, хотя бы одно совпадение, никаких совпадений
+ *
+ * Статические:
+ * Stream.of() - сгенерировать стрим из элементов
  */
 public class Main {
 

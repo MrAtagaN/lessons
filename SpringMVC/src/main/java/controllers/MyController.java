@@ -6,7 +6,9 @@ import model.Product;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-
+/**
+ * Доки - https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc
+ */
 @RestController
 public class MyController {
 

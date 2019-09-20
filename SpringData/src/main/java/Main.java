@@ -11,6 +11,8 @@ import java.util.List;
 
 
 /**
+ * Доки - https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/data-access.html
+ * Доки - https://docs.spring.io/spring-data/jdbc/docs/1.0.10.RELEASE/reference/html/
  * Работа с JdbcTemplate
  */
 public class Main {
