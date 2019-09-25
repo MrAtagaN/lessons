@@ -5,13 +5,9 @@ import java.util.Arrays;
 public class MergeSort {
 
     public static void main(String[] args) {
-
         int[] array = {3, 5, 2, 7, 1, 6, 4, 8};
-
         mergeSort(array, 0, array.length - 1);
-
         System.out.println(Arrays.toString(array));
-
     }
 
 

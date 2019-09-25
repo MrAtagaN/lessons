@@ -12,6 +12,9 @@ import java.util.concurrent.Future;
  * FixedThreadPool
  * SingleThreadExecutor
  * CachedThreadPool
+ *
+ * Future submit(Callable task) - Метод возвращает объект Future. При вызове у него get - получаем значение
+ * или ждём пока завершится метод, или получаем исключение нити
  */
 public class Main {
 
