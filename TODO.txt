@@ -1,2 +1,4 @@
 паттерны
 locks
+blockers
+IO
