@@ -44,7 +44,7 @@ public class Main {
         }
 
         //DEAD LOCK  , чтобы избежать нужно блокировать объекты в одном порядке (например по id)
-        //В консоле вызвать jconsole
+        //В консоле вызвать jconsole в папке Java\jdk1.8.0_211\lib
         synchronized (acc1) {
             synchronized (acc2) {
                 acc1.withdraw(amount);
