@@ -10,6 +10,7 @@ import java.util.List;
  * NIO - Files, Path, Paths
  *
  * https://javarush.ru/quests/lectures/questcollections.level01.lecture03
+ * https://javarush.ru/groups/posts/2275-files-path
  */
 public class NIO {
 
