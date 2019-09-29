@@ -12,7 +12,7 @@ import java.io.InputStream;
  * read() - считать следующий байт
  * read(byte[]) - считывает байты из потока в массив, возвращает количество считанных байт
  */
-public class InputStream_ {
+public class InputStream_OutputStream {
 
     public static void main(String[] args) throws IOException {
         InputStream inputStream = new FileInputStream("TODO.txt");
