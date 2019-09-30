@@ -11,7 +11,7 @@ import java.util.concurrent.*;
  *
  * Реализации List : ArrayList, LinkedList, CopyOnWriteArrayList, Vector, Stack
  *
- * Реализации Map: HashMap, TreeMap, ConcurrentHashMap, ConcurrentSkipListMap
+ * Реализации Map: HashMap, LinkedHashMap, TreeMap, ConcurrentHashMap, ConcurrentSkipListMap
  *
  * Реализации Set: HashSet, LinkedHashSet, TreeSet, CopyOnWriteArraySet, ConcurrentSkipListSet
  *
@@ -58,9 +58,10 @@ public class Collections_ {
 
 
     /**
-     * Реализации Map: HashMap, TreeMap, ConcurrentHashMap, ConcurrentSkipListMap
+     * Реализации Map: HashMap, LinkedHashMap, TreeMap, ConcurrentHashMap, ConcurrentSkipListMap
      */
     Map hashMap = new HashMap(); //Map
+    Map linkedHashMap = new LinkedHashMap(); //Map
     Map treeMap = new TreeMap(); //Map
     // синхронизированные
     Map concurrentHashMap = new ConcurrentHashMap(); //Map, ConcurrentMap
