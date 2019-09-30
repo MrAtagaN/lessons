@@ -8,7 +8,7 @@ import java.io.InputStream;
 
 /**
  * InputStream, BufferedInputStream
- *
+ * <p>
  * Методы inputStream:
  * available() - Количество непрочитанных байт
  * markSupported() - поддерживает ли поток механизм меток

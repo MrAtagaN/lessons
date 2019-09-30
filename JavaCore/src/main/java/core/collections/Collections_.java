@@ -8,6 +8,17 @@ import java.util.concurrent.*;
  * https://habr.com/ru/company/luxoft/blog/256877/
  * https://javarush.ru/quests/lectures/questcollections.level07.lecture09
  *
+ *
+ * Реализации List : ArrayList, LinkedList, CopyOnWriteArrayList, Vector, Stack
+ *
+ * Реализации Map: HashMap, TreeMap, ConcurrentHashMap, ConcurrentSkipListMap
+ *
+ * Реализации Set: HashSet, LinkedHashSet, TreeSet, CopyOnWriteArraySet, ConcurrentSkipListSet
+ *
+ * Реализации Queue: PriorityQueue, LinkedList, ArrayDeque, ArrayBlockingQueue, LinkedTransferQueue
+ * PriorityBlockingQueue, LinkedBlockingQueue, SynchronousQueue
+ *
+ *
  * Методы Collections:
  *
  * addAll - добавить в коллекцию элементы
@@ -37,7 +48,7 @@ public class Collections_ {
     }
 
     /***
-     * Реализации List
+     * Реализации List : ArrayList, LinkedList, CopyOnWriteArrayList, Vector, Stack
      */
     List arrayList = new ArrayList<>(); //List
     List copyOnWriteArrayList = new CopyOnWriteArrayList(); //List
@@ -47,7 +58,7 @@ public class Collections_ {
 
 
     /**
-     * Реализации Map
+     * Реализации Map: HashMap, TreeMap, ConcurrentHashMap, ConcurrentSkipListMap
      */
     Map hashMap = new HashMap(); //Map
     Map treeMap = new TreeMap(); //Map
@@ -57,7 +68,7 @@ public class Collections_ {
 
 
     /**
-     * Реализации Set
+     * Реализации Set: HashSet, LinkedHashSet, TreeSet, CopyOnWriteArraySet, ConcurrentSkipListSet
      */
     Set hashSet = new HashSet(); //Set
     Set linkedHashSet = new LinkedHashSet(); //Set
@@ -68,7 +79,8 @@ public class Collections_ {
 
 
     /**
-     * Реализации Queue
+     * Реализации Queue: PriorityQueue, LinkedList, ArrayDeque, ArrayBlockingQueue, LinkedTransferQueue
+     * PriorityBlockingQueue, LinkedBlockingQueue, SynchronousQueue
      */
     Queue priorityQueue = new PriorityQueue(); //Queue
     Queue linkedList2 = new LinkedList<>(); //List ,Queue, Deque
@@ -82,7 +94,7 @@ public class Collections_ {
 
 
     /**
-     * Реализации Deque
+     * Реализации Deque: ArrayDeque, LinkedList
      */
     Deque arrayDeque2 = new ArrayDeque(); //Queue, Deque
     Deque linkedList3 = new LinkedList<>(); //List ,Queue, Deque
