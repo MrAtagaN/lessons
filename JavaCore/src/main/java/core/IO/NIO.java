@@ -1,5 +1,6 @@
 package core.IO;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -15,6 +16,7 @@ import java.util.List;
 public class NIO {
 
     public static void main(String[] args) throws IOException {
+        //Paths
         Path path = Paths.get("TODO.txt");
 
         //Path
@@ -30,9 +32,16 @@ public class NIO {
         System.out.println(path.toFile());
 
         //Files
+        System.out.println("File is exists: " + Files.exists(path));
+        System.out.println("File is readable: " + Files.isReadable(path));
+        System.out.println("File is hidden: " + Files.isHidden(path));
+        System.out.println("File is regular file: " + Files.isRegularFile(path));
+        System.out.println("File size: " + Files.size(path));
+
         Files.readAllBytes(path);
 
         List<String> lines = Files.readAllLines(path);
+        System.out.println("Содержимое файла: ");
         lines.forEach(System.out::println);
     }
 }
