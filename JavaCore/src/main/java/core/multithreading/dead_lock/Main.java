@@ -1,4 +1,4 @@
-package core.multithreading.core;
+package core.multithreading.dead_lock;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
