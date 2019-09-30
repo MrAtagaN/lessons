@@ -1,11 +1,14 @@
 package core.IO;
 
+import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
 
 /**
+ * InputStream, BufferedInputStream
+ *
  * available() - Количество непрочитанных байт
  * markSupported() - поддерживает ли поток механизм меток
  * mark() - поставить метку в определенную позицию
@@ -23,12 +26,27 @@ public class InputStream_OutputStream {
         System.out.println("read(byte[]) " + inputStream.read(b) + "\r\n");
         inputStream.close();
 
-        //считывание файла
+        //InputStream - считывание файла
         try (InputStream inputStream2 = new FileInputStream("TODO.txt")) {
             byte[] buf = new byte[256];
             int countOfRead;
             while ((countOfRead = inputStream2.read(buf)) > 0) {
+                //выведем в консоль
+                for (int i = 0; i < countOfRead; i++) {
+                    System.out.print((char) buf[i]);
+                }
+            }
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
 
+        System.out.println("-----------------------------------");
+
+        //BufferedInputStream - считывание файла
+        try (BufferedInputStream bufferedInputStream = new BufferedInputStream(new FileInputStream("TODO.txt"))) {
+            byte[] buf = new byte[256];
+            int countOfRead;
+            while ((countOfRead = bufferedInputStream.read(buf)) > 0) {
                 //выведем в консоль
                 for (int i = 0; i < countOfRead; i++) {
                     System.out.print((char) buf[i]);
