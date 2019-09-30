@@ -1,7 +1,5 @@
 package patterns.behavior;
 
-
-import java.io.IOException;
 import java.util.Comparator;
 import java.util.Map;
 import java.util.TreeMap;
@@ -9,9 +7,9 @@ import java.util.TreeMap;
 
 public class Strategy {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         MyComparator myComparator = new MyComparator();
-        Map<String,Integer> map = new TreeMap(myComparator);
+        Map<String,Integer> map = new TreeMap<>(myComparator);
         map.put("eeee",23);
         map.put("aa",10);
         map.put("dd",10);
