@@ -3,8 +3,10 @@ package core.IO;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.List;
 
 /**
@@ -43,5 +45,10 @@ public class NIO {
         List<String> lines = Files.readAllLines(path);
         System.out.println("Содержимое файла: ");
         lines.forEach(System.out::println);
+
+        //BasicFileAttributes
+        BasicFileAttributes attributes = Files.readAttributes(path, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
+        System.out.println("File size: " + attributes.size());
+        System.out.println("File creationTime: " + attributes.creationTime());
     }
 }
