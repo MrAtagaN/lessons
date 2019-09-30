@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -37,14 +38,17 @@ public class NIO {
         System.out.println("File is regular file: " + Files.isRegularFile(path));
         System.out.println("File size: " + Files.size(path));
         Files.newBufferedReader(path);
-        //Обход файлов
-        Files.walkFileTree(Paths.get("./JavaCore"), new MyFileVisitor());
-
         Files.readAllBytes(path);
-
         List<String> lines = Files.readAllLines(path);
         System.out.println("Содержимое файла: ");
         lines.forEach(System.out::println);
+
+
+        //Обход файлов
+        Files.walkFileTree(Paths.get("./JavaCore"), new MyFileVisitor());
+        //Обход файлов c глубиной 1
+        Files.walkFileTree(Paths.get("./JavaCore"), new HashSet<>(), 1,  new MyFileVisitor());
+
 
         //BasicFileAttributes
         BasicFileAttributes attributes = Files.readAttributes(path, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
