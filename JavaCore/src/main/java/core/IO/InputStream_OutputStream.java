@@ -9,6 +9,7 @@ import java.io.InputStream;
 /**
  * InputStream, BufferedInputStream
  *
+ * Методы inputStream:
  * available() - Количество непрочитанных байт
  * markSupported() - поддерживает ли поток механизм меток
  * mark() - поставить метку в определенную позицию
@@ -26,11 +27,11 @@ public class InputStream_OutputStream {
         System.out.println("read(byte[]) " + inputStream.read(b) + "\r\n");
         inputStream.close();
 
-        //InputStream - считывание файла
+        //Считывание файла InputStream
         try (InputStream inputStream2 = new FileInputStream("TODO.txt")) {
             byte[] buf = new byte[256];
             int countOfRead;
-            while ((countOfRead = inputStream2.read(buf)) > 0) {
+            while ((countOfRead = inputStream2.read(buf)) > 0) { // или != -1
                 //выведем в консоль
                 for (int i = 0; i < countOfRead; i++) {
                     System.out.print((char) buf[i]);
@@ -42,7 +43,7 @@ public class InputStream_OutputStream {
 
         System.out.println("-----------------------------------");
 
-        //BufferedInputStream - считывание файла
+        //Считывание файла BufferedInputStream
         try (BufferedInputStream bufferedInputStream = new BufferedInputStream(new FileInputStream("TODO.txt"))) {
             byte[] buf = new byte[256];
             int countOfRead;
