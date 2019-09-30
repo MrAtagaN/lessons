@@ -2,10 +2,7 @@ package core.IO;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.List;
 
@@ -39,6 +36,9 @@ public class NIO {
         System.out.println("File is hidden: " + Files.isHidden(path));
         System.out.println("File is regular file: " + Files.isRegularFile(path));
         System.out.println("File size: " + Files.size(path));
+        Files.newBufferedReader(path);
+        //Обход файлов
+        Files.walkFileTree(Paths.get("./JavaCore"), new MyFileVisitor());
 
         Files.readAllBytes(path);
 
@@ -50,5 +50,18 @@ public class NIO {
         BasicFileAttributes attributes = Files.readAttributes(path, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
         System.out.println("File size: " + attributes.size());
         System.out.println("File creationTime: " + attributes.creationTime());
+    }
+
+    /**
+     * Обходчик файлов
+     */
+    static class MyFileVisitor extends SimpleFileVisitor<Path> {
+
+        @Override
+        public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+            System.out.println(file.getFileName());
+            //return super.visitFile(file, attrs);
+            return FileVisitResult.CONTINUE;
+        }
     }
 }
