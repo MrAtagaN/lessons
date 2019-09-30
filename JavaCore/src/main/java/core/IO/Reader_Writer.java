@@ -46,5 +46,14 @@ public class Reader_Writer {
         System.out.println("---------------------------------------");
 
 
+        System.out.println("Запись в файл BufferedWriter: ");
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("temp.txt"));
+        bufferedWriter.write("test string line 1");
+        bufferedWriter.newLine();
+        bufferedWriter.write("test string line 2");
+        bufferedWriter.flush();
+        bufferedWriter.close();
+
+
     }
 }
