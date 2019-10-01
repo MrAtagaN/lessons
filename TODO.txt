@@ -1,5 +1,5 @@
 паттерны
 locks
 blockers
-IO
+IO - NIO2, ZIP
 StringFormat
