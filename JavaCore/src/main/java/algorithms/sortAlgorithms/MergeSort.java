@@ -2,45 +2,50 @@ package algorithms.sortAlgorithms;
 
 import java.util.Arrays;
 
+/**
+ * Сортировка слиянием
+ *
+ * Рекурсивно делим массив пополам, когда доходим до длинны массива 1, начинаем соединять массивы,
+ * соединённый массив в отсорьтрованном порядке
+ */
 public class MergeSort {
 
     public static void main(String[] args) {
-        int[] array = {3, 5, 2, 7, 1, 6, 4, 8};
+        int[] array = {3, 5, 7, 1, 6, 4, 8, 2, 9};
         mergeSort(array, 0, array.length - 1);
         System.out.println(Arrays.toString(array));
     }
 
-
-    public static void mergeSort(int[] array, int startArrayIndex, int lastArrayIndex) {
+    public static void mergeSort(int[] sourceArray, int startArrayIndex, int lastArrayIndex) {
         if (startArrayIndex < lastArrayIndex) {
             int middleArrayIndex = (startArrayIndex + lastArrayIndex) / 2;
-            mergeSort(array, startArrayIndex, middleArrayIndex);
-            mergeSort(array, middleArrayIndex + 1, lastArrayIndex);
-            mergeArrays(array, startArrayIndex, middleArrayIndex, lastArrayIndex);
+            mergeSort(sourceArray, startArrayIndex, middleArrayIndex);
+            mergeSort(sourceArray, middleArrayIndex + 1, lastArrayIndex);
+            mergeArrays(sourceArray, startArrayIndex, middleArrayIndex, lastArrayIndex);
         }
     }
 
-    private static void mergeArrays(int[] array, int startFirstSubarrayIndex, int lastFirstSubarrayIndex, int lastSecondSubarrayIndex) {
+    private static void mergeArrays(int[] sourceArray, int startIndexFirstArray, int lastIndexFirstArray, int lastIndexSecondArray) {
 
-        int[] tempArray = new int[lastSecondSubarrayIndex - startFirstSubarrayIndex + 1];
-        int tempArrayIterator = 0;
+        int[] tempArray = new int[lastIndexSecondArray - startIndexFirstArray + 1];
+        int tempArrayIndex = 0;
 
-        int firstSubArrayIterator = startFirstSubarrayIndex;
-        int secondSubArrayIterator = lastFirstSubarrayIndex + 1;
+        int firstArrayIndex = startIndexFirstArray;
+        int secondArrayIndex = lastIndexFirstArray + 1;
 
-        while (firstSubArrayIterator <= lastFirstSubarrayIndex || secondSubArrayIterator <= lastSecondSubarrayIndex) {
-            if (firstSubArrayIterator > lastFirstSubarrayIndex) {
-                tempArray[tempArrayIterator++] = array[secondSubArrayIterator++];
-            } else if (secondSubArrayIterator > lastSecondSubarrayIndex) {
-                tempArray[tempArrayIterator++] = array[firstSubArrayIterator++];
-            } else if (array[firstSubArrayIterator] < array[secondSubArrayIterator]) {
-                tempArray[tempArrayIterator++] = array[firstSubArrayIterator++];
+        while (firstArrayIndex <= lastIndexFirstArray || secondArrayIndex <= lastIndexSecondArray) {
+            if (firstArrayIndex > lastIndexFirstArray) {
+                tempArray[tempArrayIndex++] = sourceArray[secondArrayIndex++];
+            } else if (secondArrayIndex > lastIndexSecondArray) {
+                tempArray[tempArrayIndex++] = sourceArray[firstArrayIndex++];
+            } else if (sourceArray[firstArrayIndex] < sourceArray[secondArrayIndex]) {
+                tempArray[tempArrayIndex++] = sourceArray[firstArrayIndex++];
             } else {
-                tempArray[tempArrayIterator++] = array[secondSubArrayIterator++];
+                tempArray[tempArrayIndex++] = sourceArray[secondArrayIndex++];
             }
         }
-        for (tempArrayIterator = 0; tempArrayIterator < tempArray.length; tempArrayIterator++) {
-            array[startFirstSubarrayIndex++] = tempArray[tempArrayIterator];
+        for (tempArrayIndex = 0; tempArrayIndex < tempArray.length; tempArrayIndex++) {
+            sourceArray[startIndexFirstArray++] = tempArray[tempArrayIndex];
         }
     }
 }
