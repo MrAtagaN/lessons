@@ -11,7 +11,7 @@ Exceptions
 Annotation
 Reflection
 JDBC
-JAXB , gson
+JAXB, gson
 JAX-WS
 JAX-RS
 Ejb
