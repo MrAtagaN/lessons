@@ -1,4 +1,4 @@
-паттерны
+алгоритмы
 locks
 blockers
 IO - NIO2, ZIP
