@@ -1,0 +1,74 @@
+-JAVA
+Дженерики
+Многопоточность
+Stream, Optional
+I/O NIO
+Битовые операции, системы счисления
+LocalDate
+Map, List
+Типы ссылок
+Exceptions
+Annotation
+Reflection
+JDBC
+JAXB , gson
+JAX-WS
+JAX-RS
+Ejb
+Jndi
+slf4j
+
+-SQL
+Запросы select
+Создание таблиц
+Нормализация
+Транзакции, уровни изоляции
+Constrains
+Инъекции
+
+-Spring
+Core
+Data
+MVC
+soap
+Security
+
+-MQ
+RabbitMQ
+ActiveMQ
+
+-MongoDB
+
+-Docker
+
+-Linux
+Основные команды, grep, curl,
+Cron
+Vim
+Bash
+
+-Maven
+Artifactory
+
+-Gradle
+
+-Git
+
+-Mercurial
+
+-Hibernate
+Criteria
+Hql
+Состояния объектов
+
+-Junit
+
+-Mock
+
+-Инструменты
+Intellij Idea
+Postman
+SoapUI
+Nodepad++
+
+
