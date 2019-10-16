@@ -17,22 +17,21 @@ public class QuickSort {
     }
 
     public static void quickSort(int[] sourceArray, int leftBoarder, int rightBoarder) {
-        int leftMarker = leftBoarder;
-        int rightMarker = rightBoarder;
+        int leftMarker = leftBoarder; //элемент слева, который больше опорного
+        int rightMarker = rightBoarder; //элемент справа, который меньше опорного
 
         int pivot = (leftBoarder + rightBoarder) / 2;
 
         while (leftMarker <= rightMarker) {
-
-            while (sourceArray[leftMarker] < sourceArray[pivot]) {
+            while (sourceArray[leftMarker] < sourceArray[pivot]) { //ищем элемент слева, который больше опорного (leftMarker)
                 leftMarker++;
             }
 
-            while (sourceArray[rightMarker] > sourceArray[pivot]) {
+            while (sourceArray[rightMarker] > sourceArray[pivot]) { //ищем элемент справа, который меньше опорного (rightMarker)
                 rightMarker--;
             }
 
-            if (leftMarker < rightBoarder) {
+            if (leftMarker < rightBoarder) { //меняем местами элементы leftMarker и rightMarker
                 int temp = sourceArray[leftMarker];
                 sourceArray[leftMarker] = sourceArray[rightMarker];
                 sourceArray[rightMarker] = temp;
