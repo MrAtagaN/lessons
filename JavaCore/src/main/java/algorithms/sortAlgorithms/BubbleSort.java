@@ -15,9 +15,9 @@ public class BubbleSort {
 
 
     public static void bubbleSort(int[] sourceArray) {
-        for (int i = 0; i < sourceArray.length - 1; i++) {
-            for(int n = i + 1; n < sourceArray.length; n++) {
-                if (sourceArray[n] < sourceArray[i]) {
+        for (int i = 0; i < sourceArray.length - 1; i++) {  //цикл по всем элементам до предпоследнего
+            for(int n = i + 1; n < sourceArray.length; n++) {  //цикл по оставшимся (неотсортированнм)  элементам до последнего
+                if (sourceArray[n] < sourceArray[i]) {  // Если n-ный элемент меньше, то меняем местами с i-тым
                     int temp = sourceArray[i];
                     sourceArray[i] = sourceArray[n];
                     sourceArray[n] = temp;

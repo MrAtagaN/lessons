@@ -14,16 +14,18 @@ public class SelectSort {
     }
 
     public static void selectSort(int[] sourceArray) {
+        int temp;
+        int index;
         for (int i = 0; i < sourceArray.length - 1; i++) {
-            int temp = sourceArray[i];
-            int index = i;
-            for (int n = i + 1; n < sourceArray.length; n++) {
-                if (sourceArray[n] < temp) {
+            temp = sourceArray[i];
+            index = i;
+            for (int n = i + 1; n < sourceArray.length; n++) { //ищем наименьший элемент из оставшегося массива
+                if (sourceArray[n] < sourceArray[i]) {
                     temp = sourceArray[n];
                     index = n;
                 }
             }
-            if (i != index) {
+            if (i != index) { //если нашли элемент меньшн i-того
                 sourceArray[index] = sourceArray[i];
                 sourceArray[i] = temp;
             }
