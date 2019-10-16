@@ -25,7 +25,7 @@ public class SelectSort {
                     index = n;
                 }
             }
-            if (i != index) { //если нашли элемент меньшн i-того
+            if (i != index) { //если нашли элемент меньше i-того, меняем местами элементами
                 sourceArray[index] = sourceArray[i];
                 sourceArray[i] = temp;
             }
