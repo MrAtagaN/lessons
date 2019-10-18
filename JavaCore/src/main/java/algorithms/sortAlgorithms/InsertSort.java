@@ -16,7 +16,7 @@ public class InsertSort {
     public static void insertSort(int[] sourceArray) {
         for (int i = 0; i < sourceArray.length; i++) {
             int insertIndex = 0;
-            while (insertIndex < i && sourceArray[insertIndex] < sourceArray[i]) { //выбираем место для вставки
+            while (i > 0 && sourceArray[insertIndex] < sourceArray[i]) { //выбираем место для вставки
                 insertIndex++;
             }
             int temp = sourceArray[i];

@@ -37,7 +37,7 @@ import org.hibernate.annotations.Cache;
  *       объекта не меняет состояние, если объект в сстоянии transient сохраняет в базу.
  *
  *
- * transaction.commit - обекты привязанные к сессии сохраняются и переводятся в состояние detached
+ * transaction.commit - коммит,  обекты привязанные к сессии сохраняются
  *
  *
  *
