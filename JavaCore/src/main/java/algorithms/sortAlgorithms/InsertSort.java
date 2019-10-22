@@ -14,11 +14,11 @@ public class InsertSort {
     }
 
     public static void insertSort(int[] sourceArray) {
-        for (int i = 0; i < sourceArray.length; i++) {
+        for (int i = 1; i < sourceArray.length; i++) {
             int insertIndex = 0;
-            while (i > 0 && sourceArray[insertIndex] < sourceArray[i]) { //выбираем место для вставки
-                insertIndex++;
-            }
+            while (sourceArray[insertIndex] < sourceArray[i]) { //Выбираем место для вставки. От 0-го до i-го элемента
+                insertIndex++;                                  //Ищем элемент с бОльшим либо с таким же
+            }                                                   //значением что у i-го элемента
             int temp = sourceArray[i];
 
             for (int m = i - 1; m >= insertIndex; m--) { //делаем сдвиг массива ( часть массива от места вставки до i ( числа которое будем вставлям))
