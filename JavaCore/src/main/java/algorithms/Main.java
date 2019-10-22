@@ -7,26 +7,7 @@ package algorithms;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println(factorial(5));
         System.out.println(reverse("qwerty"));
-    }
-
-
-    /**
-     * Факториал
-     */
-    public static int factorial(int number) {
-        int result;
-        if (number < 0) {
-            return 0;
-        }
-
-        if (number > 1) {
-            result = number * factorial(number - 1);
-        } else {
-            return 1;
-        }
-        return result;
     }
 
 
