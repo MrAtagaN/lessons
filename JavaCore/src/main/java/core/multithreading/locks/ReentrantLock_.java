@@ -17,6 +17,7 @@ public class ReentrantLock_ {
             System.out.println(tryLock);
 
             Condition condition = lock.newCondition();
+            //вызывается в блоках между lock и unlock
             condition.await(); //аналог wait
             condition.signal(); //аналог notify
 
