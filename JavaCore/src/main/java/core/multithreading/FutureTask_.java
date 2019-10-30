@@ -1,4 +1,4 @@
-package core.multithreading.futureTask;
+package core.multithreading;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
