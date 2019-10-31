@@ -21,8 +21,8 @@ public class InsertSort {
             }                                                   //значением что у i-го элемента
             int temp = sourceArray[i];
 
-            for (int m = i - 1; m >= insertIndex; m--) { //делаем сдвиг массива ( часть массива от места вставки до i ( числа которое будем вставлям))
-                sourceArray[m + 1] = sourceArray[m];
+            for (int m = i; m > insertIndex; m--) { //делаем сдвиг массива ( часть массива от места вставки до i ( числа которое будем вставлям))
+                sourceArray[m] = sourceArray[m - 1];
             }
             sourceArray[insertIndex] = temp;
         }
