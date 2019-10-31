@@ -13,10 +13,7 @@ public class Anagram {
 
     public static Set<String> getAnagrams(String sourceString) {
         Set<String> result = new HashSet<>();
-        char[] charArray = new char[sourceString.length()];
-        for (int i = 0; i < sourceString.length(); i++) {
-            charArray[i] = sourceString.charAt(i);
-        }
+        char[] charArray = sourceString.toCharArray();
         recursionAnagramCombinations(charArray, sourceString.length(), result);
         return result;
     }
