@@ -23,7 +23,7 @@ public class MinimumWindow {
                 char[] subArray = getSubArray(charsS, l, r);
                 if (containsChars(subArray, charsT)) {
                     if (minWin.equals("") || subArray.length < minWin.length()) {
-                        minWin = getString(subArray);
+                        minWin = new String(subArray);
                     }
                     r--;
                     l++;
@@ -31,14 +31,6 @@ public class MinimumWindow {
             }
         }
         return minWin;
-    }
-
-    private static String getString(char[] subArray) {
-        StringBuilder sb = new StringBuilder();
-        for (char c : subArray) {
-            sb.append(c);
-        }
-        return sb.toString();
     }
 
     private static boolean containsChars(char[] subArray, char[] targetArray) {
