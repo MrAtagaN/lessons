@@ -2,7 +2,9 @@ package core.multithreading;
 
 import java.util.concurrent.Exchanger;
 
-
+/**
+ * Обмен данными между потоками
+ */
 public class Exchanger_ {
 
     public static void main(String[] args) throws InterruptedException {
