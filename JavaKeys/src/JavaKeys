@@ -1,0 +1,7 @@
+java -verbose - При запуске приложения пишет лог
+
+javac -xLint:all - Проверка кода на стиль и ошибки
+
+jmap -dump:format=b,file=dump.txt [processID] - Дамп памяти записать в файл
+
+jmap dump.txt - Читать дамп памяти
