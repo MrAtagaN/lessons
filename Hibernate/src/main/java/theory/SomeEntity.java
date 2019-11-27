@@ -37,6 +37,18 @@ import org.hibernate.annotations.Cache;
  *       объекта не меняет состояние, если объект в сстоянии transient сохраняет в базу.
  *
  *
+ * session.refresh -
+ *
+ *
+ * session.flush -
+ *
+ *
+ * session.get -
+ *
+ *
+ * session.load -
+ *
+ *
  * transaction.commit - коммит,  обекты привязанные к сессии сохраняются
  *
  *

@@ -25,7 +25,7 @@ public class UserDAO {
         try {
             session = sessionFactory.openSession();
             transaction = session.beginTransaction();
-            Query query = session.createQuery("FROM User u where u.name = :name");
+            Query<User> query = session.createQuery("FROM User u where u.name = :name");
             query.setParameter("name", name);
             result = query.list();
             transaction.commit();
@@ -35,7 +35,7 @@ public class UserDAO {
             }
             e.printStackTrace();
         } finally {
-            if (session != null) {
+            if (session != null && session.isOpen()) {
                 session.close();
             }
         }
@@ -48,6 +48,7 @@ public class UserDAO {
         Session session = null;
         Transaction transaction = null;
         try {
+            session = sessionFactory.openSession();
             transaction = session.beginTransaction();
             session = sessionFactory
                     .withOptions()
@@ -62,8 +63,8 @@ public class UserDAO {
             }
             e.printStackTrace();
         } finally {
-            if (session != null) {
-                session.close();
+            if (session != null && session.isOpen()) {
+                    session.close();
             }
         }
         return result;
@@ -75,6 +76,7 @@ public class UserDAO {
         Session session = null;
         Transaction transaction = null;
         try {
+            session = sessionFactory.openSession();
             transaction = session.beginTransaction();
             session = sessionFactory.openSession();
             result = session.get(User.class, id);
@@ -85,7 +87,7 @@ public class UserDAO {
             }
             e.printStackTrace();
         } finally {
-            if (session != null) {
+            if (session != null && session.isOpen()) {
                 session.close();
             }
         }
@@ -107,7 +109,7 @@ public class UserDAO {
                 transaction.rollback();
             }
         } finally {
-            if (session != null) {
+            if (session != null && session.isOpen()) {
                 session.close();
             }
         }
@@ -129,8 +131,7 @@ public class UserDAO {
                 transaction.rollback();
             }
         } finally {
-            if (session != null) {
-                System.out.println(session.isOpen());
+            if (session != null && session.isOpen()) {
                 session.close();
             }
         }
@@ -151,7 +152,7 @@ public class UserDAO {
                 transaction.rollback();
             }
         } finally {
-            if (session != null) {
+            if (session != null && session.isOpen()) {
                 session.close();
             }
         }
@@ -172,7 +173,7 @@ public class UserDAO {
                 transaction.rollback();
             }
         } finally {
-            if (session != null) {
+            if (session != null && session.isOpen()) {
                 session.close();
             }
         }
