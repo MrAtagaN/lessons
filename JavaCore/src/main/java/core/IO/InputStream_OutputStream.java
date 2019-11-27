@@ -7,14 +7,17 @@ import java.io.InputStream;
 
 
 /**
- * InputStream, BufferedInputStream
- * <p>
+ * InputStream - абстрактный класс читающий байты
+ *
  * Методы inputStream:
  * available() - Количество непрочитанных байт
- * markSupported() - поддерживает ли поток механизм меток
- * mark() - поставить метку в определенную позицию
  * read() - считать следующий байт
  * read(byte[]) - считывает байты из потока в массив, возвращает количество считанных байт
+ * markSupported() - поддерживает ли поток механизм меток
+ * mark() - поставить метку в определенную позицию
+ *
+ *
+ * BufferedInputStream - буферезированный inputStream, обертка позволяющая оптимизировать работу
  */
 public class InputStream_OutputStream {
 

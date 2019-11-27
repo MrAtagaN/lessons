@@ -3,11 +3,21 @@ package core.IO;
 import java.io.*;
 
 /**
+ * Reader - абстрактный класс читающий символы
+ *
+ * Методы Reader:
+ * ready() - Есть непрочитанные символы
+ * read() - считать следующий байт
+ * read(byte[]) - считывает байты из потока в массив, возвращает количество считанных байт
+ * markSupported() - поддерживает ли поток механизм меток
+ * mark() - поставить метку в определенную позицию
+ *
+ *
  * InputStreamReader - читает символы из потока
  * StringReader - читает символы из строки
  * FileReader - читает символы из файла
- *
  * BufferedReader - буферезированный ридер, обертка позволяющая работать с строками
+ *
  *
  * https://javarush.ru/quests/lectures/questcollections.level01.lecture07
  * BufferedReader
