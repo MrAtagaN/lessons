@@ -1,11 +1,17 @@
 package theory;
 
+import Hibernate2.Auto;
+import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
+
 import org.hibernate.annotations.Cache;
+
+import static javax.persistence.InheritanceType.JOINED;
 
 /**
  * ТЕОРИЯ
@@ -60,7 +66,10 @@ import org.hibernate.annotations.Cache;
  */
 @Entity
 @Table(name = "references")
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+@Inheritance(strategy=JOINED) //Отображение наследований
+@DiscriminatorColumn(name="PROJ_TYPE")
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE) //
+@BatchSize(size = 10) //аннотация Hibernate, объекты загружаются пачками (среднее между ленивой и не ленивой загрузкой)
 public class SomeEntity {
 
     @Id
@@ -81,6 +90,12 @@ public class SomeEntity {
     @Column(name = "timestamp")
     @Temporal(TemporalType.TIMESTAMP) //Отображение в базе: yyyy-MM-dd HH:mm:ss.SSS  Timestamp - точность до наносекунд
     Timestamp timestamp;
+
+    //двунаправленая связь, т.е. у Auto есть ссылка на User, а у User есть ссылка на Auto
+    //чтобы Hibernate понимал эту связь, нужно указывать mappedBy, в котором указать имя атрибута ссылающегося на данный объект
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OrderBy("color asc") //сортировка
+    List<Auto> autos;
 
 
 }
