@@ -4,7 +4,9 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 
-
+/**
+ * Future, Callable - интерфейсы для асинхронного выполнения, возвращающие результат
+ */
 public class FutureTask_ {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
