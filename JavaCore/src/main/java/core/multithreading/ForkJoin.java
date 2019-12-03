@@ -6,6 +6,12 @@ import java.util.concurrent.RecursiveTask;
 
 /**
  * Cуммирование всех чисел
+ *
+ * forkJoinPool.invoke(ForkJoinTask) - выполняет переданную задачу, запускает compute()
+ *
+ * recursiveTask.compute() - основная операция вычисления
+ * recursiveTask.fork() - вызвать метод compute в другой нити (асинхронно)
+ * recursiveTask.join() - ждать результата fork()
  */
 public class ForkJoin {
 
