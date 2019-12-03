@@ -4,6 +4,42 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
 /**
+ * CompletableFuture
+ *
+ * непосредственная запись
+ *
+ * complete(value) - если не завершен, то устанавливает возвращаемое значение
+ * completeExceptionally() - вернуть ошибку
+ * cancel() -
+ *
+ * Непосредственное чтение
+ *
+ * isDone() - проверяет, был ли уже записан результат
+ * get() - ждет, если результат еще не записан, и возвращает значение
+ * isCancelled() -
+ * getNow(valueIfAbsent) - возвращает результат немедленно. Если результат еще не записан,
+ *   возвращает значение параметра valueIfAbsent
+ *
+ * Асинхронное выполнение
+ *
+ * supplyAsync(Supplier<U>) - запускается задача с функцией Supplier
+ * runAsync(Runnable) - запускается задача Runnable
+ *
+ * Асинхронное выполнение с аргументом из предыдущего completableFuture
+ *
+ * thenApply(Function) - принимает аргумент из completableFuture и возвращает результат
+ * thenAccept(Consumer) - принимает аргумент из completableFuture и ничего не возвращает
+ *
+ * anyOf(CompletableFuture...) - возвращает новый completableFuture, когда выполнится любой из аргументов
+ * applyToEither(otherFuture, Function) - возвращает новый completableFuture, который заполняется когда выполнится данный
+ *   completableFuture либо completableFuture, переданный параметром other
+ *
+ * thenCombine(otherFuture, BiFunction) - Имеет на входе два completableFuture, результаты которых накапливаются и затем
+ *   передаются в функцию с двумя параметрами
+ *
+ * allOf(CompletableFuture...) - возвращает CompletableFuture, завершающееся по завершению всех completableFuture в списке параметров
+ *
+ *
  * https://habr.com/ru/post/213319/
  */
 public class CompletableFuture_ {
@@ -29,10 +65,10 @@ public class CompletableFuture_ {
          * Интерфейс непосредственного чтения
          */
 
-        //Проверяет, был ли уже записан результат
+        //проверяет, был ли уже записан результат
         completableFuture.isDone();
 
-        //Ждет, если результат еще не записан, и возвращает значение
+        //ждет, если результат еще не записан, и возвращает значение
         completableFuture.get();
 
         completableFuture.isCancelled();
@@ -44,7 +80,7 @@ public class CompletableFuture_ {
         completableFuture.getNumberOfDependents();
 
         /**
-         * Интерфейс асинхронного выполнения
+         * Асинхронное выполнение
          */
         //Запускается задача с функцией Supplier. Запуск задачи производится на стандартном пуле потоков
         CompletableFuture<Integer> integerCompletableFuture1 = CompletableFuture.supplyAsync(() -> {
@@ -56,6 +92,16 @@ public class CompletableFuture_ {
             System.out.println("--");
         });
 
+        /**
+         * Асинхронное выполнение с аргументом из предыдущего completableFuture
+         */
+        //принимает аргумент из completableFuture и возвращает результат
+        completableFuture.thenApply((compl) -> {return compl + 2;});
+
+        //принимает аргумент из completableFuture и ничего не возвращает
+        completableFuture.thenAccept((compl) -> {
+            System.out.println(2);
+        });
 
 
 
