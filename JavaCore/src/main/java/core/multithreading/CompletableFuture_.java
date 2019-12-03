@@ -41,6 +41,8 @@ import java.util.concurrent.ExecutionException;
  *
  *
  * https://habr.com/ru/post/213319/
+ * youtube.com/watch?v=hqR41XVx3kM
+ * https://javarush.ru/groups/posts/2065-threadom-java-ne-isportishjh--chastjh-iv---callable-future-i-druzjhja
  */
 public class CompletableFuture_ {
 

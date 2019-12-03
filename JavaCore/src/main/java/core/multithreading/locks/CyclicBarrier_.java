@@ -3,6 +3,9 @@ package core.multithreading.locks;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
+/**
+ * https://javarush.ru/groups/posts/2111-threadom-java-ne-isportishjh--chastjh-vi---k-barjheru
+ */
 public class CyclicBarrier_ {
 
     public static void main(String[] args) {

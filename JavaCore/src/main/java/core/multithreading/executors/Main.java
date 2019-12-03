@@ -15,6 +15,8 @@ import java.util.concurrent.Future;
  *
  * Future submit(Callable task) - Метод возвращает объект Future. При вызове у него get - получаем значение
  * или ждём пока завершится метод, или получаем исключение нити
+ *
+ * https://javarush.ru/groups/posts/2078-threadom-java-ne-isportishjh--chastjh-v---executor-threadpool-fork-join-pool
  */
 public class Main {
 
