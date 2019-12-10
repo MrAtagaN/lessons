@@ -35,7 +35,7 @@ package theory;
  *     выкидывает исключение.
  *
  *
- * transaction.commit - коммит,  обекты привязанные к сессии сохраняются
+ * transaction.commit - коммит, обекты привязанные к сессии сохраняются
  */
 public class SessionMethods {
 }

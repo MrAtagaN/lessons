@@ -9,11 +9,14 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathExpressionException;
+import javax.xml.xpath.XPathFactory;
 import java.io.IOException;
 
 public class Dom {
 
-    public static void main(String[] args) throws ParserConfigurationException, IOException, SAXException {
+    public static void main(String[] args) throws ParserConfigurationException, IOException, SAXException, XPathExpressionException {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder documentBuilder = factory.newDocumentBuilder();
         Document document = documentBuilder.parse("JavaCore\\src\\main\\resources\\Blank_A4.jrxml");
@@ -42,6 +45,13 @@ public class Dom {
         System.out.println("Text of element");
         NodeList nodeList = element.getElementsByTagName("textFieldExpression");
         System.out.println(nodeList.item(0).getTextContent());
+
+
+        //XPath
+        System.out.println("xPath");
+        XPathFactory xPathFactory = XPathFactory.newInstance();
+        XPath xPath = xPathFactory.newXPath();
+        System.out.println(xPath.evaluate("/jasperReport/columnHeader/band/textField[2]/textFieldExpression", document));
 
     }
 }
