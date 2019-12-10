@@ -16,6 +16,8 @@ import org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -48,15 +50,18 @@ import java.util.Date;
  * @Embedded - отмечается свойство как встроенный компонент класса-владельца
  * @Embeddable - отмечается класс как встроенный компонент класса-владельца
  *
+ * @AttributeOverrides({@AttributeOverride(name = "attr_name", column = @Column(name = "column_name"))}) - выборочно
+ * переопределяет отображение свойств встроеного класса. Нужно чтобы имена колонок не повторялись в одной таблице
+ *
  *
  * Проверка на нулевые значения:
  * @Basic(optional = false)
- * @NotNull
  * @Column(nullable = false)
+ * @NotNull - это ограничение не отображается в DDL схеме
  *
  *
  * @Access(AccessType.FIELD) - Настройка доступа к свойствам. Можно ставить над классом или полем. По умолчанию
- * определяется в зависимости от места аннотации @Id (над свойством или методом)
+ * определяется в зависимости от места аннотации @Id (над свойством или методом). Встраиваемые классы наследуют доступ.
  *
  *
  * @Formula("<HQL>") - вычисляемое запросом поле. Доступнотолько для чтения
@@ -111,6 +116,7 @@ public class EntityMapping extends PhysicalNamingStrategyStandardImpl {
     Integer average;
 
     @Embedded
+    @AttributeOverrides({@AttributeOverride(name = "attr_name", column = @Column(name = "column_name"))})
     Adress adress;
 
     @Temporal(TemporalType.TIMESTAMP)
