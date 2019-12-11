@@ -12,6 +12,7 @@ import org.hibernate.annotations.GenerationTime;
 import org.hibernate.annotations.Immutable;
 import org.hibernate.annotations.Subselect;
 import org.hibernate.annotations.Synchronize;
+import org.hibernate.annotations.Type;
 import org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl;
 
 import javax.persistence.Access;
@@ -26,6 +27,7 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import java.util.Date;
@@ -84,6 +86,10 @@ import java.util.Date;
  * @Enumerated(EnumType.STRING) - Отображение перечеслений. По умолчанию ORDINAL. Лучше использовать STRING
  *
  *
+ * @Lob - отображение в SQL тип CLOB или BLOB. Не обеспечвает отложенную загрузку. Для отложенной загрузки должен быть
+ * тип java.sql.Blob или java.sql.Clob
+ *
+ * @Type(type = "yes_no") - переопределение адаптера
  *
  *
  */
@@ -125,9 +131,11 @@ public class EntityMapping extends PhysicalNamingStrategyStandardImpl {
     @Enumerated(EnumType.STRING)
     Action action;
 
+    @Lob
+    byte[] image;
 
-
-
+    @Type(type = "yes_no")
+    boolean verified;
 
 
 
