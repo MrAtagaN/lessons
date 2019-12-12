@@ -2,15 +2,22 @@ package theory.mapping;
 
 
 import org.hibernate.annotations.CollectionId;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.annotations.SortComparator;
 import org.hibernate.annotations.SortNatural;
 import org.hibernate.annotations.Type;
 
+import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.MapKeyColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.OrderColumn;
 import java.util.ArrayList;
@@ -49,6 +56,20 @@ import java.util.Set;
  *
  *  ОТОБРАЖЕНИЕ СВЯЗЕЙ МЕЖДУ СУЩНОСТЯМИ:
  *
+ *  @ManyToOne - однонаправленая связь
+ *  @JoinColumn(name = "PARENT_ID", nullable = false) - название столбца с внешним ключом
+ *
+ *  Если нет двунаправленой связи и разделяемых ссылок на объекты множества лучше использовать @ElementCollection
+ *
+ *  @OneToMany - двунаправленная связь
+ *  mappedBy = "parent" - аттрибут на другой стороне, который ссылается на данную сущность
+ *  CascadeType.PERSIST - Действие которое будет применяться к объектам множества
+ *  orphanRemoval = true - Удаление объекта из базы, если он был удален из данного множества
+ *  @OnDelete(action = OnDeleteAction.CASCADE) - каскадное удаление на уровне базы. Работает быстрее.
+ *
+ *  Каскадные удаления медленные. Нужно применять только если нет разделяемых ссылок. Лучше не применять
+ *
+ *
  */
 public class RelationsMapping implements Comparator<String> {
 
@@ -76,11 +97,23 @@ public class RelationsMapping implements Comparator<String> {
     @SortComparator(RelationsMapping.class)
     Map<String, String> images3 = new HashMap<>();
 
-
+    //двунаправленая связь, т.е. у Auto есть ссылка на User, а у User есть ссылка на Auto
+    //чтобы Hibernate понимал эту связь, нужно указывать mappedBy, в котором указать имя атрибута ссылающегося на данный объект
+    @OneToMany(mappedBy = "parent", cascade = CascadeType.PERSIST, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.CASCADE) //на уровне базы
+    Set<Image> images4;
 
 
     @Override
     public int compare(String o1, String o2) {
         return 0;
+    }
+
+    @Entity
+    private class Image {
+
+        @ManyToOne(fetch = FetchType.LAZY) //по умолчанию EAGER
+        @JoinColumn(name = "PARENT_ID", nullable = false)
+        RelationsMapping parent;
     }
 }

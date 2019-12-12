@@ -17,10 +17,12 @@ import org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.AttributeConverter;
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Basic;
 import javax.persistence.Column;
+import javax.persistence.Converter;
 import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -30,6 +32,7 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.stream.events.Attribute;
 import java.util.Date;
 
 /**
@@ -91,6 +94,8 @@ import java.util.Date;
  *
  * @Type(type = "yes_no") - переопределение адаптера
  *
+ * @Converter(autoApply = true) - Аннотация для класса конвертера. Класс должен реализовывать
+ * интерфейс AttributeConverter<X, Y>
  *
  */
 
@@ -146,5 +151,19 @@ public class EntityMapping extends PhysicalNamingStrategyStandardImpl {
 
     private enum Action {
         A, B
+    }
+
+
+    @Converter(autoApply = true)
+    public static class CustomConverter implements AttributeConverter<String, Integer> {
+        @Override
+        public Integer convertToDatabaseColumn(String s) {
+            return null;
+        }
+
+        @Override
+        public String convertToEntityAttribute(Integer integer) {
+            return null;
+        }
     }
 }
