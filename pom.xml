@@ -26,7 +26,7 @@
         <module>SpringSecurity</module>
         <module>Bash</module>
         <module>SQL</module>
-        <module>JavaKeys</module>
+        <module>JavaConsole</module>
     </modules>
 
 </project>
