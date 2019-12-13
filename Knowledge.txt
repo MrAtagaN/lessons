@@ -22,9 +22,13 @@ slf4j
 Запросы select
 Создание таблиц
 Нормализация
+Индексация
 Транзакции, уровни изоляции
 Constrains
 Инъекции
+Курсоры
+Триггеры
+View
 
 -Spring
 Core
@@ -37,6 +41,10 @@ Security
 RabbitMQ
 ActiveMQ
 
+-Алгоритмы
+
+-Flyway/Liquibase
+
 -MongoDB
 
 -Docker
@@ -47,19 +55,17 @@ Cron
 Vim
 Bash
 
--Maven
+-Maven/Gradle
 Artifactory
 
--Gradle
-
--Git
-
--Mercurial
+-Git/Mercurial
 
 -Hibernate
+Наследование
 Criteria
 Hql
 Состояния объектов
+N+1
 
 -Junit
 
