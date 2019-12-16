@@ -8,18 +8,7 @@ import org.hibernate.annotations.SortComparator;
 import org.hibernate.annotations.SortNatural;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.CascadeType;
-import javax.persistence.CollectionTable;
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.MapKeyColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OrderBy;
-import javax.persistence.OrderColumn;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -69,6 +58,13 @@ import java.util.Set;
  *
  *  Каскадные удаления медленные. Нужно применять только если нет разделяемых ссылок. Лучше не применять
  *
+ *  @OneToOne - связь один к одному
+ *  стратегии отображения:
+ *  Общий первичный ключ - @PrimaryKeyJoinColumn
+ *  Генератор внешнего первичного ключа -
+ *  Соединение с помощью столбца внешнего ключа - @JoinColumn
+ *  Использование таблицы соединения - @JoinTable(name = "", joinColumns = @JoinColumn(name = ""), inverseJoinColumns = @JoinColumn(name = ""))
+ *
  *
  */
 public class RelationsMapping implements Comparator<String> {
@@ -102,6 +98,12 @@ public class RelationsMapping implements Comparator<String> {
     @OneToMany(mappedBy = "parent", cascade = CascadeType.PERSIST, orphanRemoval = true, fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE) //на уровне базы
     Set<Image> images4;
+
+
+    @JoinTable(name = "", joinColumns = @JoinColumn(name = ""), inverseJoinColumns = @JoinColumn(name = ""))
+    @PrimaryKeyJoinColumn
+    @OneToOne
+    Image image;
 
 
     @Override

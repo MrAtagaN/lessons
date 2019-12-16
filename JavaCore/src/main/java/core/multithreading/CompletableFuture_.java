@@ -12,6 +12,7 @@ import java.util.concurrent.ExecutionException;
  * completeExceptionally() - вернуть ошибку
  * cancel() -
  *
+ *
  * Непосредственное чтение
  *
  * isDone() - проверяет, был ли уже записан результат
@@ -20,10 +21,12 @@ import java.util.concurrent.ExecutionException;
  * getNow(valueIfAbsent) - возвращает результат немедленно. Если результат еще не записан,
  *   возвращает значение параметра valueIfAbsent
  *
+ *
  * Асинхронное выполнение
  *
  * supplyAsync(Supplier<U>) - запускается задача с функцией Supplier
  * runAsync(Runnable) - запускается задача Runnable
+ *
  *
  * Асинхронное выполнение с аргументом из предыдущего completableFuture
  *
