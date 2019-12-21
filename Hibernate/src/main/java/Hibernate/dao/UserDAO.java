@@ -25,7 +25,7 @@ public class UserDAO {
         try {
             session = sessionFactory.openSession();
             transaction = session.beginTransaction();
-            Query<User> query = session.createQuery("FROM User u where u.name = :name");
+            Query<User> query = session.createQuery("FROM User u where u.name = :name", User.class);
             query.setParameter("name", name);
             result = query.list();
             transaction.commit();
@@ -54,7 +54,7 @@ public class UserDAO {
                     .withOptions()
                     .jdbcTimeZone(TimeZone.getTimeZone("UTC")) //Таймзона, указывается один раз в файле hibernate.cfg.xml
                     .openSession();                            //Здесь для примера
-            Query query = session.createQuery("FROM User");
+            Query<User> query = session.createQuery("FROM User", User.class);
             result = query.list();
             transaction.commit();
         } catch (Exception e) {

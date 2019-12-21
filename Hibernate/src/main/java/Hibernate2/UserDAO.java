@@ -19,7 +19,7 @@ public class UserDAO {
     public List<User> getAllUsers() {
         List<User> result = new ArrayList<>();
         try (Session session = sessionFactory.openSession()) {
-            Query<User> query = session.createQuery("FROM User");
+            Query<User> query = session.createQuery("FROM User", User.class);
             result = query.list();
         } catch (Exception e) {
             e.printStackTrace();
