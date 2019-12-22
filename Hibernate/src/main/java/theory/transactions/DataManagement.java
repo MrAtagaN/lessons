@@ -1,21 +1,11 @@
-package theory;
+package theory.transactions;
 
-import Hibernate2.Auto;
-import org.hibernate.annotations.BatchSize;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
 
-import javax.persistence.*;
-import java.sql.Timestamp;
-import java.util.Date;
-import java.util.List;
-
-import org.hibernate.annotations.Cache;
-
-import static javax.persistence.InheritanceType.JOINED;
+import Hibernate2.HibernateUtil;
+import Hibernate2.User;
+import org.hibernate.Session;
 
 /**
- * ТЕОРИЯ
- *
  *
  * состояния объектов в hibernate :
  *    transient - объект не был никогда соединём с сессией hibernate, у объекта нет id
@@ -43,10 +33,13 @@ import static javax.persistence.InheritanceType.JOINED;
  *     объекта не меняет состояние, если объект в сотоянии transient сохраняет в базу.
  *
  *
- * session.refresh -
+ * session.refresh - Обновить состояние объекта из базы
  *
  *
  * session.flush -
+ *
+ *
+ * session.getReference - Получить пустой прокси объект.
  *
  *
  * session.get - Немедлено берет данные из базы. Если нет в базе объекта, возвращает null
@@ -64,38 +57,11 @@ import static javax.persistence.InheritanceType.JOINED;
  * Топ 20 вопросов https://www.java67.com/2016/02/top-20-hibernate-interview-questions.html
  *
  */
-@Entity
-@Table(name = "references")
-@Inheritance(strategy=JOINED) //Отображение наследований
-@DiscriminatorColumn(name="PROJ_TYPE")
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE) //
-@BatchSize(size = 10) //аннотация Hibernate, объекты загружаются пачками (среднее между ленивой и не ленивой загрузкой)
-public class SomeEntity {
+public class DataManagement {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO) //
-    //@GeneratedValue(strategy = GenerationType.IDENTITY) //
-    //@GeneratedValue(strategy = GenerationType.SEQUENCE) //
-    //@GeneratedValue(strategy = GenerationType.TABLE) //
-    private long id;
+    public static void main(String[] args) {
 
-    @Column(name = "date")
-    @Temporal(TemporalType.DATE) //Отображение в базе: yyyy-MM-dd
-    Date date;
-
-    @Column(name = "time")
-    @Temporal(TemporalType.TIME) //Отображение в базе: HH:mm:ss
-    Date time;
-
-    @Column(name = "timestamp")
-    @Temporal(TemporalType.TIMESTAMP) //Отображение в базе: yyyy-MM-dd HH:mm:ss.SSS  Timestamp - точность до наносекунд
-    Timestamp timestamp;
-
-    //двунаправленая связь, т.е. у Auto есть ссылка на User, а у User есть ссылка на Auto
-    //чтобы Hibernate понимал эту связь, нужно указывать mappedBy, в котором указать имя атрибута ссылающегося на данный объект
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    @OrderBy("color asc") //сортировка
-    List<Auto> autos;
-
-
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        User user = session.getReference(User.class, 12);
+    }
 }
