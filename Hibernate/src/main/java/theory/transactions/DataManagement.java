@@ -3,7 +3,10 @@ package theory.transactions;
 
 import Hibernate2.HibernateUtil;
 import Hibernate2.User;
+import org.hibernate.ReplicationMode;
 import org.hibernate.Session;
+
+import javax.persistence.EntityManagerFactory;
 
 /**
  *
@@ -52,6 +55,15 @@ import org.hibernate.Session;
  * transaction.commit - коммит,  обекты привязанные к сессии сохраняются
  *
  *
+ * unwrap - JPA приводит к Hibernate Api. EntityManagerFactory приводит к SessionFactory, EntityManager приводит к Session
+ *
+ *
+ * replicate - Репликация данных из одной базы в другую
+ *   ReplicationMode:
+ *   IGNORE -
+ *   OVERWRITE -
+ *   EXCEPTION -
+ *   LATEST_VERSION -
  *
  * https://habr.com/ru/post/265061/
  * Топ 20 вопросов https://www.java67.com/2016/02/top-20-hibernate-interview-questions.html
@@ -63,5 +75,7 @@ public class DataManagement {
 
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         User user = session.getReference(User.class, 12);
+
+        session.replicate(user, ReplicationMode.LATEST_VERSION);
     }
 }
