@@ -74,6 +74,7 @@ N+1
 -Инструменты
 Intellij Idea
 Postman
+Postgres client
 SoapUI
 Nodepad++
 
