@@ -39,7 +39,7 @@ import javax.persistence.EntityManagerFactory;
  * session.refresh - Обновить состояние объекта из базы
  *
  *
- * session.flush -
+ * session.flush - Перевести контекст хранения в базу.
  *
  *
  * session.getReference - Получить пустой прокси объект.
