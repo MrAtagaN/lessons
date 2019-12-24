@@ -5,8 +5,13 @@ import Hibernate2.HibernateUtil;
 import Hibernate2.User;
 import org.hibernate.ReplicationMode;
 import org.hibernate.Session;
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.OptimisticLock;
+import org.hibernate.annotations.OptimisticLockType;
+import org.hibernate.annotations.OptimisticLocking;
 
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Version;
 
 /**
  *
@@ -55,6 +60,12 @@ import javax.persistence.EntityManagerFactory;
  * transaction.commit - коммит,  обекты привязанные к сессии сохраняются
  *
  *
+ * @Version - Версионирование. Побеждает первая подтвержденная транзакция
+ * @OptimisticLocking(type = OptimisticLockType.ALL) - Вместо отдельного поля для версионирования используются все
+ * поля класса
+ * @OptimisticLock(excluded = true) - убрать поле из версионирования
+ *
+ *
  * unwrap - JPA приводит к Hibernate Api. EntityManagerFactory приводит к SessionFactory, EntityManager приводит к Session
  *
  *
@@ -69,7 +80,15 @@ import javax.persistence.EntityManagerFactory;
  * Топ 20 вопросов https://www.java67.com/2016/02/top-20-hibernate-interview-questions.html
  *
  */
+@OptimisticLocking(type = OptimisticLockType.ALL)
+@DynamicUpdate
 public class DataManagement {
+
+    @Version
+    int version;
+
+    @OptimisticLock(excluded = true)
+    int a;
 
     public static void main(String[] args) {
 
