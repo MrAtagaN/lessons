@@ -11,6 +11,7 @@ import org.hibernate.annotations.OptimisticLockType;
 import org.hibernate.annotations.OptimisticLocking;
 
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.LockModeType;
 import javax.persistence.Version;
 
 /**
@@ -40,31 +41,38 @@ import javax.persistence.Version;
  *     в базе по id и обновляет запись в базе, возвращает обновлённый объект в состоянии persistent, у передаваемого
  *     объекта не меняет состояние, если объект в сотоянии transient сохраняет в базу.
  *
- *
  * session.refresh - Обновить состояние объекта из базы
- *
  *
  * session.flush - Перевести контекст хранения в базу.
  *
- *
  * session.getReference - Получить пустой прокси объект.
  *
+ * session.lock - Явная блокировка
  *
  * session.get - Немедлено берет данные из базы. Если нет в базе объекта, возвращает null
- *
  *
  * session.load - Возвращает прокси, данные не загружаются из базы до первого обращенияю.  Если нет в базе объекта,
  *     выкидывает исключение.
  *
- *
  * transaction.commit - коммит,  обекты привязанные к сессии сохраняются
  *
+ *
+ * Оптимистичные блокировки:
  *
  * @Version - Версионирование. Побеждает первая подтвержденная транзакция
  * @OptimisticLocking(type = OptimisticLockType.ALL) - Вместо отдельного поля для версионирования используются все
  * поля класса
  * @OptimisticLock(excluded = true) - убрать поле из версионирования
  *
+ * LockModeType.OPTIMISTIC_FORCE_INCREMENT - принудительное изменение версии.
+ * Применяется, если изменяется сущность внутри коллекции (связанная ManyToOne).
+ *
+ * Пессимистичные блокировки:
+ *
+ * PESSIMISTIC_READ - повторимость чтения
+ * PESSIMISTIC_WRITE - последовательный досуп к данным, чтобы предотвратить фантомные чтения
+ *
+ * order_updates - упорядочивает все update в порядке возрастания primary_key
  *
  * unwrap - JPA приводит к Hibernate Api. EntityManagerFactory приводит к SessionFactory, EntityManager приводит к Session
  *
@@ -95,6 +103,9 @@ public class DataManagement {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         User user = session.getReference(User.class, 12);
 
+
         session.replicate(user, ReplicationMode.LATEST_VERSION);
+        session.find(User.class, 12, LockModeType.PESSIMISTIC_WRITE);
+
     }
 }
