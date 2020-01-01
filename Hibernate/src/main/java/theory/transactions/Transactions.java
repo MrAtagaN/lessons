@@ -67,6 +67,7 @@ import javax.persistence.Version;
  * LockModeType.OPTIMISTIC_FORCE_INCREMENT - принудительное изменение версии.
  * Применяется, если изменяется сущность внутри коллекции (связанная ManyToOne).
  *
+ *
  * Пессимистичные блокировки:
  *
  * PESSIMISTIC_READ - повторимость чтения
@@ -90,7 +91,7 @@ import javax.persistence.Version;
  */
 @OptimisticLocking(type = OptimisticLockType.ALL)
 @DynamicUpdate
-public class DataManagement {
+public class Transactions {
 
     @Version
     int version;
