@@ -8,7 +8,8 @@ import java.util.Set;
 
 /**
  *
- * @LazyCollection(LazyCollectionOption.EXTRA) - Поддержка операций с коллекцией не вы
+ * @LazyCollection(LazyCollectionOption.EXTRA) - Поддержка операций с коллекцией не вызывающий ее инициализацию.
+ *  size, isEmpty, contains. Список List загрузит только один элемент при вызове get(index).
  *
  *
  */
