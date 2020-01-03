@@ -1,10 +1,19 @@
 package theory.transactions;
 
+import Hibernate2.HibernateUtil;
+import org.hibernate.ScrollMode;
+import org.hibernate.ScrollableResults;
+import org.hibernate.Session;
 import org.hibernate.annotations.*;
+import org.hibernate.query.*;
+import org.hibernate.query.Query;
 
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -31,9 +40,21 @@ import java.util.Set;
  *  Отложенное извлечение с несколькими выражениями SELECT:
  *  @OneToMany(fetch = FetchType.EAGER)
  *  @Fetch(FetchMode.SELECT)
+ *
+ *
+ *  query.scroll(ScrollMode.SCROLL_INSENSITIVE) - Создание курсора
+ *
+ *  Именованные запросы:
+ *  @NamedQueries(@NamedQuery(name = "", query = ""))
+ *  session.createNamedQuery(" ");
+ *
+ *
+ *  query.setHint(QueryHints.READ_ONLY, true) - Подсказки для запросов
  */
 
 @BatchSize(size = 10)
+@Entity
+@NamedQueries(@NamedQuery(name = "", query = ""))
 public class DataManagment {
 
     @OneToMany(fetch = FetchType.EAGER)
@@ -41,4 +62,26 @@ public class DataManagment {
     @BatchSize(size = 10)
     @Fetch(FetchMode.SUBSELECT)
     private Set<String> stringSet= new HashSet<>();
+
+    public static void main(String[] args) {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        CriteriaBuilder criteriaBuilder =  session.getCriteriaBuilder();
+
+        CriteriaQuery<Object> criteria = criteriaBuilder.createQuery();
+        CriteriaQuery<Object> select = criteria.select(criteria.from(DataManagment.class));
+
+        TypedQuery<Object> query = session.createQuery(criteria);
+
+
+        //Создание курсора
+        Query<DataManagment> query1 = session.createQuery(" ", DataManagment.class);
+        ScrollableResults cursor = query1.scroll(ScrollMode.SCROLL_INSENSITIVE);
+        cursor.setRowNumber(2);
+
+        session.createNamedQuery(" ");
+
+        //Подсказки
+        query1.setHint(QueryHints.READ_ONLY, true);
+
+    }
 }
