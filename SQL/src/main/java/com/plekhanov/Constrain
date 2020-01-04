@@ -21,3 +21,5 @@ ON DELETE CASCADE - при удалении связанных строк зав
     удаляется запись на которую есть ссылка, то удаляется запись которая на нее ссылается
 ON DELETE SET NULL
 ON DELETE SET DEFAULT
+
+Ограничения-исключения -     EXCLUDE USING gist (column_name WITH &&)
