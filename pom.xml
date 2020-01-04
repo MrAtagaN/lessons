@@ -27,6 +27,7 @@
         <module>Bash</module>
         <module>SQL</module>
         <module>JavaConsole</module>
+        <module>Maven_and_Gradle</module>
     </modules>
 
 </project>
