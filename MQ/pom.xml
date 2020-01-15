@@ -11,5 +11,14 @@
 
     <artifactId>MQ</artifactId>
 
+    <dependencies>
+        <dependency>
+        <groupId>com.ibm.mq</groupId>
+        <artifactId>mq-jms-spring-boot-starter</artifactId>
+        <version>2.2.2</version>
+
+        </dependency>
+    </dependencies>
+
 
 </project>
