@@ -13,3 +13,5 @@ gradle run -q  Режим тишины
 gradle --console plain dependencies  Вызывает список всех конфигураций и привязанных к ним зависимостей в виде перечня
 
 gradle build --refresh-dependencies  Принудительное обновление зависимостей
+
+gradle wrapper  Генерирует файлы wrapper

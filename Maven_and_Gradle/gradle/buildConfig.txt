@@ -1,6 +1,16 @@
-sourceSets - набор файлов и ресурсов которые должны компилироваться и запускаться вместе. JavaPlugin задает два
+sourceSets  Набор файлов и ресурсов которые должны компилироваться и запускаться вместе. JavaPlugin задает два
     стандартных sourceSets: main и test
 
-configurations - описывает конфигурации зависимостей.
+configurations  Описывает конфигурации зависимостей.
 
-repositories - определение репозиториев
+repositories  Определение репозиториев
+
+dependencies  Определение зависимостей
+
+jar  Определение имени и версии baseName, version
+
+apply plugin: 'java'  Добавление плагина, который добавляет в gradle новые задачи
+
+task wrapper(type: Wrapper) {  Команда gradle wrapper скачивает gradle определенной версии
+    gradleVersion = '1.11'
+}
