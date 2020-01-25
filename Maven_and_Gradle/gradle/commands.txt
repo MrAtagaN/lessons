@@ -1,0 +1,15 @@
+gradle init --type java-application  Создает java проект
+
+gradle tasks  Список возможных задач
+
+gradle <имя задачи> --rerun-tasks  Выполнить все задачи, даже если они выполнены
+
+gradle run -i  Позволяет читать информационные сообщения о работе системы
+
+gradle run -d  Показывать все сообщения журнала
+
+gradle run -q  Режим тишины
+
+gradle --console plain dependencies  Вызывает список всех конфигураций и привязанных к ним зависимостей в виде перечня
+
+gradle build --refresh-dependencies  Принудительное обновление зависимостей
