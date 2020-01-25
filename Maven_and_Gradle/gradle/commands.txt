@@ -1,5 +1,7 @@
 gradle init --type java-application  Создает java проект
 
+gradle <имя модуля>:<имя задачи>
+
 gradle tasks  Список возможных задач
 
 gradle <имя задачи> --rerun-tasks  Выполнить все задачи, даже если они выполнены

@@ -1,11 +1,34 @@
+https://habr.com/ru/company/redmadrobot/blog/275515/
+
 sourceSets  Набор файлов и ресурсов которые должны компилироваться и запускаться вместе. JavaPlugin задает два
     стандартных sourceSets: main и test
 
 configurations  Описывает конфигурации зависимостей.
 
-repositories  Определение репозиториев
+Разрешение конфликтов библиотек:
+configurations.compile.resolutionStrategy {
+	force 'com.googlecode.jsontoken:jsontoken:1.1'
+	compile(project(":second")) {
+    		exclude group: "com.googlecode.jsontoken", module: 'jsontoken'  Исключение зависимости
+    }
+	failOnVersionConflict()
+}
 
-dependencies  Определение зависимостей
+Определение репозиториев:
+repositories {
+	mavenCentral()
+	flatDir {
+    		dirs 'aarlibs' // инициализируем папку, хранящую архивы как репозиторий
+    }
+}
+
+Определение зависимостей:
+dependencies {
+	compile "com.android.support:appcompat-v7:23.1.1"
+	compile project(':subproject') зависимость от модуля
+	compile files('libs/a.jar', 'libs/b.jar') зависимости, подключаемые как файлы
+    compile fileTree(dir: 'libs', include: '*.jar')
+}
 
 jar  Определение имени и версии baseName, version
 
