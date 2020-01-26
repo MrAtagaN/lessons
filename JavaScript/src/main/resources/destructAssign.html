@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>destructAssign</title>
+</head>
+<body>
+
+<script>
+
+    let options = {
+        title: "Menu",
+        width: 100,
+        height: 200
+    };
+    let {title, width, height} = options; // создаём переменные title, width, height и присваеваем им значения из объекта options,
+                                          // порядок не имеет значения, значения переменных присваевается по имени из объекта
+
+
+    let {title: t, width: w, height: h} = options; // кладём значения в переменные t, w, h из объекта options соответственно
+                                                   // ключам (title, width, height)
+
+    // что куда идёт
+    // width -> w
+    // height -> h
+    // title -> t
+
+
+
+    options = {
+        title: "Menu"
+    };
+
+    let {width = 100, height: h = 200, title} = options;  // тоже самое, что выше но теперь есть значения по умолчанию
+                                                          // если таких ключей не было в объекте (width = 100, height: h = 200)
+
+    alert(title);  // Menu
+    alert(w);      // 100
+    alert(h);      // 200
+
+
+
+
+    // три точки означают массив куда пойдут оставшиеся пары ключ-значение из объекта
+
+    // title = свойство с именем title
+    // rest = объект с остальными свойствами
+    let {title, ...rest} = options;
+
+    // сейчас title="Menu", rest={height: 200, width: 100}
+
+
+
+
+
+    // деструктивное присвоение для функции
+    // мы передаём объект в функцию
+    let options = {
+        title: "My menu",
+        items: ["Item1", "Item2"]
+    };
+
+    // ...и она немедленно извлекает свойства в переменные
+    function showMenu({title = "Untitled", width = 200, height = 100, items = []}) {
+        // title, items – взято из options,
+        // width, height – используются значения по умолчанию
+        alert( `${title} ${width} ${height}` ); // My Menu 200 100
+        alert( items ); // Item1, Item2
+    }
+
+    showMenu(options);
+
+
+</script>
+
+</body>
+</html>

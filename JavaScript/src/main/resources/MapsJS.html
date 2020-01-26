@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Maps</title>
+</head>
+<body>
+<script>
+
+    let vegetableMap = new Map([["Помидор", 10], ["Огурец", 15], ["Лук", 24]]);
+
+    for (let vegetable of vegetableMap.keys()) {
+        alert(vegetable);
+    }
+
+    for (let countVegetable of vegetableMap.values()) {
+        alert(countVegetable);
+    }
+
+    for (let pair of vegetableMap.entries()) {
+        alert(pair);
+    }
+
+    //перебор с помощью forEach
+    vegetableMap.forEach((key, value, map) => {
+        alert(key + " : " + value);
+    });
+
+
+
+
+    let user = {
+      age : 30,
+      name : "Alex",
+    };
+
+    //создание Map из объекта
+    let mapFromUser = new Map(Object.entries(user));
+
+    // создание объекта из Map
+    let user2 = Object.fromEntries([["age", 30],["name", "Alex"]]);
+
+</script>
+</body>
+</html>

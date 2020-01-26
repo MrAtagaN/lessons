@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Arrays</title>
+</head>
+<body>
+<script>
+    let arr = ["Я", "изучаю", "JavaScript"];
+    // с позиции 2
+    // удалить 0 элементов
+    // вставить "сложный", "язык"
+    arr.splice(2, 0, "сложный", "язык");
+
+    alert( arr ); // "Я", "изучаю", "сложный", "язык", "JavaScript"
+
+
+
+
+    arr = [1, 2, 5];
+    // начиная с индекса -1 (перед последним элементом)
+    // удалить 0 элементов,
+    // затем вставить числа 3 и 4
+    arr.splice(-1, 0, 3, 4);
+
+    alert( arr ); // 1,2,3,4,5
+
+
+    arr = [6, 7, 8, 9, 10];
+    let newArr = arr.slice(2, 4);  // возвращает новый массив в который копирует эоементы с 2 (включительно) по 4 (не включительно)
+    alert(newArr);
+
+    alert(arr.concat([11, 12, 13], [14, 15])); // добавляет к массиву переданные массивы
+
+
+    // поиск в массиве
+    let users = [
+        {id: 1, name: "Вася"},
+        {id: 2, name: "Петя"},
+        {id: 3, name: "Маша"}
+    ];
+
+    let user = users.find(item => item.id === 1);
+
+    alert(user.name); // Вася
+
+    let someUsers = users.filter(item => item.id < 3); // фильтр в массиве
+
+    let lengths = ["Bilbo", "Gandalf", "Nazgul"].map(item => item.length); // map возвращает новый элемент
+    alert(lengths); // 5,7,6
+
+
+
+    arr = [3, 5, 1];
+    let arr2 = [7, 9, 10];
+    alert( Math.max(...arr) ); // три точки "раскрываеют" массив в список аргументов
+    alert( Math.max(1, 2, ...arr, 6, ...arr2)); // можно комбинировать с обычными значениями
+
+    let merged = [...arr, ...arr2]; // можно использовать для слияния массивов
+
+
+</script>
+</body>
+</html>

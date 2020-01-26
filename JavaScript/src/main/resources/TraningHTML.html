@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TraningHTML</title>
+</head>
+<body>
+
+
+<SCRIPT>
+
+    let prices = {
+        banana: 1,
+        orange: 2,
+        meat: 4,
+    };
+
+  prices = Object.fromEntries(Object.entries(prices).map(key, values => {values *= 2;}));
+
+  alert(prices.meat);
+
+
+
+</SCRIPT>
+</body>
+</html>

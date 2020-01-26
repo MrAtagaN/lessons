@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    let calculator = {
+        // ... ваш код ...
+        read() {
+           this.a = prompt("Введите a");
+           this.b = prompt("Введите b");
+        },
+        sum() {
+          return ("Сумма a + b = " + (+this.a + +this.b));
+        },
+
+        mul() {
+         return ("Умножение a на b = " + (+this.a * +this.b));
+        },
+
+        a : 0,
+        b : 0,
+    };
+
+    calculator.read();
+    alert( calculator.sum() );
+    alert( calculator.mul() );
+</script>
+
+</body>
+</html>

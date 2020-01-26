@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TraningHTML</title>
+</head>
+<body>
+
+   <script>
+
+       let fruit = prompt("Какой фрукт купить?", "apple");
+
+       let bag = {
+           [fruit]: 5, // имя свойства будет взято из переменной fruit   [] - подстановка переменной
+       };
+
+       alert( bag.apple );
+
+       // краткий синтаксис
+       let name = "Alex";
+       let user = {
+           name,  // тоже самое, что и name:name
+           age: 30
+       };
+
+       alert(user.name);
+       alert(user.age);
+       // проверка наличия полей в объекте user
+       alert("age" in user);   // true - поле существует
+       alert("blabla" in user); // false - поле не существует
+
+       // перебор полей в объекте
+       for (let key in user) {
+           alert(key);
+           alert(user[key]);
+       }
+
+       //клонирование объекта
+       let clone = Object.assign({}, user);
+
+       // объект преобразуем в строку в формате json
+       let jsonString = JSON.stringify(clone);
+       alert(jsonString);
+
+       // в объект user записываются(или перезаписываются) свойства объектов permissions1, permissions2
+       let permissions1 = { canView: true };
+       let permissions2 = { canEdit: true };
+       Object.assign(user, permissions1, permissions2);
+
+       let keys = Object.keys(user); // возвращает массив ключей объекта
+       let values = Object.values(user); // возвращает массив значений объекта
+       let pairs = Object.entries(user); // возвращает массив пар ключ-значение
+
+   </script>
+
+</body>
+</html>
