@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 /**
  * Сортировка вставками
+ * Сложность алгоритма: n^2
  */
 public class InsertSort {
 

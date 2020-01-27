@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 /**
  * Пузырьковая сортировка
+ * Сложность алгоритма: n^2
  */
 public class BubbleSort {
 
