@@ -1,4 +1,4 @@
-package core.classLoader;
+package core.class_loader;
 
 
 /**

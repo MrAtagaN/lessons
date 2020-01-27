@@ -3,10 +3,11 @@ package algorithms.sortAlgorithms;
 import java.util.Arrays;
 
 /**
- * Быстрая сортирока
+ * Быстрая сортировка
  * выбираем число в середине массива (но можно любое) - это опорное число.
  * Числа которые меньше опорного числа перемещаем в левую часть, числа которые больше опорного числа в правую часть
  * рекурсивно повторяем для левой части массива (слева от порного числа) и для правой
+ * Сложность алгоритма: n log(n)
  */
 public class QuickSort {
 
@@ -15,6 +16,7 @@ public class QuickSort {
         quickSort(array, 0, array.length - 1);
         System.out.println(Arrays.toString(array));
     }
+
 
     public static void quickSort(int[] sourceArray, int leftBoarder, int rightBoarder) {
 
@@ -28,11 +30,13 @@ public class QuickSort {
         int pivot = (leftBoarder + rightBoarder) / 2;
 
         while (leftMarker < rightMarker) {
-            while (leftMarker < pivot && (sourceArray[leftMarker] <= sourceArray[pivot])) { //ищем элемент слева, который больше опорного (leftMarker)
+            //ищем элемент слева, который больше опорного (leftMarker)
+            while (leftMarker < pivot && (sourceArray[leftMarker] <= sourceArray[pivot])) {
                 leftMarker++;
             }
 
-            while (rightMarker > pivot && (sourceArray[rightMarker] >= sourceArray[pivot])) { //ищем элемент справа, который меньше опорного (rightMarker)
+            //ищем элемент справа, который меньше опорного (rightMarker)
+            while (rightMarker > pivot && (sourceArray[rightMarker] >= sourceArray[pivot])) {
                 rightMarker--;
             }
 
@@ -43,7 +47,7 @@ public class QuickSort {
 
                 if (leftMarker == pivot) {
                     pivot = rightMarker;
-                } else if (rightMarker == pivot){
+                } else if (rightMarker == pivot) {
                     pivot = leftMarker;
                 }
             }
