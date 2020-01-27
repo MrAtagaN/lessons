@@ -1,10 +1,10 @@
-package algorithms;
+package algorithms.solution;
 
 
 /**
  * Сортировки: https://habr.com/ru/company/otus/blog/460087/
  */
-public class Main {
+public class StringReverse {
 
     public static void main(String[] args) {
         System.out.println(reverse("qwerty"));
