@@ -40,7 +40,8 @@ public class QuickSort {
                 rightMarker--;
             }
 
-            if (leftMarker < rightBoarder) { //меняем местами элементы leftMarker и rightMarker
+            //меняем местами элементы leftMarker и rightMarker
+            if (leftMarker < rightBoarder) {
                 int temp = sourceArray[leftMarker];
                 sourceArray[leftMarker] = sourceArray[rightMarker];
                 sourceArray[rightMarker] = temp;
