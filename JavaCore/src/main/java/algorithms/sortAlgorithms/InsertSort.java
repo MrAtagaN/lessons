@@ -16,25 +16,27 @@ public class InsertSort {
 
     public static void insertSort(int[] sourceArray) {
         for (int i = 1; i < sourceArray.length; i++) {
-            int insertIndex = 0;
+            int insertIndex = i;
 
             //Выбираем место для вставки. От 0-го до i-го элемента
             //Ищем элемент с бОльшим либо с таким же
             //значением что у i-го элемента
-            for (int n = 0; n <= i; n++) {
+            for (int n = 0; n < i; n++) {
                 if (sourceArray[n] >= sourceArray[i]) {
                     insertIndex = n;
                     break;
                 }
             }
 
-            int temp = sourceArray[i];
-
-            //делаем сдвиг массива ( часть массива от места вставки до i ( числа которое будем вставлям))
-            for (int m = i; m > insertIndex; m--) {
-                sourceArray[m] = sourceArray[m - 1];
+            if (insertIndex != i) {
+                int temp = sourceArray[i];
+                //делаем сдвиг массива ( часть массива от места вставки до i ( числа которое будем вставлям))
+                for (int m = i; m > insertIndex; m--) {
+                    sourceArray[m] = sourceArray[m - 1];
+                }
+                sourceArray[insertIndex] = temp;
             }
-            sourceArray[insertIndex] = temp;
+
         }
     }
 }
