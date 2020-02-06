@@ -1,8 +1,8 @@
 алгоритмы
 locks
 blockers
-IO - NIO2, ZIP
 SQL
 Структуры данных
 soap
-StringFormat
+jaxb
+gradle
