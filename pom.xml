@@ -13,6 +13,7 @@
         <module>Hibernate</module>
         <module>SpringCore</module>
         <module>Servlet</module>
+        <module>Docker</module>
         <module>JavaCore</module>
         <module>JUnit_and_Mockito</module>
         <module>XML</module>
