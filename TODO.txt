@@ -6,3 +6,5 @@ SQL
 soap
 jaxb
 gradle
+mock
+spring tests
