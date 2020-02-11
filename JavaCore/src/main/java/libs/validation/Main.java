@@ -44,6 +44,7 @@ public class Main {
     }
 
 
+    @ChronDates
     public static class Person {
         @NotNull
         @Pattern(regexp = "[A-Z]+")
