@@ -37,3 +37,5 @@ apply plugin: 'java'  Добавление плагина, который доб
 task wrapper(type: Wrapper) {  Команда gradle wrapper скачивает gradle определенной версии
     gradleVersion = '1.11'
 }
+
+<Имя таски>.dependsOn <Имя таски> - установить зависимость таски от другой таски
