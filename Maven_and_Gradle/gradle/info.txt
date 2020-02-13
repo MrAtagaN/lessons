@@ -1,3 +1,5 @@
+https://www.tutorialspoint.com/gradle/gradle_build_script.htm
+
 /build  Результаты сборки
 
 gradlew.bat - обертка
