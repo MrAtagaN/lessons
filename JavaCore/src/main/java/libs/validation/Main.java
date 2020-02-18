@@ -39,6 +39,13 @@ public class Main {
             System.out.println(violation.getInvalidValue());
         });
 
+        Set<ConstraintViolation<Person>> violations4 = validator.validate(person, SizeValidation.class);
+        System.out.println("violations4 size: " + violations4.size());
+        violations4.forEach(violation -> {
+            System.out.println(violation.getMessage());
+            System.out.println(violation.getInvalidValue());
+        });
+
 
         factory.close();
     }
@@ -50,7 +57,7 @@ public class Main {
         @Pattern(regexp = "[A-Z]+")
         @Size(min = 3, max = 100)
         String name;
-        @Min(18)
+        @Min(value = 18, groups = SizeValidation.class) //группы валидации
         int age;
         @Past
         LocalDate birthday;

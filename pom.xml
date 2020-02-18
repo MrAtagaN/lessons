@@ -29,6 +29,7 @@
         <module>JavaConsole</module>
         <module>Maven_and_Gradle</module>
         <module>JavaScript</module>
+        <module>Spring_data_jdbc</module>
     </modules>
 
 </project>
