@@ -1,4 +1,4 @@
-package ActiveMQ.producer;
+package active_mq.producer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
