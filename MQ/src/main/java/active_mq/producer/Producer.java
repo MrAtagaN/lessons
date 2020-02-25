@@ -13,7 +13,7 @@ public class Producer {
     public void sendMessage(String textInMessage) {
 
         jmsTemplate.convertAndSend("testingQueueCreateNewQ", textInMessage, message -> {
-            message.setStringProperty("keyProp", "valProp");
+            message.setStringProperty("CustomKeyPropety", "SomeValue");
             message.setJMSCorrelationID("441");
             return message;
         });
