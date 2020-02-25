@@ -1,6 +1,7 @@
 package active_mq;
 
 
+import active_mq.listener.Listener;
 import active_mq.producer.Producer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -27,6 +28,9 @@ public class Main {
     @Autowired
     Producer producer;
 
+    @Autowired
+    Listener listener;
+
     public static void main(String[] args) {
         SpringApplication.run(Main.class, args);
 
@@ -37,6 +41,7 @@ public class Main {
         return args -> {
            producer.sendMessage("testTextInMessage_BLA_BLA_BLA");
 
+           listener.reciveMessageWithJmsTemplate();
 
         };
     }

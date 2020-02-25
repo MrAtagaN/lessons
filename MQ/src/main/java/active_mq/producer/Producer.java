@@ -14,6 +14,7 @@ public class Producer {
 
         jmsTemplate.convertAndSend("testingQueueCreateNewQ", textInMessage, message -> {
             message.setStringProperty("keyProp", "valProp");
+            message.setJMSCorrelationID("441");
             return message;
         });
     }
