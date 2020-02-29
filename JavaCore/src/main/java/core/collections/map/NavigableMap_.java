@@ -1,8 +1,8 @@
 package core.collections.map;
 
+import java.util.Map;
 import java.util.NavigableMap;
 import java.util.TreeMap;
-
 
 /**
  * descendingMap - развернутая Map
@@ -29,6 +29,9 @@ public class NavigableMap_ {
         map.put(3, "a");
         map.put(4, "a");
         map.put(5, "a");
+
+        Map.Entry<Integer, String> integerStringEntry = map.ceilingEntry(4);
+        System.out.println(integerStringEntry);
 
     }
 }

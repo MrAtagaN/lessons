@@ -23,7 +23,7 @@ import java.util.concurrent.*;
  *
  * addAll - добавить в коллекцию элементы
  * asLifoQueue - обратную очередь приводит к интерфесу Queue
- * binarySearch -
+ * binarySearch - поиск объекта в отсортированном массиве
  * checkedCollection, checkedMap, checkedList, checkedSet - создает коллекцию, проверяемую на этапе выполнения
  * disjoint - возвращает true, если коллекции не содержат одинаковых элементов
  * copy - копирует элементы одного списка в другой
@@ -44,7 +44,8 @@ import java.util.concurrent.*;
 public class Collections_ {
 
     public static void main(String[] args) {
-
+        Collections.asLifoQueue( new ArrayDeque());
+        Collections.binarySearch( new ArrayList<String>(), "");
     }
 
     /***
