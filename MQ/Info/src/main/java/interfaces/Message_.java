@@ -2,6 +2,8 @@ package interfaces;
 
 import org.apache.activemq.command.ActiveMQTextMessage;
 
+import javax.jms.DeliveryMode;
+import javax.jms.Destination;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.TextMessage;
@@ -45,10 +47,30 @@ import javax.jms.TextMessage;
  * JMSXGroupID и JMSXGroupSeq являются стандартными свойствами, которые клиенты должны использовать, если они хотят
  *      группировать сообщения.
  *
+ * Режимы доставки, поддерживаемые JMS API, являются PERSISTENT и NON_PERSISTENT. Клиент помечает сообщение как постоянное,
+ *      если ему кажется, что у приложения возникнут проблемы, если сообщение будет потеряно при передаче. Клиент помечает
+ *      сообщение как непостоянное, если случайное потерянное сообщение допустимо. Режим доставки охватывает только
+ *      транспортировку сообщения к месту назначения.
  *
+ *
+ * Методы Message:
  *
  * acknowledge() - Подтверждает получение всех сообщений в сессии этого сообщения.
- *
+ * clearBody() - Очистка тела сообщения, не очищает заголовки и свойства.
+ * getBody() - Возвращает тело сообщения как объект указанного типа.
+ * clearProperties() - Очищает свойства сообщения. Поля заголовка и тело сообщения не очищаются.
+ * getJMSCorrelationID() -
+ * getJMSDeliveryMode() - {@link DeliveryMode}
+ * getJMSDeliveryTime() - Время доставки сообщения - это самое раннее время, когда поставщик JMS может доставить сообщение
+ *      потребителю. Поставщик не должен доставлять сообщения до истечения времени доставки.
+ * getJMSDestination() - {@link Destination} - API JMS не определяет стандартный синтаксис адреса.
+ * getJMSExpiration() - Время истечения срока действия сообщения.
+ * getJMSMessageID() - Это строковое значение, которое должно функционировать как уникальный ключ для идентификации сообщений в хранилище.
+ * getJMSPriority() - JMS API определяет десять уровней значения приоритета, где 0 - самый низкий приоритет, а 9 - самый высокий.
+ * getJMSReplyTo() - Получает объект Destination, на который должен быть отправлен ответ на это сообщение.
+ * getJMSTimestamp() - Поле заголовка JMSTimestamp содержит время, когда сообщение было передано провайдеру для отправки.
+ * getPropertyNames() - Возвращает перечисление всех имен свойств.
+ * isBodyAssignableTo(Class c) - Возвращает, может ли тело сообщения быть назначено указанному типу
  *
  */
 public class Message_ {
@@ -56,5 +78,13 @@ public class Message_ {
     public static void main(String[] args) throws JMSException {
         Message message = new ActiveMQTextMessage();
         message.acknowledge();
+        message.clearBody();
+        message.getBody(String.class);
+        message.clearProperties();
+        message.getJMSDeliveryMode();
+        message.getJMSDeliveryTime();
+        message.getJMSCorrelationID();
+
+
     }
 }
