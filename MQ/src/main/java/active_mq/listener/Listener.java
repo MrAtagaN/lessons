@@ -19,18 +19,18 @@ public class Listener {
     JmsTemplate jmsTemplate;
 
 
-    @JmsListener(destination = "testingQueueCreateNewQ", containerFactory = "myFactory", selector = "CustomKeyPropety like '%Value'")
-    public void receiveMessage(String message) {
-        System.out.println("Received  message -> " + message);
-    }
+//    @JmsListener(destination = "testingQueueCreateNewQ", containerFactory = "myFactory", selector = "CustomKeyPropety like '%Value'")
+//    public void receiveMessage(String message) {
+//        System.out.println("Received  message -> " + message);
+//    }
 
     public void reciveMessageWithJmsTemplate() throws JMSException {
         // получение сообщения по селектору
         // в селекторе можно использовать SQL выражения для выборки сообщений например "JMSCorrelationID like '%4%'"
-        Message message2 =  jmsTemplate.receiveSelected("testingQueueCreateNewQ", "JMSCorrelationID = '441'");
+        // Message message2 =  jmsTemplate.receiveSelected("testingQueueCreateNewQ", "JMSCorrelationID = '441'");
         Message message = jmsTemplate.receive("testingQueueCreateNewQ");
         TextMessage textMessage = (TextMessage) message;
-        System.out.println(textMessage.getText());
+        System.out.println("recieve message = " + textMessage.getText());
     }
 
 }
