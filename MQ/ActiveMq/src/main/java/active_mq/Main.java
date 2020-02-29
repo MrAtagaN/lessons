@@ -38,11 +38,9 @@ public class Main {
 
     @Bean
     public CommandLineRunner commandLineRunner(ApplicationContext context) {
-        return args -> {
+        return (args) -> {
             producer.sendMessage("testTextInMessage_BLA_BLA_BLA");
-
             listener.reciveMessageWithJmsTemplate();
-
         };
     }
 
