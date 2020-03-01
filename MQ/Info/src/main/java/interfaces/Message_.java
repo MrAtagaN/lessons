@@ -59,7 +59,7 @@ import javax.jms.Message;
  * getBody() - Возвращает тело сообщения как объект указанного типа.
  * clearProperties() - Очищает свойства сообщения. Поля заголовка и тело сообщения не очищаются.
  * getJMSCorrelationID() -
- * getJMSDeliveryMode() - {@link DeliveryMode}
+ * getJMSDeliveryMode() - {@link DeliveryMode} PERSISTENT или NON_PERSISTENT
  * getJMSDeliveryTime() - Время доставки сообщения - это самое раннее время, когда поставщик JMS может доставить сообщение
  *      потребителю. Поставщик не должен доставлять сообщения до истечения времени доставки.
  * getJMSDestination() - {@link Destination} - API JMS не определяет стандартный синтаксис адреса.
