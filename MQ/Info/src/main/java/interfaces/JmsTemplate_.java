@@ -25,6 +25,7 @@ import org.springframework.jms.core.JmsTemplate;
  * send() -
  * sendAndReceive() -
  * setMessageConverter() -
+ * setReceiveTimeout() -
  *
  */
 public class JmsTemplate_ {
@@ -43,5 +44,6 @@ public class JmsTemplate_ {
         jmsTemplate.send(null);
         jmsTemplate.sendAndReceive(null);
         jmsTemplate.setMessageConverter(null);
+        jmsTemplate.setReceiveTimeout(0);
     }
 }
