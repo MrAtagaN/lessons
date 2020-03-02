@@ -22,6 +22,9 @@ public class MessageFormat_ {
      * Статический метод
      */
     public static void format() {
+        String string = MessageFormat.format("---{0}---{1}---", "a", "b");
+        System.out.println(string);
+
         int planet = 7;
         String event = "a disturbance in the Force";
         String result = MessageFormat.format(
