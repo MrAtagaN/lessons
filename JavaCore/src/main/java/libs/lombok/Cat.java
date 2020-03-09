@@ -27,7 +27,10 @@ public class Cat {
 
     @SneakyThrows //убирает проверку исключений
     public static void main(String[] args) {
-        Cat cat = Cat.builder().age(12).build();
+        Cat cat = Cat.builder()
+                .age(12)
+                .build();
+
         System.out.println(cat.name);
 
         cat = cat.withName("newName");
