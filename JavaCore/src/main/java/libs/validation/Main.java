@@ -21,30 +21,43 @@ public class Main {
 
         Person person = new Person("name", 17, LocalDate.now(), LocalDate.now());
 
+        //validate
         Set<ConstraintViolation<Person>> violations = validator.validate(person);
+        System.out.println("violations size: " + violations.size());
         violations.forEach(violation -> {
             System.out.println(violation.getMessage());
             System.out.println(violation.getInvalidValue());
         });
 
+        System.out.println("-----");
+
+        //validateProperty
         Set<ConstraintViolation<Person>> violations2 = validator.validateProperty(person, "name");
         violations2.forEach(violation -> {
             System.out.println(violation.getMessage());
             System.out.println(violation.getInvalidValue());
         });
 
+        System.out.println("-----");
+
+        //validateValue
         Set<ConstraintViolation<Person>> violations3 = validator.validateValue(Person.class, "name", "aaaaa");
         violations3.forEach(violation -> {
             System.out.println(violation.getMessage());
             System.out.println(violation.getInvalidValue());
         });
 
+        System.out.println("-----");
+
+        //validate
         Set<ConstraintViolation<Person>> violations4 = validator.validate(person, SizeValidation.class);
         System.out.println("violations4 size: " + violations4.size());
         violations4.forEach(violation -> {
             System.out.println(violation.getMessage());
             System.out.println(violation.getInvalidValue());
         });
+
+        System.out.println("-----");
 
 
         factory.close();

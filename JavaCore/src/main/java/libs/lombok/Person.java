@@ -1,6 +1,7 @@
 package libs.lombok;
 
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * @Data
@@ -13,6 +14,12 @@ import lombok.Data;
  * @EqualsAndHashCode
  */
 @Data
+/**
+ * chain - сеттеры возвращают текущий объект
+ * fluent - геттеры и сеттеры без get и set
+ * prefix -
+ */
+@Accessors(chain = true, fluent = false)
 public class Person {
 
     private final String name;
@@ -24,7 +31,10 @@ public class Person {
         person.setAge(30);
         person.getName();
 
-        Cat cat = Cat.builder().name("asdsad").age(12).build();
+        Cat cat = Cat.builder()
+                .name("asdsad")
+                .age(12)
+                .build();
 
     }
 }
