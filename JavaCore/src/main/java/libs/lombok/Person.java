@@ -1,6 +1,7 @@
 package libs.lombok;
 
 import lombok.Data;
+import lombok.ToString;
 import lombok.experimental.Accessors;
 
 /**
@@ -23,6 +24,7 @@ import lombok.experimental.Accessors;
 public class Person {
 
     private final String name;
+    @ToString.Exclude
     private int age;
 
 

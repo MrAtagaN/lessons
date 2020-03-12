@@ -1,4 +1,4 @@
-package core.multithreading;
+package multithreading;
 
 import java.math.BigInteger;
 import java.util.concurrent.ForkJoinPool;

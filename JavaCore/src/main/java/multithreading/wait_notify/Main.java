@@ -1,4 +1,4 @@
-package core.multithreading.wait_notify;
+package multithreading.wait_notify;
 
 /**
  * Нить засыпает в месте wait и снимает блокировку. Когда нить будят (notify) выполнение продолжается с места wait

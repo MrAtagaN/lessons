@@ -1,4 +1,4 @@
-package core.multithreading;
+package multithreading;
 
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;

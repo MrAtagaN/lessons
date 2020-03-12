@@ -1,4 +1,4 @@
-package core.multithreading;
+package multithreading;
 
 public class ThreadLocal_ {
 

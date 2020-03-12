@@ -1,4 +1,4 @@
-package core.multithreading.dead_lock;
+package multithreading.dead_lock;
 
 
 import java.util.concurrent.atomic.AtomicInteger;

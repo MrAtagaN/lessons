@@ -1,4 +1,4 @@
-package core.multithreading.locks;
+package multithreading.locks;
 
 import java.util.concurrent.Semaphore;
 

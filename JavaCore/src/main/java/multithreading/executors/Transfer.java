@@ -1,4 +1,4 @@
-package core.multithreading.executors;
+package multithreading.executors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

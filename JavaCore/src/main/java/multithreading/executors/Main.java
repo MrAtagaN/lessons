@@ -1,4 +1,4 @@
-package core.multithreading.executors;
+package multithreading.executors;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
