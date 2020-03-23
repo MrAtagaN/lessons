@@ -1,11 +1,15 @@
-FROM ubuntu:18.04
+FROM java:8
 RUN mkdir /test_app
-COPY . /test_app/testService.jar
+COPY testService.jar /test_app/testService.jar
 WORKDIR /test_app
-CMD java -jar testService.jar
+ENTRYPOINT ["java","-jar","testService.jar"]
 
 # перейти в директорию Example_service, выполнить команду: mvn clean install
 # перенести testService.jar из taget в директорию Example_docker_image
-# перейти в директорию Example_docker_image, выполнить команду: docker build -t test_image:1.0 .
+# перейти в директорию Example_docker_image, выполнить команду: 'docker build -t test_image:1.0 .'  (с точкой)
 
 # выполнив команду: docker images можно посмотреть собравшийся образ
+
+# запустить контейнер 'docker run --name testContainer -d --rm -it -p 8080:8080 test_image:1.0'
+
+# подключться к контейнеру 'docker exec -it testContainer bash'

@@ -10,6 +10,7 @@ public class UserController {
 
     @GetMapping(value = "/get")
     public String getUser() {
+        System.out.println("get request!");
         return "test User";
     }
 }
