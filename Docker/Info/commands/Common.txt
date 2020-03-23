@@ -14,7 +14,7 @@ docker run <имя образа> - создает и запускает конт
     -i - переключает команду в интерактивный режим и открывает STDIN
     -t - создает псевдотерминал tty
 
-docker volume ps - показать список volume
+docker volume ls - показать список volume
 
 docker volume create <имя volume> - создать volume
 

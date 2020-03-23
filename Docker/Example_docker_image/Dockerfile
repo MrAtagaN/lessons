@@ -8,7 +8,7 @@ ENTRYPOINT ["java","-jar","testService.jar"]
 # перенести testService.jar из taget в директорию Example_docker_image
 # перейти в директорию Example_docker_image, выполнить команду: 'docker build -t test_image:1.0 .'  (с точкой)
 
-# выполнив команду: docker images можно посмотреть собравшийся образ
+# посмотреть собравшийся образ: 'docker images'
 
 # запустить контейнер 'docker run --name testContainer -d --rm -it -p 8080:8080 test_image:1.0'
 
