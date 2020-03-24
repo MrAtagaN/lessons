@@ -19,6 +19,7 @@ docker volume ls - показать список volume
 docker volume create <имя volume> - создать volume
 
 docker stop <имя контейнера или ID контейнера> - остановить контейнер
+    docker stop $(docker ps -qa) - остановить все контейнеы
 
 docker cp <откуда> <куда>- копирует файлы. Путь в контейнере указывается <Имя контейнера:Путь>
 
