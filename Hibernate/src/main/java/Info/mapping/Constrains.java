@@ -1,4 +1,4 @@
-package theory.mapping;
+package Info.mapping;
 
 import org.hibernate.annotations.Check;
 

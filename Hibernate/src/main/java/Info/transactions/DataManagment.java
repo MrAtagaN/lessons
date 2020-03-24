@@ -1,11 +1,10 @@
-package theory.transactions;
+package Info.transactions;
 
 import Hibernate2.HibernateUtil;
 import org.hibernate.ScrollMode;
 import org.hibernate.ScrollableResults;
 import org.hibernate.Session;
 import org.hibernate.annotations.*;
-import org.hibernate.query.*;
 import org.hibernate.query.Query;
 
 import javax.persistence.*;

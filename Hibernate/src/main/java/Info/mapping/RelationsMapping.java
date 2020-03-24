@@ -1,11 +1,10 @@
-package theory.mapping;
+package Info.mapping;
 
 
 import org.hibernate.annotations.CollectionId;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.annotations.SortComparator;
-import org.hibernate.annotations.SortNatural;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;

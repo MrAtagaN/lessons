@@ -1,4 +1,4 @@
-package theory.transactions;
+package Info.transactions;
 
 
 import Hibernate2.HibernateUtil;
@@ -10,7 +10,6 @@ import org.hibernate.annotations.OptimisticLock;
 import org.hibernate.annotations.OptimisticLockType;
 import org.hibernate.annotations.OptimisticLocking;
 
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.LockModeType;
 import javax.persistence.Version;
 

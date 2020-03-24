@@ -1,4 +1,4 @@
-package theory.mapping;
+package Info.mapping;
 
 
 import com.sun.istack.internal.NotNull;
@@ -32,7 +32,6 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.xml.stream.events.Attribute;
 import java.util.Date;
 
 /**
