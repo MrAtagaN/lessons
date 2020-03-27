@@ -24,7 +24,7 @@
         <module>WebService</module>
         <module>SpringData</module>
         <module>SpringSecurity</module>
-        <module>Bash</module>
+        <module>Linux</module>
         <module>SQL</module>
         <module>JavaConsole</module>
         <module>Maven_and_Gradle</module>

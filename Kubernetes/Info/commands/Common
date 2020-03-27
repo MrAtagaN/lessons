@@ -1,0 +1,22 @@
+kubectl get componentstatuses - Показать Состояние kubernates cluster
+
+kubectl cluster-info - Показать информацию о kubernates cluster
+
+kubectl get nodes - Показать все серверы kubernates cluster
+
+kubectl version - Показать версию клиента и сервера
+    --client показать только версию клиента (kubectl)
+
+minikube stop - Остановить VM c kubernates cluster
+
+minikube start - Создать и запустить kubernates cluster
+    --memory размер оперативной памяти
+    --disk размер жесткого диска
+    --cpus количество процессоров
+    -p имя
+
+minikube ssh - Залогиниться на VM c kubernates cluster
+
+minikube delete - Удалить VM c kubernates cluster
+
+minikube version - Версия minikube
