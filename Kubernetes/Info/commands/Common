@@ -4,6 +4,23 @@ kubectl cluster-info - Показать информацию о kubernates clust
 
 kubectl get nodes - Показать все серверы kubernates cluster
 
+kubectl run <имя пода> - Создать под
+    --generator=run-pod/v1
+    --image=<имя образа>
+    --port=<номер порта>
+
+kubectl apply -f <имя файла> - Создать объекты в kubernates из маннифест файла
+
+kubectl delete -f <имя файла> - Удалить объекты в kubernates из маннифест файла
+
+kubectl describe pods <имя пода> - Показать всю информацию о поде
+
+kubectl exec <имя пода> <команда> - Выполнить команду в поде
+
+kubectl logs <имя пода> - Показать логи пода
+
+kubectl port-forward <имя пода> <локальный порт:порт пода> - Проброс порта с локальной машины в под
+
 kubectl version - Показать версию клиента и сервера
     --client показать только версию клиента (kubectl)
 

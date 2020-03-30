@@ -10,7 +10,7 @@ import java.util.GregorianCalendar;
 public class Calendar_ {
 
     public static void main(String[] args) {
-        Calendar calendar = new GregorianCalendar(2017, Calendar.JANUARY , 25);
+        Calendar calendar = new GregorianCalendar(2017, Calendar.JANUARY, 25);
         calendar.set(Calendar.YEAR, 2017);
         calendar.set(Calendar.MONTH, 3);
         calendar.set(Calendar.DAY_OF_MONTH, 25);

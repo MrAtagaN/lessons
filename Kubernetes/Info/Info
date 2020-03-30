@@ -1,3 +1,4 @@
-Место хранения настроек и конфигурации
+Место хранения настроек и конфигурации:
+
 Users/%USERNAME%/.kube - конфиг kubectl c kubernates cluster
 Users/%USERNAME%/.minikube - файлы ISO и другие для создания VM

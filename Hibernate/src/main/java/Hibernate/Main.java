@@ -91,8 +91,6 @@ public class Main {
         session2.persist(dog);
 
 
-
-
         transaction.commit();
         session2.close();
 

@@ -6,8 +6,6 @@ import javax.persistence.Entity;
 public class Cat extends Animal {
 
 
-
-
     private boolean canClimbing;
 
     public boolean isCanClimbing() {
