@@ -41,14 +41,12 @@
         "SPName": {
           "type": "string",
           "const": "urn:sbrfsystems:99-asfm"
-          //TODO уточнить
         },
         "ServiceNamespace": {
           "type": "string",
           "enum": [
             "srv://sbg.sbr/federal"
           ]
-          //TODO уточнить
         },
         "RqUID": {
           "type": "string",
@@ -63,7 +61,6 @@
           "enum": [
             "urn:sbrfsystems:99-vp"
           ]
-          //TODO уточнить
         }
       },
       "additionalProperties": false
@@ -78,8 +75,10 @@
         "SrvGetSpasiboClientInfoRq": {
           "type": "object",
           "required": [
+            "RqUID",
+            "RqTm",
+            "SPName",
             "Identifier"
-            //TODO понять какие обязательные
           ],
           "properties": {
             "RqUID": {
