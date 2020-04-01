@@ -78,6 +78,7 @@
         "SrvGetSpasiboClientInfoRq": {
           "type": "object",
           "required": [
+            "Identifier"
             //TODO понять какие обязательные
           ],
           "properties": {
@@ -105,10 +106,7 @@
             },
             "Identifier": {
               "type": "object",
-              "required": [
-                "Id",
-                "Type"
-              ],
+              "required": [],
               "properties": {
                 "Id": {
                   "type": "string",
@@ -119,13 +117,29 @@
                   "maxLength": 255
                 }
               }
-            }
-          },
-          "additionalProperties": false
-        }
-      },
-      "additionalProperties": false
-    }
-  },
-  "additionalProperties": false
+            },
+            "ShowBonusBalance": {
+              "type": "string"
+            },
+            "ListOfPersonalFields": {
+              "type": "object",
+              "required": [
+                ""
+                //TODO понять какие обязательные
+              ],
+              "properties": {
+                "PersonalFields": {
+                  "type": "string",
+                  "maxLength": 255
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "additionalProperties": false
+  }
 }
