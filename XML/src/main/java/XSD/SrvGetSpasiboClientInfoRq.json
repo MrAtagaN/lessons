@@ -136,6 +136,36 @@
                 }
               }
             },
+            "ListOfTimeDependentAttributes": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "TimeDependentAttributes"
+                ],
+                "properties": {
+                  "TimeDependentAttributes": {
+                    "type": "string",
+                    "maxLength": 255
+                  }
+                }
+              }
+            },
+            "ListOfEntityAttributes": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "EntityAttributes"
+                ],
+                "properties": {
+                  "EntityAttributes": {
+                    "type": "string",
+                    "maxLength": 255
+                  }
+                }
+              }
+            },
             "additionalProperties": false
           }
         },
