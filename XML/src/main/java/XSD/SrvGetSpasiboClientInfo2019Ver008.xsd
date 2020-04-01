@@ -1,0 +1,1468 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:element name="GetSpasiboClientInfoRq" type="GetSpasiboClientInfoRq_Type">
+		<xsd:annotation>
+			<xsd:documentation>Запрос на получение информации по участнику программы лояльности</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="GetSpasiboClientInfoRs">
+		<xsd:annotation>
+			<xsd:documentation>Ответ на запрос получения информации по участнику программы лояльности</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType mixed="false">
+			<xsd:complexContent>
+				<xsd:extension base="GetSpasiboClientInfoRs_Type">
+					<xsd:sequence>
+						<xsd:element name="RqUID" type="RqUID_Type">
+							<xsd:annotation>
+								<xsd:documentation>Уникальный идентификатор сообщения</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="RqTm" type="DateTime">
+							<xsd:annotation>
+								<xsd:documentation>Дата и время формирования запроса</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="SPName" type="SPName_Type" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Идентификатор системы, инициировавшей запрос</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="SystemId" type="SystemId_Type">
+							<xsd:annotation>
+								<xsd:documentation>Идентификатор системы, в которую нужно отправить запрос</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="SubSystem" type="SystemId_Type" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Идентификатор подсистемы
+urn:sbrfsystems:99-crm:erkc</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Status">
+							<xsd:annotation>
+								<xsd:documentation>Результат обработки ответа</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType mixed="false">
+								<xsd:complexContent>
+									<xsd:restriction base="Status_Type">
+										<xsd:sequence>
+											<xsd:element name="StatusCode" type="StatusCode_Type">
+												<xsd:annotation>
+													<xsd:documentation>Статусный код возврата:
+Статус выполнения запроса:
+«0» - запрос принят в обработку;
+«1» - некорректный формат запроса
+«-105» - операция временно недоступна;
+ «-121» - платеж с переданным идентификатором был отменен ранее;
+«-122» - платеж по переданному идентификатору не найден;
+«-123» - платеж с переданным идентификатором на исполнении или исполнен.
+«-124»
+» - ИД платежа не соответствует ИД подписки.
+Статусный код возврата от ППРБ.АТ:
+«0» - запрос принят в обработку;
+«1» - некорректный формат запроса
+Коды ошибок будут проработаны позже.
+</xsd:documentation>
+												</xsd:annotation>
+											</xsd:element>
+											<xsd:element name="StatusDesc" minOccurs="0">
+												<xsd:annotation>
+													<xsd:documentation>Текст ошибки, готовый для отображения пользователю (если в процессе обработки запроса произошла ошибка)</xsd:documentation>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="StatusDesc_Type">
+														<xsd:maxLength value="1024"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+										</xsd:sequence>
+									</xsd:restriction>
+								</xsd:complexContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="BonusBalance" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Бонусный баланс</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType mixed="false">
+								<xsd:complexContent>
+									<xsd:restriction base="SpasiboBonusBalance_Type">
+										<xsd:sequence>
+											<xsd:element name="Total" type="Decimal" minOccurs="0">
+												<xsd:annotation>
+													<xsd:documentation>Бонусов всего (active + inactive)</xsd:documentation>
+												</xsd:annotation>
+											</xsd:element>
+											<xsd:element name="Active" type="Decimal" minOccurs="0">
+												<xsd:annotation>
+													<xsd:documentation>Активных бонусов (доступных к списанию, без учета
+ограничений)</xsd:documentation>
+												</xsd:annotation>
+											</xsd:element>
+											<xsd:element name="Inactive" type="Decimal" minOccurs="0">
+												<xsd:annotation>
+													<xsd:documentation>Отложенных бонусов</xsd:documentation>
+												</xsd:annotation>
+											</xsd:element>
+											<xsd:element name="Debt" type="Decimal" minOccurs="0">
+												<xsd:annotation>
+													<xsd:documentation>Задолженности по бонусам</xsd:documentation>
+												</xsd:annotation>
+											</xsd:element>
+										</xsd:sequence>
+									</xsd:restriction>
+								</xsd:complexContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="ClientInfo" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Информация по клиенту</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType mixed="false">
+								<xsd:complexContent>
+									<xsd:restriction base="SpasiboClientInfo_Type">
+										<xsd:sequence>
+											<xsd:element name="State" minOccurs="0">
+												<xsd:annotation>
+													<xsd:documentation>Системный статус сущности, возможные значения:
+A – активный
+D – временно заблокирован
+R – ограничено списание бонусов
+L – заблокирован (окончательный статус)</xsd:documentation>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="C">
+														<xsd:maxLength value="255"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+											<xsd:element name="Identities" minOccurs="0">
+												<xsd:annotation>
+													<xsd:documentation>Идентификатор идентификационной сущности (клиента)</xsd:documentation>
+												</xsd:annotation>
+												<xsd:complexType mixed="false">
+													<xsd:complexContent>
+														<xsd:restriction base="ID_Type">
+															<xsd:sequence>
+																<xsd:element name="Id" minOccurs="0">
+																	<xsd:annotation>
+																		<xsd:documentation>Идентификатор</xsd:documentation>
+																	</xsd:annotation>
+																	<xsd:simpleType>
+																		<xsd:restriction base="C">
+																			<xsd:maxLength value="255"/>
+																		</xsd:restriction>
+																	</xsd:simpleType>
+																</xsd:element>
+																<xsd:element name="Type" minOccurs="0">
+																	<xsd:annotation>
+																		<xsd:documentation>Тип идентификатора в системе
+SBER_CLIENT - Идентификатор клиента (ID_OW) в ПЦ ЦФТ Лояльность.</xsd:documentation>
+																	</xsd:annotation>
+																	<xsd:simpleType>
+																		<xsd:restriction base="C">
+																			<xsd:maxLength value="255"/>
+																		</xsd:restriction>
+																	</xsd:simpleType>
+																</xsd:element>
+															</xsd:sequence>
+														</xsd:restriction>
+													</xsd:complexContent>
+												</xsd:complexType>
+											</xsd:element>
+											<xsd:element name="RegistrationDate" minOccurs="0">
+												<xsd:annotation>
+													<xsd:documentation>Дата регистрации в программе
+(LPR_REG_DATE) в формате "20190319222522"</xsd:documentation>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="C">
+														<xsd:maxLength value="255"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+											<xsd:element name="PhoneNumber" minOccurs="0">
+												<xsd:annotation>
+													<xsd:documentation>Номер телефона</xsd:documentation>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="C">
+														<xsd:maxLength value="20"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+											<xsd:element name="Email" minOccurs="0">
+												<xsd:annotation>
+													<xsd:documentation>Адрес электронной почты.</xsd:documentation>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="C">
+														<xsd:maxLength value="255"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+											<xsd:element name="Fraud" minOccurs="0">
+												<xsd:annotation>
+													<xsd:documentation>Признак мошенника
+SUSPICION - Подозрение
+DETERMINATE - Доказано</xsd:documentation>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="C">
+														<xsd:maxLength value="255"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+											<xsd:element name="LoyaltyAgreemeent" type="Boolean" minOccurs="0">
+												<xsd:annotation>
+													<xsd:documentation>Признак участия в программе</xsd:documentation>
+												</xsd:annotation>
+											</xsd:element>
+											<xsd:element name="ListOfLevel" minOccurs="0">
+												<xsd:complexType mixed="false">
+													<xsd:complexContent>
+														<xsd:restriction base="SpasiboListOfLevelType">
+															<xsd:sequence>
+																<xsd:element name="Level" minOccurs="0" maxOccurs="unbounded">
+																	<xsd:complexType mixed="false">
+																		<xsd:complexContent>
+																			<xsd:restriction base="SpasiboLevel_Type">
+																				<xsd:sequence>
+																					<xsd:element name="Code" minOccurs="0">
+																						<xsd:annotation>
+																							<xsd:documentation>Код типа уровня.
+Возможные значения
+PURCHASED_LEVEL - Купленный уровень на текущий период
+(в акциях переопределяет значение
+рассчитанного уровня)
+OWI_LEVEL - Уровень на текущий период,
+установленный оператором КЦ через
+АРМ OWI (в акциях имеет наивысший
+приоритет),
+MIN_LEVEL - Значение, ниже которого не может
+опуститься атрибут LEVEL. Действует
+для некоторых клиентов
+LEVEL2 - Присвоенны
+й уровень
+2.0,</xsd:documentation>
+																						</xsd:annotation>
+																						<xsd:simpleType>
+																							<xsd:restriction base="C">
+																								<xsd:maxLength value="255"/>
+																							</xsd:restriction>
+																						</xsd:simpleType>
+																					</xsd:element>
+																					<xsd:element name="Value" minOccurs="0">
+																						<xsd:annotation>
+																							<xsd:documentation>Код наименования
+1 - Спасибо
+2 - Большое Спасибо
+3 - Огромное Спасибо
+4 - Больше, чем Спасибо</xsd:documentation>
+																						</xsd:annotation>
+																						<xsd:simpleType>
+																							<xsd:restriction base="C">
+																								<xsd:maxLength value="255"/>
+																							</xsd:restriction>
+																						</xsd:simpleType>
+																					</xsd:element>
+																				</xsd:sequence>
+																			</xsd:restriction>
+																		</xsd:complexContent>
+																	</xsd:complexType>
+																</xsd:element>
+															</xsd:sequence>
+														</xsd:restriction>
+													</xsd:complexContent>
+												</xsd:complexType>
+											</xsd:element>
+										</xsd:sequence>
+									</xsd:restriction>
+								</xsd:complexContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="ListOfCardInfo" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Блок информации по картам и карточным категориям (как в приложении "Мои карты")</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType mixed="false">
+								<xsd:complexContent>
+									<xsd:restriction base="SpasiboListOfCardInfo_Type">
+										<xsd:sequence>
+											<xsd:element name="CardInfo" minOccurs="0" maxOccurs="unbounded">
+												<xsd:complexType mixed="false">
+													<xsd:complexContent>
+														<xsd:restriction base="SpasiboCardInfo_Type">
+															<xsd:sequence>
+																<xsd:element name="State" minOccurs="0">
+																	<xsd:annotation>
+																		<xsd:documentation>Системный статус сущности, возможные значения:
+A – активный
+D – временно заблокирован
+R – ограничено списание бонусов
+L – заблокирован (окончательный статус)</xsd:documentation>
+																	</xsd:annotation>
+																	<xsd:simpleType>
+																		<xsd:restriction base="C">
+																			<xsd:maxLength value="255"/>
+																		</xsd:restriction>
+																	</xsd:simpleType>
+																</xsd:element>
+																<xsd:element name="Identities" minOccurs="0">
+																	<xsd:annotation>
+																		<xsd:documentation>Идентификатор идентификационной сущности (клиента)</xsd:documentation>
+																	</xsd:annotation>
+																	<xsd:complexType mixed="false">
+																		<xsd:complexContent>
+																			<xsd:restriction base="ID_Type">
+																				<xsd:sequence>
+																					<xsd:element name="Id" minOccurs="0">
+																						<xsd:annotation>
+																							<xsd:documentation>Идентификатор</xsd:documentation>
+																						</xsd:annotation>
+																						<xsd:simpleType>
+																							<xsd:restriction base="C">
+																								<xsd:maxLength value="255"/>
+																							</xsd:restriction>
+																						</xsd:simpleType>
+																					</xsd:element>
+																					<xsd:element name="Type" minOccurs="0">
+																						<xsd:annotation>
+																							<xsd:documentation>Тип идентификатора в системе
+SBER_CLIENT - Идентификатор клиента (ID_OW) в ПЦ ЦФТ Лояльность. System= urn-sbrfsystems-loyalty
+SBER_HASH – тип сущности для хэшей карт, в этот тип загружаются хэши карт, System= urn-sbrfsystems-loyalty</xsd:documentation>
+																						</xsd:annotation>
+																						<xsd:simpleType>
+																							<xsd:restriction base="C">
+																								<xsd:maxLength value="255"/>
+																							</xsd:restriction>
+																						</xsd:simpleType>
+																					</xsd:element>
+																				</xsd:sequence>
+																			</xsd:restriction>
+																		</xsd:complexContent>
+																	</xsd:complexType>
+																</xsd:element>
+																<xsd:element name="CardTypeIndication" minOccurs="0">
+																	<xsd:annotation>
+																		<xsd:documentation>SB_DC-Признак типа карты - DEBIT/CREDIT</xsd:documentation>
+																	</xsd:annotation>
+																	<xsd:simpleType>
+																		<xsd:restriction base="C">
+																			<xsd:maxLength value="255"/>
+																		</xsd:restriction>
+																	</xsd:simpleType>
+																</xsd:element>
+																<xsd:element name="CardBrand" minOccurs="0">
+																	<xsd:annotation>
+																		<xsd:documentation>BRAND-Бренд карты (для карт МПС)</xsd:documentation>
+																	</xsd:annotation>
+																	<xsd:simpleType>
+																		<xsd:restriction base="C">
+																			<xsd:maxLength value="255"/>
+																		</xsd:restriction>
+																	</xsd:simpleType>
+																</xsd:element>
+																<xsd:element name="CardCode" minOccurs="0">
+																	<xsd:annotation>
+																		<xsd:documentation>SB_CC-Код карты
+Код карточного продукта состоит из 10 знаков.
+1 -Private 'P', Commercial 'C', Кредитные 'K';
+2 - резиденты РФ 'R', нерезиденты РФ 'N';
+3 - валюта карты: рубли 'R', доллары 'U';
+4 - тип карты: дебетовая 'D', с разрешенным овердрафтом 'C';
+5 - признак: основная 'B', дополнительная 'S';
+6,7 - вид карты: Visa Classic 'VC' и т.д. (смотри приложение 37);
+8 - буквенное обозначение вида продукта;
+9 - используется для дополнительного разделения вида продукта (8 знак), например, для сотрудников - 'S', в остальных случаях – резерв;
+10 - испольуется для определения принадлежности бонусным программам, например, "Аэрофлот" - 'A', в остальных случаях – резерв;
+Первые пять знаков определяют код продукта для эмиссионного контракта.</xsd:documentation>
+																	</xsd:annotation>
+																	<xsd:simpleType>
+																		<xsd:restriction base="C">
+																			<xsd:maxLength value="255"/>
+																		</xsd:restriction>
+																	</xsd:simpleType>
+																</xsd:element>
+																<xsd:element name="ExpDate" minOccurs="0">
+																	<xsd:annotation>
+																		<xsd:documentation>EXP_DATE-Дата окончания срока действия карты в формате "20200801"</xsd:documentation>
+																	</xsd:annotation>
+																	<xsd:simpleType>
+																		<xsd:restriction base="C">
+																			<xsd:maxLength value="255"/>
+																		</xsd:restriction>
+																	</xsd:simpleType>
+																</xsd:element>
+																<xsd:element name="SberPackage" minOccurs="0">
+																	<xsd:annotation>
+																		<xsd:documentation>ID карточного
+пакета</xsd:documentation>
+																	</xsd:annotation>
+																	<xsd:simpleType>
+																		<xsd:restriction base="C">
+																			<xsd:maxLength value="255"/>
+																		</xsd:restriction>
+																	</xsd:simpleType>
+																</xsd:element>
+																<xsd:element name="BankInfo" minOccurs="0">
+																	<xsd:annotation>
+																		<xsd:documentation>CB_CODE-8-символьный составной код, указывающий на структурное подразделение банка, в котором открыт счет карты</xsd:documentation>
+																	</xsd:annotation>
+																	<xsd:complexType mixed="false">
+																		<xsd:complexContent>
+																			<xsd:restriction base="BankInfo_Type">
+																				<xsd:sequence>
+																					<xsd:element name="RbTbBrchId" minOccurs="0">
+																						<xsd:annotation>
+																							<xsd:documentation>8-ный код территориального банка</xsd:documentation>
+																						</xsd:annotation>
+																						<xsd:simpleType>
+																							<xsd:restriction base="RbTbBrchType">
+																								<xsd:length value="8"/>
+																							</xsd:restriction>
+																						</xsd:simpleType>
+																					</xsd:element>
+																				</xsd:sequence>
+																			</xsd:restriction>
+																		</xsd:complexContent>
+																	</xsd:complexType>
+																</xsd:element>
+															</xsd:sequence>
+														</xsd:restriction>
+													</xsd:complexContent>
+												</xsd:complexType>
+											</xsd:element>
+										</xsd:sequence>
+									</xsd:restriction>
+								</xsd:complexContent>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:extension>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="GetSpasiboClientInfoRq_Type">
+		<xsd:annotation>
+			<xsd:documentation>Тип: Запрос на получение информации по участнику программы лояльности</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="RqUID" type="RqUID_Type">
+				<xsd:annotation>
+					<xsd:documentation>Уникальный идентификатор сообщения</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="RqTm" type="DateTime">
+				<xsd:annotation>
+					<xsd:documentation>Дата и время формирования запроса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SPName" type="SPName_Type">
+				<xsd:annotation>
+					<xsd:documentation>Идентификатор системы, инициировавшей запрос</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SystemId" type="SystemId_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Идентификатор системы, в которую нужно отправить запрос</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SubSystem" type="SystemId_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Идентификатор подсистемы</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Identifier">
+				<xsd:annotation>
+					<xsd:documentation>Идентификаторы идентификационной сущности для поиска</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType mixed="false">
+					<xsd:complexContent>
+						<xsd:restriction base="ID_Type">
+							<xsd:sequence>
+								<xsd:element name="Id">
+									<xsd:annotation>
+										<xsd:documentation>Идентификатор</xsd:documentation>
+									</xsd:annotation>
+									<xsd:simpleType>
+										<xsd:restriction base="C">
+											<xsd:maxLength value="255"/>
+										</xsd:restriction>
+									</xsd:simpleType>
+								</xsd:element>
+								<xsd:element name="Type">
+									<xsd:annotation>
+										<xsd:documentation>Тип идентификатора в системе
+SBER_CLIENT - Идентификатор клиента (ID_OW) в ПЦ ЦФТ Лояльность. System= urn-sbrfsystems-loyalty
+SBER_EPK - Идентификатор клиента (EPK_ID)
+SBER_HASH – тип сущности для хэшей карт, в этот тип загружаются хэши карт, System= urn-sbrfsystems-loyalty</xsd:documentation>
+									</xsd:annotation>
+									<xsd:simpleType>
+										<xsd:restriction base="C">
+											<xsd:maxLength value="255"/>
+										</xsd:restriction>
+									</xsd:simpleType>
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:restriction>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ShowBonusBalance" type="Boolean" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Флаг для получения бонусного баланса.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ListOfPersonalFields" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Список полей анкеты, которые нужно получить в ответе</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType mixed="false">
+					<xsd:complexContent>
+						<xsd:restriction base="SpasiboPersonalFieldsList_Type">
+							<xsd:sequence>
+								<xsd:element name="PersonalFields" maxOccurs="unbounded">
+									<xsd:annotation>
+										<xsd:documentation>Поле анкеты
+Возможные значения:
+MOBILE_PHONE,
+LOYALTY-AGREEMENT
+EMAIL - e-mail</xsd:documentation>
+									</xsd:annotation>
+									<xsd:simpleType>
+										<xsd:restriction base="C">
+											<xsd:maxLength value="255"/>
+										</xsd:restriction>
+									</xsd:simpleType>
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:restriction>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ListOfTimeDependentAttributes" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Список кодов атрибутов, которые нужно получить в ответе</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType mixed="false">
+					<xsd:complexContent>
+						<xsd:restriction base="SpasiboTimeDependentAttributesList_Type">
+							<xsd:sequence>
+								<xsd:element name="TimeDependentAttributes" maxOccurs="unbounded">
+									<xsd:annotation>
+										<xsd:documentation>Атрибуты уровней
+Возможные значения:
+LEVEL2 - Присвоенны
+й уровень
+2.0,
+OWI_LEVEL - Уровень на текущий период,
+установленный оператором КЦ через АРМ OWI (в акциях имеет наивысший
+приоритет),
+MIN_LEVEL - Значение, ниже которого не может
+опуститься атрибут LEVEL. Действует
+для некоторых клиентов,
+PURCHASED_LEVEL - Купленный уровень на текущий период
+(в акциях переопределяет значение
+рассчитанного уровня)</xsd:documentation>
+									</xsd:annotation>
+									<xsd:simpleType>
+										<xsd:restriction base="C">
+											<xsd:maxLength value="255"/>
+										</xsd:restriction>
+									</xsd:simpleType>
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:restriction>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ListOfEntityAttributes" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Список кодов атрибутов идентификационных сущностей, которые нужно получить в ответе.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType mixed="false">
+					<xsd:complexContent>
+						<xsd:restriction base="SpasiboEntityAttributesList_Type">
+							<xsd:sequence>
+								<xsd:element name="EntityAttributes" maxOccurs="unbounded">
+									<xsd:annotation>
+										<xsd:documentation>Атрибут сущности
+Возможные значения:
+FRAUD-Мошенничество,
+LPR_REG_DATE-Дата регистрации в программе лояльности,
+BRAND-Бренд карты (для карт МПС),
+CB_CODE-8-символьный составной код, указывающий на структурное подразделение банка, в котором открыт счет карты,
+EXP_DATE-Дата окончания срока действия карты,
+SB_CC-Код карты (Card Code),
+SB_DC-Признак типа карты - DEBIT/CREDIT
+SBER_PACKAGE-идентификатор подключенного пакета</xsd:documentation>
+									</xsd:annotation>
+									<xsd:simpleType>
+										<xsd:restriction base="C">
+											<xsd:maxLength value="255"/>
+										</xsd:restriction>
+									</xsd:simpleType>
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:restriction>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="GetSpasiboClientInfoRs_Type">
+		<xsd:annotation>
+			<xsd:documentation>Тип: Ответ на запрос получения информации по участнику программы лояльности</xsd:documentation>
+		</xsd:annotation>
+	</xsd:complexType>
+	<xsd:complexType name="AdditionalAttributes_Type">
+		<xsd:annotation>
+			<xsd:documentation>Контейнер с параметрами</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="ParamName" type="C100_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Наименование параметра</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ParamValue" type="C1024_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Значение параметра</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="RequestOperationType" type="OperationType_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Тип операции в заявке. </xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="RequestDateReg" type="Date" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Дата регистрации заявки</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="OperationDateAvail" type="Date" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Дата доступности операции.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="AdditionalStatus_Type">
+		<xsd:annotation>
+			<xsd:documentation>Дополнительные статусы</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="StatusCode" type="StatusCode_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Статусный код возврата</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ServerStatusCode" type="ServerStatusCode_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Статусный код сервера</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Severity" type="Severity_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Серьезность ошибки. Значения: Error, Warn, Info</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="StatusDesc" type="StatusDesc_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Описание статуса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="AsyncRsInfo_Type">
+		<xsd:annotation>
+			<xsd:documentation>Информация об асинхронном ответе</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="AvailDt" type="AvailDt_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Дата/время готовности ответа. Расчетное время, когда будет готов ответ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ExpDt" type="ExpDt_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Дата/время хранения ответа. То время, когда ответ будет удален с сервера</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="BankInfo_Type">
+		<xsd:annotation>
+			<xsd:documentation>Информация о банке &lt;BankInfo&gt;</xsd:documentation>
+			<xsd:documentation>Этот агрегат содержит дополнительную информацию для идентификации банка.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="BranchId" type="BranchId_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Номер филиала</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="BranchName" type="C255" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Наименование филиала ВСП</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AgencyId" type="AgencyId_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Наименование филиала ВСП</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="RegionId" type="RegionId_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Номер террбанка</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DivisionNum" type="String" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Номер филиала последнего использования карты. ТТ+ОООО+ВВВВ, где ТТ=ТБ, ОООО = Г(ОСБ), ВВВВ = ВСП</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="RbTbBrchId" type="RbTbBrchType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>8-ный код территориального банка</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="RbBrchId" type="RbBrchType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>6-ный код территориального банка - точки обслуживания клиента</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="BranchIndex" type="C" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Код ОСБ для децентрализованных счетов</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AgencyIdOld" type="AgencyId_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Код старого ОСБ (до перенумерации)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="BranchAddress" type="C" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Адрес подразделения (ВСП)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="BranchFullName" type="C" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Наименование ВСП </xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SubbranchCode" type="C" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Полный код внутреннего структурного подразделения</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="RegionBankName" type="C" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Название терр банка</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="IDMega" type="RegionId_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Ид террбанка в ЦОД </xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Bic" type="C" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>БИК</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="WorkingTime" type="C" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Режим работы</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Error_Type">
+		<xsd:annotation>
+			<xsd:documentation>Ошибка</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Code" type="C" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Код ошибки</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Name" type="C" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Наименование ошибочного реквизита</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Value" type="C" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Описание ошибки загрузки реквизита</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Severity" type="C" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Серьезность ошибки</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ErrorInfo_Status_Type">
+		<xsd:annotation>
+			<xsd:documentation>Описание ошибки типа «Неправильный формат»</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Error" type="Error_Type" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Описание ошибки типа «Неправильный формат»</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ID_Type">
+		<xsd:sequence>
+			<xsd:element name="IDType" type="C15_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Тип идентификатора: PSFCRMId - в CRM, PSFSMId- во внешней системе (SM)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SourceID" type="C15_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Идентификатор ПСФ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Id" type="C" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Идентификатор</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Type" type="C" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Тип</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SelRangeDt_Type">
+		<xsd:annotation>
+			<xsd:documentation>Тип для периода (дата)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="StartDt" type="Date" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Начальная дата</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="StartDate" type="Date" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Начальная дата</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="EndDt" type="Date" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Последняя дата</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="EndDate" type="Date" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Последняя дата</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SpasiboBonusBalance_Type">
+		<xsd:annotation>
+			<xsd:documentation>Тип: Бонусный баланс в программе лояльности</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Total" type="Decimal" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Бонусов всего (active + inactive)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Active" type="Decimal" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Активных бонусов (доступных к списанию, без учета
+ограничений)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Inactive" type="Decimal" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Отложенных бонусов</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Debt" type="Decimal" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Задолженности по бонусам</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SpasiboCardInfo_Type">
+		<xsd:annotation>
+			<xsd:documentation>Тип: Список карт участника программы лояльности</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="State" type="C" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Системный статус сущности, возможные значения:
+A – активный
+D – временно заблокирован
+R – ограничено списание бонусов
+L – заблокирован (окончательный статус)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Identities" type="ID_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Идентификатор идентификационной сущности (клиента)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="CardTypeIndication" type="C" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>SB_DC-Признак типа карты - DEBIT/CREDIT</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="CardBrand" type="C" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>BRAND-Бренд карты (для карт МПС)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="CardCode" type="C" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>SB_CC-Код карты
+Код карточного продукта состоит из 10 знаков.
+1 -Private 'P', Commercial 'C', Кредитные 'K';
+2 - резиденты РФ 'R', нерезиденты РФ 'N';
+3 - валюта карты: рубли 'R', доллары 'U';
+4 - тип карты: дебетовая 'D', с разрешенным овердрафтом 'C';
+5 - признак: основная 'B', дополнительная 'S';
+6,7 - вид карты: Visa Classic 'VC' и т.д. (смотри приложение 37);
+8 - буквенное обозначение вида продукта;
+9 - используется для дополнительного разделения вида продукта (8 знак), например, для сотрудников - 'S', в остальных случаях – резерв;
+10 - испольуется для определения принадлежности бонусным программам, например, "Аэрофлот" - 'A', в остальных случаях – резерв;
+Первые пять знаков определяют код продукта для эмиссионного контракта.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ExpDate" type="C" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>EXP_DATE-Дата окончания срока действия карты в формате "20200801"</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SberPackage" type="C" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>ID карточного
+пакета</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="BankInfo" type="BankInfo_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>CB_CODE-8-символьный составной код, указывающий на структурное подразделение банка, в котором открыт счет карты</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ListOfCategory" type="SpasiboListOfCategory_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Список категорий по карте</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SpasiboCategory_Type">
+		<xsd:annotation>
+			<xsd:documentation>Тип: Описание карточной категории</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Bonus" type="Decimal" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Текущий оборот (сколько начислено баллов по этой категории)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="StartDate" type="Date" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Дата установки</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="FinishDate" type="Date" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Дата окончания</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SpasiboClientInfo_Type">
+		<xsd:annotation>
+			<xsd:documentation>Тип: Информация о клиенте участнике программы лояльности</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="State" type="C" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Системный статус сущности, возможные значения:
+A – активный
+D – временно заблокирован
+R – ограничено списание бонусов
+L – заблокирован (окончательный статус)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Identities" type="ID_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Идентификатор идентификационной сущности (клиента)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="RegistrationDate" type="C" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Дата регистрации в программе
+(LPR_REG_DATE) в формате "20190319222522"</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PhoneNumber" type="C" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Номер телефона</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Email" type="C" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Адрес электронной почты.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Fraud" type="C" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Признак мошенника
+SUSPICION - Подозрение
+DETERMINATE - Доказано</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="LoyaltyAgreemeent" type="Boolean" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Признак участия в программе</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ListOfLevel" type="SpasiboListOfLevelType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SpasiboEntityAttributesList_Type">
+		<xsd:annotation>
+			<xsd:documentation>Тип: Список кодов атрибутов идентификационных сущностей участника программы лояльности</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="EntityAttributes" type="C" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Атрибут сущности
+Возможные значения:
+FRAUD,
+LPR_REG_DATE</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SpasiboLevel_Type">
+		<xsd:annotation>
+			<xsd:documentation>Тип: Уровни спасибо</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Code" type="C" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Код типа уровня.
+Возможные значения
+LEVEL
+PURCHASED_LEVEL - Купленный уровень на текущий период
+(в акциях переопределяет значение
+рассчитанного уровня)
+OWI_LEVEL - Уровень на текущий период,
+установленный оператором КЦ через
+АРМ OWI (в акциях имеет наивысший
+приоритет),
+MIN_LEVEL - Значение, ниже которого не может
+опуститься атрибут LEVEL. Действует
+для некоторых клиентов
+LEVEL2 - Присвоенны
+й уровень
+2.0,</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Value" type="C" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Код наименования
+1 - Спасибо
+2 - Большое Спасибо
+3 - Огромное Спасибо
+4 - Больше, чем Спасибо</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PeriodIndex" type="Int" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Индекс периода
+0 - текущий,
+-1 - предыдущий,
+1 - следующий и т.д.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DateRange" type="SelRangeDt_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Временной диапазон для формирования списка атрибутов</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SpasiboListOfCardInfo_Type">
+		<xsd:annotation>
+			<xsd:documentation>Тип: Информация о карте участника программы лояльности</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="CardInfo" type="SpasiboCardInfo_Type" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SpasiboListOfCategory_Type">
+		<xsd:annotation>
+			<xsd:documentation>Тип: Список категорий по карте</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Category" type="SpasiboCategory_Type" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SpasiboListOfLevelType">
+		<xsd:annotation>
+			<xsd:documentation>Тип: Список уроней спасибо</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Level" type="SpasiboLevel_Type" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SpasiboPersonalFieldsList_Type">
+		<xsd:annotation>
+			<xsd:documentation>Тип: Список полей анкеты участника программы лояльности</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="PersonalFields" type="C" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Поле анкеты
+Возможные значения:
+MOBILE_PHONE,
+LOYALTY-AGREEMENT</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SpasiboTimeDependentAttributesList_Type">
+		<xsd:annotation>
+			<xsd:documentation>Тип: Список атрибутов участника программы лояльности</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="TimeDependentAttributes" type="C" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Атрибуты уровней
+Возможные значения:
+LEVEL2 - Присвоенны
+й уровень
+2.0,
+OWI_LEVEL - Уровень на текущий период,
+установленный оператором КЦ через
+АРМ OWI (в акциях имеет наивысший
+приоритет),
+MIN_LEVEL - Значение, ниже которого не может
+опуститься атрибут LEVEL. Действует
+для некоторых клиентов,
+PURCHASED_LEVEL - Купленный уровень на текущий период
+(в акциях переопределяет значение
+рассчитанного уровня)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Status_Type">
+		<xsd:annotation>
+			<xsd:documentation>Статус ответа &lt;Status&gt;. Агрегат &lt;Status&gt; используется для возврата статуса сообщения. </xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="StatusCode" type="StatusCode_Type">
+				<xsd:annotation>
+					<xsd:documentation>Статусный код возврата</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ServerStatusCode" type="ServerStatusCode_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Статусный код сервера. Это значение выдается пользователю на экран и позволяет провайдеру лучше диагностировать ошибку</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Severity" type="String" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Серьезность ошибки</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="StatusDesc" type="StatusDesc_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Описание статуса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AdditionalStatus" type="AdditionalStatus_Type" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Дополнительные статусы. Этот агрегат может содержать дополнительные статусы, которые может сообщить сервер. Например, и номер счета, и дата неправильны, то StatusCode может содержать одну из этих ошибок, а этот агрегат – другую</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AsyncRsInfo" type="AsyncRsInfo_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Информация об асинхронном ответе</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="StatusType" type="StatusType_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Тип ошибки.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ServerStatusDesc" type="ServerStatusDesc_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Описание статуса системы источника</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ErrorInfo" type="ErrorInfo_Status_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Описание ошибки</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AdditionalAttributes" type="AdditionalAttributes_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Динамические параметры, подставляемые в текстовку статуса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ErrorClientInfo" type="String" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Дополнительная информация для клиента. Для поручений на перевод/прием перевода ЦБ в поле передается причина отказа</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="AgencyId_Type">
+		<xsd:annotation>
+			<xsd:documentation>Номер отделения, в котором открыт или ведется продукт. С лидирующими нулями.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="String">
+			<xsd:maxLength value="5"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="AvailDt_Type">
+		<xsd:annotation>
+			<xsd:documentation>Дата/время готовности ответа. Расчетное время, когда будет готов ответ</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="DateTime"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="Boolean">
+		<xsd:annotation>
+			<xsd:documentation>Логический тип</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:boolean"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="BranchId_Type">
+		<xsd:annotation>
+			<xsd:documentation>Номер филиала, в котором открыт или ведется продукт. Без лидирующих нулей.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="String">
+			<xsd:maxLength value="6"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="C">
+		<xsd:annotation>
+			<xsd:documentation>Базовый символьный тип, элемент данного типа может содержать количество символов до определенного максимума</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="C100_Type">
+		<xsd:annotation>
+			<xsd:documentation>Тип: Символьный тип, max длиной 100 символов</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="C">
+			<xsd:maxLength value="100"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="C1024_Type">
+		<xsd:annotation>
+			<xsd:documentation>Тип: Символьный тип, max длиной 1024 символа</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="C">
+			<xsd:maxLength value="1024"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="C15_Type">
+		<xsd:annotation>
+			<xsd:documentation>Символьный тип с ограниченим длины в 15 символов</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="C">
+			<xsd:maxLength value="15"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="C255">
+		<xsd:annotation>
+			<xsd:documentation>Символьный тип с ограниченим длины в 255 символов</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="255"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="C50_Type">
+		<xsd:annotation>
+			<xsd:documentation>Тип: Символьный тип, max длиной 50 символов</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="C">
+			<xsd:maxLength value="50"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ClosedEnum">
+		<xsd:annotation>
+			<xsd:documentation>Закрытое перечисление. Перечисление содержит	конечный набор допустимых значений. Другие значения не допустимы. Обнаружении значения,	не входящего	в набор допустимых значений,	трактуется как ошибка в любом узле				системы на любом этапе обработки
+				сообщения.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="NC"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="Date">
+		<xsd:annotation>
+			<xsd:documentation>Тип: Дата</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:date">
+			<xsd:pattern value="\d{4}-\d\d-\d\d(([+\-]\d\d:\d\d)|Z)?"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="DateTime">
+		<xsd:annotation>
+			<xsd:documentation>Тип данных для представления дат</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:dateTime">
+			<xsd:pattern value="\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(.[\d]{1,6})?(([+\-]\d\d:\d\d)|Z)?"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="Decimal">
+		<xsd:annotation>
+			<xsd:documentation>Тип данных для представления сумм</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:decimal">
+			<xsd:pattern value="(\+|\-)?[0-9]*(\.[0-9]+)?"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ExpDt_Type">
+		<xsd:annotation>
+			<xsd:documentation>Дата/время хранения ответа. То время, когда ответ будет удален с сервера</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="DateTime"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="Int">
+		<xsd:restriction base="xsd:int"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="Long">
+		<xsd:restriction base="xsd:long"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="NC">
+		<xsd:annotation>
+			<xsd:documentation>Строковый тип в кодировке ISO Latin-1.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="OperationType_Type">
+		<xsd:annotation>
+			<xsd:documentation>Тип операции</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="String"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="RbBrchType">
+		<xsd:annotation>
+			<xsd:documentation>Тип данных для 6-значного кода территориального банка. Используется для передачи кода ТБ, в котором обслуживается продукт клиента</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="String">
+			<xsd:length value="6"/>
+			<xsd:pattern value="[0-9]{6}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="RbTbBrchType">
+		<xsd:annotation>
+			<xsd:documentation>Тип данных для 8-значного кода территориального банка. Используется для передачи кода ТБ, в котором открыт счет МБК, по которой клиент произвел идентификацию на УС</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="String">
+			<xsd:length value="8"/>
+			<xsd:pattern value="[0-9]{8}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="RegionId_Type">
+		<xsd:annotation>
+			<xsd:documentation>Код региона банка</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="3"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="RqUID_Type">
+		<xsd:annotation>
+			<xsd:documentation>Уникальный идентификатор запроса</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="UUID"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="ServerStatusCode_Type">
+		<xsd:annotation>
+			<xsd:documentation>Статусный код сервера. Это значение выдается пользователю на экран и позволяет провайдеру лучше диагностировать ошибку.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="C255"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="ServerStatusDesc_Type">
+		<xsd:annotation>
+			<xsd:documentation>Исходное описание ошибки из внешней системы (заполняется только при значении StatusCode, отличном от 0.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="String"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="Severity_Type">
+		<xsd:annotation>
+			<xsd:documentation>Серьезность ошибки.
+			Значения: Debug, Error, Warn, Info
+		</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="ClosedEnum">
+			<xsd:enumeration value="Debug"/>
+			<xsd:enumeration value="Error"/>
+			<xsd:enumeration value="Warn"/>
+			<xsd:enumeration value="Info"/>
+			<xsd:enumeration value=""/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="SPName_Type">
+		<xsd:annotation>
+			<xsd:documentation>Идентификатор системы, которая отправляет сообщение</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="C50_Type"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="StatusCode_Type">
+		<xsd:annotation>
+			<xsd:documentation>Код ответа. Если все хорошо, то значение равно 0</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="Long"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="StatusDesc_Type">
+		<xsd:annotation>
+			<xsd:documentation>Описание ответа - причина ошибки (заполняется только при значении StatusCode, отличном от 0.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="String">
+			<xsd:maxLength value="6000"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="StatusType_Type">
+		<xsd:annotation>
+			<xsd:documentation>Описание ответа - тип ошибки (заполняется только при значении StatusCode, отличном от 0.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="String">
+			<xsd:maxLength value="22"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="String">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="SystemId_Type">
+		<xsd:annotation>
+			<xsd:documentation>Идентификатор системы, в которую отправляется сообщение</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="String">
+			<xsd:maxLength value="50"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="UUID">
+		<xsd:annotation>
+			<xsd:documentation>Тип: Уникальный 16 байтовый идентификатор. Для обмена в рамках интеграционных проектов Сбербанка представляется набором из 32 символов без разделителей в шестнадцатиричной системе.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="String">
+			<xsd:pattern value="[0-9a-zA-Z]{32}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

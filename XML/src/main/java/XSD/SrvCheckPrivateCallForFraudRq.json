@@ -1,0 +1,167 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"title": "SrvCheckPrivateCallForFraudRq",
+	"description": "Описание",
+	"type": "object",
+	"required": [
+		"header",
+		"body"
+	],
+	"properties": {
+		"header": {
+			"description": "Блок для JMS-заголовков",
+			"type": "object",
+			"required": [
+				"ServiceName",
+				"ServiceDescription",
+				"ServiceVersion",
+				"OperationName",
+				"SPName",
+				"ServiceNamespace",
+				"RqUID",
+				"RqTm",
+				"SCName"
+			],
+			"properties": {
+				"ServiceName": {
+					"type": "string",
+					"const": "SrvCheckPrivateCallForFraud"
+				},
+				"ServiceDescription": {
+					"type": "string"
+				},
+				"ServiceVersion": {
+					"type": "string",
+					"const": "001"
+				},
+				"OperationName": {
+					"type": "string",
+					"const":"CheckPrivateCallForFraud"
+				},
+				"SPName":{
+					"type": "string",
+					"const":"urn:sbrfsystems:99-asfm"
+				},
+				"ServiceNamespace":{
+					"type": "string",
+					"enum": ["srv://sbg.sbr/federal"]
+				},
+				"RqUID":{
+					"type": "string",
+					"pattern": "[a-f0-9]{32}"
+				},
+				"RqTm":{
+					"type": "string",
+					"pattern": "[0-9]{2}/[0-9]{2}/[0-9]{4} [0-9]{2}:[0-9]{2}:[0-9]{2}"
+				},
+				"SCName":{
+					"type": "string",
+					"enum": ["urn:sbrfsystems:99-vp"]
+				}
+			},
+			"additionalProperties" : false
+		},
+		"body": {
+			"type": "object",
+			"description": "Тело запроса",
+			"required": [
+				"SrvCheckPrivateCallForFraudRq"
+			],
+			"properties": {
+				"SrvCheckPrivateCallForFraudRq": {
+					"type": "object",
+					"required": [
+						"HeaderInfo",
+						"SrvCheckPrivateCallForFraudRqMessage"
+					],
+					"properties": {
+						"HeaderInfo": {
+							"type": "object",
+							"required": [
+								"RqUID",
+								"RqTm",
+								"SPName",
+								"UserInfo"
+							],
+							"properties": {
+								"RqUID": {
+									"type": "string",
+									"minLength": 32,
+									"maxLength": 32,
+									"pattern": "[a-f0-9]{32}"
+								},
+								"RqTm": {
+									"type": "string",
+									"pattern": "[0-9]{2}/[0-9]{2}/[0-9]{4} [0-9]{2}:[0-9]{2}:[0-9]{2}"
+								},
+								"SPName": {
+									"type": "string",
+									"maxLength": 36
+								},
+								"UserInfo": {
+									"type": "string",
+									"const": "officer=\"IVR_CLIENT\" officer_group=\"IVR\""
+								},
+								"SystemId": {
+									"type": "string",
+									"enum": ["urn:sbrfsystems:99-crm", "urn:sbrfsystems:99-asfm", "urn:sbrfsystems:99-vp",  "urn:sbrfsystems:99-waywsp"]
+								}
+							}, 
+							"additionalProperties" : false
+						},
+						"SrvCheckPrivateCallForFraudRqMessage": {
+							"type": "object",
+							"required": [
+								"CALL_ID",
+								"AUTH_SCHEME"
+							],
+							"properties":{
+								"PAN":{
+									"type":"string"
+								},
+								"PRODUCT_ID":{
+									"type":"string"
+								},
+								"ANI":{
+									"type":"string"
+								},
+								"CRM_ID":{
+									"type":"string"
+								},
+								"PPRBClientId":{
+									"type":"string"
+								},
+								"MDM_ID":{
+									"type":"string"
+								},
+								"CALL_ID":{
+									"type":"string"
+								},
+								"AUTH_SCHEME":{
+									"type":"string",
+									"enum": ["AUTH_STRICT", "AUTH_CI", "AUTH_ALT", "AUTH_STANDART", "AUTH_CI_IVR", "AUTH_MBC", "BIO_Voice", ""]
+								},
+								"PRYMARY_DNIS":{
+									"type":"string"
+								},
+								"DNIS":{
+									"type":"string"
+								},
+								"SEGMENT":{
+									"type":"string"
+								},
+								"OPERATION":{
+									"type":"string"
+								}
+							},
+							"additionalProperties" : false
+						}
+					},
+					"additionalProperties" : false
+				}
+			},
+			"additionalProperties" : false
+		}
+	},
+	"additionalProperties" : false
+}

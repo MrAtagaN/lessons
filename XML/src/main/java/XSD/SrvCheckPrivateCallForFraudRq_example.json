@@ -1,0 +1,38 @@
+{
+  "header": {
+    "ServiceName": "SrvCheckPrivateCallForFraud",
+    "ServiceDescription": "ABCDEFGHIJKLMNOPQRSTU",
+    "ServiceVersion": "001",
+    "OperationName": "CheckPrivateCallForFraud",
+    "SPName": "urn:sbrfsystems:99-asfm",
+    "ServiceNamespace": "srv://sbg.sbr/federal",
+    "RqUID": "33528ba7e765d36c2e46c7de3ac47c11",
+    "RqTm": "03/27/2015 08:35:11",
+    "SCName": "urn:sbrfsystems:99-vp"
+  },
+  "body": {
+    "SrvCheckPrivateCallForFraudRq": {
+      "HeaderInfo": {
+        "RqUID": "33528ba7e765d36c2e46c7de3ac47c11",
+        "RqTm": "03/27/2015 08:35:11",
+        "SPName": "urn:sbrfsystems:99-vp",
+        "UserInfo": "officer=\"IVR_CLIENT\" officer_group=\"IVR\"",
+        "SystemId": "urn:sbrfsystems:99-asfm"
+      },
+      "SrvCheckPrivateCallForFraudRqMessage": {
+        "CALL_ID": "ABCDEFGHIJKLMNOPQRS",
+        "AUTH_SCHEME": "AUTH_MBC",
+        "PAN": "ABCDEFG",
+        "PRODUCT_ID": "ABCDEFGHIJKLMNO",
+        "ANI": "ABCDEFGHIJKLMNOPQRSTUVWX",
+        "CRM_ID": "ABCDEFGH",
+        "PPRBClientId": "ABCDEFGHIJKLMNOPQ",
+        "MDM_ID": "ABCDEFGHIJKLMNOPQ",
+        "PRYMARY_DNIS": "ABCDEFGH",
+        "DNIS": "ABCDEFGH",
+        "SEGMENT": "ABCDEFGHIJKLMNOPQRST",
+        "OPERATION": "ABCDEFGHIJKLMNOPQRSTUVWXY"
+      }
+    }
+  }
+}
