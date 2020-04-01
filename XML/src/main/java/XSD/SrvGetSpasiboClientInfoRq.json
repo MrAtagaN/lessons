@@ -122,15 +122,17 @@
               "type": "string"
             },
             "ListOfPersonalFields": {
-              "type": "object",
-              "required": [
-                ""
-                //TODO понять какие обязательные
-              ],
-              "properties": {
-                "PersonalFields": {
-                  "type": "string",
-                  "maxLength": 255
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "PersonalFields"
+                ],
+                "properties": {
+                  "PersonalFields": {
+                    "type": "string",
+                    "maxLength": 255
+                  }
                 }
               }
             },
