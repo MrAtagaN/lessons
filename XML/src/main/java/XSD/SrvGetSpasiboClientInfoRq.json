@@ -121,7 +121,7 @@
               }
             },
             "ShowBonusBalance": {
-              "type": "string"
+              "type": "boolean"
             },
             "ListOfPersonalFields": {
               "type": "array",
