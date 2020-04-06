@@ -49,7 +49,10 @@ public class SchemaValidation {
                 "        },\n" +
                 "        \"SPName\": {\n" +
                 "          \"type\": \"string\",\n" +
-                "          \"const\": \"urn:sbrfsystems:99-asfm\"\n" +
+                "          \"enum\": [\n" +
+                "            \"urn:sbrfsystems:99-vp\",\n" +
+                "            \"urn:sbrfsystems:99-asfm\"\n" +
+                "          ]\n" +
                 "        },\n" +
                 "        \"ServiceNamespace\": {\n" +
                 "          \"type\": \"string\",\n" +
@@ -192,7 +195,7 @@ public class SchemaValidation {
                         "    \"ServiceDescription\": \"description\",\n" +
                         "    \"ServiceVersion\": \"001\",\n" +
                         "    \"OperationName\": \"GetSpasiboClientInfo\",\n" +
-                        "    \"SPName\": \"urn:sbrfsystems:99-vp\",\n" +
+                        "    \"SPName\": \"urn:sbrfsystems:99-asfm\",\n" +
                         "    \"SCName\": \"urn:sbrfsystems:99-vp\",\n" +
                         "    \"ServiceNamespace\": \"srv://sbg.sbr/federal\",\n" +
                         "    \"RqUID\": \"1de9814ae3dc9907bf8e52e01b769485\",\n" +

@@ -40,7 +40,10 @@
         },
         "SPName": {
           "type": "string",
-          "const": "urn:sbrfsystems:99-asfm"
+          "enum": [
+            "urn:sbrfsystems:99-vp",
+            "urn:sbrfsystems:99-asfm"
+          ]
         },
         "ServiceNamespace": {
           "type": "string",
