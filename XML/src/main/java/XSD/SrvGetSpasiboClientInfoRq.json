@@ -69,10 +69,10 @@
       "type": "object",
       "description": "Тело запроса",
       "required": [
-        "SrvGetSpasiboClientInfoRq"
+        "GetSpasiboClientInfoRq"
       ],
       "properties": {
-        "SrvGetSpasiboClientInfoRq": {
+        "GetSpasiboClientInfoRq": {
           "type": "object",
           "required": [
             "RqUID",
@@ -167,13 +167,12 @@
                   }
                 }
               }
-            },
-            "additionalProperties": false
+            }
           }
-        },
-        "additionalProperties": false
-      }
-    },
-    "additionalProperties": false
-  }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
 }
