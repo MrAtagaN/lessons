@@ -12,4 +12,5 @@ ENTRYPOINT ["java","-jar","testService.jar"]
 # запустить контейнер: 'docker run --name testContainer -d --rm -it -p 8080:8080 test_image:1.0'
 # посмотреть работающие контейнеры: docker ps
 # подключться к контейнеру 'docker exec -it testContainer bash'
+# проверить работу можно по ссылке http://localhost:8080/user/get
 # остановить все контейнеры: 'docker stop $(docker ps -qa)'
