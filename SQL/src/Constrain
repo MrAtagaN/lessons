@@ -1,5 +1,5 @@
-//https://postgrespro.ru/docs/postgresql/9.6/ddl-constraints
-//https://www.sql.ru/docs/sql/u_sql/ch18.shtml
+https://postgrespro.ru/docs/postgresql/9.6/ddl-constraints
+https://www.sql.ru/docs/sql/u_sql/ch18.shtml
 
 Ограничения можно писать после определения столбца, либо вконце (ограничение на таблицу)
 

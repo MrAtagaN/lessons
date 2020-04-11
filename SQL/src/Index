@@ -1,5 +1,5 @@
-//Доки - https://postgrespro.ru/docs/postgresql/9.6/indexes
-//Хабр - https://habr.com/ru/post/247373/
+Доки - https://postgrespro.ru/docs/postgresql/9.6/indexes
+Хабр - https://habr.com/ru/post/247373/
 
 CREATE INDEX test1_id_index ON test1 (id);
 
