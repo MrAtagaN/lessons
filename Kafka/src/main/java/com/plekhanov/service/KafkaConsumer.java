@@ -12,6 +12,9 @@ public class KafkaConsumer {
 
     @KafkaListener(topics = "${kafka.consumer.topic}")
     public void listen(List<ConsumerRecord<String, String>> consumerRecords) {
-
+        consumerRecords.forEach(consumerRecord -> {
+            String value = consumerRecord.value();
+            System.out.println("Incoming message body: " + value);
+        });
     }
 }
