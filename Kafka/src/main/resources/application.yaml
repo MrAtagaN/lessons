@@ -2,7 +2,7 @@ kafka:
   bootstrapService: localhost:9092
   producer:
     topic: test-topic
-    producerGroupId: test-group
+    groupId: test-group
     blockTimeMs: 2000 # default 60000
     requestTimeout: 500
     batchSize: 16384 # default 16384
@@ -10,3 +10,14 @@ kafka:
     maxRequestSize: 1048576 # default 1024 * 1024
     bufferMemory: 33554432 # default 32 * 1024 * 1024 (33554432)
     retries: 0 # default 0
+  consumer:
+    autoCommitIntervalMs: 500
+    sessionTimeoutMs: 30000
+    pollTimeMs: 500
+    maxPollTimeMs: 10000
+    groupId: test-group
+    enableAutoCommit: true
+    threads: 10
+    maxPollRecords: 500
+    heartbeatIntervalMs: 3000 # default 3000
+    autoOffsetReset: latest # default latest
