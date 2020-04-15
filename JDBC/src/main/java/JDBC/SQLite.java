@@ -13,7 +13,9 @@ public class SQLite {
     private static final String URL = "jdbc:sqlite:JDBC" + FS + "src" + FS + "main" + FS + "resources" + FS + "lessonsJDBC.db";
     private static Connection connection;
 
-
+    /**
+     * Точка входа
+     */
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         Class.forName("org.sqlite.JDBC");
         connection = DriverManager.getConnection(URL);
