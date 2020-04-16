@@ -26,6 +26,7 @@
         <module>SpringSecurity</module>
         <module>Linux</module>
         <module>SQL</module>
+        <module>Kafka</module>
         <module>JavaConsole</module>
         <module>Maven_and_Gradle</module>
         <module>JavaScript</module>
