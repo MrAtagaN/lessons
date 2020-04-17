@@ -65,16 +65,16 @@
 <!--            <version>1.7.26</version>-->
 <!--            <scope>test</scope>-->
 <!--        </dependency>-->
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>apache-log4j-extras</artifactId>
-            <version>1.2.17</version>
-        </dependency>
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>log4j</groupId>-->
+<!--            <artifactId>apache-log4j-extras</artifactId>-->
+<!--            <version>1.2.17</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>log4j</groupId>-->
+<!--            <artifactId>log4j</artifactId>-->
+<!--            <version>1.2.17</version>-->
+<!--        </dependency>-->
 <!--        <dependency>-->
 <!--            <groupId>org.apache.logging.log4j</groupId>-->
 <!--            <artifactId>log4j-api</artifactId>-->
@@ -87,12 +87,24 @@
 <!--            <version>2.11.1</version>-->
 <!--        </dependency>-->
 
-        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+        <!-- LOGGER -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.7.26</version>
+            <version>1.7.25</version>
         </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>1.2.3</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
+        </dependency>
+
+
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
