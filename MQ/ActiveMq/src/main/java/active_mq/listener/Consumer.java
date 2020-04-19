@@ -11,7 +11,7 @@ import javax.jms.TextMessage;
 
 
 @Component
-public class Listener {
+public class Consumer {
 
     @Autowired
     JmsTemplate jmsTemplate;
@@ -22,13 +22,22 @@ public class Listener {
 //        System.out.println("Received  message -> " + message);
 //    }
 
-    public void reciveMessageWithJmsTemplate() throws JMSException {
-        // получение сообщения по селектору
-        // в селекторе можно использовать SQL выражения для выборки сообщений например "JMSCorrelationID like '%4%'"
-        // Message message2 =  jmsTemplate.receiveSelected("testingQueueCreateNewQ", "JMSCorrelationID = '441'");
+    public String receiveMessage() throws JMSException {
         Message message = jmsTemplate.receive("testingQueueCreateNewQ");
         TextMessage textMessage = (TextMessage) message;
         System.out.println("recieve message = " + textMessage.getText());
+        return textMessage.getText();
+    }
+
+    /**
+     *  получение сообщения по селектору
+     *  в селекторе можно использовать SQL выражения для выборки сообщений например "JMSCorrelationID like '%4%'"
+     */
+    public String receiveMessageWithSelector() throws JMSException {
+        Message message = jmsTemplate.receiveSelected("testingQueueCreateNewQ", "JMSCorrelationID = '441'");
+        TextMessage textMessage = (TextMessage) message;
+        System.out.println("recieve message = " + textMessage.getText());
+        return textMessage.getText();
     }
 
 }
