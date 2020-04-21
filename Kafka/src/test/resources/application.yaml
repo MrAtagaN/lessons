@@ -22,3 +22,18 @@ kafka:
     maxPollRecords: 500
     heartbeatIntervalMs: 3000 # default 3000
     autoOffsetReset: earliest # default latest
+  security:
+    kerberos:
+      enabled: false
+      protocol: SASL_PLAINTEXT
+      serviceName: kafka
+    ssl:
+      enabled: false
+      security.protocol: SSL
+      truststore:
+        location: kafka.jks
+        password: password
+      keystore:
+        location: kafka.jks
+        password: password
+      key.password: password
