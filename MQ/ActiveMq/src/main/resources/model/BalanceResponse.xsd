@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cf="http://www.plekhanov.ru/type/AccountBalance/v1">
+    <xs:import namespace="http://www.plekhanov.ru/type/AccountBalance/v1" schemaLocation="type/AccountBalance.xsd"/>
+    <xs:element name="balanceResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="accountBalance" type="cf:accountBalance"/>
+                <xs:element name="errorFlag" type="xs:string" nillable="true"/>
+                <xs:element name="errorDescription" type="xs:string" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

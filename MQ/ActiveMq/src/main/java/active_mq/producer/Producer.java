@@ -12,11 +12,14 @@ public class Producer {
 
     public void sendMessage(String textInMessage) {
 
-        jmsTemplate.convertAndSend("testingQueueCreateNewQ", textInMessage, message -> {
-            message.setStringProperty("CustomKeyPropety", "SomeValue");
-            message.setJMSCorrelationID("441");
-            return message;
-        });
+        jmsTemplate.send("testingQueueCreateNewQ", s -> s.createTextMessage(textInMessage));
+
+  // второй аргумент Object -> текстовое сообщение оборачивается в кавычки, а кавычки внутри экранируются
+//        jmsTemplate.convertAndSend("testingQueueCreateNewQ",textInMessage, message -> {
+//            message.setStringProperty("CustomKeyPropety", "SomeValue");
+//            message.setJMSCorrelationID("441");
+//            return message;
+//        });
     }
 
 }
