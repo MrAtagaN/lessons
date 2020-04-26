@@ -4,6 +4,8 @@ kubectl cluster-info - Показать информацию о kubernates clust
 
 kubectl get nodes - Показать все серверы kubernates cluster
 
+kubectl get pods - Показать все поды
+
 kubectl run <имя пода> - Создать под
     --generator=run-pod/v1
     --image=<имя образа>

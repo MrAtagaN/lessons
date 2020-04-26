@@ -2,3 +2,17 @@
 
 Users/%USERNAME%/.kube - конфиг kubectl c kubernates cluster
 Users/%USERNAME%/.minikube - файлы ISO и другие для создания VM
+
+
+утилита kubectl - для управления кубернейт кластером
+
+утилита minikube - для создания кубернейт кластера, состоящего из одного сервера (nod),
+   для создания кластера можно использовать средства виртуализации virtualbox, docker или другие
+
+Главные объекты в Kubernates
+
+Pod - состоит из 1 или нескольких docker контейнеров
+Deployment - состоит из 1 или нескольких одинаковых Pod
+Service - даёт доступ к Deployment
+Nodes - сервера
+Cluster - объединение Nodes
