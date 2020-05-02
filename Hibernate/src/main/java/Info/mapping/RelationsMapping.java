@@ -1,13 +1,11 @@
 package Info.mapping;
 
 
-import org.hibernate.annotations.CollectionId;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-import org.hibernate.annotations.SortComparator;
-import org.hibernate.annotations.Type;
+import org.hibernate.annotations.*;
 
 import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -15,6 +13,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import static org.hibernate.annotations.FetchMode.SUBSELECT;
 
 /**
  * ОТОБРАЖЕНИЕ КОЛЛЕКЦИЙ:
@@ -65,6 +65,8 @@ import java.util.Set;
  *  Использование таблицы соединения - @JoinTable(name = "", joinColumns = @JoinColumn(name = ""), inverseJoinColumns = @JoinColumn(name = ""))
  *
  *
+ * @Fetch(SUBSELECT) - Способ вычитать из базы связанные сущности
+ *
  */
 public class RelationsMapping implements Comparator<String> {
 
@@ -96,6 +98,7 @@ public class RelationsMapping implements Comparator<String> {
     //чтобы Hibernate понимал эту связь, нужно указывать mappedBy, в котором указать имя атрибута ссылающегося на данный объект
     @OneToMany(mappedBy = "parent", cascade = CascadeType.PERSIST, orphanRemoval = true, fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE) //на уровне базы
+    @Fetch(SUBSELECT)
     Set<Image> images4;
 
 
