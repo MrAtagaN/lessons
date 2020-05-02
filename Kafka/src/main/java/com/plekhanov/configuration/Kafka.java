@@ -1,8 +1,11 @@
 package com.plekhanov.configuration;
 
 
+import org.apache.kafka.clients.CommonClientConfigs;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
+import org.apache.kafka.common.config.SaslConfigs;
+import org.apache.kafka.common.config.SslConfigs;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -67,6 +70,37 @@ public class Kafka {
 
 
     /*************
+     * Security (Kerberos SASL)
+     *************/
+    @Value("${kafka.security.kerberos.enabled}")
+    private boolean isEnableKerberos;
+    @Value("${kafka.security.kerberos.protocol}")
+    private String kerberosProtocol;
+    @Value("${kafka.security.kerberos.serviceName}")
+    private String kerberosServiceName;
+
+    /*************
+     * Security (SSL)
+     *************/
+    @Value("${kafka.security.ssl.enabled}")
+    private boolean isEnabledSsl;
+    @Value("${kafka.security.ssl.security.protocol}")
+    private String sslProtocol;
+    @Value("${kafka.security.ssl.truststore.location}")
+    private String sslTruststoreLocation;
+    @Value("${kafka.security.ssl.truststore.password}")
+    private String sslTruststorePassword;
+    @Value("${kafka.security.ssl.keystore.password}")
+    private String sslKeystorePass;
+    @Value("${kafka.security.ssl.keystore.location}")
+    private String sslKeystoreLocation;
+    @Value("${kafka.security.ssl.key.password}")
+    private String sslKeyPassword;
+
+
+
+
+    /*************
      * Producer
      *************/
     @Bean
@@ -83,6 +117,21 @@ public class Kafka {
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         props.put(ProducerConfig.REQUEST_TIMEOUT_MS_CONFIG, requestTimeout);
+        if (isEnableKerberos) {
+            props.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, sslProtocol);
+            props.put(SaslConfigs.SASL_KERBEROS_SERVICE_NAME, kerberosServiceName);
+        }
+        if(isEnabledSsl) {
+            props.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, sslProtocol);
+            props.put(SslConfigs.SSL_TRUSTSTORE_LOCATION_CONFIG, sslTruststoreLocation);
+            props.put(SslConfigs.SSL_TRUSTSTORE_PASSWORD_CONFIG, sslTruststorePassword);
+            props.put(SslConfigs.SSL_KEYSTORE_LOCATION_CONFIG, sslKeystoreLocation);
+            props.put(SslConfigs.SSL_KEYSTORE_PASSWORD_CONFIG, sslKeystorePass);
+            if (sslKeyPassword !=null && !sslKeyPassword.isEmpty()) {
+                System.out.println();
+                props.put(SslConfigs.SSL_KEY_PASSWORD_CONFIG, sslKeyPassword);
+            }
+        }
 
         return props;
     }
@@ -114,7 +163,21 @@ public class Kafka {
         props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, enableAutoCommit);
         props.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, maxPollRecords);
         props.put(ConsumerConfig.HEARTBEAT_INTERVAL_MS_CONFIG, heartbeatIntervalMs);
-
+        if (isEnableKerberos) {
+            props.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, sslProtocol);
+            props.put(SaslConfigs.SASL_KERBEROS_SERVICE_NAME, kerberosServiceName);
+        }
+        if(isEnabledSsl) {
+            props.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, sslProtocol);
+            props.put(SslConfigs.SSL_TRUSTSTORE_LOCATION_CONFIG, sslTruststoreLocation);
+            props.put(SslConfigs.SSL_TRUSTSTORE_PASSWORD_CONFIG, sslTruststorePassword);
+            props.put(SslConfigs.SSL_KEYSTORE_LOCATION_CONFIG, sslKeystoreLocation);
+            props.put(SslConfigs.SSL_KEYSTORE_PASSWORD_CONFIG, sslKeystorePass);
+            if (sslKeyPassword !=null && !sslKeyPassword.isEmpty()) {
+                System.out.println();
+                props.put(SslConfigs.SSL_KEY_PASSWORD_CONFIG, sslKeyPassword);
+            }
+        }
         return props;
     }
 

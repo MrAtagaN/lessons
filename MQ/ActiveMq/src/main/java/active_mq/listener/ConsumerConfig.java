@@ -9,7 +9,7 @@ import org.springframework.jms.config.JmsListenerContainerFactory;
 import javax.jms.ConnectionFactory;
 
 @Configuration
-public class ListenerConfig {
+public class ConsumerConfig {
 
     @Bean
     public JmsListenerContainerFactory myFactory(ConnectionFactory connectionFactory,

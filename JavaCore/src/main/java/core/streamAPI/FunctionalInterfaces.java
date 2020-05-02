@@ -1,25 +1,25 @@
 package core.streamAPI;
 
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 /**
- * два параметра, возвращает результат
- * BiFunction<T, U,R> {
- *   R apply(T t, U u);
- * }
  *
- * два параметра, не возвращает результат
- * BiConsumer<T,U>  {
- *   void  accept(T t, U u)
- * }
- *
- * один параметр, возвращает результат
+ * Один параметр, возвращает результат
  * Function<T, R> {
  *   R apply(T t);
  * }
  *
- * один параметр, не возвращает результат
+ * Один параметр, не возвращает результат
  * Consumer<T> {
  *   void accept(T t);
+ * }
+ *
+ * Один параметр, возвращает boolean
+ * Predicate<T> {
+ *   boolean test(T t);
  * }
  *
  * Без параметров, возвращает результат
@@ -27,6 +27,13 @@ package core.streamAPI;
  *   T get();
  * }
  *
+ *
  */
 public class FunctionalInterfaces {
+
+    Supplier supplier;
+    Predicate predicate;
+    Consumer consumer;
+    Function function;
+
 }

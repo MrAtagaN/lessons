@@ -2,6 +2,7 @@ package libs.cron;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -20,12 +21,15 @@ public class ScheduleTask {
      * 7.Year(необязательное поле)
      */
     @Scheduled(cron="* * * * * *", zone="Europe/Istanbul")
-    public void doScheduledWork2() {
+    @Async
+    public void doScheduledWork2() throws InterruptedException {
+        Thread.sleep(1000000);
         LOG.info("DO SCHEDULED WORK: cron = \"* * * * * *\"");
     }
 
 
     @Scheduled(fixedRate = 1000)
+    @Async
     public void doScheduledWork() {
         LOG.info("DO SCHEDULED WORK: fixedRate = 1000");
     }

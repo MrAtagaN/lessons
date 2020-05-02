@@ -1,8 +1,9 @@
 package active_mq;
 
 
-import active_mq.listener.Listener;
+import active_mq.listener.Consumer;
 import active_mq.producer.Producer;
+import active_mq.model.BalanceRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -19,6 +20,14 @@ import org.springframework.jms.annotation.EnableJms;
  *  админская страница http://localhost:8161/
  *  заходим на ActiveMQ broker
  *  логин и пароль admin admin
+ *
+ *  Пример генерации классов по xsd:
+ *  в pom есть соответствующий плагин для генерации классов, классы генерируются при mvn install
+ *  пометить в target как source root  /src/main/java  ( чтобы idea видела классы )
+ *
+ *  Создаём объекты по сгенерированным классам, заполняем данными, перегоняем объект в строку в формате SOAP,
+ *  отправляем в очередь, получаем из очереди, восстанавливает объект из строки.
+ *
  */
 
 @SpringBootApplication
@@ -29,7 +38,10 @@ public class Main {
     Producer producer;
 
     @Autowired
-    Listener listener;
+    Consumer consumer;
+
+    @Autowired
+    BalanceMarshller balanceMarshller;
 
     public static void main(String[] args) {
         SpringApplication.run(Main.class, args);
@@ -39,8 +51,12 @@ public class Main {
     @Bean
     public CommandLineRunner commandLineRunner(ApplicationContext context) {
         return (args) -> {
-            producer.sendMessage("testTextInMessage_BLA_BLA_BLA");
-            listener.reciveMessageWithJmsTemplate();
+            BalanceRequest balanceRequest = Utils.generateTestBalanceRequest();
+            String jsonBalanceRequset = balanceMarshller.marshall(balanceRequest);
+            producer.sendMessage(jsonBalanceRequset);
+            String receivedStringMessage = consumer.receiveMessage();
+            BalanceRequest balanceRequestFromQueue = (BalanceRequest) balanceMarshller.unmarshal(receivedStringMessage);
+            System.out.println("Receive balance with account number " + balanceRequestFromQueue.getAccountNumber());
         };
     }
 
