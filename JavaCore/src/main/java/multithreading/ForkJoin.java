@@ -9,9 +9,10 @@ import java.util.concurrent.RecursiveTask;
  *
  * forkJoinPool.invoke(ForkJoinTask) - выполняет переданную задачу, запускает compute()
  *
- * recursiveTask.compute() - основная операция вычисления
- * recursiveTask.fork() - вызвать метод compute в другой нити (асинхронно)
- * recursiveTask.join() - ждать результата fork()
+ * RecursiveTask extends ForkJoinTask
+ * compute() - основная операция вычисления
+ * fork() - вызвать метод compute в другой нити (асинхронно)
+ * join() - ждать результата fork()
  */
 public class ForkJoin {
 
@@ -32,8 +33,8 @@ public class ForkJoin {
 
         //forkJoin
         ForkJoinPool forkJoinPool = new ForkJoinPool(numOfThreads);
-        BigInteger result = forkJoinPool.invoke(new MyFork(0, numOfOperations));
-        System.out.println(result); //499999999500000000  Execution time: 15609 ms
+        BigInteger forkJoinResult = forkJoinPool.invoke(new MyFork(0, numOfOperations));
+        System.out.println(forkJoinResult); //499999999500000000  Execution time: 15609 ms
 
         long end = System.currentTimeMillis();
         System.out.println("Execution time: " + (end - start) + " ms");
@@ -57,7 +58,9 @@ public class ForkJoin {
 
         @Override
         protected BigInteger compute() {
-            if ((to - from) <= numOfOperations / numOfThreads) { //если данные разбиты достаточно мелко, то выполняем операцию
+            // если данные разбиты достаточно мелко (часть операций <= количество всех операций/количество нитей),
+            // то выполняем операцию
+            if ((to - from) <= numOfOperations / numOfThreads) {
                 BigInteger result = BigInteger.valueOf(0);
                 for (long i = from; i < to; i++) {
                     result = result.add(BigInteger.valueOf(i));
