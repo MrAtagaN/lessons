@@ -21,6 +21,14 @@ kubectl get services - Показать список сервисов
 
 kubectl get rc ( или replicationcontrollers ) - Показывает контроллеры репликаций
 
+kubectl get rs ( или replicaset ) - Показывает replica set'ы
+
+kubectl get ds - Показывает daemonSet'ы
+
+kubectl get node - Показывает узлы
+
+kubectl get job - Показывает объекты заданий
+
 kubectl get ns - Показывает пространства имён
 
 kubectl run <имя пода/имя контроллера репликаций>

@@ -1,0 +1,17 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: cron-job-every-thirty-seconds
+spec:
+  schedule: "0,30 * * * *"  # запуск пода каждые 30 минут, каждого часа (первая звёздочка), каждого дня месяца (вторая звёздочка),
+  jobTemplate:              # каждого месяца (третья звёздочка), каждого дня недели (четвёртая звёздочка)
+    spec:
+      template:
+        metadata:
+          labels:
+            app: priodic-job
+        spec:
+            restartPolicy: OnFailure
+            containers:
+            - name: container-name
+              image: luksa/batch-job

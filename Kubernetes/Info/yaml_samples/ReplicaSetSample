@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: my-replica-set
+spec:
+  replicas: 3
+  selector:
+    matchExpressions:               #  В селекторе можно использовать  matchLabels:  (ищет точные совпадения меток)
+      - key: app                    #  Более гибкий подход использовать matchExpressions: в нём можно использовать операторы
+        operator: In                #  operator: In / NotIn / Exists / DoesNotExist
+        values:
+        - replica-set-label
+        - some-label-value
+        - another-label-value
+  template:
+    metadata:
+      labels:
+        app: replica-set-label      # метка присваевемая поду
+    spec:
+      containers:
+        - name: container-name
+          image: plekhanov/my_service_image

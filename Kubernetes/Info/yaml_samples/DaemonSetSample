@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: daemonset-ssd-monitor      # имя daemonSet
+spec:
+  selector:
+    matchLabels:
+      node-label: ssd-monitor      # селектор для подов
+  template:
+    metadata:
+      labels:
+        node-label: ssd-monitor    # метка которая будет у созданного пода
+    spec:
+      nodeSelector:                # селектор для узлов (node)
+        disk: ssd
+      containers:
+      - name: container-name
+        image: luksa/ssd-monitor
