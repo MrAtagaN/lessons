@@ -41,7 +41,7 @@ public class Main {
     Consumer consumer;
 
     @Autowired
-    BalanceMarshller balanceMarshller;
+    BalanceMarshaller balanceMarshaller;
 
     public static void main(String[] args) {
         SpringApplication.run(Main.class, args);
@@ -52,10 +52,10 @@ public class Main {
     public CommandLineRunner commandLineRunner(ApplicationContext context) {
         return (args) -> {
             BalanceRequest balanceRequest = Utils.generateTestBalanceRequest();
-            String jsonBalanceRequset = balanceMarshller.marshall(balanceRequest);
+            String jsonBalanceRequset = balanceMarshaller.marshall(balanceRequest);
             producer.sendMessage(jsonBalanceRequset);
             String receivedStringMessage = consumer.receiveMessage();
-            BalanceRequest balanceRequestFromQueue = (BalanceRequest) balanceMarshller.unmarshal(receivedStringMessage);
+            BalanceRequest balanceRequestFromQueue = (BalanceRequest) balanceMarshaller.unmarshal(receivedStringMessage);
             System.out.println("Receive balance with account number " + balanceRequestFromQueue.getAccountNumber());
         };
     }

@@ -23,13 +23,13 @@ import javax.xml.soap.SOAPMessage;
 import javax.xml.soap.SOAPPart;
 
 @Component
-public class BalanceMarshller {
+public class BalanceMarshaller {
 
     private final JAXBContext requestContext = JAXBContext.newInstance(BalanceRequest.class);
     private final MessageFactory messageFactory = MessageFactory.newInstance();
     private final JAXBContext jaxbContext = JAXBContext.newInstance(ObjectFactory.class);
 
-    public BalanceMarshller() throws JAXBException, SOAPException {
+    public BalanceMarshaller() throws JAXBException, SOAPException {
 
     }
 

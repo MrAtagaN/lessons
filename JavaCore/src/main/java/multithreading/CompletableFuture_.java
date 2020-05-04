@@ -37,8 +37,8 @@ import java.util.concurrent.ExecutionException;
  * applyToEither(otherFuture, Function) - возвращает новый completableFuture, который заполняется когда выполнится данный
  *   completableFuture либо completableFuture, переданный параметром other
  *
- * thenCombine(otherFuture, BiFunction) - Имеет на входе два completableFuture, результаты которых накапливаются и затем
- *   передаются в функцию с двумя параметрами
+ * thenCombine(otherFuture, BiFunction) - передаваемый аргумент completableFuture и otherFuture
+ *   передаются в функцию BiFunction
  *
  * allOf(CompletableFuture...) - возвращает CompletableFuture, завершающееся по завершению всех completableFuture в списке параметров
  *
