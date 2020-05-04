@@ -1,18 +1,18 @@
-apiVersion: v1
-kind: Pod
+apiVersion: v1   # версия
+kind: Pod   # тип объекта
 metadata:
-  name: my-app
-  labels:
+  name: my-app   # имя пода
+  labels:           # список меток для пода
     env: prod
     app: main
     tier: frontend
     owner: AtagaN
 spec:
   containers:
-    - name: container-web
-      image: ngnix:latest
+    - name: container-web   # имя контейнера
+      image: nginx:latest   # образ по которому создаётся контейнер
       ports:
-        - containerPort: 80
+        - containerPort: 80   # непонятно зачем ??
 
     - name: container-api
       image: tomcat:8.5.38
