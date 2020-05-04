@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: my-replication-controller   # имя контроллера репликаций
+spec:
+  replicas: 3   # количество реплик пода
+  selector:                     # Селектор меток по которым контроллер репликаций отслеживает поды, его можно не указывать,
+    app: my-web-service-label   # тогда при создании контроллера репликаций селектор будет взят из секции template.metadata.labels
+  template:
+    metadata:
+      labels:
+        app: my-web-service-label   # метки которые будут присвоены подам
+    spec:
+      containers:
+        - name: my-web-service
+          image: plekhanov/my_service_image
+          ports:
+            - containerPort: 8080

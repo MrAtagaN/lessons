@@ -1,0 +1,18 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: batch-job
+spec:
+  activeDeadlineSeconds: 120 # можно задать лимит времени для задания
+  backoffLimit: 2         # количество повторных попыток выполнения (если задание не выполнилось), по умолчанию 6
+  completions: 5           # выполнить 5 заданий подряд
+  parallelism: 2           # выполнять 2 задания параллельно
+  template:
+    metadata:
+      labels:
+        app: batch-job
+    spec:
+      restartPolicy: OnFailure # тип job не может использовать значение по умолчанию always можно указывать OnFailure/Never
+      containers:
+      - name: main
+        image: luksa/batch-job
