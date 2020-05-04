@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>Spring_data_jdbc</artifactId>
+    <artifactId>Data_jdbc</artifactId>
 
     <dependencies>
 
