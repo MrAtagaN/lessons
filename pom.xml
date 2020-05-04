@@ -11,26 +11,21 @@
     <modules>
         <module>JDBC</module>
         <module>Hibernate</module>
-        <module>SpringCore</module>
         <module>Servlet</module>
         <module>Docker</module>
         <module>JavaCore</module>
         <module>JUnit_and_Mockito</module>
         <module>XML</module>
-        <module>SpringAOP</module>
-        <module>SpringMVC</module>
         <module>Git_and_Mercurial</module>
         <module>MQ</module>
         <module>WebService</module>
-        <module>SpringData</module>
-        <module>SpringSecurity</module>
         <module>Linux</module>
         <module>SQL</module>
-        <module>Kafka</module>
         <module>JavaConsole</module>
         <module>Maven_and_Gradle</module>
         <module>JavaScript</module>
-        <module>Spring_data_jdbc</module>
+
+        <module>Spring</module>
     </modules>
 
 </project>

@@ -1,3 +1,15 @@
+Объявление составных типов
+
+CREATE TYPE inventory_item AS (
+ name text,
+ supplier_id integer,
+ price numeric
+);
+
+Типы доменов
+
+CREATE DOMAIN posint AS integer CHECK (VALUE > 0);
+
 Типы, предназначенные для текстового поиска
 
 tsvector - представляет документ в виде, оптимизированном для текстового поиска
