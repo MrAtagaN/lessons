@@ -1,0 +1,10 @@
+Установка minikube:
+    https://kubernetes.io/ru/docs/tasks/tools/install-minikube/
+Установка kubectl:
+    https://kubernetes.io/ru/docs/tasks/tools/install-kubectl/
+Установка virtualbox:
+    https://www.virtualbox.org/wiki/Downloads
+
+Создание кластера
+    minikube start
+
