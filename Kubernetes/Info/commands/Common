@@ -75,18 +75,4 @@ kubectl expose rc <имя контроллера репликации> --type=Lo
 
 kubectl edit rc <имя контроллера репликаций> - Редактировать конфигурационный файл контроллера репликаций
 
-minikube stop - Остановить VM c kubernates cluster
 
-minikube start - Создать и запустить kubernates cluster
-    --memory размер оперативной памяти
-    --disk размер жесткого диска
-    --cpus количество процессоров
-    -p имя
-
-minikube ssh - Залогиниться на VM c kubernates cluster
-
-minikube delete - Удалить VM c kubernates cluster
-
-minikube version - Версия minikube
-
-minikube dashboard - открыть в браузере web страницу с панелью управления кластером
