@@ -1,8 +1,10 @@
 package libs.lombok;
 
+import lombok.AccessLevel;
 import lombok.Data;
 import lombok.ToString;
 import lombok.experimental.Accessors;
+import lombok.experimental.FieldDefaults;
 
 /**
  * @Data
@@ -21,6 +23,11 @@ import lombok.experimental.Accessors;
  * prefix -
  */
 @Accessors(chain = true, fluent = false)
+/**
+ * level - изменить модификаторы полей
+ * makeFinal - сделать поля final
+ */
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = false)
 public class Person {
 
     private final String name;
