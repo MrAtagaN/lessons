@@ -16,7 +16,7 @@
         <module>SpringSecurity</module>
         <module>SpringAOP</module>
         <module>SpringMVC</module>
-        <module>SpringCore</module>
+        <module>Core</module>
         <module>Data_jdbc</module>
         <module>Kafka</module>
     </modules>
