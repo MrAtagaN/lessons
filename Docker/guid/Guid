@@ -1,9 +1,9 @@
 Создать приложение, чтобы поместить в контейнер:
     перейти в директорию Example_service, выполнить команду: mvn clean install
-    перенести testService.jar из taget в директорию Example_docker_image
+    перенести testService.jar из target в директорию example_docker_image
 
 Создать образ:
-    перейти в директорию Example_docker_image, выполнить команду: 'docker build -t test_image:1.0 .'  (с точкой)
+    перейти в директорию example_docker_image, выполнить команду: 'docker build -t test_image:1.0 .'  (с точкой)
     посмотреть собравшийся образ: 'docker images'
 
 Запустить контейнер:
@@ -12,7 +12,7 @@
 
 Проверить работу контейнера:
     подключться к контейнеру 'docker exec -it testContainer bash'
-    проверить работу можно по ссылке http://localhost:8080/user/get
+    проверить работу можно по ссылке 'http://localhost:8080/user/get'
 
 Удалить контейнеры:
     остановить все контейнеры: 'docker stop $(docker ps -qa)'
