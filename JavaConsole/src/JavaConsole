@@ -1,3 +1,6 @@
+добавление сертификатов
+keytool -import -trustcacerts -keystore -noprompt "$JAVA_HOME/jre/lib/security/cacerts" -storepass changeit -alias <алиас для сертификата> -import -file <путь к сертификату>
+
 java -verbose - При запуске приложения пишет лог
 
 javac -xLint:all - Проверка кода на стиль и ошибки
@@ -7,6 +10,3 @@ jmap -dump:format=b,file=dump.txt [processID] - Дамп памяти запис
 jmap dump.txt - Читать дамп памяти
 
 wsimport - Создать автоматически Java классы на основании wsdl описания SOAP веб-сервиса
-
-добавление сертификатов
-keytool -import -trustcacerts -keystore $JAVA_HOME/jre/lib/security/cacerts -storepass changeit -alias Root -import -file Trusted.txt
