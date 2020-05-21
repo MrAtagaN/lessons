@@ -18,7 +18,6 @@
         <module>XML</module>
         <module>Git_and_Mercurial</module>
         <module>MQ</module>
-        <module>WebService</module>
         <module>Linux</module>
         <module>SQL</module>
         <module>JavaConsole</module>
