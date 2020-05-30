@@ -1,3 +1,9 @@
+> -
+
+>> -
+
+| -
+
 ctrl + Z - перевести процесс в фоновый режим и остановить его (но не завершить)
 
 ctrl + C - прервать процесс
@@ -32,7 +38,9 @@ printenv - выводит переменные окружения
 
 grep - поиск по регулярному выражению в файле
 
-curl -
+curl - http запрос
+
+    Пример:
     curl --location --request POST 'http://s-msk-d-rbp-jmp:9200/api/v1/public/auth/token' \
     --header 'Content-Type: application/json' \
     --header 'Content-Type: text/plain' \

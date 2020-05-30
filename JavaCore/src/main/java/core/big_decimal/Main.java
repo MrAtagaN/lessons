@@ -52,11 +52,11 @@ public class Main {
         //Сравнение чисел
         Double a = 1.5;
         Double b = 1.50;
-        System.out.println(a.equals(b));
+        System.out.println(a.equals(b)); // true
 
         BigDecimal x = new BigDecimal("1.5");
         BigDecimal y = new BigDecimal("1.50");
-        System.out.println(x.equals(y));
+        System.out.println(x.equals(y)); // false
 
         System.out.println(x.compareTo(y));
 
