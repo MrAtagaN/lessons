@@ -5,6 +5,16 @@ import java.util.Queue;
 
 /**
  * Методы {@link Queue}
+ *
+ * element -
+ * peek -
+ *
+ * poll -
+ * remove -
+ *
+ * add -
+ * offer -
+ *
  */
 public class Queue_ {
 

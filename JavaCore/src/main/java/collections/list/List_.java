@@ -3,7 +3,7 @@ package collections.list;
 import java.util.List;
 
 /**
- * List
+ * {@link List}
  *
  * replaceAll(UnaryOperator<E> operator)
  * sort(Comparator<? super E> c)

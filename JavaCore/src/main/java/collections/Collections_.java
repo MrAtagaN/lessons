@@ -4,20 +4,6 @@ import java.util.*;
 import java.util.concurrent.*;
 
 /**
- * https://javarush.ru/groups/posts/2308-korotko-o-glavnom---java-collections-framework
- * https://habr.com/ru/company/luxoft/blog/256877/
- * https://javarush.ru/quests/lectures/questcollections.level07.lecture09
- *
- *
- * Реализации List : ArrayList, LinkedList, CopyOnWriteArrayList, Vector, Stack
- *
- * Реализации Map: HashMap, LinkedHashMap, TreeMap, ConcurrentHashMap, ConcurrentSkipListMap
- *
- * Реализации Set: HashSet, LinkedHashSet, TreeSet, CopyOnWriteArraySet, ConcurrentSkipListSet
- *
- * Реализации Queue: PriorityQueue, LinkedList, ArrayDeque, ArrayBlockingQueue, LinkedTransferQueue
- * PriorityBlockingQueue, LinkedBlockingQueue, SynchronousQueue
- *
  *
  * {@link Collections} - Статические методы для работы с коллекциями
  *

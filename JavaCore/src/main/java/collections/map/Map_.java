@@ -5,14 +5,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Map
+ * {@link Map}
+ *
  * методы java 1.8 :
  *
  * compute - сделать вычисление значения для определенного ключа
  * computeIfPresent - сделать вычисление значения для определенного ключа, если он есть
  * computeIfAbsent - сделать вычисление значения для ключа, если кго нет
  * merge - вычисляет и заменяет старое значение ключа на новое
- * getOrDefault
+ * getOrDefault -
  */
 public class Map_ {
 

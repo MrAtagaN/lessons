@@ -4,7 +4,7 @@ import java.util.NavigableSet;
 import java.util.TreeSet;
 
 /**
- * NavigableSet
+ * {@link NavigableSet} -
  *
  * descendingSet - развернутый сет
  *

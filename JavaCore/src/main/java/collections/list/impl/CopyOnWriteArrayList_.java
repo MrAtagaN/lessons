@@ -1,4 +1,4 @@
-package collections.list;
+package collections.list.impl;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.concurrent.*;
 
 /**
- * CopyOnWriteArrayList
+ * {@link CopyOnWriteArrayList}
  *
  * Тест скорости чтения CopyOnWriteArrayList двумя потоками
  */

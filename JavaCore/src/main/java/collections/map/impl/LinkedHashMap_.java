@@ -1,10 +1,10 @@
-package collections.map;
+package collections.map.impl;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * LinkedHashMap
+ * {@link LinkedHashMap}
  *
  * Сохраняет порядок вставки или порядок доступа к ключам
  */

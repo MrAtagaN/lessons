@@ -1,10 +1,10 @@
-package collections.queue;
+package collections.queue.impl;
 
 import java.util.PriorityQueue;
 import java.util.Queue;
 
 /**
- * PriorityQueue
+ * {@link PriorityQueue}
  *
  * Сортирует элементы в очереди
  */

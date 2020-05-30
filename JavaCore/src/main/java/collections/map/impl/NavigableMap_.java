@@ -1,10 +1,12 @@
-package collections.map;
+package collections.map.impl;
 
 import java.util.Map;
 import java.util.NavigableMap;
 import java.util.TreeMap;
 
 /**
+ * {@link NavigableMap}
+ *
  * descendingMap - развернутая Map
  *
  * ceilingEntry - ближайший Entry в большую сторону

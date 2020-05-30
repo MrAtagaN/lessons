@@ -7,7 +7,7 @@ import java.util.Arrays;
  *
  * https://javarush.ru/quests/lectures/questcollections.level07.lecture07
  *
- * Методы Arrays:
+ * Методы {@link Arrays}:
  * asList - получить неизменяемый List из переданных элементов
  * binarySearch - поиск элемента в массиве. Массив должен быть отсортирован
  * copyOf - копия массива
