@@ -10,3 +10,5 @@ jmap -dump:format=b,file=dump.txt [processID] - Дамп памяти запис
 jmap dump.txt - Читать дамп памяти
 
 wsimport - Создать автоматически Java классы на основании wsdl описания SOAP веб-сервиса
+
+site -

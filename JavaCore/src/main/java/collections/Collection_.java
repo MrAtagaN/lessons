@@ -1,27 +1,27 @@
-package core.collections;
+package collections;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 /**
- * {@link Collection}
+ * {@link Collection} extends {@link Iterable} - Интерфейс коллекций
  *
- * add(E e)
- * addAll(Collection<? extends E> c)
- * clear()
- * contains(Object o)
- * containsAll(Collection<?> c)
- * isEmpty()
- * parallelStream()
- * remove(Object o)
- * removeAll(Collection<?> c)
- * removeIf(Predicate<? super E> filter)
- * retainAll(Collection<?> c)
- * size()
- * stream()
- * toArray()
- * toArray(T[] a)
+ * add
+ * addAll
+ * clear
+ * contains
+ * containsAll
+ * isEmpty
+ * parallelStream
+ * remove
+ * removeAll
+ * removeIf
+ * retainAll
+ * size
+ * stream
+ * toArray
+ * toArray
  *
  */
 public class Collection_ {

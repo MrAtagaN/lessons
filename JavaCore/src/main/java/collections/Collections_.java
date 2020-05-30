@@ -1,4 +1,4 @@
-package core.collections;
+package collections;
 
 import java.util.*;
 import java.util.concurrent.*;
@@ -19,7 +19,7 @@ import java.util.concurrent.*;
  * PriorityBlockingQueue, LinkedBlockingQueue, SynchronousQueue
  *
  *
- * Методы Collections:
+ * {@link Collections} - Статические методы для работы с коллекциями
  *
  * addAll - добавить в коллекцию элементы
  * asLifoQueue - обратную очередь приводит к интерфесу Queue

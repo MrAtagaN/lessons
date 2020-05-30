@@ -1,4 +1,4 @@
-package core.collections.queue;
+package collections.queue;
 
 import java.util.ArrayDeque;
 import java.util.Queue;

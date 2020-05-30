@@ -1,11 +1,11 @@
-package core.collections;
+package collections;
 
 /**
  * {@link Iterable}
  *
- * forEach(Consumer<? super T> action) -
- * iterator() -
- * spliterator() -
+ * forEach -
+ * iterator -
+ * spliterator -
  *
  */
 public class Iterable_ {

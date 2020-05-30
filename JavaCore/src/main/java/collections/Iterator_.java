@@ -1,4 +1,4 @@
-package core.collections;
+package collections;
 
 import java.util.Iterator;
 import java.util.ListIterator;
@@ -8,17 +8,17 @@ import java.util.ListIterator;
  *
  * hasNext()
  * next()
- * forEachRemaining(Consumer<? super E> action)
+ * forEachRemaining
  *
  *
  * {@link ListIterator}
  *
- * hasPrevious()
- * previous()
- * nextIndex()
- * previousIndex()
- * set(E e)
- * add(E e)
+ * hasPrevious
+ * previous
+ * nextIndex
+ * previousIndex
+ * set
+ * add
  *
  */
 public class Iterator_ {
