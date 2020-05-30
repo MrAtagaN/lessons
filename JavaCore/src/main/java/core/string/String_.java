@@ -1,9 +1,48 @@
 package core.string;
 
 /**
- * String.copyValueOf() -
- * String.format() -
+ * Пул строк -
+ *
+ * Статические
+ *
+ * String.copyValueOf() - new String(data)
+ * String.format() - форматированная строка
  * String.join() - соединяет строки, вставляя между ними разделитель
+ *
+ *
+ * Не статические:
+ *
+ * Подстроки:
+ * trim() -
+ * concat() - присоединяет вконец строку
+ * replace() -
+ * substring() -
+ * charAt() - возвращает символ на определенной позиции
+ *
+ * Сравнение:
+ * compareTo() -
+ * compareToIgnoreCase() -
+ * contains() - содержит ли строка переданное значение
+ * matches() - Pattern.matches(regex);
+ * endsWith() -
+ * startsWith()
+ *
+ * Преобразование:
+ * toCharArray() -
+ * getBytes() -
+ * split() -
+ *
+ * Другие:
+ * intern() - добавить строку в пул строк
+ * isEmpty() -
+ *
+ * Коды символов:
+ * codePointAt() - возвращает код символа на определенной позиции
+ * codePointBefore() - возвращает код символа перед определенной позицией
+ * codePointCount() -
+ * offsetByCodePoints() -
+ * codePoints() -
+ *
  *
  *
  */
@@ -22,7 +61,7 @@ public class String_ {
 //        String.copyValueOf()
 //        String.format()
 //        String.join()
-
+//
 //        a.charAt()
 //        a.codePointAt()
 //        a.codePointBefore()
@@ -38,6 +77,15 @@ public class String_ {
 //        a.replace()
 //        a.split()
 //        a.substring()
+//        a.endsWith()
+//        a.getBytes()
+//        a.isEmpty()
+//        a.startsWith()
+//        a.toCharArray()
+//        a.toUpperCase()
+//        a.trim()
+//        a.substring()
+//        a.split()
 
     }
 }
