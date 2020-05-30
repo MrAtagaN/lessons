@@ -1,18 +1,17 @@
 package core.serialization;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 
 /**
- * Стандартная сериализация Serializable
+ * {@link Serializable } - Стандартная сериализация
+ * readObject - своя десериализация
+ * writeObject - своя сериализация
+ *
+ * {@link Externalizable } - Своя сериализация
  */
 public class Main {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
-
         Dog dog = new Dog(true, 5, 15);
 
         //записываем в файл

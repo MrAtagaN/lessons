@@ -13,35 +13,35 @@ package core.string;
  * Не статические:
  *
  * Подстроки:
- * trim() -
- * concat() - присоединяет вконец строку
- * replace() -
- * substring() -
- * charAt() - возвращает символ на определенной позиции
+ * trim -
+ * concat - присоединяет вконец строку
+ * replace -
+ * substring -
+ * charAt - возвращает символ на определенной позиции
  *
  * Сравнение:
- * compareTo() -
- * compareToIgnoreCase() -
- * contains() - содержит ли строка переданное значение
- * matches() - Pattern.matches(regex);
- * endsWith() -
- * startsWith() -
+ * compareTo -
+ * compareToIgnoreCase -
+ * contains - содержит ли строка переданное значение
+ * matches - Pattern.matches(regex);
+ * endsWith -
+ * startsWith -
  *
  * Преобразование:
- * toCharArray() -
- * getBytes() -
- * split() -
+ * toCharArray -
+ * getBytes -
+ * split -
  *
  * Другие:
- * intern() - добавить строку в пул строк
- * isEmpty() -
+ * intern - добавить строку в пул строк
+ * isEmpty -
  *
  * Коды символов:
- * codePointAt() - возвращает код символа на определенной позиции
- * codePointBefore() - возвращает код символа перед определенной позицией
- * codePointCount() -
- * offsetByCodePoints() -
- * codePoints() -
+ * codePointAt - возвращает код символа на определенной позиции
+ * codePointBefore - возвращает код символа перед определенной позицией
+ * codePointCount -
+ * offsetByCodePoints -
+ * codePoints -
  *
  *
  *
