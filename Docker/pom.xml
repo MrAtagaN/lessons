@@ -13,9 +13,7 @@
 
     <packaging>pom</packaging>
 
-    <modules>
-        <module>Example</module>
-    </modules>
+
 
 
 </project>
