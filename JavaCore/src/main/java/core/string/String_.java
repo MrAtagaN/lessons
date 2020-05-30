@@ -25,7 +25,7 @@ package core.string;
  * contains() - содержит ли строка переданное значение
  * matches() - Pattern.matches(regex);
  * endsWith() -
- * startsWith()
+ * startsWith() -
  *
  * Преобразование:
  * toCharArray() -
@@ -58,34 +58,34 @@ public class String_ {
         System.out.println(a == b + c); //false
         System.out.println(a == b + "lo"); //true
 
-//        String.copyValueOf()
-//        String.format()
-//        String.join()
+//        String.copyValueOf();
+//        String.format();
+//        String.join();
 //
-//        a.charAt()
-//        a.codePointAt()
-//        a.codePointBefore()
-//        a.codePointCount()
-//        a.codePoints()
-//        a.compareTo()
-//        a.compareToIgnoreCase()
-//        a.concat()
-//        a.contains()
-//        a.intern()
-//        a.matches()
-//        a.offsetByCodePoints()
-//        a.replace()
-//        a.split()
-//        a.substring()
-//        a.endsWith()
-//        a.getBytes()
-//        a.isEmpty()
-//        a.startsWith()
-//        a.toCharArray()
-//        a.toUpperCase()
-//        a.trim()
-//        a.substring()
-//        a.split()
+//        a.charAt();
+//        a.codePointAt();
+//        a.codePointBefore();
+//        a.codePointCount();
+//        a.codePoints();
+//        a.compareTo();
+//        a.compareToIgnoreCase();
+//        a.concat();
+//        a.contains();
+//        a.intern();
+//        a.matches();
+//        a.offsetByCodePoints();
+//        a.replace();
+//        a.split();
+//        a.substring();
+//        a.endsWith();
+//        a.getBytes();
+//        a.isEmpty();
+//        a.startsWith();
+//        a.toCharArray();
+//        a.toUpperCase();
+//        a.trim();
+//        a.substring();
+//        a.split();
 
     }
 }
