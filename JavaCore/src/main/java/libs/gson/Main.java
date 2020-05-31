@@ -8,7 +8,19 @@ import java.util.Date;
 import java.util.Map;
 
 /**
- * Gson
+ * {@link Gson}
+ *
+ * fromJson
+ * toJson
+ *
+ *
+ * {@link JsonElement}
+ *
+ *
+ * {@link JsonObject}
+ *
+ *
+ * {@link GsonBuilder}
  */
 public class Main {
 
