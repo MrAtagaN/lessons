@@ -6,9 +6,20 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 
+/**
+ * Описание схемы для валидации json
+ *
+ * title -
+ * description -
+ * type -
+ * required
+ * properties
+ * additionalProperties
+ *
+ * https://json-schema.org/understanding-json-schema/
+ */
 public class SchemaValidation {
 
     public static void main(String[] args) throws IOException {
