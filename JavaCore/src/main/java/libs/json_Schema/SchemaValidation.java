@@ -37,7 +37,7 @@ import java.nio.file.Paths;
  * }
  *
  *
- *  integer
+ * integer
  * { "type": "integer" }
  *
  *
@@ -54,6 +54,7 @@ import java.nio.file.Paths;
  * string
  * {
  *   "type": "string",
+ *   "enum": ["val1", "val2"],
  *   "minLength": 2,
  *   "maxLength": 3,
  *   "pattern": "^(\\([0-9]{3}\\))?[0-9]{3}-[0-9]{4}$"
