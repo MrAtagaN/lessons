@@ -4,9 +4,9 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
 /**
- * {@link CompletableFuture}
+ * {@link CompletableFuture} - Асинхронное выполнение задач возвращающих результат. В последовательности или одновременно
  *
- * непосредственная запись
+ * Непосредственная запись
  *
  * complete(value) - если не завершен, то устанавливает возвращаемое значение
  * completeExceptionally() - вернуть ошибку
@@ -50,25 +50,38 @@ import java.util.concurrent.ExecutionException;
 public class CompletableFuture_ {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
+        writeResult();
+        readResult();
+        asyncExecute();
+        asyncChainExecute();
+        waitAsyncExecute();
+    }
+
+
+
+    /**
+     * Интерфейс непосредственной записи
+     */
+    private static void writeResult() {
         CompletableFuture<Integer> completableFuture = new CompletableFuture<>();
 
-        /**
-         * Интерфейс непосредственной записи
-         */
-
         //если не завершен, то устанавливает возвращаемое значение
-        completableFuture.complete(2);
+        completableFuture.complete(3);
 
         //вернуть ошибку
         completableFuture.completeExceptionally(new RuntimeException());
         completableFuture.cancel(true);
 
-        //completableFuture c результатом
+        //completableFuture c результатом (статический метод)
         CompletableFuture<Integer> integerCompletableFuture = CompletableFuture.completedFuture(2);
+    }
 
-        /**
-         * Интерфейс непосредственного чтения
-         */
+
+    /**
+     * Интерфейс непосредственного чтения
+     */
+    private static void readResult() throws ExecutionException, InterruptedException {
+        CompletableFuture<Integer> completableFuture = new CompletableFuture<>();
 
         //проверяет, был ли уже записан результат
         completableFuture.isDone();
@@ -83,11 +96,14 @@ public class CompletableFuture_ {
 
         //примерное число других CompletableFuture, ждущих заполнения данного
         completableFuture.getNumberOfDependents();
+    }
 
-        /**
-         * Асинхронное выполнение
-         */
-        //Запускается задача с функцией Supplier. Запуск задачи производится на стандартном пуле потоков
+
+    /**
+     * Асинхронное выполнение
+     */
+    private static void asyncExecute() {
+        //Запускается задача Supplier. Запуск задачи производится на стандартном пуле потоков
         CompletableFuture<Integer> integerCompletableFuture1 = CompletableFuture.supplyAsync(() -> {
             return 2;
         });
@@ -96,10 +112,15 @@ public class CompletableFuture_ {
         CompletableFuture<Void> voidCompletableFuture = CompletableFuture.runAsync(() -> {
             System.out.println("--");
         });
+    }
 
-        /**
-         * Асинхронное выполнение с аргументом из предыдущего completableFuture
-         */
+
+    /**
+     * Асинхронное выполнение с аргументом из предыдущего completableFuture
+     */
+    private static void asyncChainExecute() {
+        CompletableFuture<Integer> completableFuture = new CompletableFuture<>();
+
         //принимает аргумент из completableFuture и возвращает результат
         completableFuture.thenApply((compl) -> {return compl + 2;});
 
@@ -109,7 +130,17 @@ public class CompletableFuture_ {
         });
 
 
+        completableFuture.thenCombine(null,null);
+        completableFuture.applyToEither(null,null); //TODO
+    }
 
+
+    /**
+     * Ожидание выполнения нескольких асинхронных задач
+     */
+    private static void waitAsyncExecute() {
+        CompletableFuture.anyOf();
+        CompletableFuture.allOf();
     }
 
 
