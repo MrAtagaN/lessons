@@ -4,7 +4,6 @@ import java.util.concurrent.*;
 
 /**
  * {@link Executors} - фабрика создающая {@link ExecutorService}
- *
  * Методы:
  *
  * ScheduledThreadPool
@@ -12,12 +11,22 @@ import java.util.concurrent.*;
  * SingleThreadExecutor
  * CachedThreadPool
  *
+ *
  * {@link Executor}
+ * Методы:
+ * execute - выполнить команду, ничего не возвращает
+ *
  * {@link ExecutorService}
+ * Методы:
+ * shutdown -
+ * awaitTermination -
+ * invokeAll -
+ * isTerminated -
+ * shutdownNow -
  *
+ * submit - возвращает объект {@link Future}. При вызове у него get - получаем значение
+ *  или ждём пока завершится метод, или получаем исключение нити
  *
- * Future submit(Callable task) - Метод возвращает объект Future. При вызове у него get - получаем значение
- * или ждём пока завершится метод, или получаем исключение нити
  *
  * https://javarush.ru/groups/posts/2078-threadom-java-ne-isportishjh--chastjh-v---executor-threadpool-fork-join-pool
  */

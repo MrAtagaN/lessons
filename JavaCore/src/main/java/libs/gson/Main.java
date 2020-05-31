@@ -16,7 +16,7 @@ import java.util.Date;
  *
  * excluder - возвращает класс {@link Excluder}, который пропускает при сериализации определенные объекты и поля
  *
- * {@link JsonElement} - Абстрактный класс - неопределенный элемент json
+ * {@link JsonElement} - Абстрактный класс. Обобщенный элемент json
  * реализации:
  * {@link JsonArray} - List элементов JsonElement
  * {@link JsonNull} - json c null значением
@@ -24,7 +24,7 @@ import java.util.Date;
  * {@link JsonPrimitive} -
  *
  *
- * {@link GsonBuilder} -
+ * {@link GsonBuilder} - создает объект gson с заданными параметрами
  * htmlSafe -
  * setVersion - версия сериализатора (gson), используется вместе с @Until и @Since
  * complexMapKeySerialization -
