@@ -73,13 +73,16 @@ import java.nio.file.Paths;
  */
 public class SchemaValidation {
 
+    private static final String SCHEMA_PATH = "JavaCore\\src\\main\\resources\\SrvGetSpasiboClientInfoRqSchema.json";
+    private static final String JSON_PATH = "JavaCore\\src\\main\\resources\\SrvGetSpasiboClientInfoRqSchema.json";
+
     public static void main(String[] args) throws IOException {
         //Загрузка схемы
-        String stringSchema = new String(Files.readAllBytes(Paths.get("JavaCore\\src\\main\\resources\\SrvGetSpasiboClientInfoRqSchema.json")));
+        String stringSchema = new String(Files.readAllBytes(Paths.get(SCHEMA_PATH)));
         Schema schema = SchemaLoader.load(new JSONObject(stringSchema));
 
         //Загрузка json
-        String stringRequest = new String(Files.readAllBytes(Paths.get("JavaCore\\src\\main\\resources\\SrvGetSpasiboClientInfoRq.json")));
+        String stringRequest = new String(Files.readAllBytes(Paths.get(JSON_PATH)));
         JSONObject jsonRequest = new JSONObject(stringRequest);
 
         //Валидация
