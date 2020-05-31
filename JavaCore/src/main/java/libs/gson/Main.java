@@ -57,11 +57,11 @@ public class Main {
         System.out.println("\n=== jsonElementValue ===");
         String json =
                 "{                                              " +
-                "  \"NAME\": \"AtagaN\",                        " +
+                "  \"name\": \"AtagaN\",                        " +
                 "  \"age\": 25,                                 " +
                 "  \"phone\": 43453232323232323,                " +
                 "  \"address\": {                               " +
-                "    \"COUNTRY\": \"Russia\",                   " +
+                "    \"country\": \"Russia\",                   " +
                 "    \"city\": \"Moscow\",                      " +
                 "    \"street\": \"Tverskaya\",                 " +
                 "    \"home\": 10                               " +
@@ -75,8 +75,8 @@ public class Main {
         JsonObject address = jsonObject.get("address").getAsJsonObject();
         System.out.println("address: " + address);
 
-        JsonElement countryElement = address.get("COUNTRY");
-        System.out.println("COUNTRY: " + countryElement);
+        JsonElement countryElement = address.get("country");
+        System.out.println("country: " + countryElement);
 
         int phone = jsonObject.get("phone").getAsInt(); //Ошибка: значение не 43453232323232323, а 217580099 (Integer.MAX_VALUE)
         System.out.println("phone: "+ phone);
