@@ -7,6 +7,7 @@ import static java.math.BigDecimal.*;
 
 /**
  * https://javarush.ru/groups/posts/2274-kak-ispoljhzovatjh-bigdecimal-v-java
+ * https://javarush.ru/groups/posts/2709-biginteger-i-bigdecimal
  *
  * Неизменяемый
  */
