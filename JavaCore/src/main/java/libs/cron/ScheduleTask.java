@@ -7,12 +7,13 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 /**
- * Если не использовать @Async, то методы будут работать последовательно
+ * Если не использовать @Async и @EnableAsync, то методы будут работать последовательно. Но даже в этом
+ * случае он зависает.
  */
 @Component
 public class ScheduleTask {
 
-    public static Logger LOG = LoggerFactory.getLogger(ScheduleTask.class);
+    private static Logger LOG = LoggerFactory.getLogger(ScheduleTask.class);
 
     /**
      * 1.Seconds
