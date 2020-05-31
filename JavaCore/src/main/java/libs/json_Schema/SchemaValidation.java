@@ -11,14 +11,64 @@ import java.nio.file.Paths;
 /**
  * Описание схемы для валидации json
  *
- * title -
- * description -
- * type -
- * required
- * properties
- * additionalProperties
- *
  * https://json-schema.org/understanding-json-schema/
+ *
+ * null
+ * { "type": "null" }
+ *
+ * { "type": ["number", "string"] }
+ *
+ *
+ * object
+ * {
+ *   "type": "object",
+ *   "properties": {
+ *     "name":      { "type": "string" },
+ *     "email":     { "type": "string" },
+ *     "address":   { "type": "string" },
+ *     "telephone": { "type": "string" }
+ *   },
+ *   "required": ["name", "email"],
+ *   "additionalProperties": false,
+ *   "propertyNames": {
+ *     "pattern": "^[A-Za-z_][A-Za-z0-9_]*$"
+ *   }
+ *
+ * }
+ *
+ *
+ *  integer
+ * { "type": "integer" }
+ *
+ *
+ * number
+ * {
+ *   "type": "number",
+ *   "multipleOf": 1.0
+ *   "minimum": 0,
+ *   "maximum": 100,
+ *   "exclusiveMaximum": true // не включать maximum (100)
+ * }
+ *
+ *
+ * string
+ * {
+ *   "type": "string",
+ *   "minLength": 2,
+ *   "maxLength": 3,
+ *   "pattern": "^(\\([0-9]{3}\\))?[0-9]{3}-[0-9]{4}$"
+ * }
+ *
+ *
+ * array
+ * {
+ *   "type": "array",
+ *   "items": {
+ *     "type": "number"
+ *   },
+ *   "uniqueItems": true
+ * }
+ *
  */
 public class SchemaValidation {
 

@@ -138,7 +138,8 @@
                     "type": "string",
                     "maxLength": 255
                   }
-                }
+                },
+                "additionalProperties": false
               }
             },
             "ListOfTimeDependentAttributes": {
@@ -153,7 +154,8 @@
                     "type": "string",
                     "maxLength": 255
                   }
-                }
+                },
+                "additionalProperties": false
               }
             },
             "ListOfEntityAttributes": {
@@ -168,7 +170,8 @@
                     "type": "string",
                     "maxLength": 255
                   }
-                }
+                },
+                "additionalProperties": false
               }
             }
           }
