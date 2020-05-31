@@ -2,6 +2,7 @@ package multithreading.wait_notify;
 
 /**
  * Нить засыпает в месте wait и снимает блокировку. Когда нить будят (notify) выполнение продолжается с места wait
+ * wait и notify можно вызывать только в синхронизиронных блоках
  */
 public class Main {
 
