@@ -22,10 +22,11 @@ import java.util.Date;
  *
  *
  * {@link JsonElement} - Абстрактный класс - неопределенный элемент json
- * реализации: JsonArray, JsonNull, JsonObject, JsonPrimitive
- *
- *
- * {@link JsonObject} -
+ * реализации:
+ * {@link JsonArray} - List элементов JsonElement
+ * {@link JsonNull} - json c null значением
+ * {@link JsonObject} - LinkedTreeMap (String, JsonElement). Ключ - имя элемента, Значение абстрактный элемент
+ * {@link JsonPrimitive} -
  *
  *
  * {@link GsonBuilder} -
