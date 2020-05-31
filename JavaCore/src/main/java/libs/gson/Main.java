@@ -10,16 +10,8 @@ import java.util.Date;
 /**
  * {@link Gson}
  *
- * fromJson -
- * toJson -
- *
- * htmlSafe -
- * serializeNulls - геттер поля serializeNulls
- * excluder -
- * fieldNamingStrategy -
- * getAdapter -
- * toJsonTree -
- *
+ * fromJson - дессериализация
+ * toJson - сериализация в json
  *
  * {@link JsonElement} - Абстрактный класс - неопределенный элемент json
  * реализации:
@@ -30,6 +22,12 @@ import java.util.Date;
  *
  *
  * {@link GsonBuilder} -
+ * htmlSafe -
+ * complexMapKeySerialization -
+ * excluder -
+ * fieldNamingStrategy -
+ * getAdapter -
+ * toJsonTree -
  * serializeNulls - сериализовывать null поля, по умолчанию пропускает
  *
  *
@@ -90,9 +88,16 @@ public class Main {
     private static void customGsonBuilder() {
         System.out.println("\n=== customGsonBuilder ===");
 
-        Gson gson = new GsonBuilder()
-                .enableComplexMapKeySerialization()
-                .serializeNulls()
+        Gson gson = new Gson();
+        System.out.println("default gson parametrs: ");
+        System.out.println("htmlSafe: " + gson.htmlSafe()); //htmlSafe: true
+
+
+
+        Gson customGson = new GsonBuilder()
+                .disableHtmlEscaping() //сетает htmlSafe false
+                .enableComplexMapKeySerialization() //сетает complexMapKeySerialization true
+                .serializeNulls() //сетает serializeNulls true
                 .setDateFormat(DateFormat.SHORT, DateFormat.SHORT)
                 .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
                 .setPrettyPrinting()
@@ -103,8 +108,8 @@ public class Main {
         Person person = new Person("AtagaN", 24, 43453, address, new Date());
 
         //Сериализация
-        String json = gson.toJson(person);
-        System.out.println("Custom json : " + json);
+        String json = customGson.toJson(person);
+        System.out.println("\nCustom json serialization : " + json);
     }
 
     /**
