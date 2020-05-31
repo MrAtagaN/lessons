@@ -3,12 +3,13 @@ package libs.cron;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 /**
  * Если не использовать @Async и @EnableAsync, то методы будут работать последовательно. Но даже в этом
- * случае он зависает.
+ * случае он зависает, если закончатся нити в Executor.
  */
 @Component
 public class ScheduleTask {
@@ -27,15 +28,15 @@ public class ScheduleTask {
     @Scheduled(cron="* * * * * *", zone="Europe/Istanbul")
     @Async
     public void doScheduledWork2() throws InterruptedException {
-        LOG.info("First method");
-        Thread.sleep(1000000);
-        LOG.info("DO SCHEDULED WORK: cron = \"* * * * * *\"");
+        LOG.info("First method start");
+        Thread.sleep(1000000); // Долгая работа работа
+        LOG.info("First method END !");
     }
 
 
     @Scheduled(fixedRate = 1000)
     @Async
     public void doScheduledWork() {
-        LOG.info("Second method");
+        LOG.info("Second method start");
     }
 }
