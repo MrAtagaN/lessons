@@ -4,7 +4,10 @@ import java.util.Map;
 import java.util.WeakHashMap;
 
 /**
+ * {@link WeakHashMap}
  * Элементы из WeakHashMap удаляются при каждой сборке мусора
+ *
+ * https://javarush.ru/quests/lectures/questcollections.level04.lecture05
  */
 public class WeakHashMapTest {
 
