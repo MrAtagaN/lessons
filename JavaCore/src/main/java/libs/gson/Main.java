@@ -44,7 +44,7 @@ import java.util.Map;
 public class Main {
 
     public static void main(String[] args) {
-        //primitives();
+        primitives();
         jsonElementValue();
         jsonObjects();
         gsonBuilder();
@@ -145,20 +145,24 @@ public class Main {
 
     }
 
+
     /**
      * Json для тестов, сериализация объектов Address, Person
      */
     private static String createJson() {
-        Address address = new Address("Russia", "Moscow", "Tverskaya", 10);
-        Person person = new Person("AtagaN", 24, 43453, address, new Date());
-
-        Gson gson = new Gson();
-        //Сериализация
-        String json = gson.toJson(person);
-
-        System.out.println("json = " + json);
-
-        return json;
+        return
+                "{                                              " +
+                "  \"NAME\": \"AtagaN\",                        " +
+                "  \"age\": 24,                                 " +
+                "  \"phone\": 43453,                            " +
+                "  \"address\": {                               " +
+                "    \"COUNTRY\": \"Russia\",                   " +
+                "    \"city\": \"Moscow\",                      " +
+                "    \"street\": \"Tverskaya\",                 " +
+                "    \"home\": 10                               " +
+                "  },                                           " +
+                "  \"birthday\": \"May 31, 2020 4:49:51 PM\"    " +
+                "}";
     }
 
 
