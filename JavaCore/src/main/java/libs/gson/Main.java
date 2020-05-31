@@ -1,6 +1,7 @@
 package libs.gson;
 
 import com.google.gson.*;
+import com.google.gson.annotations.*;
 
 import java.text.DateFormat;
 import java.util.Arrays;
@@ -28,6 +29,15 @@ import java.util.Map;
  *
  *
  * {@link GsonBuilder}
+ *
+ *
+ * Аннотации:
+ * {@link SerializedName} -
+ * {@link Until} -
+ * {@link Since} -
+ * {@link JsonAdapter} -
+ * {@link Expose} -
+ *
  */
 public class Main {
 
