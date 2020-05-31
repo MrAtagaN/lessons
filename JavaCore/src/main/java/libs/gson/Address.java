@@ -1,12 +1,14 @@
 package libs.gson;
 
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.annotations.Since;
 
 public class Address {
 
     @SerializedName("COUNTRY")
     private String country;
     private String city;
+    @Since(2)
     private String street;
     private int home;
 

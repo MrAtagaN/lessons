@@ -1,17 +1,20 @@
 package multithreading.executors;
 
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import java.util.concurrent.*;
 
 /**
- * Executors
+ * {@link Executors} - фабрика создающая {@link ExecutorService}
+ *
+ * Методы:
  *
  * ScheduledThreadPool
  * FixedThreadPool
  * SingleThreadExecutor
  * CachedThreadPool
+ *
+ * {@link Executor}
+ * {@link ExecutorService}
+ *
  *
  * Future submit(Callable task) - Метод возвращает объект Future. При вызове у него get - получаем значение
  * или ждём пока завершится метод, или получаем исключение нити

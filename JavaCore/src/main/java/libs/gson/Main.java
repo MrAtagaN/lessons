@@ -2,6 +2,7 @@ package libs.gson;
 
 import com.google.gson.*;
 import com.google.gson.annotations.*;
+import com.google.gson.internal.Excluder;
 
 import java.text.DateFormat;
 import java.util.Arrays;
@@ -13,6 +14,8 @@ import java.util.Date;
  * fromJson - дессериализация
  * toJson - сериализация в json
  *
+ * excluder - возвращает класс {@link Excluder}, который пропускает при сериализации определенные объекты и поля
+ *
  * {@link JsonElement} - Абстрактный класс - неопределенный элемент json
  * реализации:
  * {@link JsonArray} - List элементов JsonElement
@@ -23,18 +26,19 @@ import java.util.Date;
  *
  * {@link GsonBuilder} -
  * htmlSafe -
+ * setVersion - версия сериализатора (gson), используется вместе с @Until и @Since
  * complexMapKeySerialization -
  * excluder -
  * fieldNamingStrategy -
  * getAdapter -
- * toJsonTree -
  * serializeNulls - сериализовывать null поля, по умолчанию пропускает
  *
  *
  * Аннотации:
- * {@link SerializedName} -
- * {@link Until} -
- * {@link Since} -
+ * {@link SerializedName} - параметр в json которое нужно сериализовать в поле класса.
+ *  alternate - другие параметры в json для того же поля класса
+ * {@link Until} - сериализовывать поле до определенной версии gson (поле version в {@link Excluder})
+ * {@link Since} - сериализовывать поле после определенной версии gson (поле version в {@link Excluder})
  * {@link JsonAdapter} -
  * {@link Expose} -
  *
