@@ -93,7 +93,6 @@ public class Main {
         System.out.println("htmlSafe: " + gson.htmlSafe()); //htmlSafe: true
 
 
-
         Gson customGson = new GsonBuilder()
                 .disableHtmlEscaping() //сетает htmlSafe false
                 .enableComplexMapKeySerialization() //сетает complexMapKeySerialization true
@@ -111,6 +110,7 @@ public class Main {
         String json = customGson.toJson(person);
         System.out.println("\nCustom json serialization : " + json);
     }
+
 
     /**
      * Маппинг json на Класс
