@@ -12,6 +12,12 @@ import java.util.Map;
  *
  * fromJson
  * toJson
+ * htmlSafe
+ * serializeNulls
+ * excluder
+ * fieldNamingStrategy
+ * getAdapter
+ * toJsonTree
  *
  *
  * {@link JsonElement} - Абстрактный класс - неопределенный элемент json
