@@ -74,7 +74,7 @@ import java.nio.file.Paths;
 public class SchemaValidation {
 
     private static final String SCHEMA_PATH = "JavaCore\\src\\main\\resources\\SrvGetSpasiboClientInfoRqSchema.json";
-    private static final String JSON_PATH = "JavaCore\\src\\main\\resources\\SrvGetSpasiboClientInfoRqSchema.json";
+    private static final String JSON_PATH = "JavaCore\\src\\main\\resources\\SrvGetSpasiboClientInfoRq.json";
 
     public static void main(String[] args) throws IOException {
         //Загрузка схемы
