@@ -6,7 +6,6 @@ import com.google.gson.annotations.*;
 import java.text.DateFormat;
 import java.util.Arrays;
 import java.util.Date;
-import java.util.Map;
 
 /**
  * {@link Gson}
@@ -45,10 +44,9 @@ public class Main {
 
     public static void main(String[] args) {
         primitives();
+        jsonMapToObjects();
         jsonElementValue();
-        jsonObjects();
-        gsonBuilder();
-        jsonElementValue2();
+        customGsonBuilder();
     }
 
 
@@ -56,46 +54,41 @@ public class Main {
      * Получение значения атрибута из json
      */
     private static void jsonElementValue() {
+        System.out.println("\n=== jsonElementValue ===");
+        String json =
+                "{                                              " +
+                "  \"NAME\": \"AtagaN\",                        " +
+                "  \"age\": 25,                                 " +
+                "  \"phone\": 43453232323232323,                " +
+                "  \"address\": {                               " +
+                "    \"COUNTRY\": \"Russia\",                   " +
+                "    \"city\": \"Moscow\",                      " +
+                "    \"street\": \"Tverskaya\",                 " +
+                "    \"home\": 10                               " +
+                "  },                                           " +
+                "  \"birthday\": \"May 31, 2020 4:49:51 PM\"    " +
+                "}";
+
         Gson gson = new Gson();
-        String json = createJson();
+        JsonObject jsonObject = gson.fromJson(json, JsonObject.class);
 
-        // Дессериализация
-        // Получаем jsonElement. Это по сути атрибут в json
-        // Из jsonElement можно получить примитив, коллекцию, jsonObject
-        JsonElement jsonElement = gson.fromJson(json, JsonElement.class);
+        JsonObject address = jsonObject.get("address").getAsJsonObject();
+        System.out.println("address: " + address);
 
-        // Получаем jsonObject. Это по сути сам json (структура)
-        // Из jsonObject можно получить jsonObject, коллекцию jsonObject, jsonElement
-        JsonObject jsonObject = jsonElement.getAsJsonObject().get("address").getAsJsonObject();
-        JsonElement countryElement = jsonObject.get("country");
+        JsonElement countryElement = address.get("COUNTRY");
+        System.out.println("COUNTRY: " + countryElement);
 
-        System.out.println("country = " + countryElement);
-    }
-
-
-    /**
-     * Получение значения атрибута из json (Плохой способ)
-     */
-    private static void jsonElementValue2() {
-        Gson gson = new Gson();
-        String json = createJson();
-
-        // Дессериализация
-        // Получаем jsonElement. Это по сути атрибут в json
-        JsonElement jsonElement = gson.toJsonTree(new Gson().fromJson(json, Map.class).get("address"));
-
-        // Получаем jsonObject. Это по сути сам json (структура)
-        JsonObject jsonObject = jsonElement.getAsJsonObject();
-        JsonElement countryElement = jsonObject.get("country");
-
-        System.out.println("country = " + countryElement);
+        int phone = jsonObject.get("phone").getAsInt(); //Ошибка: значение не 43453232323232323, а 217580099 (Integer.MAX_VALUE)
+        System.out.println("phone: "+ phone);
     }
 
 
     /**
      * Кастомный объект gson (сериализатор)
      */
-    private static void gsonBuilder() {
+    private static void customGsonBuilder() {
+        System.out.println("\n=== customGsonBuilder ===");
+
         Gson gson = new GsonBuilder()
                 .enableComplexMapKeySerialization()
                 .serializeNulls()
@@ -110,23 +103,39 @@ public class Main {
 
         //Сериализация
         String json = gson.toJson(person);
-        System.out.println("Custom json = " + json);
+        System.out.println("Custom json : " + json);
     }
 
     /**
      * Маппинг json на Класс
      */
-    private static void jsonObjects() {
+    private static void jsonMapToObjects() {
+        System.out.println("\n=== jsonMapToObjects ===");
+
+        String json =
+                "{                                              " +
+                "  \"NAME\": \"AtagaN\",                        " +
+                "  \"age\": 24,                                 " +
+                "  \"phone\": 43453,                            " +
+                "  \"address\": {                               " +
+                "    \"COUNTRY\": \"Russia\",                   " +
+                "    \"city\": \"Moscow\",                      " +
+                "    \"street\": \"Tverskaya\",                 " +
+                "    \"home\": 10                               " +
+                "  },                                           " +
+                "  \"birthday\": \"May 31, 2020 4:49:51 PM\"    " +
+                "}";
         Gson gson = new Gson();
-        String json = createJson();
 
         //Десериализация
-        Person person2 = gson.fromJson(json, Person.class);
-        System.out.println("person2 = " + person2);
+        Person person = gson.fromJson(json, Person.class);
+        System.out.println("person: " + person);
     }
 
 
     private static void primitives() {
+        System.out.println("\n=== primitives ===");
+
         Gson gson = new Gson();
         System.out.println(gson.toJson(123));    // 123
         System.out.println(gson.toJson("hello")); // "hello"
@@ -140,30 +149,9 @@ public class Main {
 
         int[] array = gson.fromJson("[10,100]", int[].class);
         Arrays.stream(array).forEach(str -> {
-            System.out.print(str + " ");
+            System.out.println(str + " ");
         });
 
     }
-
-
-    /**
-     * Json для тестов, сериализация объектов Address, Person
-     */
-    private static String createJson() {
-        return
-                "{                                              " +
-                "  \"NAME\": \"AtagaN\",                        " +
-                "  \"age\": 24,                                 " +
-                "  \"phone\": 43453,                            " +
-                "  \"address\": {                               " +
-                "    \"COUNTRY\": \"Russia\",                   " +
-                "    \"city\": \"Moscow\",                      " +
-                "    \"street\": \"Tverskaya\",                 " +
-                "    \"home\": 10                               " +
-                "  },                                           " +
-                "  \"birthday\": \"May 31, 2020 4:49:51 PM\"    " +
-                "}";
-    }
-
 
 }
