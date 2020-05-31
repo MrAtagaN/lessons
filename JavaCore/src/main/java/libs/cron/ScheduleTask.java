@@ -8,8 +8,9 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 /**
- * Если не использовать @Async и @EnableAsync, то методы будут работать последовательно. Но даже в этом
- * случае он зависает, если закончатся нити в Executor.
+ * Если не использовать @Async и @EnableAsync, то методы @Scheduled будут работать последовательно,
+ * даже если находятся в разных бинах.
+ * Но даже с @Async и @EnableAsync выполнение тасок зависает, если закончатся нити в Executor.
  */
 @Component
 public class ScheduleTask {

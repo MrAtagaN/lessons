@@ -30,32 +30,35 @@
     </build>
 
     <dependencies>
+
+        <!-- Javax mail -->
         <dependency>
             <groupId>com.sun.mail</groupId>
             <artifactId>javax.mail</artifactId>
             <version>1.6.2</version>
         </dependency>
+
+        <!-- Gson -->
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.8.5</version>
         </dependency>
 
+        <!-- Jsoup -->
         <dependency>
             <groupId>org.jsoup</groupId>
             <artifactId>jsoup</artifactId>
             <version>1.8.3</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <!-- Lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.10</version>
             <scope>provided</scope>
         </dependency>
-
-
 
         <!-- LOGGER -->
         <dependency>
@@ -75,7 +78,7 @@
         </dependency>
 
 
-
+        <!--  Spring boot    -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -87,12 +90,14 @@
             <version>2.2.5.RELEASE</version>
         </dependency>
 
+        <!--  Jasperreports   -->
         <dependency>
             <groupId>net.sf.jasperreports</groupId>
             <artifactId>jasperreports</artifactId>
             <version>6.4.0</version>
         </dependency>
 
+        <!--  Guava   -->
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
