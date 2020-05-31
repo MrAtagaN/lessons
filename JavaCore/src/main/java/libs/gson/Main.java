@@ -14,10 +14,11 @@ import java.util.Map;
  * toJson
  *
  *
- * {@link JsonElement}
+ * {@link JsonElement} - Абстрактный класс - неопределенный элемент json
+ * реализации: JsonArray, JsonNull, JsonObject, JsonPrimitive
  *
  *
- * {@link JsonObject}
+ * {@link JsonObject} -
  *
  *
  * {@link GsonBuilder}
