@@ -11,7 +11,7 @@ public class Exchanger_ {
         Exchanger<String> exchanger = new Exchanger<>();
 
         new Person("Max", exchanger).start();
-        Thread.sleep(500);
+        Thread.sleep(3000);
         new Person("Ann", exchanger).start();
     }
 
