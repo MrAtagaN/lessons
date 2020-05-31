@@ -27,6 +27,7 @@ public class ScheduleTask {
     @Scheduled(cron="* * * * * *", zone="Europe/Istanbul")
     @Async
     public void doScheduledWork2() throws InterruptedException {
+        LOG.info("First method");
         Thread.sleep(1000000);
         LOG.info("DO SCHEDULED WORK: cron = \"* * * * * *\"");
     }
@@ -35,6 +36,6 @@ public class ScheduleTask {
     @Scheduled(fixedRate = 1000)
     @Async
     public void doScheduledWork() {
-        LOG.info("DO SCHEDULED WORK: fixedRate = 1000");
+        LOG.info("Second method");
     }
 }
