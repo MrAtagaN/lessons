@@ -2,14 +2,39 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>lessons</artifactId>
-        <groupId>com.plekhanov</groupId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>
+
+
+    <groupId>com.plekhanov</groupId>
+    <version>1.0-SNAPSHOT</version>
+    <artifactId>JUnit_And_Mockito</artifactId>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>Mockito</artifactId>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.5.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.10.19</version>
+        </dependency>
+
+    </dependencies>
+
+
     <build>
         <plugins>
             <plugin>
@@ -23,13 +48,6 @@
         </plugins>
     </build>
 
-    <dependencies><!-- https://mvnrepository.com/artifact/org.mockito/mockito-all -->
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-all</artifactId>
-            <version>1.10.19</version>
-        </dependency>
-    </dependencies>
 
 
 </project>
