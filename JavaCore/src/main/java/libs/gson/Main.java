@@ -11,14 +11,15 @@ import java.util.Map;
 /**
  * {@link Gson}
  *
- * fromJson
- * toJson
- * htmlSafe
- * serializeNulls
- * excluder
- * fieldNamingStrategy
- * getAdapter
- * toJsonTree
+ * fromJson -
+ * toJson -
+ *
+ * htmlSafe -
+ * serializeNulls - геттер поля serializeNulls
+ * excluder -
+ * fieldNamingStrategy -
+ * getAdapter -
+ * toJsonTree -
  *
  *
  * {@link JsonElement} - Абстрактный класс - неопределенный элемент json
@@ -28,7 +29,8 @@ import java.util.Map;
  * {@link JsonObject} -
  *
  *
- * {@link GsonBuilder}
+ * {@link GsonBuilder} -
+ * serializeNulls - сериализовывать null поля, по умолчанию пропускает
  *
  *
  * Аннотации:
