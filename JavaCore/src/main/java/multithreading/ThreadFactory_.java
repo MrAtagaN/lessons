@@ -2,6 +2,11 @@ package multithreading;
 
 import java.util.concurrent.ThreadFactory;
 
+/**
+ * Интерфейс {@link ThreadFactory}
+ * Метод:
+ * newThread - возвращает нить
+ */
 public class ThreadFactory_ {
 
     public static void main(String[] args) {

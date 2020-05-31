@@ -14,9 +14,7 @@ public class ThreadLocal_ {
         threadOne.join();
         threadTwo.join();
 
-        System.out.println("Main thread");
-        System.out.println(threadLocal.get());
-
+        System.out.println("Main thread threadLocal: " + threadLocal.get());
     }
 
     static class ThreadOne extends Thread {
@@ -27,16 +25,14 @@ public class ThreadLocal_ {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println("ThreadOne");
-            System.out.println(threadLocal.get());
+            System.out.println("ThreadOne threadLocal: "+ threadLocal.get());
         }
     }
 
     static class ThreadTwo extends Thread {
         @Override
         public void run() {
-            System.out.println("ThreadTwo");
-            System.out.println(threadLocal.get());
+            System.out.println("ThreadTwo threadLocal: " + threadLocal.get());
         }
     }
 }

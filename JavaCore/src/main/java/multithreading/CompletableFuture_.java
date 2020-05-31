@@ -107,7 +107,7 @@ public class CompletableFuture_ {
      */
     private static void asyncExecute() {
         //Запускается задача Supplier. Запуск задачи производится на стандартном пуле потоков
-        CompletableFuture<Integer> integerCompletableFuture1 = CompletableFuture.supplyAsync(() -> {
+        CompletableFuture<Integer> integerCompletableFuture = CompletableFuture.supplyAsync(() -> {
             return 2;
         });
 
