@@ -40,7 +40,8 @@ import java.util.Date;
  * {@link Until} - сериализовывать поле до определенной версии gson (поле version в {@link Excluder})
  * {@link Since} - сериализовывать поле после определенной версии gson (поле version в {@link Excluder})
  * {@link JsonAdapter} -
- * {@link Expose} -
+ * {@link Expose} - сериализует/десериализует только поля с этой аннотацией,
+ *                  при включенном excludeFieldsWithoutExposeAnnotation
  *
  */
 public class Main {
@@ -50,6 +51,7 @@ public class Main {
         jsonMapToObjects();
         jsonElementValue();
         customGsonBuilder();
+        expose();
     }
 
 
@@ -162,6 +164,21 @@ public class Main {
             System.out.println(str + " ");
         });
 
+    }
+
+
+    private static void expose() {
+        User user = new User();
+        user.setFirstName("Max");
+        user.setLastName("Ivanov");
+        user.setEmailAddress("Moscow");
+        user.setPassword("12345678");
+
+        Gson gson = new GsonBuilder()
+                .excludeFieldsWithoutExposeAnnotation()
+                .create();
+        String json = gson.toJson(user);
+        System.out.println("user: " + json);
     }
 
 }

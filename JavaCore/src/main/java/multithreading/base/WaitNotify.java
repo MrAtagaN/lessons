@@ -1,10 +1,10 @@
-package multithreading.wait_notify;
+package multithreading.base;
 
 /**
  * Нить засыпает в месте wait и снимает блокировку. Когда нить будят (notify) выполнение продолжается с места wait
  * wait и notify можно вызывать только в синхронизиронных блоках
  */
-public class Main {
+public class WaitNotify {
 
     public static void main(String[] args) {
         Job job = new Job();
