@@ -100,13 +100,13 @@ public class Main {
 
 
         Gson customGson = new GsonBuilder()
-                .disableHtmlEscaping() //сетает htmlSafe false
+                .disableHtmlEscaping() //не менять html символы
                 .enableComplexMapKeySerialization() //сетает complexMapKeySerialization true
-                .serializeNulls() //сетает serializeNulls true
-                .setDateFormat(DateFormat.SHORT, DateFormat.SHORT)
-                .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
-                .setPrettyPrinting()
-                .setVersion(1.0)
+                .serializeNulls() //сериализовывать null поля
+                .setDateFormat(DateFormat.SHORT, DateFormat.SHORT) //формат даты
+                .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE) //меняет название полей
+                .setPrettyPrinting() //форматированный вывод
+                .setVersion(1.0) //версия сериализатора (gson), используется вместе с @Until и @Since
                 .create();
 
         Address address = new Address("Russia", "Moscow", "Tverskaya", 10);
@@ -114,7 +114,7 @@ public class Main {
 
         //Сериализация
         String json = customGson.toJson(person);
-        System.out.println("\nCustom json serialization : " + json);
+        System.out.println("\nCustom json serialization :\n" + json);
     }
 
 
