@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.ToString;
 import lombok.experimental.Accessors;
 import lombok.experimental.FieldDefaults;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @Data
@@ -17,12 +18,14 @@ import lombok.experimental.FieldDefaults;
  * @EqualsAndHashCode
  */
 @Data
+
 /**
  * chain - сеттеры возвращают текущий объект
  * fluent - геттеры и сеттеры без get и set
  * prefix -
  */
 @Accessors(chain = true, fluent = false)
+
 /**
  * level - изменить модификаторы полей
  * makeFinal - сделать поля final
@@ -30,20 +33,8 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = false)
 public class Person {
 
-    private final String name;
-    @ToString.Exclude
-    private int age;
+    String name;
+    int age;
+    Cat cat;
 
-
-    public static void main(String[] args) {
-        Person person = new Person("sadad");
-        person.setAge(30);
-        person.getName();
-
-        Cat cat = Cat.builder()
-                .name("asdsad")
-                .age(12)
-                .build();
-
-    }
 }
