@@ -32,18 +32,30 @@ public class Main {
     private static void jsonMapToObjects() throws JsonProcessingException {
         System.out.println("\n=== jsonMapToObjects ===");
 
+        //{
+        //  "name": "AtagaN",
+        //  "age": 25,
+        //  "phone": 4345,
+        //  "birthday": "May 31, 2020 4:49:51 PM",
+        //  "address": {
+        //    "city": "Moscow",
+        //    "street": "Tverskaya",
+        //    "home_number": 10
+        //  }
+        //}
+
         String json =
-                        "{                                       " +
-                        "  \"name\": \"AtagaN\",                 " +
-                        "  \"age\": 24,                          " +
-                        "  \"phone\": 43453,                     " +
-                        "  \"birthday\": \"2020-12-12T10:20\",   " +
-                        "  \"address\": {                        " +
-                        "    \"street\": \"Tverskaya\",          " +
-                        "    \"city\": \"Moscow\",               " +
-                        "    \"home_number\": 10                 " +
-                        "  }                                     " +
-                        "}                                       ";
+                "{                                             " +
+                "  \"name\": \"AtagaN\",                       " +
+                "  \"age\": 25,                                " +
+                "  \"phone\": 4345,                            " +
+                "  \"birthday\": \"2020-12-12T10:20\",         " +
+                "  \"address\": {                              " +
+                "    \"city\": \"Moscow\",                     " +
+                "    \"street\": \"Tverskaya\",                " +
+                "    \"home_number\": 10                       " +
+                "  }                                           " +
+                "}                                             ";
 
         ObjectMapper objectMapper = new ObjectMapper();
         //Десериализация
@@ -54,18 +66,30 @@ public class Main {
     private static void jsonElementValue() throws JsonProcessingException {
         System.out.println("\n=== jsonElementValue ===");
 
+        //{
+        //  "name": "AtagaN",
+        //  "age": 25,
+        //  "phone": 4345,
+        //  "birthday": "May 31, 2020 4:49:51 PM",
+        //  "address": {
+        //    "city": "Moscow",
+        //    "street": "Tverskaya",
+        //    "home_number": 10
+        //  }
+        //}
+
         String json =
-                        "{                                       " +
-                        "  \"name\": \"AtagaN\",                 " +
-                        "  \"age\": 24,                          " +
-                        "  \"phone\": 43453,                     " +
-                        "  \"birthday\": \"2020-12-12T10:20\",   " +
-                        "  \"address\": {                        " +
-                        "    \"street\": \"Tverskaya\",          " +
-                        "    \"city\": \"Moscow\",               " +
-                        "    \"home_number\": 10                 " +
-                        "  }                                     " +
-                        "}                                       ";
+                        "{                                             " +
+                        "  \"name\": \"AtagaN\",                       " +
+                        "  \"age\": 25,                                " +
+                        "  \"phone\": 4345,                            " +
+                        "  \"birthday\": \"2020-12-12T10:20\",         " +
+                        "  \"address\": {                              " +
+                        "    \"city\": \"Moscow\",                     " +
+                        "    \"street\": \"Tverskaya\",                " +
+                        "    \"home_number\": 10                       " +
+                        "  }                                           " +
+                        "}                                             ";
 
         ObjectMapper objectMapper = new ObjectMapper();
 

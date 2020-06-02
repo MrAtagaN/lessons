@@ -60,19 +60,32 @@ public class Main {
      */
     private static void jsonElementValue() {
         System.out.println("\n=== jsonElementValue ===");
-        String json = //в json нельзя использовать одинарные ковычки
-                "{                                            " +
-                "  'name': 'AtagaN',                          " +
-                "  'age': 25,                                 " +
-                "  'phone': 43453232323232323,                " +
-                "  'birthday': 'May 31, 2020 4:49:51 PM',     " +
-                "  'address': {                               " +
-                "    'country': 'Russia',                     " +
-                "    'city': 'Moscow',                        " +
-                "    'street': 'Tverskaya',                   " +
-                "    'home_number': 10                        " +
-                "  }                                          " +
-                "}                                            ";
+
+        //{
+        //  "name": "AtagaN",
+        //  "age": 25,
+        //  "phone": 43453232323232323,
+        //  "birthday": "May 31, 2020 4:49:51 PM",
+        //  "address": {
+        //    "country": "Russia",
+        //    "city": "Moscow",
+        //    "street": "Tverskaya",
+        //    "home_number": 10
+        //  }
+        //}
+
+        String json =   "{" +
+                        "  \"name\": \"AtagaN\",                       " +
+                        "  \"age\": 25,                                " +
+                        "  \"phone\": 43453232323232323,               " +
+                        "  \"birthday\": \"May 31, 2020 4:49:51 PM\",  " +
+                        "  \"address\": {                              " +
+                        "    \"country\": \"Russia\",                  " +
+                        "    \"city\": \"Moscow\",                     " +
+                        "    \"street\": \"Tverskaya\",                " +
+                        "    \"home_number\": 10                       " +
+                        "  }                                           " +
+                        "}                                             ";
 
         Gson gson = new Gson();
         JsonObject jsonObject = gson.fromJson(json, JsonObject.class);
@@ -124,19 +137,32 @@ public class Main {
     private static void jsonMapToObjects() {
         System.out.println("\n=== jsonMapToObjects ===");
 
+        //{
+        //  "name": "AtagaN",
+        //  "age": 25,
+        //  "phone": 434532,
+        //  "birthday": "May 31, 2020 4:49:51 PM",
+        //  "address": {
+        //    "country": "Russia",
+        //    "city": "Moscow",
+        //    "street": "Tverskaya",
+        //    "home_number": 10
+        //  }
+        //}
+
         String json =
-                "{                                            " +
-                "  'name': 'AtagaN',                          " +
-                "  'age': 24,                                 " +
-                "  'phone': 43453,                            " +
-                "  'birthday': 'May 31, 2020 4:49:51 PM',     " +
-                "  'address': {                               " +
-                "    'country': 'Russia',                     " +
-                "    'city': 'Moscow',                        " +
-                "    'street': 'Tverskaya',                   " +
-                "    'home_number': 10                        " +
-                "  }                                          " +
-                "}                                            ";
+                "{                                             " +
+                "  \"name\": \"AtagaN\",                       " +
+                "  \"age\": 25,                                " +
+                "  \"phone\": 434532,                          " +
+                "  \"birthday\": \"May 31, 2020 4:49:51 PM\",  " +
+                "  \"address\": {                              " +
+                "    \"country\": \"Russia\",                  " +
+                "    \"city\": \"Moscow\",                     " +
+                "    \"street\": \"Tverskaya\",                " +
+                "    \"home_number\": 10                       " +
+                "  }                                           " +
+                "}                                             ";
         Gson gson = new Gson();
 
         //Десериализация
