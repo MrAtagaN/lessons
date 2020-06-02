@@ -1,13 +1,20 @@
 package libs.jackson;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 /**
+ * {@link JsonNode} - Абстрактный класс. Обобщенный элемент json
+ *
+ * {@link ObjectNode} - LinkedTreeMap (String, JsonNode). Ключ - имя элемента, Значение абстрактный элемент
+ *
+ *
  *
  * Аннотации:
- * @JsonProperty - параметр в json которое нужно сериализовать в поле класса.
+ * {@link JsonProperty} - параметр в json которое нужно сериализовать в поле класса.
  *
  *
  * Отличия от Gson:
@@ -48,7 +55,7 @@ public class Main {
         System.out.println("\n=== jsonElementValue ===");
 
         String json =
-                "{                                       " +
+                        "{                                       " +
                         "  \"name\": \"AtagaN\",                 " +
                         "  \"age\": 24,                          " +
                         "  \"phone\": 43453,                     " +
