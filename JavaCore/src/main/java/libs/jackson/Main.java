@@ -36,7 +36,7 @@ public class Main {
         //  "name": "AtagaN",
         //  "age": 25,
         //  "phone": 4345,
-        //  "birthday": "May 31, 2020 4:49:51 PM",
+        //  "birthday": "2020-12-12T10:20",
         //  "address": {
         //    "city": "Moscow",
         //    "street": "Tverskaya",
@@ -63,6 +63,8 @@ public class Main {
         System.out.println("person: " + person);
     }
 
+
+
     private static void jsonElementValue() throws JsonProcessingException {
         System.out.println("\n=== jsonElementValue ===");
 
@@ -70,7 +72,7 @@ public class Main {
         //  "name": "AtagaN",
         //  "age": 25,
         //  "phone": 4345,
-        //  "birthday": "May 31, 2020 4:49:51 PM",
+        //  "birthday": "2020-12-12T10:20",
         //  "address": {
         //    "city": "Moscow",
         //    "street": "Tverskaya",
