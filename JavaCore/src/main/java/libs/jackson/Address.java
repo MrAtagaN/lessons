@@ -1,12 +1,15 @@
 package libs.jackson;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Objects;
 
 public class Address {
 
     private String city;
     private String street;
-    private int home;
+    @JsonProperty("home_number")
+    private int homeNumber;
 
 
     public String getCity() {
@@ -25,12 +28,12 @@ public class Address {
         this.street = street;
     }
 
-    public int getHome() {
-        return home;
+    public int getHomeNumber() {
+        return homeNumber;
     }
 
-    public void setHome(int home) {
-        this.home = home;
+    public void setHomeNumber(int homeNumber) {
+        this.homeNumber = homeNumber;
     }
 
     @Override
@@ -38,14 +41,14 @@ public class Address {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Address address = (Address) o;
-        return home == address.home &&
+        return homeNumber == address.homeNumber &&
                 Objects.equals(city, address.city) &&
                 Objects.equals(street, address.street);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(city, street, home);
+        return Objects.hash(city, street, homeNumber);
     }
 
     @Override
@@ -53,7 +56,7 @@ public class Address {
         return "Address{" +
                 "city='" + city + '\'' +
                 ", street='" + street + '\'' +
-                ", home=" + home +
+                ", home=" + homeNumber +
                 '}';
     }
 }

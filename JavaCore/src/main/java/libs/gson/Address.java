@@ -5,18 +5,18 @@ import com.google.gson.annotations.Since;
 
 public class Address {
 
-    @SerializedName("COUNTRY")
     private String country;
     private String city;
     @Since(2)
     private String street;
-    private int home;
+    @SerializedName("home_number")
+    private int homeNumber;
 
-    public Address(String country, String city, String street, int home) {
+    public Address(String country, String city, String street, int homeNumber) {
         this.country = country;
         this.city = city;
         this.street = street;
-        this.home = home;
+        this.homeNumber = homeNumber;
     }
 
     public String getCountry() {
@@ -43,12 +43,12 @@ public class Address {
         this.street = street;
     }
 
-    public int getHome() {
-        return home;
+    public int getHomeNumber() {
+        return homeNumber;
     }
 
-    public void setHome(int home) {
-        this.home = home;
+    public void setHomeNumber(int homeNumber) {
+        this.homeNumber = homeNumber;
     }
 
     @Override
@@ -57,7 +57,7 @@ public class Address {
                 "country='" + country + '\'' +
                 ", city='" + city + '\'' +
                 ", street='" + street + '\'' +
-                ", home=" + home +
+                ", home=" + homeNumber +
                 '}';
     }
 }

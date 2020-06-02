@@ -70,7 +70,7 @@ public class Main {
                 "    'country': 'Russia',                     " +
                 "    'city': 'Moscow',                        " +
                 "    'street': 'Tverskaya',                   " +
-                "    'home': 10                               " +
+                "    'home_number': 10                        " +
                 "  }                                          " +
                 "}                                            ";
 
@@ -126,15 +126,15 @@ public class Main {
 
         String json =
                 "{                                            " +
-                "  'NAME': 'AtagaN',                          " +
+                "  'name': 'AtagaN',                          " +
                 "  'age': 24,                                 " +
                 "  'phone': 43453,                            " +
                 "  'birthday': 'May 31, 2020 4:49:51 PM',     " +
                 "  'address': {                               " +
-                "    'COUNTRY': 'Russia',                     " +
+                "    'country': 'Russia',                     " +
                 "    'city': 'Moscow',                        " +
                 "    'street': 'Tverskaya',                   " +
-                "    'home': 10                               " +
+                "    'home_number': 10                        " +
                 "  }                                          " +
                 "}                                            ";
         Gson gson = new Gson();

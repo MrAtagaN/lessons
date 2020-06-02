@@ -1,12 +1,10 @@
 package libs.gson;
 
-import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
 
 public class Person {
 
-    @SerializedName("NAME")
     private String name;
     private int age;
     private int phone;
