@@ -3,6 +3,7 @@ package libs.lombok;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * makeFinal - сделать поля final
  */
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = false)
-@AllArgsConstructor(onConstructor=@__(@Autowired)) // onConstructor=@__ поставить над конструктором аннотацию
+@NoArgsConstructor(onConstructor=@__(@Autowired)) // onConstructor=@__ поставить над конструктором аннотацию
 public class Person {
 
     String name;

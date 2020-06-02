@@ -61,18 +61,18 @@ public class Main {
     private static void jsonElementValue() {
         System.out.println("\n=== jsonElementValue ===");
         String json =
-                "{                                              " +
-                "  \"name\": \"AtagaN\",                        " +
-                "  \"age\": 25,                                 " +
-                "  \"phone\": 43453232323232323,                " +
-                "  \"address\": {                               " +
-                "    \"country\": \"Russia\",                   " +
-                "    \"city\": \"Moscow\",                      " +
-                "    \"street\": \"Tverskaya\",                 " +
-                "    \"home\": 10                               " +
-                "  },                                           " +
-                "  \"birthday\": \"May 31, 2020 4:49:51 PM\"    " +
-                "}";
+                "{                                            " +
+                "  'name': 'AtagaN',                          " +
+                "  'age': 25,                                 " +
+                "  'phone': 43453232323232323,                " +
+                "  'address': {                               " +
+                "    'country': 'Russia',                     " +
+                "    'city': 'Moscow',                        " +
+                "    'street': 'Tverskaya',                   " +
+                "    'home': 10                               " +
+                "  },                                         " +
+                "  'birthday': 'May 31, 2020 4:49:51 PM'      " +
+                "}                                            ";
 
         Gson gson = new Gson();
         JsonObject jsonObject = gson.fromJson(json, JsonObject.class);
@@ -125,18 +125,18 @@ public class Main {
         System.out.println("\n=== jsonMapToObjects ===");
 
         String json =
-                "{                                              " +
-                "  \"NAME\": \"AtagaN\",                        " +
-                "  \"age\": 24,                                 " +
-                "  \"phone\": 43453,                            " +
-                "  \"address\": {                               " +
-                "    \"COUNTRY\": \"Russia\",                   " +
-                "    \"city\": \"Moscow\",                      " +
-                "    \"street\": \"Tverskaya\",                 " +
-                "    \"home\": 10                               " +
-                "  },                                           " +
-                "  \"birthday\": \"May 31, 2020 4:49:51 PM\"    " +
-                "}";
+                "{                                            " +
+                "  'NAME': 'AtagaN',                          " +
+                "  'age': 24,                                 " +
+                "  'phone': 43453,                            " +
+                "  'address': {                               " +
+                "    'COUNTRY': 'Russia',                     " +
+                "    'city': 'Moscow',                        " +
+                "    'street': 'Tverskaya',                   " +
+                "    'home': 10                               " +
+                "  },                                         " +
+                "  'birthday': 'May 31, 2020 4:49:51 PM'      " +
+                "}                                            ";
         Gson gson = new Gson();
 
         //Десериализация
