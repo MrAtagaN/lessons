@@ -1,9 +1,9 @@
 package libs.jackson;
 
-import libs.gson.Address;
 
 import java.util.Date;
 import java.util.Objects;
+
 
 public class Person {
 

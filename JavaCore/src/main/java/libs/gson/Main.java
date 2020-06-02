@@ -60,7 +60,7 @@ public class Main {
      */
     private static void jsonElementValue() {
         System.out.println("\n=== jsonElementValue ===");
-        String json =
+        String json = //в json нельзя использовать одинарные ковычки
                 "{                                            " +
                 "  'name': 'AtagaN',                          " +
                 "  'age': 25,                                 " +
