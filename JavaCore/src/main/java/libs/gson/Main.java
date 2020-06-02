@@ -65,13 +65,13 @@ public class Main {
                 "  'name': 'AtagaN',                          " +
                 "  'age': 25,                                 " +
                 "  'phone': 43453232323232323,                " +
+                "  'birthday': 'May 31, 2020 4:49:51 PM',     " +
                 "  'address': {                               " +
                 "    'country': 'Russia',                     " +
                 "    'city': 'Moscow',                        " +
                 "    'street': 'Tverskaya',                   " +
                 "    'home': 10                               " +
-                "  },                                         " +
-                "  'birthday': 'May 31, 2020 4:49:51 PM'      " +
+                "  }                                          " +
                 "}                                            ";
 
         Gson gson = new Gson();
@@ -129,13 +129,13 @@ public class Main {
                 "  'NAME': 'AtagaN',                          " +
                 "  'age': 24,                                 " +
                 "  'phone': 43453,                            " +
+                "  'birthday': 'May 31, 2020 4:49:51 PM',     " +
                 "  'address': {                               " +
                 "    'COUNTRY': 'Russia',                     " +
                 "    'city': 'Moscow',                        " +
                 "    'street': 'Tverskaya',                   " +
                 "    'home': 10                               " +
-                "  },                                         " +
-                "  'birthday': 'May 31, 2020 4:49:51 PM'      " +
+                "  }                                          " +
                 "}                                            ";
         Gson gson = new Gson();
 
@@ -168,6 +168,8 @@ public class Main {
 
 
     private static void expose() {
+        System.out.println("\n=== expose ===");
+
         User user = new User();
         user.setFirstName("Max");
         user.setLastName("Ivanov");
