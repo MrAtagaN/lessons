@@ -1,10 +1,11 @@
 package libs.apache_common.lang;
 
 import lombok.Data;
-import org.apache.commons.lang.ArrayUtils;
-import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.SystemUtils;
-import org.apache.commons.lang.exception.ExceptionUtils;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.JavaVersion;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.SystemUtils;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 
 import java.io.File;
 
@@ -29,9 +30,6 @@ public class Main {
         } catch (Exception e) {
             String stackTrace = ExceptionUtils.getStackTrace(e);
             System.out.println(stackTrace);
-
-            String fullStackTrace = ExceptionUtils.getFullStackTrace(e);
-            System.out.println(fullStackTrace);
         }
     }
 
@@ -79,7 +77,7 @@ public class Main {
         File userHome = SystemUtils.getUserHome();
         System.out.println("userHome: " + userHome);
 
-        assert SystemUtils.isJavaVersionAtLeast(8);
+        assert SystemUtils.isJavaVersionAtLeast(JavaVersion.JAVA_1_8);
     }
 
 
