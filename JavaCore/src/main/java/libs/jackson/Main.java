@@ -1,10 +1,15 @@
 package libs.jackson;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 /**
  * {@link JsonNode} - Абстрактный класс. Обобщенный элемент json
@@ -15,12 +20,27 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
  *
  * Аннотации:
  * {@link JsonProperty} - параметр в json которое нужно сериализовать в поле класса.
+ * {@link JsonGetter} - является альтернативой аннотации @JsonProperty
+ * {@link JsonPropertyOrder} - указать порядок свойств при сериализации
+ * {@link JsonValue} - указывает один метод, который библиотека будет использовать для сериализации всего экземпляра
+ * {@link JsonSerialize} - указывает пользовательский сериализатор, который будет использоваться при маршалинге сущности
+ * {@link JsonCreator} - для настройки конструктора / фабрики, используемых при десериализации.
+ * {@link JsonDeserialize} - указывает на использование собственного десериализатора
+ * {@link JsonAlias} - одно или несколько альтернативных имен для свойства во время десериализации
+ * {@link JsonIgnoreProperties} - аннотация уровня класса, которая отмечает свойство или список свойств, которые Джексон будет игнорировать
+ * {@link JsonIgnore} - используется для пометки свойства, которое следует игнорировать на уровне поля
+ * {@link JsonInclude} - для исключения свойств с пустыми / нулевыми / значениями по умолчанию.
+ * {@link JsonAutoDetect} - переопределить семантику по умолчанию, какие свойства видимы, а какие нет.
+ * {@link JsonFormat} - указывает формат при сериализации значений даты и времени
+ * {@link JsonIdentityInfo} -  для решения проблем бесконечной рекурсии
  *
  *
  * Отличия от Gson:
  * требует конструктор по умолчанию,
  * не читает одинарные ковычки,
  * не читает формат даты "6/2/20 9:35 PM"
+ *
+ * https://www.baeldung.com/jackson-annotations
  */
 public class Main {
 
@@ -94,6 +114,8 @@ public class Main {
                         "}                                             ";
 
         ObjectMapper objectMapper = new ObjectMapper();
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm a z");
+        objectMapper.setDateFormat(df);
 
         JsonNode jsonNode = objectMapper.readValue(json, JsonNode.class);
         JsonNode address = jsonNode.get("address");
