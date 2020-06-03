@@ -10,9 +10,9 @@ import java.util.concurrent.RecursiveTask;
  * forkJoinPool.invoke(ForkJoinTask) - выполняет переданную задачу, запускает compute()
  *
  * RecursiveTask extends ForkJoinTask
- * compute() - основная операция вычисления
- * fork() - вызвать метод compute в другой нити (асинхронно)
- * join() - ждать результата fork()
+ * compute - основная операция вычисления
+ * fork - вызвать метод compute в другой нити (асинхронно)
+ * join - ждать результата fork
  */
 public class ForkJoin {
 

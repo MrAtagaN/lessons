@@ -71,7 +71,7 @@ public class Main {
         //{
         //  "name": "AtagaN",
         //  "age": 25,
-        //  "phone": 4345,
+        //  "phone": 434512341234,
         //  "birthday": "2020-12-12T10:20",
         //  "address": {
         //    "city": "Moscow",
@@ -84,7 +84,7 @@ public class Main {
                         "{                                             " +
                         "  \"name\": \"AtagaN\",                       " +
                         "  \"age\": 25,                                " +
-                        "  \"phone\": 4345,                            " +
+                        "  \"phone\": 434512341234,                    " +
                         "  \"birthday\": \"2020-12-12T10:20\",         " +
                         "  \"address\": {                              " +
                         "    \"city\": \"Moscow\",                     " +
@@ -101,5 +101,8 @@ public class Main {
         String cityString = city.asText();
 
         System.out.println("city: " + cityString);
+
+        JsonNode phone = jsonNode.get("phone");
+        System.out.println("phone: " + phone.asInt());  //ошибка, 720644338
     }
 }

@@ -6,8 +6,8 @@ package core.string;
  * Статические
  *
  * String.copyValueOf() - new String(data)
- * String.format() - форматированная строка
- * String.join() - соединяет строки, вставляя между ними разделитель
+ * String.format - форматированная строка
+ * String.join - соединяет строки, вставляя между ними разделитель
  *
  *
  * Не статические:
