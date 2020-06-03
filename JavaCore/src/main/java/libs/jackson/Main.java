@@ -12,6 +12,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import static com.fasterxml.jackson.core.JsonParser.Feature.ALLOW_SINGLE_QUOTES;
+
 /**
  * {@link JsonNode} - Абстрактный класс. Обобщенный элемент json
  *
@@ -135,6 +137,7 @@ public class Main {
         Person person = new Person("AtagaN", 24, 43453, address, new Date());
 
         ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.configure(ALLOW_SINGLE_QUOTES, true);
         DateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm a z");
         objectMapper.setDateFormat(df);
 
