@@ -1,9 +1,13 @@
 package libs.jackson;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import java.util.Objects;
 
+@NoArgsConstructor
+@AllArgsConstructor
 public class Address {
 
     private String city;

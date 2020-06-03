@@ -1,10 +1,14 @@
 package libs.jackson;
 
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 import java.util.Date;
 import java.util.Objects;
 
-
+@NoArgsConstructor
+@AllArgsConstructor
 public class Person {
 
     private String name;

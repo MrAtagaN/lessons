@@ -10,6 +10,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * {@link JsonNode} - Абстрактный класс. Обобщенный элемент json
@@ -47,6 +48,7 @@ public class Main {
     public static void main(String[] args) throws JsonProcessingException {
         jsonMapToObjects();
         jsonElementValue();
+        writeValueAsString();
     }
 
     private static void jsonMapToObjects() throws JsonProcessingException {
@@ -114,8 +116,6 @@ public class Main {
                         "}                                             ";
 
         ObjectMapper objectMapper = new ObjectMapper();
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm a z");
-        objectMapper.setDateFormat(df);
 
         JsonNode jsonNode = objectMapper.readValue(json, JsonNode.class);
         JsonNode address = jsonNode.get("address");
@@ -126,5 +126,20 @@ public class Main {
 
         JsonNode phone = jsonNode.get("phone");
         System.out.println("phone: " + phone.asInt());  //ошибка, 720644338
+    }
+
+    private static void writeValueAsString() throws JsonProcessingException {
+        System.out.println("\n=== writeValueAsString ===");
+
+        Address address = new Address("Moscow", "Tverskaya", 10);
+        Person person = new Person("AtagaN", 24, 43453, address, new Date());
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        DateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm a z");
+        objectMapper.setDateFormat(df);
+
+        String json = objectMapper.writeValueAsString(person);
+        System.out.println("s = " + json);
+
     }
 }
