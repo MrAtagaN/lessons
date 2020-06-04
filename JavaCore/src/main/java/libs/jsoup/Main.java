@@ -13,8 +13,14 @@ public class Main {
         File input = new File("JavaCore/src/main/resources/hh.html");
         Document document = Jsoup.parse(input, "UTF-8", "hh.ru");
 
+        System.out.println(document.title());
+
         Elements title = document.select("head > title");
         System.out.println("title = " + title.html());
+
+
+
+
 
 
     }
