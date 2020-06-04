@@ -10,8 +10,16 @@ import java.io.IOException;
 
 
 /**
+ *
+ * Elements методы:
+ *
  * outerHtml - Внешний HTML of all matched elements.
  * html - Внутренний  HTML of all matched elements.
+ * get(0) -
+ * size -
+ * text -
+ * remove -
+ * attr -
  *
  *
  * Селекторы:
@@ -32,7 +40,7 @@ public class Main {
         Document document = Jsoup.parse(file, "UTF-8", "hh.ru");
 
 //        getElementsByTag
-//                findFirstElementByTagName
+//        findFirstElementByTagName
 
         //<h1>Работа найдется для каждого</h1>
         Elements h1 = document.select("h1");
@@ -62,7 +70,7 @@ public class Main {
         //  Поиск вакансий
         //</div>
         Elements divHeader = document.select("body > div:nth-child(1) :not(h1)");
-        System.out.println(divHeader.outerHtml());
+        //System.out.println(divHeader.outerHtml());
 
 
         //<div class="content">
@@ -79,12 +87,15 @@ public class Main {
         Elements contentElem = document.select("body > div.content");
         //System.out.println(contentElem.outerHtml());
 
+
         //<div id="123">
         // Компании дня
         //</div>
         Elements idElem = document.select("#123");
         //System.out.println(idElem);
 
+        Element image = document.select("body > div.footer > img").get(1);
+        System.out.println(image.attr("src"));
 
     }
 
