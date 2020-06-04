@@ -2,11 +2,21 @@ package libs.jsoup;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.File;
 import java.io.IOException;
 
+
+/**
+ * outerHtml - Внешний HTML of all matched elements.
+ * html - Внутренний  HTML of all matched elements.
+ *
+ *
+ * Селекторы:
+ * https://www.w3schools.com/cssref/css_selectors.asp
+ */
 public class Main {
 
     public static void main(String[] args) throws IOException {
@@ -24,13 +34,52 @@ public class Main {
 //        getElementsByTag
 //                findFirstElementByTagName
 
+        //<h1>Работа найдется для каждого</h1>
+        Elements h1 = document.select("h1");
+        //System.out.println(h1);
 
         Elements titleElem = document.select("head > title");
-        System.out.println(titleElem.text());
+        //System.out.println(titleElem.html());
 
+        //Все div
+        Elements divs = document.select("body > div");
+        //System.out.println(divs.outerHtml());
+
+        //<div class="header">
+        //  <h1>Работа найдется для каждого</h1>
+        //  <div>
+        //    Поиск вакансий
+        //  </div>
+        //</div>
+        Elements firstDiv = document.select("body > div:nth-child(1)");
+        //System.out.println(firstDiv.outerHtml());
+
+        Element firstDiv2 = document.select("body > div").first();
+//        System.out.println(firstDiv2.outerHtml());
+
+
+        //<div>
+        //  Поиск вакансий
+        //</div>
+        Elements divHeader = document.select("body > div:nth-child(1) :not(h1)");
+        //System.out.println(divHeader.outerHtml());
+
+
+        //<div class="content">
+        //  <div>
+        //    Вакансии дня
+        //  </div>
+        //  <div>
+        //    Компании дня
+        //  </div>
+        //  <div>
+        //    Работа из дома
+        //  </div>
+        //</div>
         Elements contentElem = document.select("body > div.content");
-        System.out.println("content:\n" + contentElem.text());
-        System.out.println("content:\n" + contentElem.html());
+        System.out.println(contentElem.outerHtml());
+
+
     }
 
 
