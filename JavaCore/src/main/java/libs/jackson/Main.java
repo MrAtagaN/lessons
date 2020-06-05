@@ -2,8 +2,10 @@ package libs.jackson;
 
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -12,7 +14,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import static com.fasterxml.jackson.core.JsonParser.Feature.ALLOW_SINGLE_QUOTES;
+import static com.fasterxml.jackson.core.JsonParser.Feature.*;
+import static com.fasterxml.jackson.core.JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES;
 
 /**
  * {@link JsonNode} - Абстрактный класс. Обобщенный элемент json
@@ -144,5 +147,22 @@ public class Main {
         String json = objectMapper.writeValueAsString(person);
         System.out.println("s = " + json);
 
+    }
+
+    private static void config() {
+        new ObjectMapper()
+                .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+                .setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY)
+                .disable(SerializationFeature.FAIL_ON_EMPTY_BEANS)
+                .enable(ALLOW_UNQUOTED_FIELD_NAMES)
+                .enable(DeserializationFeature.USE_JAVA_ARRAY_FOR_JSON_ARRAY)
+                .enable(SerializationFeature.WRAP_EXCEPTIONS)
+                .enable(DeserializationFeature.WRAP_EXCEPTIONS)
+                .enable(DeserializationFeature.READ_ENUMS_USING_TO_STRING)
+                .enable(ALLOW_UNQUOTED_CONTROL_CHARS)
+                .enable(ALLOW_UNQUOTED_FIELD_NAMES)
+                .enable(ALLOW_SINGLE_QUOTES)
+                .enable(DeserializationFeature.USE_LONG_FOR_INTS)
+                .findAndRegisterModules();
     }
 }
