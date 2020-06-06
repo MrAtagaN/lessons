@@ -27,10 +27,14 @@ public class Main {
 
         Option<String> noneOption = Option.of(null);
         Option<String> someOption = Option.of("val");
+        someOption.peek(option -> {
+            System.out.println(option);
+        });
 
         System.out.println(noneOption);
         System.out.println(someOption);
         System.out.println(noneOption.getOrElse("baeldung"));
+
     }
 
 
