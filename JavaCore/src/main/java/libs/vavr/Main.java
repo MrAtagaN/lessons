@@ -1,5 +1,6 @@
 package libs.vavr;
 
+import io.vavr.Lazy;
 import io.vavr.Tuple;
 import io.vavr.Tuple2;
 import io.vavr.Tuple3;
@@ -16,11 +17,14 @@ public class Main {
         turple2();
         turple3();
         tryClass();
+        lazy();
     }
 
 
 
     private static void option() {
+        System.out.println("\n=== option ===");
+
         Option<String> noneOption = Option.of(null);
         Option<String> someOption = Option.of("val");
 
@@ -45,8 +49,26 @@ public class Main {
     }
 
     private static void tryClass() {
-        Try<Integer> result = Try.of(() -> 1 / 0);
+        System.out.println("\n=== tryClass ===");
 
+        Try<Integer> result = Try.of(() -> 1 / 0);
         System.out.println(result.isFailure());
+
+
+        Try<Integer> computation = Try.of(() -> 1 / 0);
+        int errorSentinel = computation.getOrElse(-1);
+        System.out.println(errorSentinel);// -1
+    }
+
+    private static void lazy() {
+        System.out.println("\n=== lazy ===");
+
+        Lazy<Double> lazy = Lazy.of(Math::random);
+        System.out.println(lazy.isEvaluated());
+
+        double val1 = lazy.get();
+        System.out.println(lazy.isEvaluated());
+
+        System.out.println(val1);
     }
 }
