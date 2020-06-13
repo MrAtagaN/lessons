@@ -28,6 +28,7 @@ import java.io.IOException;
  *
  *
  * Селекторы:
+ * https://jsoup.org/cookbook/extracting-data/selector-syntax
  * https://www.w3schools.com/cssref/css_selectors.asp
  */
 public class Main {
