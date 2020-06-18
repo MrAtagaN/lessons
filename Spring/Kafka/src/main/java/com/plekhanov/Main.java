@@ -3,6 +3,10 @@ package com.plekhanov;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ *
+ * https://docs.confluent.io/current/quickstart/ce-docker-quickstart.html
+ */
 @SpringBootApplication
 public class Main {
 

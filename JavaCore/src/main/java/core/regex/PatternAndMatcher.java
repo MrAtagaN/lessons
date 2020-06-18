@@ -9,9 +9,9 @@ import java.util.regex.Pattern;
 public class PatternAndMatcher {
 
     public static void main(String[] args) {
-        String text = "aaaaaaaa";
+        String text = "2020-12-12T24:10:12";
 
-        Pattern pattern = Pattern.compile("a");
+        Pattern pattern = Pattern.compile("\\d{4}-\\d\\d-\\d\\dT\\d\\d:\\d\\d:\\d\\d(.[\\d]{1,6})?(([+\\-]\\d\\d:\\d\\d)|Z)?");
         Matcher matcher = pattern.matcher(text);
         while (matcher.find()) {
             System.out.println(matcher.group(0));
