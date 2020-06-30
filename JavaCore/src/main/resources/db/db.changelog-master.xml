@@ -5,23 +5,23 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <preConditions>
-        <dbms type="sqlite"/>
-    </preConditions>
+
+    <property name="endDelimiter" value=";"/>
+    <property name="dbms" value="sqlite"/>
 
 
     <changeSet id="0" author="plekhanov">
-        <sqlFile dbms="sqlite"
+        <sqlFile dbms="${dbms}"
                  encoding="utf8"
-                 endDelimiter=";"
+                 endDelimiter="${endDelimiter}"
                  relativeToChangelogFile="true"
                  splitStatements="true"
                  stripComments="true"
                  path="01-create-table-users.sql"/>
         <rollback>
-            <sqlFile dbms="sqlite"
+            <sqlFile dbms="${dbms}"
                      encoding="utf8"
-                     endDelimiter=";"
+                     endDelimiter="${endDelimiter}"
                      relativeToChangelogFile="true"
                      splitStatements="true"
                      stripComments="true"
