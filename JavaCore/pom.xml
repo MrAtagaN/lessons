@@ -26,6 +26,15 @@
                     <target>8</target>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <version>3.6.3</version>
+                <configuration>
+                    <propertyFile>${project.basedir}/src/main/resources/liquibase.properties</propertyFile>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
