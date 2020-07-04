@@ -7,11 +7,13 @@
 
 
     <property name="endDelimiter" value=";"/>
-    <property name="dbms" value="sqlite"/>
 
+    <preConditions>
+        <dbms type="sqlite"/>
+    </preConditions>
 
     <changeSet id="0" author="plekhanov">
-        <sqlFile dbms="${dbms}"
+        <sqlFile
                  encoding="utf8"
                  endDelimiter="${endDelimiter}"
                  relativeToChangelogFile="true"
@@ -19,7 +21,7 @@
                  stripComments="true"
                  path="01-create-table-users.sql"/>
         <rollback>
-            <sqlFile dbms="${dbms}"
+            <sqlFile
                      encoding="utf8"
                      endDelimiter="${endDelimiter}"
                      relativeToChangelogFile="true"
