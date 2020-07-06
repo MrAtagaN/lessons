@@ -1,8 +1,8 @@
-kubectl get componentstatuses - Показать Состояние kubernates cluster
+kubectl get componentstatuses - Показать Состояние kubernetes cluster
 
-kubectl cluster-info - Показать информацию о kubernates cluster
+kubectl cluster-info - Показать информацию о kubernetes cluster
 
-kubectl get nodes - Показать все серверы kubernates cluster
+kubectl get nodes - Показать все серверы kubernetes cluster
 
 kubectl get pods - Показать все поды
     --show-labels  дополнительный столбец с метками
@@ -26,6 +26,10 @@ kubectl get rs ( или replicaset ) - Показывает replica set'ы
 kubectl get ds - Показывает daemonSet'ы
 
 kubectl get node - Показывает узлы
+
+kubectl get svc - Показывает сервисы (службы)
+
+kubectl get ingress - Показывает ingress
 
 kubectl get job - Показывает объекты заданий
 

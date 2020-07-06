@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: my-ingress
+spec:
+  rules:
+  - host: my-example.com    # обращаясь по этому адресу запрос будет перенаправлен в указанную службу
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: my-app-service      # имя службы куда будет перенаправлен запрос,
+          servicePort: 777                 # на этот порт
+
+
+          # необходимо прописать соответствие ip и хоста в файлике C:\Windows\System32\drivers\etc
+          # пример: 192.168.99.103 my-example.com

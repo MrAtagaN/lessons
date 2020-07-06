@@ -1,15 +1,21 @@
-minikube stop - Остановить VM c kubernates cluster
+minikube stop - Остановить VM c kubernetes cluster
 
-minikube start - Создать и запустить kubernates cluster
+minikube start - Создать и запустить kubernetes cluster
     --memory размер оперативной памяти
     --disk размер жесткого диска
     --cpus количество процессоров
     -p имя
+    --vm-driver=<имя драйвера> - запустить кластер используя указаный драйвер виртуализации (virtualbox, hyperv, docker и другие)
 
-minikube ssh - Залогиниться на VM c kubernates cluster
+minikube ssh - Залогиниться на VM c kubernetes cluster
 
-minikube delete - Удалить VM c kubernates cluster
+minikube delete - Удалить VM c kubernetes cluster
 
 minikube version - Версия minikube
 
 minikube dashboard - открыть в браузере web страницу с панелью управления кластером
+
+minikube addons list - выводит список всех настроек
+
+minikube addons enable <имя настройки> - включает настройку
+

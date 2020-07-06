@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-loadbalancer # имя сервиса
+spec:
+  type: LoadBalancer    # для создания службы с типом loadBalancer нужно указать тут тип LoadBalancer
+  ports:
+    - port: 888       # порт по которуму будет доступна служба
+      targetPort: 80  # порт куда служба будет перенаправлять запросы на модули являющиеся частью службы
+  selector:
+    tier: frontend     # все модули с этой меткой будут являтся частью службы (не путать метку с именем модуля)
+
+
+
+    ## тип LoadBalancer предоставляет внешний ip
