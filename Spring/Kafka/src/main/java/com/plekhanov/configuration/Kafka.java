@@ -174,7 +174,6 @@ public class Kafka {
             props.put(SslConfigs.SSL_KEYSTORE_LOCATION_CONFIG, sslKeystoreLocation);
             props.put(SslConfigs.SSL_KEYSTORE_PASSWORD_CONFIG, sslKeystorePass);
             if (sslKeyPassword !=null && !sslKeyPassword.isEmpty()) {
-                System.out.println();
                 props.put(SslConfigs.SSL_KEY_PASSWORD_CONFIG, sslKeyPassword);
             }
         }

@@ -29,21 +29,17 @@ public class Main {
     public CommandLineRunner commandLineRunner(ApplicationContext context) {
         return (args) -> {
             context.getBean(KafkaProducer.class).send("{\n" +
-                    "  \"messageId\" : 10000001,\n" +
+                    "  \"messageId\" : 163016,\n" +
                     "  \"messageName\" : \"ESB_FS_HANDLER_REQ\",\n" +
-                    "  \"userChannel\" : \"SBERBANK\",\n" +
+                    "  \"userChannel\" : \"SBERBANK_MESSENGER\",\n" +
                     "  \"nextSystem\" : \"UNDEFINED\",\n" +
-                    "  \"handlerName\" : \"AI_HANDLER\",\n" +
+                    "  \"handlerName\" : \"ESB_FS_HANDLER\",\n" +
                     "  \"uuid\" : {\n" +
                     "    \"userChannel\" : \"SBERBANK_MESSENGER\",\n" +
-                    "    \"userId\" : \"6dcac2c7b0becb60feb60ad0738e6029\",\n" +
-                    "    \"chatId\" : \"329599772\"\n" +
+                    "    \"userId\" : \"32\",\n" +
+                    "    \"chatId\" : \"96221\"\n" +
                     "  },\n" +
                     "  \"payload\" : {\n" +
-                    "    \"requestType\": \"ESB_MQ_SPASIBO_CLIENT\",\n" +
-                    "    \"epkId\": \"203483208\",\n" +
-                    "    \"showBonusBalance\": \"true\",\n" +
-                    "    \"timeDependentAttributes\":[\"PURCHASED_LEVEL\", \"OWI_LEVEL\",\"MIN_LEVEL\",\"LEVEL2\"]\n" +
                     "  }\n" +
                     "}") ;
         };
