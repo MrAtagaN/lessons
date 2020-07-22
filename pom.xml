@@ -25,6 +25,7 @@
         <module>JavaScript</module>
 
         <module>Spring</module>
+        <module>Soap</module>
     </modules>
 
 </project>
