@@ -31,5 +31,15 @@
         </rollback>
     </changeSet>
 
+    <changeSet id="1" author="plekhanov">
+        <sqlFile dbms="${dbms}"
+                 encoding="utf8"
+                 endDelimiter="${endDelimiter}"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true"
+                 path="02-create-table-products.sql"/>
+    </changeSet>
+
 
 </databaseChangeLog>

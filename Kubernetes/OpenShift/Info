@@ -1,4 +1,4 @@
-oc login <хост:порт> --token=<токен> - залогинится на сервере OpenShift
+oc login --server=<хост:порт> --insecure-skip-tls-verify --token=<токен>  - залогинится на сервере OpenShift
 
 oc project - имя текущего проекта
 
@@ -9,3 +9,9 @@ oc describe <имя ресурса> - описание ресурса
 oc api-resources - список api ресурсов на сервере
 
 oc apply -f <путь к файлу .yml> - загрузить файл деплоя
+
+oc delete -f <путь к файлу .yml> --ignore-not-found=true  -
+
+oc create -f <путь к файлу .yml> -
+
+oc patch <object_type> <object_name> -p <changes> - изменение одного параметра в объекте

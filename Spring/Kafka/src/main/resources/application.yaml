@@ -1,7 +1,7 @@
 kafka:
   bootstrapService: localhost:9092
   producer:
-    topic: bpsTopic
+    topic: paTopic-local
     groupId: test-group
     blockTimeMs: 2000 # default 60000
     requestTimeout: 500

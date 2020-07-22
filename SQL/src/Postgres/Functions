@@ -1,7 +1,20 @@
+МАССИВ:
+
 array_position(<массив>,<элемент>) - возвращает позицию элемента в массиве
 
 array_positions(<массив>,<элемент>) - возвращает позиции эдеементов в массиве
 
+
+ВРЕМЯ:
+
+current_timestamp + (:param * interval '1 minute') - возвращает текущую даиу и время, плюс :param минут
+
+(current_timestamp at time zone 'UTC') - время в зоне
+
+DATE_PART('day', current_timestamp) - DATE_PART('day', <column>) - интервал
+
+
+ТЕКСТ:
 
 LIKE - поиск по шаблону.  _ - любой символ в шаблоне, % - любая последовательность символов в шаблоне
 
