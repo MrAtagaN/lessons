@@ -29,11 +29,11 @@ public class Main {
     public CommandLineRunner commandLineRunner(ApplicationContext context) {
         return (args) -> {
             context.getBean(KafkaProducer.class).send("{\n" +
-                    "  \"messageId\" : 163016,\n" +
+                    "  \"messageId\" : 163017,\n" +
                     "  \"messageName\" : \"ESB_FS_HANDLER_REQ\",\n" +
                     "  \"userChannel\" : \"SBERBANK_MESSENGER\",\n" +
                     "  \"nextSystem\" : \"UNDEFINED\",\n" +
-                    "  \"handlerName\" : \"ESB_FS_HANDLER\",\n" +
+                    " \"handlerName\" : \"ESB_FS_HANDLER\",\n" +
                     "  \"uuid\" : {\n" +
                     "    \"userChannel\" : \"SBERBANK_MESSENGER\",\n" +
                     "    \"userId\" : \"32\",\n" +
