@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.kafka.annotation.EnableKafka;
 
 /**
  * Для запуска Kafka в контейнере Docker выполнить первый шаг:
@@ -14,7 +15,11 @@ import org.springframework.context.annotation.Bean;
  * Для просмотра сообщений в Kafka можно использовать клиент Kafka Tool:
  * https://www.kafkatool.com/
  * при подключении во вкладке advanced, в поле bootstrap servers указать:  localhost:29092,localhost:9092
+ *
+ * TODO проверить следующую ссылку
+ * https://hub.docker.com/r/bitnami/kafka/
  */
+@EnableKafka
 @SpringBootApplication
 public class Main {
 
