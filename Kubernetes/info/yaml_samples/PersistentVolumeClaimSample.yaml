@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mongodb-pvc
+spec:
+  # storageClassName: my-custom-storage Пишем эту строку если хотим чтобы заявка получила PersistentVolume с помощю указанного storageClass
+  resources:
+    requests:
+      storage: 1Gi
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: "" # пишем эту строку если хотим чтобы заявка не использовала какой либо storageClass

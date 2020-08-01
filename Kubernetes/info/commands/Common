@@ -35,6 +35,12 @@ kubectl get job - Показывает объекты заданий
 
 kubectl get ns - Показывает пространства имён
 
+kubectl get pv - Показывает все PersistentVolume
+
+kubectl get pvc - Показывает все PersistentVolumeClaim
+
+kubectl get sc - Показывает все StorageClass
+
 kubectl run <имя пода/имя контроллера репликаций>
     --generator=run-pod/v1 (Создать под)  или   --generator=run/v1 (Создать контроллер репликаций, контроллер репликаций
                                                   создаёт поды с именем <имя контроллера репликаций + рандомный суффикс)

@@ -8,13 +8,31 @@ metadata:
     tier: frontend
     owner: AtagaN
 spec:
+  volumes:              # объявляем вольюмы
+    - name: html         # название
+      emptyDir: {}       # тип
+    - name: mongodb-data
+      persistentVolumeClaim:   #  чтобы примонтировать persistentVolume, ссылаемся на заявку (persistentVolumeClaim)
+        claimName: mongodb-pvc # которая ссылается на persistentVolume  (mongodb-pvc имя заявки)
   containers:
     - name: container-web   # имя контейнера
       image: nginx:latest   # образ по которому создаётся контейнер
+      volumeMounts:
+        - name: html
+          mountPath: /usr/share/nginx/html
+          readOnly: true
       ports:
         - containerPort: 80   # непонятно зачем ??
 
     - name: container-api
       image: tomcat:8.5.38
+      volumeMounts:
+        - name: html              # имя тома
+          mountPath: /var/htdocs  # куда примаунтить
       ports:
         - containerPort: 8080
+#      readinessProbe:          проверка готовности - если модуль не проходит проверку готовности
+#        exec:                  на него не будут посылаться запросы
+#          command:
+#          - ls             сделать команду -ls  -> вывелся путь /var/ready
+#          - /var/ready
