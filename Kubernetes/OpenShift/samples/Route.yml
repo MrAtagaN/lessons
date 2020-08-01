@@ -1,0 +1,13 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: umb
+spec:
+  host: umb-ci00157040-dev-erkcdev.apps.test-ose.ca.sbrf.ru
+  port:
+    targetPort: port8081
+  to:
+    kind: Service
+    name: umb
+    weight: 100
+  wildcardPolicy: None
