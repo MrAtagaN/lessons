@@ -15,3 +15,7 @@ spec:
 
           # необходимо прописать соответствие ip и хоста в файлике C:\Windows\System32\drivers\etc
           # пример: 192.168.99.103 my-example.com
+          # ip адресс - адресс ingress (kubectl get ingress), чтобы он был неодходиио включить аддон на миникубе
+          # minikube addons enable ingress
+          # для включения аддона нодо отключить hyper-v в програмных компонентах и запустить миникуб minikube start --vm=true
+          # ip адресс ингреса появляется не сразу

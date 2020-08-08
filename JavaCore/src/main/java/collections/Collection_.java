@@ -35,7 +35,6 @@ import java.util.List;
  * size
  * stream
  * toArray
- * toArray
  *
  */
 public class Collection_ {
