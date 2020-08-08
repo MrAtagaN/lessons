@@ -22,6 +22,11 @@ import org.springframework.context.annotation.Configuration;
 public class Main {
     public static void main(String[] args) {
         SpringApplication.run(Main.class, args);
+
+//        без сервера
+//        new SpringApplicationBuilder(Main.class)
+//                .web(WebApplicationType.NONE) // .REACTIVE, .SERVLET
+//                .run(args);
     }
 
     //TODO проходится тема:
