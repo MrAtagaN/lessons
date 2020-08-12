@@ -2,8 +2,9 @@ package com.plekhanov;
 
 import com.plekhanov.service.KafkaProducer;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
+import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.kafka.annotation.EnableKafka;
@@ -24,7 +25,14 @@ import org.springframework.kafka.annotation.EnableKafka;
 public class Main {
 
     public static void main(String[] args) {
-        SpringApplication.run(Main.class, args);
+        long before = System.currentTimeMillis();
+
+        new SpringApplicationBuilder(Main.class)
+                .web(WebApplicationType.NONE)
+                .run(args);
+
+        long after = System.currentTimeMillis();
+        System.out.println("=======================> time to start: " + (after - before));
     }
 
     /**
