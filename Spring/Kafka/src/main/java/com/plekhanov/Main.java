@@ -30,7 +30,7 @@ public class Main {
         ConfigurableApplicationContext run = new SpringApplicationBuilder(Main.class)
                 .web(WebApplicationType.NONE)
                 .run(args);
-        System.exit(SpringApplication.exit(run));
+       // System.exit(SpringApplication.exit(run));
     }
 
     /**

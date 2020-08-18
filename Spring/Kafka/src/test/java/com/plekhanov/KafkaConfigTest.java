@@ -17,7 +17,7 @@ import java.util.concurrent.ExecutionException;
 @RunWith(SpringRunner.class)
 @EmbeddedKafka(topics = {"test-topic"}, partitions = 1)
 @SpringBootTest
-public class KafkaTest {
+public class KafkaConfigTest {
 
     public static final String REQUEST_MESSAGE = "{testMessage}";
 

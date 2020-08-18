@@ -14,13 +14,14 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.config.KafkaListenerContainerFactory;
 import org.springframework.kafka.core.*;
+import org.springframework.kafka.listener.AbstractMessageListenerContainer;
 import org.springframework.kafka.listener.ConcurrentMessageListenerContainer;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
-public class Kafka {
+public class KafkaConfig {
 
     /*************
      * Producer
@@ -118,7 +119,7 @@ public class Kafka {
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         props.put(ProducerConfig.REQUEST_TIMEOUT_MS_CONFIG, requestTimeout);
         if (isEnableKerberos) {
-            props.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, sslProtocol);
+            props.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, kerberosProtocol);
             props.put(SaslConfigs.SASL_KERBEROS_SERVICE_NAME, kerberosServiceName);
         }
         if(isEnabledSsl) {
@@ -128,7 +129,6 @@ public class Kafka {
             props.put(SslConfigs.SSL_KEYSTORE_LOCATION_CONFIG, sslKeystoreLocation);
             props.put(SslConfigs.SSL_KEYSTORE_PASSWORD_CONFIG, sslKeystorePass);
             if (sslKeyPassword !=null && !sslKeyPassword.isEmpty()) {
-                System.out.println();
                 props.put(SslConfigs.SSL_KEY_PASSWORD_CONFIG, sslKeyPassword);
             }
         }
@@ -163,8 +163,9 @@ public class Kafka {
         props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, enableAutoCommit);
         props.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, maxPollRecords);
         props.put(ConsumerConfig.HEARTBEAT_INTERVAL_MS_CONFIG, heartbeatIntervalMs);
+        props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, autoOffsetReset);
         if (isEnableKerberos) {
-            props.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, sslProtocol);
+            props.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, kerberosProtocol);
             props.put(SaslConfigs.SASL_KERBEROS_SERVICE_NAME, kerberosServiceName);
         }
         if(isEnabledSsl) {
@@ -190,6 +191,8 @@ public class Kafka {
         ConcurrentKafkaListenerContainerFactory<Object, Object> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory());
         factory.setConcurrency(threads);
+        factory.getContainerProperties().setAckMode(AbstractMessageListenerContainer.AckMode.BATCH);
+        factory.getContainerProperties().setAckOnError(false);
         factory.getContainerProperties().setPollTimeout(pollTimeMs);
         factory.setBatchListener(true);
         return factory;
