@@ -11,17 +11,17 @@ kafka:
     bufferMemory: 33554432 # default 32 * 1024 * 1024 (33554432)
     retries: 0 # default 0
   consumer:
-    topic: test-topic
+    topic: paTopic-local
     autoCommitIntervalMs: 500
     sessionTimeoutMs: 30000
     pollTimeMs: 500
     maxPollTimeMs: 10000
-    groupId: test-group
-    enableAutoCommit: true
+    groupId: test-group3
+    enableAutoCommit: false
     threads: 10
     maxPollRecords: 500
     heartbeatIntervalMs: 3000 # default 3000
-    autoOffsetReset: latest # default latest
+    autoOffsetReset: earliest # default latest - если для группы потребителей в кафка не указано последнее смещение
   security:
     kerberos:
       enabled: false

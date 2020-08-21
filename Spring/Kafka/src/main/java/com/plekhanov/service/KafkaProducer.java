@@ -21,6 +21,7 @@ public class KafkaProducer {
     }
 
     public ListenableFuture<SendResult<String, String>> send(String message) {
+        System.out.println("Send message in topic: " + topic + ", message: " + message);
         return kafkaTemplate.send(topic, message);
     }
 }
