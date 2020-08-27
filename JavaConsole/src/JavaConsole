@@ -1,6 +1,12 @@
 добавление сертификатов
 keytool -import -trustcacerts -keystore -noprompt "$JAVA_HOME/jre/lib/security/cacerts" -storepass changeit -alias <алиас для сертификата> -import -file <путь к сертификату>
 
+сгенерировать ключ и сертификат
+keytool -genkey -dname "cn=CLIENT" -alias truststorekey -keyalg RSA -keystore ./client-truststore.jks -keypass whatever -storepass whatever
+
+загрузить в keystore сертификат удостоверяющего центра
+keytool -import -keystore ./client-truststore.jks -file myca.crt -alias myca
+
 java -verbose - При запуске приложения пишет лог
 
 javac -xLint:all - Проверка кода на стиль и ошибки
