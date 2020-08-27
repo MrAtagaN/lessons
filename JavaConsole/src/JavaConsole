@@ -8,7 +8,8 @@ keytool -genkey -dname "cn=CLIENT" -alias <имя сертификата в keys
 keytool -import -keystore <путь до файла keystore.jks> -file <путь до сертификата> -alias <имя сертификата в keystore>
 
 посмотреть содержимое keystore
-keytool -list -keystore <путь до файла keystore>
+keytool -list -v -keystore <путь до файла keystore>
+    -v - подробная информация
 
 java -verbose - При запуске приложения пишет лог
 
