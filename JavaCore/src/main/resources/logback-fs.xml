@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true"> <!-- debug="true" -->
+
+    <!-- Application name -->
+    <property name="app" value="esbEs"/>
+    <!-- Path to logs folder -->
+    <property name="logsDir" value="./logs"/>
+    <!-- Base name of log files -->
+    <property name="baseName" value="${app}"/>
+    <!-- Full file name of log file (path + name) -->
+    <property name="fileName" value="${logsDir}/${baseName}"/>
+    <!-- Archive file name pattern -->
+    <property name="arcFileName" value="${logsDir}/${baseName}"/>
+    <!-- Archive file name suffix -->
+    <property name="fileSfx" value="-%d{yyyy-MM-dd}.%i"/>
+    <!-- Messages pattern for console (with colors) -->
+    <property name="logPatternConsole"
+              value="%black(%d{ISO8601}) %highlight(%-5level) [%blue(%t)] %yellow(%C{1.}): %msg%n%throwable"/>
+    <!-- Messages pattern for files -->
+    <property name="logPattern" value="%d{ISO8601} %-5level [%t] %C{1.}: %msg%n%throwable"/>
+    <!-- Max arc file count -->
+    <property name="maxFileCount" value="50"/>
+    <!-- Max file size -->
+    <property name="maxFileSize" value="20MB"/>
+
+
+    <!--================= A P P E N D E R S =================-->
+
+    <!-- Log for messages about normal program execution -->
+    <appender name="INFO" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${fileName}-info.log</file>
+        <encoder>
+            <!-- <Pattern>%d %p %C{1.} [%t] %m%n</Pattern> -->
+            <Pattern>${logPattern}</Pattern>
+        </encoder>
+
+        <!-- only INFO messages -->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- rollover daily and when the file reaches max size -->
+            <fileNamePattern>${arcFileName}-info${fileSfx}.log.gz</fileNamePattern>
+            <maxHistory>${maxFileCount}</maxHistory>
+            <maxFileSize>${maxFileSize}</maxFileSize>
+        </rollingPolicy>
+    </appender>
+
+    <!-- Detailed log with debug messages -->
+    <appender name="DEBUG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${fileName}-debug.log</file>
+        <encoder>
+            <!-- <Pattern>%d %p %C{1.} [%t] %m%n</Pattern> -->
+            <Pattern>${logPattern}</Pattern>
+        </encoder>
+
+        <!-- DEBUG messages and higher -->
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+        </filter>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- rollover daily and when the file reaches max size -->
+            <fileNamePattern>${arcFileName}-debug${fileSfx}.log.gz</fileNamePattern>
+            <maxHistory>${maxFileCount}</maxHistory>
+            <maxFileSize>${maxFileSize}</maxFileSize>
+        </rollingPolicy>
+    </appender>
+
+    <!-- Log with warn and error messages -->
+    <appender name="ERRORS" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${fileName}-errors.log</file>
+        <encoder>
+            <!-- <Pattern>%d %p %C{1.} [%t] %m%n</Pattern> -->
+            <Pattern>${logPattern}</Pattern>
+        </encoder>
+
+        <!-- WARN and ERROR messages -->
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>WARN</level>
+        </filter>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- rollover daily and when the file reaches max size -->
+            <fileNamePattern>${arcFileName}-errors${fileSfx}.log.gz</fileNamePattern>
+            <maxHistory>${maxFileCount}</maxHistory>
+            <maxFileSize>${maxFileSize}</maxFileSize>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="SPRINGMESSAGES" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${fileName}-spring.log</file>
+        <encoder>
+            <!-- <Pattern>%d %p %C{1.} [%t] %m%n</Pattern> -->
+            <Pattern>${logPattern}</Pattern>
+        </encoder>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- rollover daily and when the file reaches max size -->
+            <fileNamePattern>${arcFileName}-spring${fileSfx}.log.gz</fileNamePattern>
+            <maxHistory>${maxFileCount}</maxHistory>
+            <maxFileSize>${maxFileSize}</maxFileSize>
+        </rollingPolicy>
+    </appender>
+
+
+    <!--================= L O G G E R S =================-->
+
+    <logger name="org.apache" level="ERROR">
+        <appender-ref ref="ERRORS"/>
+    </logger>
+    <logger name="org.apache.catalina" level="ERROR">
+        <appender-ref ref="ERRORS"/>
+    </logger>
+    <logger name="org.apache.kafka.common.config" level="DEBUG">
+        <appender-ref ref="DEBUG"/>
+    </logger>
+    <!--Вырубаем логе сканера Reflections-->
+    <logger name="org.reflections" level="OFF"/>
+    <!--Вырубаем логер спринга ConditionEvaluationReportLoggingListener-->
+    <logger name="org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener" level="OFF"/>
+    <logger name="org.springframework.web" level="ERROR"/>
+
+
+    <!-- LOG "org.springframework*" messages -->
+    <logger name="org.springframework" level="debug" additivity="false">
+        <appender-ref ref="SPRINGMESSAGES"/>
+        <appender-ref ref="ERRORS"/>
+    </logger>
+
+    <!-- LOG everything else -->
+    <root level="DEBUG">
+        <appender-ref ref="INFO"/>
+        <appender-ref ref="ERRORS"/>
+        <appender-ref ref="DEBUG"/>
+    </root>
+
+</configuration>
