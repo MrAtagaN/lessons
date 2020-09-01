@@ -36,6 +36,7 @@
                             <wsdlOptions>
                                 <wsdlOption>
                                     <wsdl>\src\main\resources\SoapServer.wsdl</wsdl>
+                                    <wsdlLocation>classpath:SoapServer.wsdl</wsdlLocation> <!--относительный путь в сгенерённых классах -->
                                 </wsdlOption>
                             </wsdlOptions>
                         </configuration>
