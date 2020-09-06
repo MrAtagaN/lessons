@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+
+    <session-factory>
+        <property name="connection.url">jdbc:sqlite:Hibernate/src/main/resources/Hibernate.db</property>
+        <property name="connection.driver_class">org.sqlite.JDBC</property>
+        <property name="connection.username"></property>
+        <property name="connection.password"></property>
+        <property name="show_sql">true</property>
+        <property name="dialect">org.hibernate.dialect.SQLiteDialect</property>
+        <property name="hbm2ddl.auto">create</property>
+
+        <!--    Таймзона    -->
+        <property name="hibernate.jdbc.time_zone">UTC</property>
+
+
+<!--        <mapping resource="user.cfg.xml"/>-->
+
+    </session-factory>
+
+</hibernate-configuration>
