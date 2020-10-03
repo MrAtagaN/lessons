@@ -35,6 +35,9 @@ public class Main {
 //                .run(args);
     }
 
-    //TODO проходится тема:
+    //TODO
+    // Курс по SpringBoot:
+    // https://www.baeldung.com/spring-boot
+    // проходится тема:
     // https://www.baeldung.com/spring-boot-annotations
 }
