@@ -7,17 +7,17 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * {@link SpringBootApplication} - состоит из трех аннотаций:
+ * Аннотация {@link SpringBootApplication} - состоит из трех аннотаций:
  *
- * {@link Configuration) -
+ * Аннотация {@link Configuration) -
  * Параметры:
  * proxyBeanMethods -
  *
- * {@link EnableAutoConfiguration} -
+ * Аннотация {@link EnableAutoConfiguration} -
  * Параметры:
  * exclude, excludeName - Не создавать бины автоконфигурации
  *
- * {@link ComponentScan} -
+ * Аннотация {@link ComponentScan} -
  * Параметры:
  * scanBasePackages, scanBasePackageClasses - сканирование пакетов для создания бинов
  *

@@ -7,13 +7,13 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * {@link ConditionalOnProperty} -
+ * Аннотация {@link ConditionalOnProperty} -
  *
  *
- * {@link ConditionalOnBean} -
+ * Аннотация {@link ConditionalOnBean} -
  *
  *
- * {@link ConditionalOnMissingBean} -
+ * Аннотация {@link ConditionalOnMissingBean} -
  *
  *
  *
