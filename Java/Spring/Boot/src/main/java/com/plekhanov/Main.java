@@ -13,18 +13,19 @@ import org.springframework.context.annotation.Configuration;
  * Аннотация {@link SpringBootApplication} - состоит из трех аннотаций:
  *
  * Аннотация {@link Configuration) -
- * Параметры:
- * proxyBeanMethods -
+ *     Параметры:
+ *     proxyBeanMethods -
  *
  * Аннотация {@link EnableAutoConfiguration} -
- * Параметры:
- * exclude, excludeName - Не создавать бины автоконфигурации
+ *     Параметры:
+ *     exclude, excludeName - Не создавать бины автоконфигурации
  *
- * Аннотация {@link ComponentScan} -
- * Параметры:
- * scanBasePackages, scanBasePackageClasses - сканирование пакетов для создания бинов
+ * Аннотация {@link ComponentScan} - автоматическое создание bean-компонентов для каждого класса, аннотированного с
+ *     помощью @Component, @Service, @Controller, @RestController, @Repository, и добавления их в контейнер Spring
+ *     Параметры:
+ *     scanBasePackages, scanBasePackageClasses - сканирование пакетов для создания бинов
  *
- * Аннотация {@link EntityScan} -
+ * Аннотация {@link EntityScan} - Сканирует пакеты для регистрации Entity. Не создает бинов
  *
  * Аннотация {@link ConfigurationPropertiesScan} -
  *
