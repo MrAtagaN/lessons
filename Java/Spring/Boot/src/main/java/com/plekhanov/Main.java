@@ -39,5 +39,5 @@ public class Main {
     // Курс по SpringBoot:
     // https://www.baeldung.com/spring-boot
     // проходится тема:
-    // https://www.baeldung.com/spring-boot-annotations
+    // https://www.baeldung.com/spring-scheduling-annotations
 }
