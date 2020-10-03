@@ -12,7 +12,6 @@
         <module>Docker</module>
         <module>XML</module>
         <module>Git_and_Mercurial</module>
-        <module>Linux</module>
         <module>SQL</module>
         <module>Maven_and_Gradle</module>
         <module>JavaScript</module>
