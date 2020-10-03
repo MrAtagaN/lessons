@@ -3,6 +3,9 @@ package com.plekhanov;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
@@ -21,14 +24,22 @@ import org.springframework.context.annotation.Configuration;
  * Параметры:
  * scanBasePackages, scanBasePackageClasses - сканирование пакетов для создания бинов
  *
-
+ * Аннотация {@link EntityScan} -
+ *
+ * Аннотация {@link ConfigurationPropertiesScan} -
+ *
  *
  */
 @SpringBootApplication
+@EntityScan
+@ConfigurationPropertiesScan
 public class Main {
     public static void main(String[] args) {
-        SpringApplication.run(Main.class, args);
+        ConfigurableApplicationContext applicationContext = SpringApplication.run(Main.class, args);
 
+//        выключение приложения
+//        SpringApplication.exit(applicationContext);
+//
 //        без сервера
 //        new SpringApplicationBuilder(Main.class)
 //                .web(WebApplicationType.NONE) // .REACTIVE, .SERVLET
@@ -39,5 +50,13 @@ public class Main {
     // Курс по SpringBoot:
     // https://www.baeldung.com/spring-boot
     // проходится тема:
-    // https://www.baeldung.com/spring-boot-starters
+    // https://www.baeldung.com/properties-with-spring
+
+
+
+    //TODO
+    // Изучить аннотации
+    // @InitBinder
+    // @EntityScan
+    // @ConfigurationPropertiesScan
 }
