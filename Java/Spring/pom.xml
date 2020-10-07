@@ -16,9 +16,10 @@
         <module>Security</module>
         <module>AOP</module>
         <module>MVC</module>
-        <module>Core</module>
+        <module>Boot</module>
         <module>Data_jdbc</module>
         <module>Kafka</module>
+        <module>Rest</module>
     </modules>
 
 
