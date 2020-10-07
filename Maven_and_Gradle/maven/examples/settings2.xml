@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<settings>
+    <mirrors>
+        <mirror>
+            <id>central</id>
+            <url>http://</url>
+            <mirrorOf>central</mirrorOf>
+        </mirror>
+    </mirrors>
+
+    <activeProfiles>
+        <activeProfile>default</activeProfile>
+    </activeProfiles>
+
+    <!--    mvn clean package -s settings.xml -DNEXUS_USERNAME=your_login -DNEXUS_PASSWORD=your_password -->
+    <servers>
+        <server>
+            <id>central</id>
+            <username>${NEXUS_USERNAME}</username>
+            <password>${NEXUS_PASSWORD}</password>
+        </server>
+        <server>
+            <id>repo_spring_proxy</id>
+            <username>${NEXUS_USERNAME}</username>
+            <password>${NEXUS_PASSWORD}</password>
+        </server>
+        <server>
+            <id>Friend_thirdparty</id>
+            <username>${NEXUS_USERNAME}</username>
+            <password>${NEXUS_PASSWORD}</password>
+        </server>
+    </servers>
+
+    <profiles>
+        <profile>
+            <id>default</id>
+            <repositories>
+                <repository>
+                    <id>repo_spring_proxy</id>
+                    <name>repo_spring_proxy</name>
+                    <url>http://</url>
+                </repository>
+                <repository>
+                    <id>Friend_thirdparty</id>
+                    <name>Friend_thirdparty</name>
+                    <url>http://</url>
+                </repository>
+                <repository>
+                    <id>central</id>
+                    <name>central</name>
+                    <url>http://</url>
+                </repository>
+            </repositories>
+
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>central</id>
+                    <name>central</name>
+                    <url>http://</url>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
+    </profiles>
+</settings>

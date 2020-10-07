@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>ru</groupId>
+    <artifactId>c</artifactId>
+    <version>01</version>
+    <packaging>pom</packaging>
+
+    <name>c</name>
+
+    <!-- Various information, not used by the build -->
+
+    <url>http://</url>
+    <organization>
+        <name></name>
+        <url>http://</url>
+    </organization>
+    <licenses>
+        <license>
+            <name></name>
+            <url>http:</url>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <name></name>
+            <organization></organization>
+            <url>http://</url>
+        </developer>
+    </developers>
+
+    <modules>
+        <module>modules</module>
+    </modules>
+
+    <scm>
+        <url>https://</url>
+        <connection>scm:git:https://</connection>
+        <developerConnection>scm:git:https://</developerConnection>
+    </scm>
+
+    <issueManagement>
+        <system>wiki</system>
+        <url>https://</url>
+    </issueManagement>
+
+    <ciManagement>
+        <system>Jenkins</system>
+        <url>https://</url>
+    </ciManagement>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+
+        <slf4jVersion>1.7.25</slf4jVersion>
+        <log4jVersion>2.8.2</log4jVersion>
+        <weld-logger>1.0.0-CR2</weld-logger>
+
+        <lmax-disruptor>3.3.7</lmax-disruptor>
+
+        <jackson.core.version>2.9.6</jackson.core.version>
+
+        <commons-lang3>3.7</commons-lang3>
+        <commons-collections4>4.2</commons-collections4>
+        <commons-io>2.6</commons-io>
+        <commons-text>1.4</commons-text>
+
+        <cdi-api>2.0</cdi-api>
+        <javax.ws.rs-api>2.1</javax.ws.rs-api>
+        <javaee-api>8.0</javaee-api>
+        <jersey-common>2.27</jersey-common>
+        <httpclient>4.5.6</httpclient>
+
+        <junit.jupiter.version>5.1.0-M1</junit.jupiter.version>
+        <junit.vintage.version>5.1.0-M1</junit.vintage.version>
+        <junit.platform.version>1.1.0-M1</junit.platform.version>
+        <awaitility>1.7.0</awaitility>
+        <mockito-core>2.23.0</mockito-core>
+        <sonar-jacoco-listeners>5.0.1.12818</sonar-jacoco-listeners>
+        <arquillian-container-spi>1.4.0.Final</arquillian-container-spi>
+
+        <jacoco-maven-plugin>0.8.0</jacoco-maven-plugin>
+        <maven-compiler-plugin>3.7.0</maven-compiler-plugin>
+        <sonar-maven-plugin>3.0.1</sonar-maven-plugin>
+        <maven-dependency-plugin>3.0.2</maven-dependency-plugin>
+        <maven-assembly-plugin>3.1.0</maven-assembly-plugin>
+        <!--
+        doesn't work with older versions
+        -->
+        <maven-surefire-plugin>2.19.1</maven-surefire-plugin>
+
+        <apiguardian-api>1.0.0</apiguardian-api>
+
+        <hibernate-validator>6.0.11.Final</hibernate-validator>
+        <javax.el>3.0.0</javax.el>
+        <hibernate-validator-cdi>6.0.11.Final</hibernate-validator-cdi>
+
+        <guava>25.1-jre</guava>
+
+        <com.ibm.ws.runtime>8.5.5</com.ibm.ws.runtime>
+
+        <kafka-clients>2.1.0</kafka-clients>
+        <kafka>2.1.0</kafka>
+        <kafka_scala_version>kafka_2.12</kafka_scala_version>
+        <scala-library>2.12.4</scala-library>
+        <zookeeper>3.4.13</zookeeper>
+
+        <lombok.version>1.16.20</lombok.version>
+        <vavr.version>0.9.2</vavr.version>
+
+        <!--
+            there must be a compatibility between ignite and grid gain versions
+            https://www.gridgain.com/resources/download
+         -->
+        <gridgain-core>8.1.2</gridgain-core>
+        <gridgain-ultimate>8.1.2</gridgain-ultimate>
+        <ignite-indexing>2.1.4</ignite-indexing>
+        <ignite-slf4j>2.1.4</ignite-slf4j>
+
+        <ojdbc7>12.1.0.2</ojdbc7>
+        <hibernate-version>5.2.16.Final</hibernate-version>
+
+        <prometheus-client-version>0.4.0</prometheus-client-version>
+
+        <sonar.coverage.exclusions>
+            **/*Parameters*.java,
+            **/model/**/*.java,
+            **/*Holder.java
+        </sonar.coverage.exclusions>
+    </properties>
+
+</project>
