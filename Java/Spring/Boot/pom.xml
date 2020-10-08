@@ -18,13 +18,25 @@
 
     <dependencies>
 <!--  минимальная конфигурация для автоконфигурации -->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter</artifactId>-->
-<!--        </dependency>-->
+<!--       spring-boot                              -->
+<!--       spring-boot-autoconfigure                -->
+<!--       spring-boot-starter-logging              -->
+<!--       jakarta.annotation-api                   -->
+<!--       spring-core                              -->
+<!--       snakeyaml                                -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
 
 
 <!--   минимальная конфигурация для веб сервера     -->
+<!--        spring-boot-starter                     -->
+<!--        spring-boot-starter-json                -->
+<!--        spring-boot-starter-tomcat              -->
+<!--        spring-boot-starter-validation          -->
+<!--        spring-web                              -->
+<!--        spring-webmvc                           -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>

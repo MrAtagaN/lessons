@@ -10,3 +10,6 @@ server:
   port: 8081 #
   #servlet:
     # contextPath: /springbootapp  # prefix url
+  error:
+    whitelabel:
+      enabled: false
