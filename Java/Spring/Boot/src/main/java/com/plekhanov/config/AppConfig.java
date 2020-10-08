@@ -1,9 +1,14 @@
 package com.plekhanov.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.*;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.ConstructorBinding;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.PropertySources;
+import org.springframework.core.env.Environment;
 
 import javax.sql.DataSource;
 
@@ -30,16 +35,28 @@ import javax.sql.DataSource;
  *
  */
 @Configuration
-@PropertySource("")
+@PropertySources({
+        @PropertySource("classpath:application.yml"),
+        @PropertySource("classpath:application.yml")
+})
 //@ConditionalOnProperty
 //@ConditionalOnBean(DataSource.class)
 //@ConditionalOnMissingBean(DataSource.class)
 //@ConditionalOnClass(DataSource.class)
 //@ConditionalOnMissingClass("DataSource")
 //@ConditionalOnResource(resources = "classpath:mysql.properties")
+@ConfigurationProperties(prefix = "database")
+@ConstructorBinding //инжекция в конструктор
 public class AppConfig {
 
-    @Value( "${app.prop}" )
+    String url;
+    String username;
+    String password;
+
+    @Value( "${app.prop:defaultAppProp}" )
     private String appProp;
+
+    @Autowired
+    private Environment env; // переменные окружения
 
 }

@@ -1,7 +1,12 @@
+database:
+  url: jdbc:postgresql:/localhost:5432/instance
+  username: foo
+  password: bar
+
 app:
   prop: "prop"
 
 server:
   port: 8081 #
-  servlet:
-    # contextPath: /springbootapp  #
+  #servlet:
+    # contextPath: /springbootapp  # prefix url
