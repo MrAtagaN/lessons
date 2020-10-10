@@ -19,7 +19,7 @@
         <module>Boot</module>
         <module>Data_jdbc</module>
         <module>Kafka</module>
-        <module>Rest</module>
+        <module>Web</module>
     </modules>
 
 
