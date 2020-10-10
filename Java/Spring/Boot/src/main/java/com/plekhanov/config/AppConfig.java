@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.*;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.ConstructorBinding;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
@@ -45,13 +46,12 @@ import javax.sql.DataSource;
 //@ConditionalOnClass(DataSource.class)
 //@ConditionalOnMissingClass("DataSource")
 //@ConditionalOnResource(resources = "classpath:mysql.properties")
-@ConfigurationProperties(prefix = "database")
+@EnableConfigurationProperties(AdditionalProperties.class) //работает вместе с ConfigurationProperties
 @ConstructorBinding //инжекция в конструктор
 public class AppConfig {
 
-    String url;
-    String username;
-    String password;
+    @Autowired
+    private AdditionalProperties additionalProperties;
 
     @Value( "${app.prop:defaultAppProp}" )
     private String appProp;
