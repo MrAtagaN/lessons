@@ -1,11 +1,15 @@
 package com.plekhanov;
 
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.conn.ssl.TrustStrategy;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.ssl.SSLContextBuilder;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
@@ -14,6 +18,7 @@ import java.security.KeyManagementException;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.X509Certificate;
+import java.util.Set;
 
 
 /**
@@ -27,12 +32,21 @@ public class RestTemplate_ {
 
     public static void main(String[] args) throws NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
 
+        String postUrl = "https://postman-echo.com/post";
+        String getUrl = "https://postman-echo.com/get?foo1=bar1&foo2=bar2";
+
         RestTemplate restTemplate = restTemplate();
 
-        ResponseEntity<String> responseEntity = restTemplate.getForEntity("https://postman-echo.com/get?foo1=bar1&foo2=bar2", String.class);
+        ResponseEntity<String> responseEntity = restTemplate.getForEntity(getUrl, String.class);
         log(responseEntity);
-        ResponseEntity<String> responseEntity2 = restTemplate.postForEntity("https://postman-echo.com/post", "TEST BODY", String.class);
+        ResponseEntity<String> responseEntity2 = restTemplate.postForEntity(postUrl, "TEST BODY", String.class);
         log(responseEntity2);
+
+        Set<HttpMethod> optionsForAllow = restTemplate.optionsForAllow(postUrl);
+        System.out.println(optionsForAllow);
+
+        HttpHeaders httpHeaders = restTemplate.headForHeaders(getUrl);
+        System.out.println(httpHeaders);
     }
 
 
@@ -63,6 +77,19 @@ public class RestTemplate_ {
 
         requestFactory.setHttpClient(httpClient);
         return new RestTemplate(requestFactory);
+    }
 
+
+    private ClientHttpRequestFactory getClientHttpRequestFactory() {
+        int timeout = 5000;
+        RequestConfig config = RequestConfig.custom()
+                .setConnectTimeout(timeout)
+                .setConnectionRequestTimeout(timeout)
+                .setSocketTimeout(timeout)
+                .build();
+        CloseableHttpClient client = HttpClientBuilder.create()
+                .setDefaultRequestConfig(config)
+                .build();
+        return new HttpComponentsClientHttpRequestFactory(client);
     }
 }
