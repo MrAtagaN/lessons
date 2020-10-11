@@ -17,11 +17,13 @@ import java.security.cert.X509Certificate;
 
 
 /**
+ * https://www.baeldung.com/rest-template
+ *
  * Методы restTemplate:
  *
  * Методы responseEntity:
  */
-public class RestTemplateApi {
+public class RestTemplate_ {
 
     public static void main(String[] args) throws NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
 
