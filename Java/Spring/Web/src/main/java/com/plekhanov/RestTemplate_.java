@@ -9,7 +9,6 @@ import org.apache.http.ssl.SSLContextBuilder;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
@@ -35,7 +34,7 @@ public class RestTemplate_ {
         String postUrl = "https://postman-echo.com/post";
         String getUrl = "https://postman-echo.com/get?foo1=bar1&foo2=bar2";
 
-        RestTemplate restTemplate = restTemplate();
+        RestTemplate restTemplate = getRestTemplateWithAuth();
 
         ResponseEntity<String> responseEntity = restTemplate.getForEntity(getUrl, String.class);
         log(responseEntity);
@@ -60,7 +59,7 @@ public class RestTemplate_ {
     /**
      * RestTemplate доверяющий всем сертификатам. Нужен для тестирования
      */
-    private static RestTemplate restTemplate() throws KeyStoreException, NoSuchAlgorithmException, KeyManagementException {
+    private static RestTemplate getRestTemplateWithAuth() throws KeyStoreException, NoSuchAlgorithmException, KeyManagementException {
         final TrustStrategy acceptingTrustStrategy = (X509Certificate[] chain, String authType) -> true;
 
         final SSLContext sslContext = SSLContextBuilder.create()
@@ -73,23 +72,22 @@ public class RestTemplate_ {
                 .setSSLSocketFactory(csf)
                 .build();
 
-        final HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory();
-
-        requestFactory.setHttpClient(httpClient);
+        final HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory(httpClient);
         return new RestTemplate(requestFactory);
     }
 
 
-    private ClientHttpRequestFactory getClientHttpRequestFactory() {
+    private RestTemplate getRestTemplateWithTimeout() {
         int timeout = 5000;
-        RequestConfig config = RequestConfig.custom()
+        final RequestConfig config = RequestConfig.custom()
                 .setConnectTimeout(timeout)
                 .setConnectionRequestTimeout(timeout)
                 .setSocketTimeout(timeout)
                 .build();
-        CloseableHttpClient client = HttpClientBuilder.create()
+        final CloseableHttpClient httpClient = HttpClientBuilder.create()
                 .setDefaultRequestConfig(config)
                 .build();
-        return new HttpComponentsClientHttpRequestFactory(client);
+        final HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory(httpClient);
+        return new RestTemplate(requestFactory);
     }
 }
