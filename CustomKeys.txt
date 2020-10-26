@@ -574,7 +574,7 @@ Researchtip="Learn Big Bad |cffffcc00V|roodoo"
 Researchhotkey=D
 
 [Otch]
-Hotkey=S
+Hotkey=A
 Tip=Summon |cffffcc00T|rauren Chieftain
 Revivetip=Revive |cffffcc00T|rauren Chieftain
 Awakentip=Revive |cffffcc00T|rauren Chieftain
