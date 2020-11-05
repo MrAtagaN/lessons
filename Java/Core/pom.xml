@@ -11,7 +11,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     
-    <artifactId>JavaCore</artifactId>
+    <artifactId>Core</artifactId>
     <build>
         <plugins>
             <plugin>

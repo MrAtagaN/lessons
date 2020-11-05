@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2014 sp1 (http://www.altova.com) by VOROBYEVA Anastasia (ZAO Raiffeisenbank) -->
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://www.raiffeisen.ru/esb/cnr/RBP/Document/v1" xmlns:ns="http://www.raiffeisen.ru/types/CustomField/v1" xmlns:ns1="http://www.raiffeisen.ru/types/Document/v1" xmlns:tn="http://www.raiffeisen.ru/types/Common/ESBError/v1" targetNamespace="http://www.raiffeisen.ru/esb/cnr/RBP/Document/v1">
+	<wsdl:types>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<xsd:import namespace="http://www.raiffeisen.ru/esb/cnr/RBP/Document/v1" schemaLocation="DMSElements.xsd"/>
+			<xsd:import namespace="http://www.raiffeisen.ru/types/Common/ESBError/v1" schemaLocation="types/ESBFault.xsd"/>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="ESBFault">
+		<wsdl:part name="parameter" element="tn:ESBFault"/>
+	</wsdl:message>
+	<wsdl:message name="CreateDocumentRequest">
+		<wsdl:part name="parameter" element="tns:CreateDocument"/>
+	</wsdl:message>
+	<wsdl:message name="CreateDocumentResponse">
+		<wsdl:part name="parameter" element="tns:CreateDocumentResponse"/>
+	</wsdl:message>
+	<wsdl:message name="GetLocalServerRequest">
+		<wsdl:part name="parameter" element="tns:GetLocalServer"/>
+	</wsdl:message>
+	<wsdl:message name="GetLocalServerResponse">
+		<wsdl:part name="parameter" element="tns:GetLocalServerResponse"/>
+	</wsdl:message>
+	<wsdl:message name="SendBarcodeDataRequest">
+		<wsdl:part name="parameter" element="tns:SendBarcodeData"/>
+	</wsdl:message>
+	<wsdl:message name="SendBarcodeDataResponse">
+		<wsdl:part name="parameter" element="tns:SendBarcodeDataResponse"/>
+	</wsdl:message>
+	<wsdl:message name="UpdateProfileRequest">
+		<wsdl:part name="parameter" element="tns:UpdateProfile"/>
+	</wsdl:message>
+	<wsdl:message name="UpdateProfileResponse">
+		<wsdl:part name="parameter" element="tns:UpdateProfileResponse"/>
+	</wsdl:message>
+	<wsdl:message name="GetDocumentRequest">
+		<wsdl:part name="parameter" element="tns:GetDocument"/>
+	</wsdl:message>
+	<wsdl:message name="GetDocumentResponse">
+		<wsdl:part name="parameter" element="tns:GetDocumentResponse"/>
+	</wsdl:message>
+	<wsdl:message name="CreateDictRecordRequest">
+		<wsdl:part name="parameter" element="tns:CreateDictRecord"/>
+	</wsdl:message>
+	<wsdl:message name="CreateDictRecordResponse">
+		<wsdl:part name="parameter" element="tns:CreateDictRecordResponse"/>
+	</wsdl:message>
+	<wsdl:message name="SearchDocumentsRequest">
+		<wsdl:part name="parameter" element="tns:SearchDocuments"/>
+	</wsdl:message>
+	<wsdl:message name="SearchDocumentsResponse">
+		<wsdl:part name="parameter" element="tns:SearchDocumentsResponse"/>
+	</wsdl:message>
+	<wsdl:message name="DeleteDocumentRequest">
+		<wsdl:part name="parameter" element="tns:DeleteDocument"/>
+	</wsdl:message>
+	<wsdl:message name="DeleteDocumentResponse">
+		<wsdl:part name="parameter" element="tns:DeleteDocumentResponse"/>
+	</wsdl:message>
+	<wsdl:message name="CreateVersionRequest">
+		<wsdl:part name="parameter" element="tns:CreateVersion"/>
+	</wsdl:message>
+	<wsdl:message name="CreateVersionResponse">
+		<wsdl:part name="parameter" element="tns:CreateVersionResponse"/>
+	</wsdl:message>
+	<wsdl:portType name="CCLDMS">
+		<wsdl:operation name="CreateDocument">
+			<wsdl:documentation>Создание документа в DMS</wsdl:documentation>
+			<wsdl:input message="tns:CreateDocumentRequest"/>
+			<wsdl:output message="tns:CreateDocumentResponse"/>
+			<wsdl:fault name="ESBFault" message="tns:ESBFault"/>
+		</wsdl:operation>
+		
+		
+		
+		<wsdl:operation name="GetDocument">
+			<wsdl:documentation>Получение одного документа</wsdl:documentation>
+			<wsdl:input message="tns:GetDocumentRequest"/>
+			<wsdl:output message="tns:GetDocumentResponse"/>
+			<wsdl:fault name="ESBFault" message="tns:ESBFault"/>
+		</wsdl:operation>
+		
+		
+		<wsdl:operation name="DeleteDocument">
+			<wsdl:documentation>Удаление документа в DMS</wsdl:documentation>
+			<wsdl:input message="tns:DeleteDocumentRequest"/>
+			<wsdl:output message="tns:DeleteDocumentResponse"/>
+			<wsdl:fault name="ESBFault" message="tns:ESBFault"/>
+		</wsdl:operation>
+		
+	</wsdl:portType>
+	<wsdl:binding name="CCLDMS" type="tns:CCLDMS">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="CreateDocument">
+			<soap:operation soapAction="http://www.raiffeisen.ru/esb/cnr/RBP/Document/v1"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="ESBFault"/>
+		</wsdl:operation>
+		
+		
+		
+		<wsdl:operation name="GetDocument">
+			<soap:operation soapAction="http://www.raiffeisen.ru/esb/cnr/RBP/Document/v1"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="ESBFault"/>
+		</wsdl:operation>
+		
+		
+		<wsdl:operation name="DeleteDocument">
+			<soap:operation soapAction="http://www.raiffeisen.ru/esb/cnr/RBP/Document/v1"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="ESBFault"/>
+		</wsdl:operation>
+		
+	</wsdl:binding>
+	<wsdl:service name="CCLDMS">
+		<wsdl:documentation>Компонент предназначен для выполнения различных операций с документами</wsdl:documentation>
+		<wsdl:port name="CCLDMSPort" binding="tns:CCLDMS">
+			<soap:address location="http://org.org"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

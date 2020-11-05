@@ -1,0 +1,24 @@
+{
+  "header": {
+    "ServiceName": "SrvGetSpasiboClientInfoRq",
+    "ServiceDescription": "description",
+    "ServiceVersion": "001",
+    "OperationName": "GetSpasiboClientInfo",
+    "SPName": "urn:sbrfsystems:99-asfm",
+    "SCName": "urn:sbrfsystems:99-vp",
+    "ServiceNamespace": "srv://sbg.sbr/federal",
+    "RqUID": "1de9814ae3dc9907bf8e52e01b769485",
+    "RqTm": "2020-04-06T13:07:19"
+  },
+  "body": {
+    "GetSpasiboClientInfoRq": {
+      "RqUID": "1de9814ae3dc9907bf8e52e01b769485",
+      "RqTm": "2020-04-06T13:07:19",
+      "SPName": "urn:sbrfsystems:99-vp",
+      "Identifier": {
+        "Id": "123456789",
+        "Type": "Something"
+      }
+    }
+  }
+}

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2014 sp1 (http://www.altova.com) by VOROBYEVA Anastasia (ZAO Raiffeisenbank) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.raiffeisen.ru/esb/cnr/RBP/Document/v1" targetNamespace="http://www.raiffeisen.ru/esb/cnr/RBP/Document/v1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.00.01">
+	<xs:annotation>
+		<xs:documentation>
+1.00.00	- inicial Version
+2.00.00 - Was changed parameters for  Jasper-reports (author - R.Yankov), Parameters for queue of files singled out  in separate type ct_MQFileReference
+2.00.01 - in "SearchDocumentsResponse" added field "searchOverLimit" boolean
+1.01.00 - Operation GetLocalServer added
+1.02.00 - Operation SendBarcodeData added
+	</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="CCLDMSSchema.xsd"/>
+	<xs:element name="CreateDocument" type="tns:ct_CreateDocumentRequest">
+		<xs:annotation>
+			<xs:documentation>Создание документа</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="CreateDocumentResponse" type="tns:ct_CreateDocumentResponse">
+		<xs:annotation>
+			<xs:documentation>Результат создания документа</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="GetLocalServer" type="tns:ct_GetLocalServerRequest">
+		<xs:annotation>
+			<xs:documentation>Поиск ближайшего сервера DMS</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="GetLocalServerResponse" type="tns:ct_GetLocalServerResponse">
+		<xs:annotation>
+			<xs:documentation>Ближайший сервер DMS</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="SendBarcodeData" type="tns:ct_SendBarcodeDataRequest">
+		<xs:annotation>
+			<xs:documentation>Отправка данных ШК</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="SendBarcodeDataResponse" type="tns:ct_SendBarcodeDataResponse">
+		<xs:annotation>
+			<xs:documentation>Ответ</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="UpdateProfile" type="tns:ct_UpdateProfileRequest">
+		<xs:annotation>
+			<xs:documentation>Редактирование мета-информации документов</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="UpdateProfileResponse" type="tns:ct_UpdateProfileResponse">
+		<xs:annotation>
+			<xs:documentation>Результат редактирования мета-информации документов</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="GetDocument" type="tns:ct_GetDocumentRequest">
+		<xs:annotation>
+			<xs:documentation>Получение документа</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="GetDocumentResponse" type="tns:ct_GetDocumentResponse">
+		<xs:annotation>
+			<xs:documentation>Результат запроса получения документа</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="CreateDictRecord" type="tns:ct_CreateDictRecordRequest">
+		<xs:annotation>
+			<xs:documentation>Изменение записи в справочнике</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="CreateDictRecordResponse" type="tns:ct_CreateDictRecordResponse">
+		<xs:annotation>
+			<xs:documentation>Результат создания записи в справочнике</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="SearchDocuments" type="tns:ct_SearchDocumentsRequest">
+		<xs:annotation>
+			<xs:documentation>Поиск документов по параметрам запроса</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="SearchDocumentsResponse" type="tns:ct_SearchDocumentsResponse">
+		<xs:annotation>
+			<xs:documentation>Результат поиска документов</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="DeleteDocument" type="tns:ct_DeleteDocumentRequest">
+		<xs:annotation>
+			<xs:documentation>Удаление документа</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="DeleteDocumentResponse" type="tns:ct_DeleteDocumentResponse">
+		<xs:annotation>
+			<xs:documentation>Результат удаления документа</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="CreateVersion" type="tns:ct_CreateVersionRequest">
+		<xs:annotation>
+			<xs:documentation>Создание новой версии документа</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="CreateVersionResponse" type="tns:ct_CreateVersionResponse">
+		<xs:annotation>
+			<xs:documentation>Результат создания новой версии документа</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,184 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SrvGetSpasiboClientInfoRq",
+  "description": "Описание",
+  "type": "object",
+  "required": [
+    "header",
+    "body"
+  ],
+  "properties": {
+    "header": {
+      "description": "Блок для JMS-заголовков",
+      "type": "object",
+      "required": [
+        "ServiceName",
+        "ServiceDescription",
+        "ServiceVersion",
+        "OperationName",
+        "SPName",
+        "ServiceNamespace",
+        "RqUID",
+        "RqTm",
+        "SCName"
+      ],
+      "properties": {
+        "ServiceName": {
+          "type": "string",
+          "const": "SrvGetSpasiboClientInfo"
+        },
+        "ServiceDescription": {
+          "type": "string"
+        },
+        "ServiceVersion": {
+          "type": "string",
+          "const": "001"
+        },
+        "OperationName": {
+          "type": "string",
+          "const": "GetSpasiboClientInfo"
+        },
+        "SPName": {
+          "type": "string",
+          "enum": [
+            "urn:sbrfsystems:99-vp",
+            "urn:sbrfsystems:99-asfm"
+          ]
+        },
+        "ServiceNamespace": {
+          "type": "string",
+          "enum": [
+            "srv://sbg.sbr/federal"
+          ]
+        },
+        "RqUID": {
+          "type": "string",
+          "pattern": "[a-f0-9]{32}"
+        },
+        "RqTm": {
+          "type": "string",
+          "pattern": "\\d{4}-\\d\\d-\\d\\dT\\d\\d:\\d\\d:\\d\\d(.[\\d]{1,6})?(([+\\-]\\d\\d:\\d\\d)|Z)?"
+        },
+        "SCName": {
+          "type": "string",
+          "enum": [
+            "urn:sbrfsystems:99-vp"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "body": {
+      "type": "object",
+      "description": "Тело запроса",
+      "required": [
+        "GetSpasiboClientInfoRq"
+      ],
+      "properties": {
+        "GetSpasiboClientInfoRq": {
+          "type": "object",
+          "required": [
+            "RqUID",
+            "RqTm",
+            "SPName",
+            "Identifier"
+          ],
+          "properties": {
+            "RqUID": {
+              "type": "string",
+              "minLength": 32,
+              "maxLength": 32,
+              "pattern": "[a-f0-9]{32}"
+            },
+            "RqTm": {
+              "type": "string",
+              "pattern": "\\d{4}-\\d\\d-\\d\\dT\\d\\d:\\d\\d:\\d\\d(.[\\d]{1,6})?(([+\\-]\\d\\d:\\d\\d)|Z)?"
+            },
+            "SPName": {
+              "type": "string",
+              "maxLength": 50
+            },
+            "SystemId": {
+              "type": "string",
+              "maxLength": 50
+            },
+            "SubSystem": {
+              "type": "string",
+              "maxLength": 50
+            },
+            "Identifier": {
+              "type": "object",
+              "required": [
+                "Id",
+                "Type"
+              ],
+              "properties": {
+                "Id": {
+                  "type": "string",
+                  "maxLength": 255
+                },
+                "Type": {
+                  "type": "string",
+                  "maxLength": 255
+                }
+              }
+            },
+            "ShowBonusBalance": {
+              "type": "boolean"
+            },
+            "ListOfPersonalFields": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "PersonalFields"
+                ],
+                "properties": {
+                  "PersonalFields": {
+                    "type": "string",
+                    "maxLength": 255
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "ListOfTimeDependentAttributes": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "TimeDependentAttributes"
+                ],
+                "properties": {
+                  "TimeDependentAttributes": {
+                    "type": "string",
+                    "maxLength": 255
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "ListOfEntityAttributes": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "EntityAttributes"
+                ],
+                "properties": {
+                  "EntityAttributes": {
+                    "type": "string",
+                    "maxLength": 255
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
