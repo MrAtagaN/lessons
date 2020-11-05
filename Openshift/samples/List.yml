@@ -1,0 +1,117 @@
+---
+apiVersion: v1
+kind: List
+items:
+  -   kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: umb
+        labels:
+          app: umb
+      spec:
+        replicas: 1
+        selector: # Какими подами управляет deployment
+          matchLabels:
+            app: umb
+        template:
+          metadata:
+            labels: # Метки подов, которые создает Deployment
+              app: umb
+              version: v1
+          spec:
+            containers:
+              -   name: umb
+                  image: ${umb.image} # меняется в зависимости от сборки в JenkinsPipeline
+                  imagePullPolicy: Always
+                  readinessProbe: # Проверка готовности контейнера
+                    failureThreshold: 2
+                    httpGet:
+                      path: /actuator/health
+                      port: 8080
+                      scheme: HTTP
+                    initialDelaySeconds: 20
+                    periodSeconds: 3
+                    successThreshold: 1
+                    timeoutSeconds: 3
+                  livenessProbe: # Проверка работоспособности контейнера
+                    failureThreshold: 2
+                    httpGet:
+                      path: /actuator/health
+                      port: 8080
+                      scheme: HTTP
+                    initialDelaySeconds: 180
+                    periodSeconds: 3
+                    successThreshold: 1
+                    timeoutSeconds: 3
+                  resources: # Ресурсы контейнера
+                    limits:
+                      cpu: 500m
+                      memory: 900Mi
+                    requests:
+                      cpu: 500m
+                      memory: 900Mi
+                  env: # Переменные окружения в контейнере
+                    -   name: PROJECT_NAME
+                        valueFrom:
+                          fieldRef:
+                            fieldPath: metadata.namespace
+                  volumeMounts: # Монтирование томов в контейнер c приложением
+                    -   mountPath: /home/jboss/
+                        name: umb
+                    -   mountPath: /home/jboss/logs
+                        name: logs
+                    -   mountPath: /home/jboss/config
+                        name: umb-config
+                    -   mountPath: /home/jboss/work/Tomcat/localhost/ROOT
+                        name: work
+                    -   mountPath: /home/jboss/work/Tomcat-1/localhost/ROOT
+                        name: work2
+
+            terminationGracePeriodSeconds: 80 # Время, в течение которого OpenShift ожидает нормального завершения контейнера,
+            # после чего процессы в поде убиваются kill сигналом. По умолчанию 30
+            volumes: # Определение томов пода
+              -   name: logs
+                  emptyDir: {}
+              -   name: work
+                  emptyDir: {}
+              -   name: work2
+                  emptyDir: {}
+              -   name: umb
+                  secret:
+                    secretName: umb
+              -   name: umb-config
+                  secret:
+                    secretName: umb-config
+
+
+  -   kind: Route
+      apiVersion: route.openshift.io/v1
+      metadata:
+        name: umb
+      spec:
+        host: umb.apps.dev-gen.ca.sbrf.ru # меняется в зависимости от стента
+        port:
+          targetPort: 8081
+        to:
+          kind: Service
+          name: umb
+          weight: 100
+        wildcardPolicy: None
+        tls:
+          termination: passthrough
+
+
+  -   kind: Service
+      apiVersion: v1
+      metadata:
+        name: umb
+      spec:
+        selector:
+          app: umb
+        ports:
+          -   name: port8081
+              port: 8081
+              targetPort: 8081
+        type: ClusterIP
+      status:
+        loadBalancer: {}
