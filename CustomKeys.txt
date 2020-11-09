@@ -189,7 +189,7 @@ Hotkey=V
 
 //kodo beast
 [okod]
-Hotkey=Q
+Hotkey=W
 Tip=Train |cffffcc00K|rodo Beast
 
 // Devour
@@ -204,7 +204,7 @@ Tip=Train |cffffcc00P|reon
 
 //raider
 [orai]
-Hotkey=W
+Hotkey=Q
 Tip=Train |cffffcc00R|raider
 
 // Ensnare
@@ -220,7 +220,7 @@ Tip=Train |cffffcc00S|rhaman
 // Purge
 [Aprg]
 Tip=Pur|cffffcc00g|re
-Hotkey=W
+Hotkey=V
 
 // Bloodlust
 [Ablo]
@@ -237,7 +237,7 @@ Hotkey=E
 
 //tauren
 [otau]
-Hotkey=Q
+Hotkey=W
 Tip=Train |cffffcc00T|rauren
 
 //troll batrider
@@ -335,7 +335,7 @@ Hotkey=D
 //ensnare upgrade
 [Roen]
 Tip=Research E|cffffcc00n|rsnare
-Hotkey=S
+Hotkey=A
 
 //envenomed spears upgrade
 [Rovs]
@@ -424,7 +424,7 @@ Tip=Build Great |cffffcc00H|rall
 
 //spirit lodge
 [osld]
-Hotkey=S
+Hotkey=F
 Tip=Build |cffffcc00S|rpirit Lodge
 
 //stronghold
