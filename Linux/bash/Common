@@ -50,3 +50,5 @@ curl - http запрос
     --data-raw '{
       "phone":"79168583363"
     }'
+
+nohup -
