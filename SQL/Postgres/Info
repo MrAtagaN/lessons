@@ -1,3 +1,8 @@
+=========================================================================================
+Ссылки
+=========================================================================================
+
+Гайд
 https://www.postgresqltutorial.com/
 
 Документация html
@@ -6,10 +11,15 @@ https://postgrespro.ru/docs/postgresql/13/index
 Документация pdf
 https://postgrespro.ru/media/docs/postgresql/13/ru/postgres-A4.pdf
 
+Документация по JDBC
+https://jdbc.postgresql.org/documentation/head/
 
 
-Запустить в докере базу
-docker run -it --name pg -e POSTGRES_PASSWORD=postgres -d --rm -p 5432:5432 postgres:11.5
+=========================================================================================
+Запустить в базу докере
+=========================================================================================
+
+docker run -it --name pg -e POSTGRES_PASSWORD=admin -d --rm -p 5432:5432 postgres:11.5
 
 подключиться к контейнеру
 docker exec -it pg bash
