@@ -1,0 +1,1 @@
+Если Idea не видит зависимостей, но они есть в m2 то надо удалить папку <User>/<IntellijIdea>/system/index
