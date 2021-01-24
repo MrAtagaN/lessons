@@ -1,5 +1,7 @@
 package com.plekhanov.restTemplate;
 
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
@@ -49,8 +51,12 @@ public class RestTemplate_ {
     private static final String GET_URL = "https://postman-echo.com/get?foo1=bar1&foo2=bar2";
 
     public static void main(String[] args) {
-        RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<String> responseEntity = restTemplate.getForEntity(GET_URL, String.class);
+        final RestTemplate restTemplate = new RestTemplate();
+        final HttpHeaders headers = new HttpHeaders();
+        headers.set("someHeader", "headerValue");
+
+        final HttpEntity<String> request = new HttpEntity<>("TEST BODY", headers);
+        final ResponseEntity<String> responseEntity = restTemplate.getForEntity(GET_URL, String.class, request);
 
 
         System.out.println("StatusCode: " + responseEntity.getStatusCode());
