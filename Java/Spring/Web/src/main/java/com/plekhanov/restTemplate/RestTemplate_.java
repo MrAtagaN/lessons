@@ -6,30 +6,43 @@ import org.springframework.web.client.RestTemplate;
 /**
  * https://www.baeldung.com/rest-template
  *
- * Методы restTemplate:
- *  getForEntity -
- *  postForEntity -
- *  acceptHeaderRequestCallback -
- *  delete -
- *  exchange -
- *  getErrorHandler -
- *  setErrorHandler -
- *  getForObject -
- *  postForObject -
- *  getMessageConverters -
- *  setUriTemplateHandler -
- *  getUriTemplateHandler -
- *  headForHeaders -
- *  httpEntityCallback -
- *  optionsForAllow -
- *  patchForObject -
- *  postForLocation -
- *  put -
- *  execute -
+ * Методы RestTemplate:
+ *   exchange - Делает запрос и возвращает {@link ResponseEntity} с типом, указанным в параметрах
+ *   execute - Делает запрос и возвращает ответ в виде объекта, тип которого указывается в параметрах
+ *
+ *   getForEntity - Делает get запрос и возвращает {@link ResponseEntity} с типом, указанным в параметрах
+ *   postForEntity - Делает post запрос и возвращает {@link ResponseEntity} с типом, указанным в параметрах
+ *
+ *   getForObject - Делает get запрос и возвращает ответ в виде объекта, тип которого указывается в параметрах
+ *   postForObject - Делает post запрос и возвращает ответ в виде объекта, тип которого указывается в параметрах
+ *   patchForObject - Делает patch запрос и возвращает ответ в виде объекта, тип которого указывается в параметрах
+ *
+ *   delete - Делает delete запрос, ничего не возвращает
+ *   put - Делает put запрос, ничего не возвращает
+ *
+ *   acceptHeaderRequestCallback -
+ *
+ *   getErrorHandler -
+ *   setErrorHandler -
+ *   getMessageConverters -
+ *   setUriTemplateHandler -
+ *   getUriTemplateHandler -
+ *   headForHeaders -
+ *   httpEntityCallback -
+ *   optionsForAllow -
+ *   postForLocation -
+ *
+ *
  *  responseEntityExtractor -
  *  setDefaultUriVariables -
  *
- * Методы responseEntity:
+ * Методы ResponseEntity:
+ *   getStatusCode -
+ *   getStatusCodeValue -
+ *   getBody -
+ *   hasBody -
+ *   getHeaders -
+ *
  */
 public class RestTemplate_ {
 
