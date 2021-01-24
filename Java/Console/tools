@@ -18,7 +18,7 @@ KEYTOOL
         -v - подробная информация
 
 выгрузить сертификат из keystore
-    keytool -export -keystore examplestore -alias signFiles -file Example.cer
+    keytool -export -keystore <имя файла jks> -alias <алиас в jks> -file Example.cer
 
 запрос на подпись сертификата в удостоверяющем центре
     keytool -certreq -alias <alias> -keystore <keystore>.jks -file <file>.csr -sigalg SHA256WithRSA
