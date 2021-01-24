@@ -1,4 +1,4 @@
-package com.plekhanov;
+package com.plekhanov.webClient;
 
 
 import org.springframework.web.reactive.function.client.WebClient;
