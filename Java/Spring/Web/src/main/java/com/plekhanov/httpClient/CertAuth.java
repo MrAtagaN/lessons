@@ -30,7 +30,7 @@ public class CertAuth {
 
 
     /**
-     * RestTemplate доверяющий всем сертификатам. Нужен для тестирования
+     * Возвращает RestTemplate доверяющий всем сертификатам. Нужен для тестирования
      */
     private static RestTemplate getRestTemplateWithAuth() throws KeyStoreException, NoSuchAlgorithmException, KeyManagementException {
         final TrustStrategy acceptingTrustStrategy = (X509Certificate[] chain, String authType) -> true;

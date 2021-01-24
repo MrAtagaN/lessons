@@ -24,8 +24,7 @@ public class Timeout {
 
 
     /**
-     *
-     * @return
+     * Возвращает RestTemplate с временем ожидания
      */
     private static RestTemplate getRestTemplateWithTimeout() {
         int timeout = 5000;
