@@ -39,9 +39,8 @@ import org.springframework.web.client.RestTemplate;
  *   httpEntityCallback -
  *   postForLocation -
  *
- *
- *  responseEntityExtractor -
- *  setDefaultUriVariables -
+ *   responseEntityExtractor -
+ *   setDefaultUriVariables -
  *
  * Методы {@link ResponseEntity}:
  *   getStatusCode - Возвращает {@link HttpStatus}

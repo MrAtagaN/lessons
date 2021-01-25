@@ -7,7 +7,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
-
+/**
+ * Запрос с временем ожидания
+ */
 public class Timeout {
 
     private static final String GET_URL = "https://10.10.10.10/";

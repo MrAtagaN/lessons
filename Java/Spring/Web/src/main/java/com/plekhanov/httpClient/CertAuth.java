@@ -15,7 +15,9 @@ import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.X509Certificate;
 
-
+/**
+ * Запрос доверяющий всем сертификатам. Нужен для тестирования
+ */
 public class CertAuth {
     private static final String GET_URL = "https://postman-echo.com/get?foo1=bar1&foo2=bar2";
 
