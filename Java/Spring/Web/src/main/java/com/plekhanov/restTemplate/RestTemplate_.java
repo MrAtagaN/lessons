@@ -1,8 +1,8 @@
 package com.plekhanov.restTemplate;
 
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.web.client.ResponseErrorHandler;
 import org.springframework.web.client.RestTemplate;
 
 /**
@@ -21,17 +21,22 @@ import org.springframework.web.client.RestTemplate;
  *
  *   delete - Делает delete запрос, ничего не возвращает
  *   put - Делает put запрос, ничего не возвращает
+ *   headForHeaders - Делает head запрос, возвращает {@link HttpHeaders}
+ *   optionsForAllow - Делает option запрос, возвращает {@link HttpMethod}
  *
  *   acceptHeaderRequestCallback -
  *
- *   getErrorHandler -
- *   setErrorHandler -
- *   getMessageConverters -
- *   setUriTemplateHandler -
+ *   getErrorHandler - Возвращает {@link ResponseErrorHandler}
+ *   setErrorHandler - Задать обработчик ошибок {@link ResponseErrorHandler}
+ *
+ *   getMessageConverters - Возвращает {@link HttpMessageConverter}
+ *   setMessageConverters - Задать {@link HttpMessageConverter}
+ *
  *   getUriTemplateHandler -
- *   headForHeaders -
+ *   setUriTemplateHandler -
+ *
+ *
  *   httpEntityCallback -
- *   optionsForAllow -
  *   postForLocation -
  *
  *
@@ -39,11 +44,11 @@ import org.springframework.web.client.RestTemplate;
  *  setDefaultUriVariables -
  *
  * Методы ResponseEntity:
- *   getStatusCode -
- *   getStatusCodeValue -
- *   getBody -
- *   hasBody -
- *   getHeaders -
+ *   getStatusCode - Возвращает {@link HttpStatus}
+ *   getStatusCodeValue - Возвращает значение кода ответа
+ *   getBody - Возвращает тело ответа
+ *   hasBody - Есть ли тело ответа
+ *   getHeaders - Возвращает {@link HttpHeaders}
  *
  */
 public class RestTemplate_ {
