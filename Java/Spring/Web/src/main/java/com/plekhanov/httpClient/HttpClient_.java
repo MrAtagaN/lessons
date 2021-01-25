@@ -5,6 +5,8 @@ import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.protocol.HttpContext;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
 
@@ -29,5 +31,10 @@ public class HttpClient_ {
                 .build();
 
         httpClient.execute(null);
+
+
+        //CloseableHttpClient преобразуем в RestTemplate
+        final HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory(httpClient);
+        final RestTemplate restTemplate = new RestTemplate(requestFactory);
     }
 }
