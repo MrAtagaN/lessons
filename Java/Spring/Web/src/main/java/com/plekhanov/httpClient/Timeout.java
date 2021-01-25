@@ -14,8 +14,8 @@ public class Timeout {
 
 
     public static void main(String[] args) {
-        RestTemplate restTemplate = getRestTemplateWithTimeout();
-        ResponseEntity<String> responseEntity = restTemplate.getForEntity(GET_URL, String.class);
+        final RestTemplate restTemplate = getRestTemplateWithTimeout();
+        final ResponseEntity<String> responseEntity = restTemplate.getForEntity(GET_URL, String.class);
 
         System.out.println("StatusCode: " + responseEntity.getStatusCode());
         System.out.println("HttpHeaders: " + responseEntity.getHeaders());

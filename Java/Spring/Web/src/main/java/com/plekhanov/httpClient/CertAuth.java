@@ -15,13 +15,14 @@ import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.X509Certificate;
 
+
 public class CertAuth {
     private static final String GET_URL = "https://postman-echo.com/get?foo1=bar1&foo2=bar2";
 
 
     public static void main(String[] args) throws NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
-        RestTemplate restTemplate = getRestTemplateWithAuth();
-        ResponseEntity<String> responseEntity = restTemplate.getForEntity(GET_URL, String.class);
+        final RestTemplate restTemplate = getRestTemplateWithAuth();
+        final ResponseEntity<String> responseEntity = restTemplate.getForEntity(GET_URL, String.class);
 
         System.out.println("StatusCode: " + responseEntity.getStatusCode());
         System.out.println("HttpHeaders: " + responseEntity.getHeaders());

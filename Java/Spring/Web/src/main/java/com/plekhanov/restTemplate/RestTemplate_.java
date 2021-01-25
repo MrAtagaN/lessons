@@ -8,7 +8,7 @@ import org.springframework.web.client.RestTemplate;
 /**
  * https://www.baeldung.com/rest-template
  *
- * Методы RestTemplate:
+ * Методы {@link RestTemplate}:
  *   exchange - Делает запрос и возвращает {@link ResponseEntity} с типом, указанным в параметрах
  *   execute - Делает запрос и возвращает ответ в виде объекта, тип которого указывается в параметрах
  *
@@ -43,7 +43,7 @@ import org.springframework.web.client.RestTemplate;
  *  responseEntityExtractor -
  *  setDefaultUriVariables -
  *
- * Методы ResponseEntity:
+ * Методы {@link ResponseEntity}:
  *   getStatusCode - Возвращает {@link HttpStatus}
  *   getStatusCodeValue - Возвращает значение кода ответа
  *   getBody - Возвращает тело ответа
