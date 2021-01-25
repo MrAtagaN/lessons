@@ -1,6 +1,7 @@
 package com.plekhanov.httpClient;
 
 import org.apache.http.HttpRequest;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -13,15 +14,19 @@ import java.io.IOException;
 
 /**
  *
- * Методы {@link HttpClientBuilder}
+ * Методы {@link HttpClientBuilder}:
  *
- * Методы {@link HttpUriRequest}
- * Методы {@link HttpRequest}
+ * Методы {@link HttpUriRequest}:
+ * Методы {@link HttpRequest}:
  *
- * Методы {@link HttpContext}
+ * Методы {@link HttpContext}:
  *
  *
- * Методы {@link CloseableHttpClient}
+ * Методы {@link CloseableHttpClient}:
+ *   execute - Делает http запрос и возвращает {@link CloseableHttpResponse}
+ *
+ * Методы {@link CloseableHttpResponse}:
+ *
  *
  */
 public class HttpClient_ {
@@ -34,7 +39,8 @@ public class HttpClient_ {
                 .build();
 
         final HttpUriRequest httpRequest = new HttpPost(URL);
-        httpClient.execute(httpRequest);
+        final CloseableHttpResponse httpResponse = httpClient.execute(httpRequest);
+        System.out.println("Status line: " + httpResponse.getStatusLine());
 
 
         //CloseableHttpClient преобразуем в RestTemplate
