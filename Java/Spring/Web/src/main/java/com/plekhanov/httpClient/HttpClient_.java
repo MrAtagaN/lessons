@@ -1,6 +1,7 @@
 package com.plekhanov.httpClient;
 
 import org.apache.http.HttpRequest;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
@@ -25,12 +26,15 @@ import java.io.IOException;
  */
 public class HttpClient_ {
 
+    private static final String URL = "https://google.com";
+
 
     public static void main(String[] args) throws IOException {
         final CloseableHttpClient httpClient = HttpClientBuilder.create()
                 .build();
 
-        httpClient.execute(null);
+        final HttpUriRequest httpRequest = new HttpPost(URL);
+        httpClient.execute(httpRequest);
 
 
         //CloseableHttpClient преобразуем в RestTemplate
