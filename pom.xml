@@ -15,8 +15,6 @@
         <module>Maven_and_Gradle</module>
         <module>JavaScript</module>
         <module>Java</module>
-        <module>Guava</module>
-        <module>Jackson</module>
     </modules>
 
 </project>

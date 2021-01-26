@@ -16,6 +16,7 @@
         <module>Gson</module>
         <module>Guava</module>
         <module>Jackson</module>
+        <module>JasperReports</module>
     </modules>
 
 
