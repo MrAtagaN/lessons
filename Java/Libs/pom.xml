@@ -19,6 +19,7 @@
         <module>JasperReports</module>
         <module>JDBC</module>
         <module>Jaxb</module>
+        <module>JsonSchema</module>
     </modules>
 
 
