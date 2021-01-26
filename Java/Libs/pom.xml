@@ -17,6 +17,7 @@
         <module>Guava</module>
         <module>Jackson</module>
         <module>JasperReports</module>
+        <module>JDBC</module>
     </modules>
 
 

@@ -14,7 +14,6 @@
     <artifactId>Java</artifactId>
 
     <modules>
-        <module>JDBC</module>
         <module>Hibernate</module>
         <module>Servlet</module>
         <module>Core</module>
