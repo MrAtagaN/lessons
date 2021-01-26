@@ -109,7 +109,7 @@ public class Main {
 
 
     private static void parseHH() throws IOException {
-        File input = new File("JavaCore/src/main/resources/hh.html");
+        File input = new File("Java/Libs/Jsoup/src/main/resources/hh-test.html");
         Document document = Jsoup.parse(input, "UTF-8", "hh.ru");
 
         System.out.println(document.title());
