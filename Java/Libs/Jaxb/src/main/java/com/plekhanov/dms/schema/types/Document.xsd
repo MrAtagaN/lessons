@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2014 sp1 (http://www.altova.com) by Vadim Davlyatov (ZAO Raiffeisenbank) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:doc="http://www.raiffeisen.ru/types/Document/v1" xmlns:cf="http://www.raiffeisen.ru/types/CustomField/v1" targetNamespace="http://www.raiffeisen.ru/types/Document/v1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1">
+	<xsd:import namespace="http://www.raiffeisen.ru/types/CustomField/v1" schemaLocation="CustomField.xsd"/>
+	<xsd:complexType name="ct_JasperFileReference">
+		<xsd:sequence>
+			<xsd:element name="reportPath" type="xsd:string"/>
+			<xsd:element name="outputFormat" type="xsd:string"/>
+			<xsd:element name="parameters" type="doc:ct_JasperParameterList"/>
+			<xsd:element name="jasperVersion" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ct_JasperParameterList">
+		<xsd:sequence>
+			<xsd:element name="parameter" type="doc:ct_JasperParameter" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ct_JasperParameter">
+		<xsd:sequence>
+			<xsd:element name="name" type="xsd:string"/>
+			<xsd:element name="value" type="xsd:string"/>
+			<xsd:element name="isListItem" type="xsd:boolean" minOccurs="0"/>
+			<xsd:element name="class" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ct_MQDestination">
+		<xsd:sequence>
+			<xsd:element name="hostName" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="portNumber" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="channelName" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="managerName" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="queueName" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ct_MQFileReference">
+		<xsd:annotation>
+			<xsd:documentation>Идентификаторы местонахождения файла</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="pageId" type="xsd:integer" minOccurs="0"/>
+			<xsd:element name="extension" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="messageId" type="xsd:string"/>
+			<xsd:element name="destination" type="doc:ct_MQDestination" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ct_FileReference">
+		<xsd:annotation>
+			<xsd:documentation>Ссылка на файл - скан документа</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="type" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>MQ, Jasper</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="extension" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>File Extension</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="mqReference" type="doc:ct_MQFileReference" minOccurs="0"/>
+			<xsd:element name="jasperReference" type="doc:ct_JasperFileReference" minOccurs="0"/>
+			<xsd:element name="rollbackInError" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="mqPagesReference" type="doc:ct_mqPagesReference" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ct_DocumentType">
+		<xsd:annotation>
+			<xsd:documentation>Атрибуты типа документа</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="docTypeId" type="xsd:string"/>
+			<xsd:element name="docTypeStorage" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="docTypeRetention" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="docTypeFullText" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="docTypeDescription" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ct_RelatedDocumentList">
+		<xsd:sequence>
+			<xsd:element name="relatedDocument" type="doc:ct_RelatedDocument" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ct_RelatedDocument">
+		<xsd:annotation>
+			<xsd:documentation>Связанные документы</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="docNumber" type="xsd:string"/>
+			<xsd:element name="action" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ct_DocumentProfile">
+		<xsd:annotation>
+			<xsd:documentation>Атрибуты профайла документа</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="docNumber" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="docName" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="createTime" type="xsd:dateTime" minOccurs="0"/>
+			<xsd:element name="lastEditTime" type="xsd:dateTime" minOccurs="0"/>
+			<xsd:element name="lastAccessTime" type="xsd:dateTime" minOccurs="0"/>
+			<xsd:element name="authorId" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="authorName" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="authorFullName" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="typistId" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="typistName" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="lastEditUserId" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="lastEditUserName" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="lastAccessUserId" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="lastAccessUserName" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="appId" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="appExtension" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="retention" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="status" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="defaultForm" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="abstract" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="storage" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="documentType" type="doc:ct_DocumentType" minOccurs="0"/>
+			<xsd:element name="customFields" type="cf:ct_CustomFieldList" minOccurs="0"/>
+			<xsd:element name="isCertified" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ct_DocumentVersion">
+		<xsd:annotation>
+			<xsd:documentation>Описание версии документа</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="docNumber" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="versionId" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="versionNumber" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="subversionNumber" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="versionLabel" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="status" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="lastEditTime" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="comment" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="authorId" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="authorName" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="typistId" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="typistName" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="forceVersionRo" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="fileReference" type="doc:ct_FileReference" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ct_DocumentVersionList">
+		<xsd:annotation>
+			<xsd:documentation>Список версий</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="version" type="doc:ct_DocumentVersion" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ct_Document">
+		<xsd:annotation>
+			<xsd:documentation>Описание документа</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="documentProfile" type="doc:ct_DocumentProfile" minOccurs="0"/>
+			<xsd:element name="versions" type="doc:ct_DocumentVersionList" minOccurs="0"/>
+			<xsd:element name="relatedDocuments" type="doc:ct_RelatedDocumentList" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ct_DocumentList">
+		<xsd:annotation>
+			<xsd:documentation>Список документов</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="documents" type="doc:ct_Document" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ct_FileDestination">
+		<xsd:sequence>
+			<xsd:element name="mqFileDestination" type="doc:ct_MQDestination" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ct_mqPagesReference">
+		<xsd:annotation>
+			<xsd:documentation>Идентификаторы местонахождения файлов</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="mqPageReference" type="doc:ct_MQFileReference" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

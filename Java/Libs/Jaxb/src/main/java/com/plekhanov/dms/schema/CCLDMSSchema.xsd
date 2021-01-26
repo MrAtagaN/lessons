@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2014 sp1 (http://www.altova.com) by Anastasia Vorobyeva (ZAO Raiffeisenbank) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ds="http://www.raiffeisen.ru/esb/cnr/RBP/Document/v1" xmlns:doc="http://www.raiffeisen.ru/types/Document/v1" xmlns:cf="http://www.raiffeisen.ru/types/CustomField/v1" targetNamespace="http://www.raiffeisen.ru/esb/cnr/RBP/Document/v1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.00.01">
+	<xs:annotation>
+		<xs:documentation>
+1.00.00	- inicial Version
+2.00.00 - Was changed parameters for  Jasper-reports (author - R.Yankov), Parameters for queue of files singled out  in separate type ct_MQFileReference
+2.00.01 - in "SearchDocumentsResponse" added field "searchOverLimit" boolean
+	</xs:documentation>
+	</xs:annotation>
+	<xs:import namespace="http://www.raiffeisen.ru/types/CustomField/v1" schemaLocation="types/CustomField.xsd"/>
+	<xs:import namespace="http://www.raiffeisen.ru/types/Document/v1" schemaLocation="types/Document.xsd"/>
+	<xs:complexType name="ct_Identificators">
+		<xs:annotation>
+			<xs:documentation>Идентификаторы поиска документов</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="contextId" type="xs:string" minOccurs="0"/>
+			<xs:element name="systemId" type="xs:string" minOccurs="0"/>
+			<xs:element name="libraryName" type="xs:string" minOccurs="0"/>
+			<xs:element name="formName" type="xs:string" minOccurs="0"/>
+			<xs:element name="user" type="xs:string" minOccurs="0"/>
+			<xs:element name="userName" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ct_ServerInfo">
+		<xs:annotation>
+			<xs:documentation>Информация о ближайшем сервере</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="hostName" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ct_UserLocationInfo">
+		<xs:annotation>
+			<xs:documentation>Информация о пользователе</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ipAddress" type="xs:string" minOccurs="0"/>
+			<xs:element name="subnetMask" type="xs:string" minOccurs="0"/>
+			<xs:element name="login" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ct_BarcodeData">
+		<xs:annotation>
+			<xs:documentation>Информация о ШК</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="barcodeValue" type="xs:string"/>
+			<xs:element name="title" type="xs:boolean"/>
+			<xs:element name="packageContextId" type="xs:string"/>
+			<xs:element name="documentProfile" type="doc:ct_DocumentProfile"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ct_CreateDocumentRequest">
+		<xs:annotation>
+			<xs:documentation>Запрос на Создание документа</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="identificators" type="ds:ct_Identificators"/>
+			<xs:element name="document" type="doc:ct_Document"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ct_CreateDocumentResponse">
+		<xs:annotation>
+			<xs:documentation>Результат создания документа</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="document" type="doc:ct_Document" nillable="true"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ct_GetLocalServerRequest">
+		<xs:annotation>
+			<xs:documentation>Запрос на поиск ближайшего сервера DMS</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="identificators" type="ds:ct_Identificators"/>
+			<xs:element name="userLocationInfo" type="ds:ct_UserLocationInfo"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ct_GetLocalServerResponse">
+		<xs:annotation>
+			<xs:documentation>Ближайший сервер DMS</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="serverInfo" type="ds:ct_ServerInfo" nillable="true"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ct_SendBarcodeDataRequest">
+		<xs:annotation>
+			<xs:documentation>Отправка данных ШК</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="identificators" type="ds:ct_Identificators"/>
+			<xs:element name="barcodeData" type="ds:ct_BarcodeData"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ct_SendBarcodeDataResponse">
+		<xs:annotation>
+			<xs:documentation>Ответ</xs:documentation>
+		</xs:annotation>
+		<xs:sequence/>
+	</xs:complexType>
+	<xs:complexType name="ct_UpdateProfileRequest">
+		<xs:annotation>
+			<xs:documentation>Запрос на Изменение документа</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="identificators" type="ds:ct_Identificators"/>
+			<xs:element name="document" type="doc:ct_Document" nillable="true"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ct_UpdateProfileResponse">
+		<xs:annotation>
+			<xs:documentation> Результат Изменения документа</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="document" type="doc:ct_Document"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ct_GetDocumentRequest">
+		<xs:annotation>
+			<xs:documentation>Запрос на Получение документа</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="identificators" type="ds:ct_Identificators"/>
+			<xs:element name="docNumber" type="xs:string"/>
+			<xs:element name="versionId" type="xs:string" minOccurs="0"/>
+			<xs:element name="responseFileDestination" type="doc:ct_FileDestination" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ct_GetDocumentResponse">
+		<xs:annotation>
+			<xs:documentation>Результат на получение данных документа</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="document" type="doc:ct_Document"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ct_DictSearchFields">
+		<xs:annotation>
+			<xs:documentation>Поля для определения записи в справочнике</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="defaultForm" type="xs:string" minOccurs="0"/>
+			<xs:element name="dictFields" type="cf:ct_CustomFieldList"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ct_CreateDictRecordRequest">
+		<xs:annotation>
+			<xs:documentation>Создание записи в справочнике</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="identificators" type="ds:ct_Identificators"/>
+			<xs:element name="dictFilelds" type="ds:ct_DictSearchFields"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ct_CreateDictRecordResponse">
+		<xs:annotation>
+			<xs:documentation>Результат создания записи в справочнике</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="dictFilelds" type="ds:ct_DictSearchFields"/>
+			<xs:element name="status" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ct_SearchDocumentsRequest">
+		<xs:annotation>
+			<xs:documentation>Запрос поиска документов по параметрам</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="identificators" type="ds:ct_Identificators"/>
+			<xs:element name="document" type="doc:ct_Document"/>
+			<xs:element name="returnFields" type="cf:ct_CustomFieldList" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ct_SearchDocumentsResponse">
+		<xs:annotation>
+			<xs:documentation>Документы, соответствующие параметрам поиска</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="documents" type="doc:ct_DocumentList"/>
+			<xs:element name="searchOverLimit" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Передается установленный лимит единовременно передаваемых документов при его превышении в результате выполнения запроса поиска </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ct_DeleteDocumentRequest">
+		<xs:annotation>
+			<xs:documentation>Удаление документа </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="identificators" type="ds:ct_Identificators"/>
+			<xs:element name="docNumber" type="xs:string"/>
+			<xs:element name="versionId" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ct_DeleteDocumentResponse">
+		<xs:annotation>
+			<xs:documentation>Результат удаления документа (номер удаленного документа)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="document" type="doc:ct_Document" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ct_CreateVersionRequest">
+		<xs:annotation>
+			<xs:documentation>Создание новой версии документа</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="identificators" type="ds:ct_Identificators"/>
+			<xs:element name="version" type="doc:ct_DocumentVersion"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ct_CreateVersionResponse">
+		<xs:annotation>
+			<xs:documentation>Результат создания новой версии документа</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="version" type="doc:ct_DocumentVersion"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

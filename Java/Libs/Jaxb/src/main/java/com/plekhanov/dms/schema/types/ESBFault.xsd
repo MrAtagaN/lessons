@@ -1,0 +1,12 @@
+<!-- edited with XMLSpy v2014 sp1 (http://www.altova.com) by Vadim Davlyatov (ZAO Raiffeisenbank) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" xmlns:tn="http://www.raiffeisen.ru/types/Common/ESBError/v1" targetNamespace="http://www.raiffeisen.ru/types/Common/ESBError/v1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0">
+	<xsd:complexType name="ct_ESBFault">
+		<xsd:sequence>
+			<xsd:element name="class" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="code" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="exception" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="originalCode" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="ESBFault" type="tn:ct_ESBFault"/>
+</xsd:schema>
