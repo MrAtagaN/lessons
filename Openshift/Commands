@@ -1,4 +1,5 @@
-oc login --server=<хост:порт> --insecure-skip-tls-verify --token=<токен>  - залогинится на сервере OpenShift
+Залогинится на сервере OpenShift
+    oc login --server=https://api.<url кластера>:6443 --insecure-skip-tls-verify --token=<токен>
 
 oc project - имя текущего проекта
 
@@ -19,3 +20,9 @@ oc patch <object_type> <object_name> -p <changes> - изменение одно�
 oc create secret generic <имя секрета> --from-file=./<имя файла>
 
 oc port-forward <имя пода> <порт> - пробросить порт с пода на локальную машину. Под будет доступен по localhost:<порт>
+
+Загрузить в openshift ресурсы из Template
+    oc process -f <файл Template.yml> --ignore-unknown-parameters --param-file=<файл с параметрами> | oc apply -f -
+
+Удалить из openshift ресурсы из Template
+    oc process -f <файл Template.yml> --ignore-unknown-parameters --param-file=<файл с параметрами> | oc delete -f - --ignore-not-found=true
