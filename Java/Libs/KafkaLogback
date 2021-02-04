@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration scan="true" scanPeriod="30 seconds">
+
+  <property name="logs" value="logs"/>
+  <property name="logs_archive" value="logs/archive"/>
+  <property name="pattern" value="%-6level [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-10thread] %logger{39}: %msg%n"/>
+  <property name="access_pattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} - %msg%n"/>
+  <property name="kafka.topic" value="unlockmb_logs"/>
+  <property name="kafka.server" value="bootstrap.servers=10.117.199.135:9093,10.117.199.134:9093,10.117.199.126:9093"/>
+
+  <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${logs}/umb-worker.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>${logs_archive}/umb-worker.%d{yyyy-MM-dd}.zip</fileNamePattern>
+      <maxHistory>10</maxHistory>
+    </rollingPolicy>
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <charset>UTF-8</charset>
+      <pattern>${pattern}</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="access" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${logs}/access.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>${logs_archive}/access.%d{yyyy-MM-dd}.zip</fileNamePattern>
+      <maxHistory>10</maxHistory>
+    </rollingPolicy>
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <charset>UTF-8</charset>
+      <pattern>${access_pattern}</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <charset>UTF-8</charset>
+      <pattern>${pattern}</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="kafkaAppender" class="com.github.danielwegener.logback.kafka.KafkaAppender">
+    <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+      <layout class="ru.sbrf.callcenter.unlockmb.worker.log.LoggingLayout"/>
+    </encoder>
+    <topic>${kafka.topic}</topic>
+    <keyingStrategy class="com.github.danielwegener.logback.kafka.keying.NoKeyKeyingStrategy"/>
+    <deliveryStrategy class="com.github.danielwegener.logback.kafka.delivery.AsynchronousDeliveryStrategy"/>
+    <producerConfig>${kafka.server}</producerConfig>
+
+    <producerConfig>security.protocol=SSL</producerConfig>
+    <producerConfig>ssl.key.password=${logback-kafka-client-jks-password}</producerConfig>
+    <producerConfig>ssl.keystore.password=${logback-kafka-client-jks-password}</producerConfig>
+    <producerConfig>ssl.key.password=${logback-kafka-client-jks-password}</producerConfig>
+    <producerConfig>ssl.truststore.password=${logback-kafka-client-jks-password}</producerConfig>
+    <producerConfig>ssl.keystore.location=psi-umb-client.jks</producerConfig>
+    <producerConfig>ssl.truststore.location=psi-umb-client.jks</producerConfig>
+    <producerConfig>ssl.endpoint.identification.algorithm=</producerConfig>
+    <producerConfig>retries=0</producerConfig>
+  </appender>
+
+  <logger name="ru.sbrf.callcenter.unlockmb.worker" level="info" additivity="false">
+    <!-- <appender-ref ref="file"/> -->
+    <appender-ref ref="stdout"/>
+    <appender-ref ref="kafkaAppender"/>
+  </logger>
+
+  <logger name="ru.sbrf.callcenter.unlock.pom.api" level="debug" additivity="false">
+    <!-- <appender-ref ref="file"/> -->
+    <appender-ref ref="stdout"/>
+    <appender-ref ref="kafkaAppender"/>
+  </logger>
+
+  <logger name="ru.sbrf.callcenter.unlockmb.worker.rest.NcsaLogger" level="info" additivity="false">
+    <!-- <appender-ref ref="access"/> -->
+    <appender-ref ref="stdout"/>
+    <appender-ref ref="kafkaAppender"/>
+  </logger>
+
+  <root level="warn">
+    <!-- <appender-ref ref="file"/> -->
+    <appender-ref ref="stdout"/>
+    <appender-ref ref="kafkaAppender"/>
+  </root>
+
+</configuration>
+
+
+
+
+
+<dependency>
+  <groupId>com.github.danielwegener</groupId>
+  <artifactId>logback-kafka-appender</artifactId>
+  <version>0.2.0-RC2</version>
+</dependency>
+
+
+
+
+@Setter
+@Getter
+public class KafkaLoggingObject {
+
+    private String address;
+    private String application;
+    private String hostname;
+    private String username;
+    private String timestamp;
+    private String level;
+    private String thread;
+    private String logger;
+    private String message;
+    private String context;
+
+}
+
+
+package ru.sbrf.callcenter.unlockmb.worker.log;
+
+import ch.qos.logback.classic.spi.ILoggingEvent;
+import ch.qos.logback.classic.spi.IThrowableProxy;
+import ch.qos.logback.core.LayoutBase;
+import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
+import ru.sbrf.callcenter.unlockmb.worker.utils.JsonUtils;
+
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.text.SimpleDateFormat;
+
+/**
+ * Логгирование в Kafka
+ */
+@Slf4j
+public class LoggingLayout extends LayoutBase<ILoggingEvent> {
+
+    private static String address;
+    private static String hostname;
+    private static final String USERNAME = System.getProperty("user.name");
+    private static final String APPLICATION_NAME = "unlock-mb";
+
+
+    @SneakyThrows
+    @Override
+    public String doLayout(final ILoggingEvent event) {
+        final KafkaLoggingObject logObject = new KafkaLoggingObject();
+        logObject.setAddress(address);
+        logObject.setHostname(hostname);
+        logObject.setUsername(USERNAME);
+        logObject.setApplication(APPLICATION_NAME);
+        logObject.setTimestamp(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(event.getTimeStamp()));
+        logObject.setLevel(event.getLevel().toString());
+        logObject.setThread(event.getThreadName());
+        logObject.setLogger(event.getLoggerName());
+        logObject.setContext(event.getLoggerContextVO().getName());
+
+        final IThrowableProxy throwableProxy = event.getThrowableProxy();
+        if (throwableProxy == null) {
+            logObject.setMessage(event.getFormattedMessage());
+        } else {
+            logObject.setMessage(event.getFormattedMessage() + throwableProxy.getMessage());
+        }
+        return JsonUtils.convertObjectToJsonString(logObject);
+    }
+
+    static {
+        try {
+            address = InetAddress.getLocalHost().getHostAddress();
+            hostname = InetAddress.getLocalHost().getHostName();
+        } catch (UnknownHostException e) {
+            log.error("Error. LoggingClass static initialization failed. {}", e.getMessage());
+        }
+    }
+}
