@@ -17,3 +17,5 @@ oc create -f <путь к файлу .yml> -
 oc patch <object_type> <object_name> -p <changes> - изменение одного параметра в объекте
 
 oc create secret generic <имя секрета> --from-file=./<имя файла>
+
+oc port-forward <имя пода> <порт> - пробросить порт с пода на локальную машину. Под будет доступен по localhost:<порт>
