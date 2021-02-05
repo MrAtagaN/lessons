@@ -15,6 +15,9 @@ import org.springframework.context.annotation.Configuration;
 import java.util.Collections;
 
 /**
+ * https://docs.spring.io/spring-boot/docs/current/reference/html/index.html
+ * https://docs.spring.io/spring-boot/docs/current/reference/pdf/spring-boot-reference.pdf
+ *
  * Аннотация {@link SpringBootApplication} - состоит из трех аннотаций:
  *
  * Аннотация {@link Configuration) -
