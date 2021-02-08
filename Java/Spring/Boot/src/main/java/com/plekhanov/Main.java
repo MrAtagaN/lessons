@@ -11,6 +11,8 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 import java.util.Collections;
 
@@ -49,6 +51,8 @@ import java.util.Collections;
  */
 @SpringBootApplication
 @EntityScan
+@EnableScheduling
+@EnableAsync
 @ConfigurationPropertiesScan
 public class Main {
     public static void main(String[] args) {
