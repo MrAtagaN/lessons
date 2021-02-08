@@ -22,6 +22,7 @@
         <module>JsonSchema</module>
         <module>Jsoup</module>
         <module>Liquibase</module>
+        <module>Lombok</module>
     </modules>
 
 
