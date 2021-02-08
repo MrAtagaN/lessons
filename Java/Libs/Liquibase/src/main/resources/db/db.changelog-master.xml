@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+
+    <property name="endDelimiter" value=";"/>
+
+    <preConditions>
+        <dbms type="sqlite"/>
+    </preConditions>
+
+    <changeSet id="0" author="plekhanov">
+        <sqlFile
+                 encoding="utf8"
+                 endDelimiter="${endDelimiter}"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true"
+                 path="01-create-table-users.sql"/>
+        <rollback>
+            <sqlFile
+                     encoding="utf8"
+                     endDelimiter="${endDelimiter}"
+                     relativeToChangelogFile="true"
+                     splitStatements="true"
+                     stripComments="true"
+                     path="01-drop-table-users.sql"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="1" author="plekhanov">
+        <sqlFile dbms="${dbms}"
+                 encoding="utf8"
+                 endDelimiter="${endDelimiter}"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true"
+                 path="02-create-table-products.sql"/>
+    </changeSet>
+
+
+</databaseChangeLog>

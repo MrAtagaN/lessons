@@ -21,6 +21,7 @@
         <module>Jaxb</module>
         <module>JsonSchema</module>
         <module>Jsoup</module>
+        <module>Liquibase</module>
     </modules>
 
 

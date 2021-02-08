@@ -1,0 +1,8 @@
+spring:
+  main:
+    banner-mode: "off"
+  liquibase.change-log: classpath:db/db.changelog-master.xml
+  datasource:
+    url: jdbc:sqlite:Java/Libs/Liquibase/src/main/resources/Liquibase-test.db
+    driver-class-name: org.sqlite.JDBC
+
