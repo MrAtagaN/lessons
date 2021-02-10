@@ -24,6 +24,7 @@
         <module>Liquibase</module>
         <module>Lombok</module>
         <module>Slf4j</module>
+        <module>BeanValidation</module>
     </modules>
 
 
