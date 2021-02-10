@@ -23,6 +23,7 @@
         <module>Jsoup</module>
         <module>Liquibase</module>
         <module>Lombok</module>
+        <module>Slf4j</module>
     </modules>
 
 
