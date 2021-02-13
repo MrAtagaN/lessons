@@ -62,7 +62,7 @@ import java.util.regex.Pattern;
  * "А.+а"  жадный режим
  * "А.+?а"  ленивый режим - ищется самое короткое совпадение в тексте
  */
-public class Main {
+public class RegexSymbols {
 
     public static void main(String[] args) {
 
