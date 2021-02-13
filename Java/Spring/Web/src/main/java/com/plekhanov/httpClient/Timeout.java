@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 /**
  * Запрос с временем ожидания
  */
-public class HttpClientWithTimeout {
+public class Timeout {
 
     private static final String GET_URL = "https://10.10.10.10/";
     private static final int TIMEOUT = 5000;
