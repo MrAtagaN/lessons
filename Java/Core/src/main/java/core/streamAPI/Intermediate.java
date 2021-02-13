@@ -11,7 +11,7 @@ import java.util.List;
  * map - один объект превращает в другой
  * sorted - сортирует элементы
  * limit - первые n элементов
- * mapToInt - превращает элементы в примитивы
+ * mapToInt - возвращает стрим из примитивов
  */
 public class Intermediate {
 
@@ -26,6 +26,23 @@ public class Intermediate {
         //filter
         list.stream().filter(elem -> elem > 0);
 
+
+        //map
+        list.stream().map(elem -> {
+            return elem * 2;
+        });
+
+
+        //sorted
+        list.stream().sorted();
+
+
+        //limit
+        list.stream().limit(2);
+
+
+        //mapToInt
+        list.stream().mapToInt(elem -> elem);
 
     }
 }
