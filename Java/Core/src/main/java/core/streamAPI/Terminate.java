@@ -3,6 +3,9 @@ package core.streamAPI;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 /**
@@ -14,12 +17,16 @@ import java.util.List;
  * allMatch - все совпадения
  * anyMatch - хотя бы одно совпадение
  * noneMatch - никаких совпадений
+ *
+ * Методы {@link Collectors}:
+ *
+ *
  */
 public class Terminate {
 
     public static void main(String[] args) {
 
-        List<Integer> list = Arrays.asList(1,2,3);
+        List<Integer> list = Arrays.asList(1, 2, 3);
 
 
         //forEach
@@ -34,8 +41,14 @@ public class Terminate {
 
 
         //collect
+        List<Integer> collectList = list.stream().collect(Collectors.toList());
+        Set<Integer> collectSet = list.stream().collect(Collectors.toSet());
 
+        Double average = list.stream().collect(Collectors.averagingInt(elem -> elem));
+        System.out.println("average: " + average);
 
+        String string = Stream.of("a", "b", "c").collect(Collectors.joining(", ", "[", "]"));
+        System.out.println(string);
 
     }
 }
