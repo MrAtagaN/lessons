@@ -3,6 +3,7 @@ package core.streamAPI;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -17,6 +18,9 @@ import java.util.stream.Stream;
  * allMatch - все совпадения
  * anyMatch - хотя бы одно совпадение
  * noneMatch - никаких совпадений
+ * findAny -
+ * findFirst -
+ *
  *
  * Методы {@link Collectors}:
  *
@@ -50,5 +54,20 @@ public class Terminate {
         String string = Stream.of("a", "b", "c").collect(Collectors.joining(", ", "[", "]"));
         System.out.println(string);
 
+
+        //allMatch
+        boolean match = list.stream().allMatch(elem -> elem < 5);
+
+
+        //max
+        Optional<Integer> max = list.stream().max((x,y)-> x - y); //В аргумент max передать компоратор
+
+
+        //findAny
+        Optional<Integer> any = list.stream().findAny();
+
+
+        //findFirst
+        Optional<Integer> first = list.stream().findFirst();
     }
 }
