@@ -1,6 +1,7 @@
 package com.plekhanov.httpClient;
 
 import org.apache.http.HttpRequest;
+import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
@@ -13,9 +14,6 @@ import org.springframework.web.client.RestTemplate;
 import java.io.IOException;
 
 /**
- *
- * Методы {@link HttpClientBuilder}:
- *
  * Методы {@link HttpUriRequest}:
  * Методы {@link HttpRequest}:
  *
@@ -25,7 +23,7 @@ import java.io.IOException;
  * Методы {@link CloseableHttpClient}:
  *   execute - Делает http запрос и возвращает {@link CloseableHttpResponse}
  *
- * Методы {@link CloseableHttpResponse}:
+ * Методы {@link HttpResponse}:
  *
  *
  */
