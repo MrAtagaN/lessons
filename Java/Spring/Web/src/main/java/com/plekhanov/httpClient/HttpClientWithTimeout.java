@@ -10,9 +10,10 @@ import org.springframework.web.client.RestTemplate;
 /**
  * Запрос с временем ожидания
  */
-public class Timeout {
+public class HttpClientWithTimeout {
 
     private static final String GET_URL = "https://10.10.10.10/";
+    private static final int TIMEOUT = 5000;
 
 
     public static void main(String[] args) {
@@ -29,11 +30,10 @@ public class Timeout {
      * Возвращает RestTemplate с временем ожидания
      */
     private static RestTemplate getRestTemplateWithTimeout() {
-        int timeout = 5000;
         final RequestConfig config = RequestConfig.custom()
-                .setConnectTimeout(timeout)
-                .setConnectionRequestTimeout(timeout)
-                .setSocketTimeout(timeout)
+                .setConnectTimeout(TIMEOUT)
+                .setConnectionRequestTimeout(TIMEOUT)
+                .setSocketTimeout(TIMEOUT)
                 .build();
         final CloseableHttpClient httpClient = HttpClientBuilder.create()
                 .setDefaultRequestConfig(config)

@@ -29,7 +29,7 @@ import java.io.IOException;
  *
  *
  */
-public class HttpClient_ {
+public class SimpleHttpClient {
 
     private static final String URL = "https://google.com";
 

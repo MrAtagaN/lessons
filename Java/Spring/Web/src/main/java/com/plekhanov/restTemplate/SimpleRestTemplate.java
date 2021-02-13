@@ -50,7 +50,7 @@ import org.springframework.web.client.RestTemplate;
  *   getHeaders - Возвращает {@link HttpHeaders}
  *
  */
-public class RestTemplate_ {
+public class SimpleRestTemplate {
 
     private static final String GET_URL = "https://postman-echo.com/get?foo1=bar1&foo2=bar2";
 

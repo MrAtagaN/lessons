@@ -1,48 +1,44 @@
-package com.plekhanov;
+package com.plekhanov.httpClient;
 
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
 import org.apache.http.conn.ssl.NoopHostnameVerifier;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.conn.ssl.TrustStrategy;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.ssl.SSLContextBuilder;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.web.client.RestTemplate;
 
 import javax.net.ssl.SSLContext;
-import java.io.IOException;
 import java.security.KeyManagementException;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.X509Certificate;
-import java.util.Arrays;
 
 /**
  * https://www.baeldung.com/httpclient-ssl
  *
  * Запрос доверяющий всем сертификатам. Нужен для тестирования
  */
-public class CertAuth {
+public class TrustAllCert {
     private static final String GET_URL = "https://postman-echo.com/get?foo1=bar1&foo2=bar2";
 
 
-    public static void main(String[] args) throws NoSuchAlgorithmException, KeyStoreException, KeyManagementException, IOException {
-        final CloseableHttpClient httpClient = getRestTemplateWithAuth();
-        final HttpGet httpGet = new HttpGet(GET_URL);
-        CloseableHttpResponse response = httpClient.execute(httpGet);
+    public static void main(String[] args) throws NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
+        final RestTemplate restTemplate = getRestTemplateWithAuth();
+        final ResponseEntity<String> responseEntity = restTemplate.getForEntity(GET_URL, String.class);
 
-
-        System.out.println("StatusCode: " + response.getStatusLine());
-        Arrays.stream(response.getAllHeaders())
-                .forEach(header -> { System.out.println("Header name: "+header.getName() + ", value: " + header.getValue()); });
-        System.out.println("Body: " + response.getEntity());
+        System.out.println("StatusCode: " + responseEntity.getStatusCode());
+        System.out.println("HttpHeaders: " + responseEntity.getHeaders());
+        System.out.println("Body: " + responseEntity.getBody());
     }
 
 
     /**
-     * Возвращает CloseableHttpClient доверяющий всем сертификатам. Нужен для тестирования
+     * Возвращает RestTemplate доверяющий всем сертификатам. Нужен для тестирования
      */
-    private static CloseableHttpClient getRestTemplateWithAuth() throws KeyStoreException, NoSuchAlgorithmException, KeyManagementException {
+    private static RestTemplate getRestTemplateWithAuth() throws KeyStoreException, NoSuchAlgorithmException, KeyManagementException {
         final TrustStrategy acceptingTrustStrategy = (X509Certificate[] chain, String authType) -> true;
 
         final SSLContext sslContext = SSLContextBuilder.create()
@@ -51,9 +47,11 @@ public class CertAuth {
 
         final SSLConnectionSocketFactory connectionSocketFactory = new SSLConnectionSocketFactory(sslContext, NoopHostnameVerifier.INSTANCE);
 
-        return HttpClientBuilder.create()
+        final CloseableHttpClient httpClient = HttpClientBuilder.create()
                 .setSSLSocketFactory(connectionSocketFactory)
                 .build();
 
+        final HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory(httpClient);
+        return new RestTemplate(requestFactory);
     }
 }
