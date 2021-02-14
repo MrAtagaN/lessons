@@ -5,6 +5,7 @@ import java.util.List;
 
 /**
  * Методы {@link List}:
+ *
  * replaceAll -
  * sort -
  * indexOf -
