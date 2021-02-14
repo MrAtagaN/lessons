@@ -15,18 +15,20 @@ import java.util.stream.Stream;
  * reduce - сложение элементов
  * collect - собрать в коллекцию
  * max - максимальный элемент
+ * min -
  * allMatch - все совпадения
  * anyMatch - хотя бы одно совпадение
  * noneMatch - никаких совпадений
  * findAny -
  * findFirst -
- *
+ * count -
+ * toArray -
  *
  * Методы {@link Collectors}:
  *
  *
  */
-public class Terminate {
+public class TerminateMethods {
 
     public static void main(String[] args) {
 

@@ -9,11 +9,18 @@ import java.util.List;
  * parallel - получить парралельный стрим
  * filter - оставляет элементы которые удовлетворяют условию
  * map - один объект превращает в другой
+ * flatMap -
  * sorted - сортирует элементы
  * limit - первые n элементов
+ * skip -
  * mapToInt - возвращает стрим из примитивов
+ * distinct -
+ * peek -
+ * sequential -
+ * unordered -
+ *
  */
-public class Intermediate {
+public class IntermediateMethods {
 
     public static void main(String[] args) {
 
