@@ -13,8 +13,9 @@ import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
 /**
- * Создание стримов:
+ * Создание стримов
  *
+ * Методы {@link Stream}:
  * empty -
  * of -
  * builder -

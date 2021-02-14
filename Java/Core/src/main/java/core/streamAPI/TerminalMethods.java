@@ -24,9 +24,6 @@ import java.util.stream.Stream;
  * count -
  * toArray -
  *
- * Методы {@link Collectors}:
- *
- *
  */
 public class TerminalMethods {
 
