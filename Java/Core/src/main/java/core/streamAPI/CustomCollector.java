@@ -54,7 +54,7 @@ public class CustomCollector<T> implements Collector<T, Set<T>, Set<T>> {
         return new HashSet<>();
     }
 
-    public static <T> CustomCollector<T> toSet() {
+    public static <T> CustomCollector<T> toCustomSet() {
         return new CustomCollector<>();
     }
 
@@ -66,7 +66,7 @@ public class CustomCollector<T> implements Collector<T, Set<T>, Set<T>> {
         List<String> givenList = Arrays.asList("a", "bb", "ccc", "dddd");
 
         Set<String> result = givenList.stream()
-                .collect(toSet());
+                .collect(toCustomSet());
 
     }
 }

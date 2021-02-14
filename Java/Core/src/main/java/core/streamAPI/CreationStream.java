@@ -16,12 +16,15 @@ import java.util.stream.Stream;
  * Создание стримов
  *
  * Методы {@link Stream}:
- * empty -
- * of -
- * builder -
- * range -
+ *
+ * empty - без элементов
+ * of - из массива
+ * generate - бесконечная последовательность, генерируемая функцией
+ * builder - добавление элементов в стрим
+ * range - стрим чисел из диапазона
+ * rangeClosed - стрим чисел из диапазона включительно
  */
-public class Creation {
+public class CreationStream {
 
     public static void main(String[] args) throws IOException {
 

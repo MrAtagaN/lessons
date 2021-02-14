@@ -9,12 +9,14 @@ import static java.util.stream.Collectors.*;
 import static java.util.stream.Collectors.summarizingDouble;
 
 /**
- * {@link Collectors} создает {@link Collector} который собирает входные элементы в контейнер
+ * {@link Collectors} содержит методы, возвращающие {@link Collector}
+ * {@link Collector} - собирает входные элементы в контейнер
  *
  * https://www.baeldung.com/java-8-collectors
  *
  *
  * Методы {@link Collectors}:
+ *
  * averagingInt -
  * collectingAndThen - собрать в коллекцию, затем преобразовать
  * counting - количество элементов в стриме
