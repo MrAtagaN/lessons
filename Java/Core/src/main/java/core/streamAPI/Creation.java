@@ -12,7 +12,14 @@ import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
-
+/**
+ * Создание стримов:
+ *
+ * empty -
+ * of -
+ * builder -
+ * range -
+ */
 public class Creation {
 
     public static void main(String[] args) throws IOException {

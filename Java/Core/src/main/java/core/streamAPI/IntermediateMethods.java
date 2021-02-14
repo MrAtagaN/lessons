@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Промежуточные:
+ * Промежуточные методы стримов:
  * parallel - получить парралельный стрим
  * filter - оставляет элементы которые удовлетворяют условию
  * map - один объект превращает в другой
@@ -18,6 +18,7 @@ import java.util.List;
  * peek -
  * sequential -
  * unordered -
+ * iterate -
  *
  */
 public class IntermediateMethods {
