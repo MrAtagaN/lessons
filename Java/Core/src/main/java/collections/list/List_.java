@@ -1,22 +1,22 @@
 package collections.list;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
- * {@link List}
- *
- * replaceAll(UnaryOperator<E> operator)
- * sort(Comparator<? super E> c)
- * indexOf(Object o)
- * lastIndexOf(Object o)
- * listIterator()
- * subList(int fromIndex, int toIndex)
+ * Методы {@link List}:
+ * replaceAll -
+ * sort -
+ * indexOf -
+ * lastIndexOf -
+ * listIterator -
+ * subList -
  *
  */
 public class List_ {
 
     public static void main(String[] args) {
-        List list = null;
+        List list = new ArrayList();
         list.iterator();
         list.listIterator();
         

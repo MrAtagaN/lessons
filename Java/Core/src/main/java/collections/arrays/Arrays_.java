@@ -18,6 +18,13 @@ import java.util.Arrays;
  * setAll - заполние массива
  * sort - сортировка
  * stream - получить стрим
+ * toString -
+ * copyOfRange -
+ * spliterator -
+ * deepHashCode -
+ * deepEquals -
+ * deepToString -
+ * fill -
  *
  */
 public class Arrays_ {

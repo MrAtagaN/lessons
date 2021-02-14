@@ -8,11 +8,13 @@ import java.util.Arrays;
  */
 public class SelectSort {
 
+
     public static void main(String[] args) {
         int[] array = {3, 5, 7, 1, 6, 4, 8, 2, 9, 2, 3, 4};
         selectSort(array);
         System.out.println(Arrays.toString(array));
     }
+
 
     public static void selectSort(int[] sourceArray) {
         int indexValue; //значение наименьшего элемента в оставшемся массиве

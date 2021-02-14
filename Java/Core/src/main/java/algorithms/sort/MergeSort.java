@@ -16,6 +16,7 @@ public class MergeSort {
         System.out.println(Arrays.toString(array));
     }
 
+
     public static void mergeSort(int[] sourceArray, int startArrayIndex, int lastArrayIndex) {
         if (startArrayIndex < lastArrayIndex) {
             int middleArrayIndex = (startArrayIndex + lastArrayIndex) / 2;
@@ -24,6 +25,7 @@ public class MergeSort {
             mergeArrays(sourceArray, startArrayIndex, middleArrayIndex, lastArrayIndex);
         }
     }
+
 
     private static void mergeArrays(int[] sourceArray, int startIndexFirstArray, int lastIndexFirstArray, int lastIndexSecondArray) {
 

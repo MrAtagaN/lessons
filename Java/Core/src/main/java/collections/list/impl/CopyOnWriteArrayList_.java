@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.concurrent.*;
 
 /**
- * {@link CopyOnWriteArrayList}
+ * {@link CopyOnWriteArrayList} - потокобезопасная коллекция
  *
  * Тест скорости чтения CopyOnWriteArrayList двумя потоками
  */

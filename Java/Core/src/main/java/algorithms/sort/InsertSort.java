@@ -14,6 +14,7 @@ public class InsertSort {
         System.out.println(Arrays.toString(array));
     }
 
+
     public static void insertSort(int[] sourceArray) {
         for (int i = 1; i < sourceArray.length; i++) {
             int insertIndex = i;
