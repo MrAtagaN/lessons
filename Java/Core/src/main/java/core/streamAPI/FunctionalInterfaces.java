@@ -17,6 +17,13 @@ import java.util.function.Supplier;
  * {@link Supplier} - Не нринимает аргументов, возвращает результат
  *
  *
+ * Вариации функций:
+ *
+ * Bi (Binary) - Функции принимающие два аргумента
+ * Double, Int, Long, Obj - Тип принимаемого аргумента
+ * ToInt, ToLong, ToDouble - Тип возвращаемого аргумента
+ * Operator - Возвращает такой же тип как у аргумента
+ *
  */
 public class FunctionalInterfaces {
 

@@ -28,7 +28,7 @@ import java.util.stream.Stream;
  *
  *
  */
-public class TerminateMethods {
+public class TerminalMethods {
 
     public static void main(String[] args) {
 
