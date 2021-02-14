@@ -6,7 +6,7 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 /**
- * Функциональные интерфейсы:
+ * Функциональные интерфейсы - интерфейсы с одним методом без реализации
  *
  * {@link Function} - Принимает один аргумент, возвращает результат
  *

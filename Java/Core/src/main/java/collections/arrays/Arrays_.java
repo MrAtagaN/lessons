@@ -3,6 +3,8 @@ package collections.arrays;
 import java.util.Arrays;
 
 /**
+ * {@link Arrays} - манипуляции с массивами
+ *
  * https://javarush.ru/groups/posts/massivy-java
  * https://javarush.ru/quests/lectures/questcollections.level07.lecture07
  *

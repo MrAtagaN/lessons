@@ -4,7 +4,6 @@ import java.util.*;
 import java.util.concurrent.*;
 
 /**
- *
  * {@link Collections} - Статические методы для работы с коллекциями
  *
  * addAll - добавить в коллекцию элементы

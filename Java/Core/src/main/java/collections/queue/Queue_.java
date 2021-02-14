@@ -4,7 +4,7 @@ import java.util.ArrayDeque;
 import java.util.Queue;
 
 /**
- * Методы {@link Queue}
+ * Методы {@link Queue}:
  *
  * element -
  * peek -
