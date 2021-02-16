@@ -21,6 +21,7 @@ import java.util.stream.Stream;
  * of - из массива
  * generate - бесконечная последовательность, генерируемая функцией
  * builder - добавление элементов в стрим
+ * concat - соединить два стрима
  * range - стрим чисел из диапазона
  * rangeClosed - стрим чисел из диапазона включительно
  */
@@ -61,6 +62,8 @@ public class CreationStream {
         //stream of primitives
         IntStream intStream = IntStream.range(1, 3);
         LongStream longStream = LongStream.rangeClosed(1, 3);
+        IntStream intStream2 = "String".chars();
+        IntStream intStream3 = "String".codePoints();
 
 
         //stream of string
