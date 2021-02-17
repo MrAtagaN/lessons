@@ -26,6 +26,7 @@
         <module>Slf4j</module>
         <module>BeanValidation</module>
         <module>Vavr</module>
+        <module>MailClient</module>
     </modules>
 
 
