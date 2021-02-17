@@ -1,14 +1,11 @@
 package multithreading.dead_lock;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * DEAD LOCK
  */
 public class Main {
 
-    public static final Logger LOG = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) throws InterruptedException {
         final Account account_1 = new Account(10_000);
@@ -30,8 +27,8 @@ public class Main {
 
         thread.join();
         thread2.join();
-        LOG.info("ACCOUNT 1 AMOUNT: {}", account_1.getBalance());
-        LOG.info("ACCOUNT 2 AMOUNT: {}", account_2.getBalance());
+        System.out.println("ACCOUNT 1 AMOUNT: " + account_1.getBalance());
+        System.out.println("ACCOUNT 2 AMOUNT: " + account_2.getBalance());
     }
 
 
@@ -49,7 +46,7 @@ public class Main {
             synchronized (acc2) {
                 acc1.withdraw(amount);
                 acc2.deposit(amount);
-                LOG.info("TRANSFER MONEY: {}", amount);
+                System.out.println("TRANSFER MONEY: " + amount);
             }
         }
     }
