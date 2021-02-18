@@ -1,10 +1,10 @@
-package core.dateTime;
+package core.dateTime.localDateTime;
 
 import java.time.*;
 import java.time.temporal.ChronoUnit;
 
 /**
- *
+ * {@link LocalDateTime} -
  */
 public class LocalDateTime_ {
 
@@ -35,23 +35,6 @@ public class LocalDateTime_ {
         //Установка временой зоны
         ZoneId zoneId = ZoneId.of("Europe/Paris");
         ZonedDateTime zonedDateTime = ZonedDateTime.of(localDateTime, zoneId);
-        System.out.println(zoneId.equals(ZoneId.from(zonedDateTime)));
 
-        //Переоды
-        Period period = Period.of(3, 2, 1);
-
-        //Модификация даты с помощью периодов
-        LocalDate oldDate = LocalDate.now();
-        LocalDateTime oldDateTime = LocalDateTime.now();
-
-        LocalDate newDate = oldDate.plus(period);
-        ZonedDateTime newDateTime = zonedDateTime.minus(period);
-        // Components of a Period are represented by ChronoUnit values
-        System.out.println(period.get(ChronoUnit.DAYS) == 1);
-
-
-        //Продолжительность, различная точность
-        Duration duration = Duration.between(truncatedTime, oldDateTime);
-        System.out.println("oneDay = " + duration);
     }
 }

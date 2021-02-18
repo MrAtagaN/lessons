@@ -5,7 +5,11 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 /**
+ * {@link Calendar} -
+ *
  * https://javarush.ru/quests/lectures/questcollections.level10.lecture09
+ *
+ *
  */
 public class Calendar_ {
 
@@ -19,7 +23,7 @@ public class Calendar_ {
         calendar.set(Calendar.SECOND, 12);
 
         Date date = calendar.getTime();
-        System.out.println(date);
+        System.out.println(date); //Tue Apr 25 19:42:12 MSK 2017
 
         System.out.println("Год: " + calendar.get(Calendar.YEAR));
         System.out.println("Месяц: " + calendar.get(Calendar.MONTH));
