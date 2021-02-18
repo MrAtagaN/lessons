@@ -1,9 +1,6 @@
-package core.big_decimal;
+package core.bigDecimal;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
-
-import static java.math.BigDecimal.*;
 
 /**
  * BigDecimal - Неизменяемый
@@ -49,23 +46,10 @@ import static java.math.BigDecimal.*;
 public class Main {
 
     public static void main(String[] args) {
-        BigInteger integer = new BigInteger("111111111111111111111111111111111111111111111111111111111111111111111");
-        System.out.println(integer);
-
-        BigInteger result = integer.add(BigInteger.valueOf(33333333));
-        System.out.println(result);
-
-
-        //Сравнение чисел
-        Double a = 1.5;
-        Double b = 1.50;
-        System.out.println(a.equals(b)); // true
-
         BigDecimal x = new BigDecimal("1.5");
         BigDecimal y = new BigDecimal("1.50");
         System.out.println(x.equals(y)); // false
-
-        System.out.println(x.compareTo(y));
+        System.out.println(x.compareTo(y)); //0
 
     }
 }

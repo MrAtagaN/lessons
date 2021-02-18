@@ -1,25 +1,35 @@
-package core.big_decimal;
+package core.bigDecimal;
 
 import java.math.BigDecimal;
 
 import static java.math.BigDecimal.*;
 import static java.math.BigDecimal.ROUND_HALF_EVEN;
 
+/**
+ * Точность
+ *
+ * ROUND_CEILING - округление в большую сторону
+ * ROUND_DOWN - отбрасывание разряда
+ * ROUND_FLOOR - округление в меньшую сторону
+ * ROUND_HALF_UP - округление в большую сторону, если число после запятой >= 5
+ * ROUND_HALF_DOWN -округление в большую сторону, если число после запятой > 5
+ * ROUND_HALF_EVEN
+ */
 public class Scale {
 
     public static void main(String[] args) {
 
         //округление в большую сторону
-        BigDecimal bigDecimal = new BigDecimal("111.5555555555").setScale(3, ROUND_CEILING);
-        System.out.println(bigDecimal); //111.556
+        BigDecimal bigDecimal = new BigDecimal("111.999").setScale(1, ROUND_CEILING);
+        System.out.println(bigDecimal); //112.0
 
         //отбрасывание разряда
-        BigDecimal bigDecimal2 = new BigDecimal("111.5555555555").setScale(3, ROUND_DOWN);
-        System.out.println(bigDecimal2); //111.555
+        BigDecimal bigDecimal2 = new BigDecimal("111.999").setScale(1, ROUND_DOWN);
+        System.out.println(bigDecimal2); //111.9
 
         //округление в меньшую сторону
-        BigDecimal bigDecimal3 = new BigDecimal("111.5555555555").setScale(3, ROUND_FLOOR);
-        System.out.println(bigDecimal3); //111.555
+        BigDecimal bigDecimal3 = new BigDecimal("111.999").setScale(1, ROUND_FLOOR);
+        System.out.println(bigDecimal3); //111.9
 
         //округление в большую сторону, если число после запятой >= .5
         BigDecimal bigDecimal4 = new BigDecimal("111.55").setScale(1, ROUND_HALF_UP);
