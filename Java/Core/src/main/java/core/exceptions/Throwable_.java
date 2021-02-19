@@ -4,7 +4,7 @@ package core.exceptions;
 /**
  * {@link Throwable} -
  *
- * Методы:
+ * Методы Throwable:
  *
  * addSuppressed -
  * getSuppressed -
