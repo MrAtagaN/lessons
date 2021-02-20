@@ -1,4 +1,4 @@
-package collections;
+package collections.util;
 
 import java.util.*;
 import java.util.concurrent.*;

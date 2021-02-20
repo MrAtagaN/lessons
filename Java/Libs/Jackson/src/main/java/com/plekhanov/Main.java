@@ -20,7 +20,7 @@ import static com.fasterxml.jackson.core.JsonParser.Feature.*;
 /**
  * {@link JsonNode} - Абстрактный класс. Обобщенный элемент json
  *
- * {@link ObjectNode} - LinkedTreeMap (String, JsonNode). Ключ - имя элемента, Значение абстрактный элемент
+ * {@link ObjectNode} - Мапа (LinkedTreeMap<String, JsonNode>). Ключ - имя элемента json, Значение - элемент json
  *
  *
  *
