@@ -1,9 +1,6 @@
 Если Idea не видит зависимостей, но они есть в m2 то надо удалить папку <User>/<IntellijIdea>/system/index
 
 Активация Windows
-https://serblog.ru/aktivaciya-windows-10-navsegda-besplatno/
-
-slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX
-slmgr /skms kms.xspace.in
-slmgr /skms zh.us.to
+перед началом отключить безопасность
+kms.zip
 
