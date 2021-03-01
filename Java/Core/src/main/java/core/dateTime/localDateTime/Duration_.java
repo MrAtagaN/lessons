@@ -5,7 +5,9 @@ import java.time.LocalDateTime;
 
 
 /**
- * {@link Duration} -
+ * https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html
+ *
+ * {@link Duration} - Не учитывает календарь, только длительность
  */
 public class Duration_ {
 

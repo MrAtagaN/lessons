@@ -5,9 +5,9 @@ package core.string;
  *
  * Статические
  *
- * String.copyValueOf() - new String(data)
- * String.format - форматированная строка
- * String.join - соединяет строки, вставляя между ними разделитель
+ * copyValueOf() - new String(data)
+ * format - форматированная строка
+ * join - соединяет строки, вставляя между ними разделитель
  *
  *
  * Не статические:
@@ -42,8 +42,6 @@ package core.string;
  * codePointCount -
  * offsetByCodePoints -
  * codePoints -
- *
- *
  *
  */
 public class String_ {

@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import java.time.Period;
 
 /**
- * {@link Period} -
+ * {@link Period} - Учитывает календарь (летнее время)
  *
  */
 public class Period_ {

@@ -5,6 +5,26 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
+ * https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html
+ *
+ * Статические методы {@link DateTimeFormatter}:
+ * ofPattern -
+ * ofLocalizedDate -
+ * parsedExcessDays -
+ * parsedLeapSecond -
+ *
+ * методы {@link DateTimeFormatter}:
+ * format -
+ * parse -
+ * parseBest -
+ * parseUnresolved -
+ * getChronology -
+ * getDecimalStyle -
+ * getResolverFields -
+ * getLocale -
+ * getZone -
+ * toFormat -
+ * with -
  *
  */
 public class DateTimeFormatter_ {
