@@ -3,7 +3,7 @@ package collections.util;
 import java.util.Arrays;
 
 /**
- * {@link Arrays} - манипуляции с массивами
+ * {@link Arrays} - Статические методы для работы с массивами
  *
  * https://javarush.ru/groups/posts/massivy-java
  * https://javarush.ru/quests/lectures/questcollections.level07.lecture07

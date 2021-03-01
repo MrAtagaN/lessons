@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
+ * Реализации Set: HashSet, LinkedHashSet, TreeSet, CopyOnWriteArraySet, ConcurrentSkipListSet
+ *
  * {@link Set}
  *
  *

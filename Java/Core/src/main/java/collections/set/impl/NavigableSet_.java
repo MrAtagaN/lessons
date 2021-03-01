@@ -1,4 +1,4 @@
-package collections.set;
+package collections.set.impl;
 
 import java.util.NavigableSet;
 import java.util.TreeSet;

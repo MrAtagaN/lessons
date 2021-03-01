@@ -1,4 +1,4 @@
-package collections;
+package collections.iterator;
 
 import java.util.Iterator;
 import java.util.ListIterator;
@@ -6,14 +6,14 @@ import java.util.ListIterator;
 /**
  * {@link Iterator}
  *
- * hasNext()
- * next()
- * forEachRemaining
+ * hasNext -
+ * next -
+ * forEachRemaining -
  *
  *
  * {@link ListIterator}
  *
- * hasPrevious
+ * hasPrevious -
  * previous
  * nextIndex
  * previousIndex

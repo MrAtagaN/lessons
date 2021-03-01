@@ -5,8 +5,10 @@ import java.util.NavigableMap;
 import java.util.TreeMap;
 
 /**
- * {@link NavigableMap}
  *
+ * Реализации {@link NavigableMap}: TreeMap
+ *
+ * Методы {@link NavigableMap}:
  * descendingMap - развернутая Map
  *
  * ceilingEntry - ближайший Entry в большую сторону
