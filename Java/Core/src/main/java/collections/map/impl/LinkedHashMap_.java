@@ -1,7 +1,9 @@
 package collections.map.impl;
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * {@link LinkedHashMap}
@@ -39,6 +41,7 @@ public class LinkedHashMap_ {
 
         cache.keySet().forEach(System.out::println);
     }
+
 
     /**
      * Простой кэш. При переполнении удаляет элемент к которому реже был доступ

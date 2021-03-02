@@ -19,9 +19,9 @@ import java.util.List;
  * isEmpty
  * parallelStream
  * remove
- * removeAll
- * removeIf
- * retainAll
+ * removeAll - удаляет те элементы, которые есть в передаваемой коллекции
+ * removeIf - удаляет элементы которые подходят под условие
+ * retainAll - оставляет только те элементы, которые есть в передаваемой коллекции
  * size
  * stream
  * toArray
@@ -37,5 +37,6 @@ public class Collection_ {
 
         list.removeIf((obj) -> {return obj < 2;});
         System.out.println(list);
+
     }
 }
