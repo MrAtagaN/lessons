@@ -8,12 +8,15 @@ import java.util.ListIterator;
 /**
  * {@link Iterator} -
  *
+ * Методы {@link Iterator}:
  * hasNext - Возвращает true, если итерация содержит больше элементов.
  * next - Возвращает следующий элемент в итерации.
  * forEachRemaining - Выполняет заданное действие для каждого оставшегося элемента до тех пор, пока все элементы не будут обработаны или действие не вызовет исключение.
  *
+ *
  * {@link ListIterator} - итератор у {@link List} который расширяет {@link Iterator}
  *
+ * Методы {@link ListIterator}:
  * hasPrevious -
  * previous -
  * nextIndex -
