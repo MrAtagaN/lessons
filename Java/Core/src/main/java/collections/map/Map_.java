@@ -5,7 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Реализации {@link Map}: HashMap, LinkedHashMap, TreeMap, ConcurrentHashMap, ConcurrentSkipListMap
+ * Реализации {@link Map}: HashMap, LinkedHashMap, TreeMap
+ * Потокобезопасные реализации {@link Map}: ConcurrentHashMap, ConcurrentSkipListMap
  *
  * Методы {@link Map} java 1.8 :
  *

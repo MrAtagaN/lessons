@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Реализации {@link List} : ArrayList, LinkedList, CopyOnWriteArrayList, Vector, Stack
- * 
+ * Реализации {@link List}: ArrayList, LinkedList
+ * Потокобезопасные реализации {@link List}: CopyOnWriteArrayList, Vector, Stack
+ *
  * Методы {@link List}:
  * replaceAll -
  * sort -

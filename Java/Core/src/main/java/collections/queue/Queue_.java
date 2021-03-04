@@ -5,18 +5,18 @@ import java.util.Queue;
 
 /**
  * Реализации {@link Queue}: PriorityQueue, LinkedList, ArrayDeque, ArrayBlockingQueue, LinkedTransferQueue
- * PriorityBlockingQueue, LinkedBlockingQueue, SynchronousQueue
+ * Потокобезопасные реализации {@link Queue}: PriorityBlockingQueue, LinkedBlockingQueue, SynchronousQueue
  *
  * Методы {@link Queue}:
  *
- * element -
- * peek -
+ * element - Извлекает, но не удаляет заголовок этой очереди, или кидает Exception
+ * peek - Извлекает, но не удаляет заголовок этой очереди, или возвращает null, если эта очередь пуста.
  *
- * poll -
- * remove -
+ * remove - Извлекает и удаляет заголовок этой очереди, или кидает Exception
+ * poll - Извлекает и удаляет заголовок этой очереди или возвращает null, если эта очередь пуста.
  *
- * add -
- * offer -
+ * add - Вставляет указанный элемент в эту очередь, если это возможно сделать немедленно, не нарушая ограничений емкости  или генерирует исключение IllegalStateException
+ * offer - Вставляет указанный элемент в эту очередь, если это возможно сделать немедленно, не нарушая ограничений емкости
  *
  */
 public class Queue_ {
@@ -25,13 +25,13 @@ public class Queue_ {
     public static void main(String[] args) {
         Queue arrayDeque = new ArrayDeque();
 
-        arrayDeque.element(); //Retrieves, but does not remove,  NoSuchElementException if this queue is empty
-        arrayDeque.peek(); //Retrieves, but does not remove
+        arrayDeque.element();
+        arrayDeque.peek();
 
-        arrayDeque.poll(); //Retrieves and removes the head element
-        arrayDeque.remove(); //Retrieves and removes the head element,  NoSuchElementException if this queue is empty
+        arrayDeque.poll();
+        arrayDeque.remove();
 
-        arrayDeque.add(new Object()); //Inserts element,  throwing an {@code IllegalStateException} if no space is currently available
-        arrayDeque.offer(new Object()); // Inserts element
+        arrayDeque.add(new Object());
+        arrayDeque.offer(new Object());
     }
 }

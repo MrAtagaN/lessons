@@ -5,9 +5,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Реализации Set: HashSet, LinkedHashSet, TreeSet, CopyOnWriteArraySet, ConcurrentSkipListSet
+ * Реализации {@link Set}: HashSet, LinkedHashSet, TreeSet
+ * Потокобезопасные реализации {@link Set}: CopyOnWriteArraySet, ConcurrentSkipListSet
  *
- * {@link Set}
+ * Методы {@link Set}:
  *
  *
  */
