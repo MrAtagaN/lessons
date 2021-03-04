@@ -6,6 +6,35 @@ import java.io.IOException;
 
 /**
  * https://javarush.ru/quests/lectures/questcollections.level01.lecture01
+ *
+ * {@link File} -
+ *
+ * Методы {@link File}:
+ *
+ * getName
+ * getAbsolutePath
+ * getAbsoluteFile
+ * getParent
+ * length
+ * exists
+ * canWrite
+ * canRead
+ * isDirectory
+ * isFile
+ * isHidden
+ * canExecute
+ * getCanonicalPath
+ * toPath
+ * getTotalSpace
+ * getFreeSpace
+ * getUsableSpace
+ * delete
+ * deleteOnExit
+ * createNewFile
+ * list
+ * listFiles
+ * lastModified
+ * mkdir
  */
 public class File_ {
 
