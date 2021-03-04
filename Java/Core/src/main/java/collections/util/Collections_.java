@@ -6,6 +6,7 @@ import java.util.concurrent.*;
 /**
  * {@link Collections} - Статические методы для работы с коллекциями
  *
+ * Методы {@link Collections}:
  * addAll - добавить в коллекцию элементы
  * asLifoQueue - обратную очередь приводит к интерфесу Queue
  * binarySearch - поиск объекта в отсортированном массиве
@@ -33,58 +34,6 @@ public class Collections_ {
         Collections.binarySearch( new ArrayList<String>(), "");
     }
 
-    /***
-     * Реализации List : ArrayList, LinkedList, CopyOnWriteArrayList, Vector, Stack
-     */
-    List arrayList = new ArrayList<>(); //List
-    List copyOnWriteArrayList = new CopyOnWriteArrayList(); //List
-    List linkedList = new LinkedList<>(); //List ,Queue, Deque
-    List vector = new Vector(); //List
-    List stack = new Stack(); //List
-
-
-    /**
-     * Реализации Map: HashMap, LinkedHashMap, TreeMap, ConcurrentHashMap, ConcurrentSkipListMap
-     */
-    Map hashMap = new HashMap(); //Map
-    Map linkedHashMap = new LinkedHashMap(); //Map
-    Map treeMap = new TreeMap(); //Map
-    // синхронизированные
-    Map concurrentHashMap = new ConcurrentHashMap(); //Map, ConcurrentMap
-    Map concurrentSkipListMap = new ConcurrentSkipListMap(); //Map, ConcurrentMap
-
-
-    /**
-     * Реализации Set: HashSet, LinkedHashSet, TreeSet, CopyOnWriteArraySet, ConcurrentSkipListSet
-     */
-    Set hashSet = new HashSet(); //Set
-    Set linkedHashSet = new LinkedHashSet(); //Set
-    Set treeSet = new TreeSet(); //Set, NavigableSet
-    // синхронизированные
-    Set copyOnWriteArraySet = new CopyOnWriteArraySet(); //Set
-    Set concurrentSkipListSet = new ConcurrentSkipListSet(); //Set, NavigableSet
-
-
-    /**
-     * Реализации Queue: PriorityQueue, LinkedList, ArrayDeque, ArrayBlockingQueue, LinkedTransferQueue
-     * PriorityBlockingQueue, LinkedBlockingQueue, SynchronousQueue
-     */
-    Queue priorityQueue = new PriorityQueue(); //Queue
-    Queue linkedList2 = new LinkedList<>(); //List ,Queue, Deque
-    Queue arrayDeque = new ArrayDeque(); //Queue, Deque
-    // синхронизированные
-    Queue arrayBlockingQueue = new ArrayBlockingQueue(10);
-    Queue linkedTransferQueue = new LinkedTransferQueue();
-    Queue priorityBlockingQueue = new PriorityBlockingQueue();
-    Queue linkedBlockingQueue = new LinkedBlockingQueue();
-    Queue synchronousQueue = new SynchronousQueue(); //Queue, BlockingQueue
-
-
-    /**
-     * Реализации Deque: ArrayDeque, LinkedList
-     */
-    Deque arrayDeque2 = new ArrayDeque(); //Queue, Deque
-    Deque linkedList3 = new LinkedList<>(); //List ,Queue, Deque
 
 
 }

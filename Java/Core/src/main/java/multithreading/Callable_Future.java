@@ -7,12 +7,13 @@ import java.util.concurrent.FutureTask;
 
 /**
  * {@link Callable} - асинхроная задача, которая должна вернуть результат
- * Методы:
+ *
+ * Методы {@link Callable}:
  * call - метод возвращающий результат
  *
  *
  * {@link Future} - интерфейс для работы с асинхронной задачей, которая должна вернуть результат
- * Методы:
+ * Методы {@link Future}:
  * cancel -
  * isCancelled -
  * isDone -

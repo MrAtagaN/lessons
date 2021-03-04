@@ -4,8 +4,8 @@ import java.util.ArrayDeque;
 import java.util.Queue;
 
 /**
- * Реализации {@link Queue}: PriorityQueue, LinkedList, ArrayDeque, ArrayBlockingQueue, LinkedTransferQueue
- * Потокобезопасные реализации {@link Queue}: PriorityBlockingQueue, LinkedBlockingQueue, SynchronousQueue
+ * Реализации {@link Queue}: PriorityQueue, LinkedList, ArrayDeque
+ * Потокобезопасные реализации {@link Queue}:ArrayBlockingQueue, LinkedTransferQueue PriorityBlockingQueue, LinkedBlockingQueue, SynchronousQueue
  *
  * Методы {@link Queue}:
  *

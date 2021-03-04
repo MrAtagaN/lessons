@@ -1,4 +1,4 @@
-package core.IO;
+package core.IO.nio;
 
 import java.io.IOException;
 import java.nio.file.*;
@@ -7,16 +7,22 @@ import java.util.HashSet;
 import java.util.List;
 
 /**
- * NIO - Files, Path, Paths
- * <p>
  * https://javarush.ru/quests/lectures/questcollections.level01.lecture03
  * https://javarush.ru/groups/posts/2275-files-path
+ *
+ *
+ * Методы {@link Path}:
+ *
+ *
+ * Методы {@link Files}:
+ *
+ *
  */
 public class NIO {
 
     public static void main(String[] args) throws IOException {
         //Paths
-        Path path = Paths.get("TODO.txt");
+        Path path = Paths.get("Knowledge.txt");
 
         //Path
         System.out.println(path.isAbsolute());
@@ -44,9 +50,9 @@ public class NIO {
 
 
         //Обход файлов
-        Files.walkFileTree(Paths.get("./JavaCore"), new MyFileVisitor());
+        Files.walkFileTree(Paths.get("./Java"), new MyFileVisitor());
         //Обход файлов c глубиной 1
-        Files.walkFileTree(Paths.get("./JavaCore"), new HashSet<>(), 1,  new MyFileVisitor());
+        Files.walkFileTree(Paths.get("./Java"), new HashSet<>(), 1,  new MyFileVisitor());
 
 
         //BasicFileAttributes

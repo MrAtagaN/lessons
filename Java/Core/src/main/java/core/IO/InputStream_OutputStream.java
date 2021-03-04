@@ -5,24 +5,22 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-
 /**
- * InputStream - абстрактный класс читающий байты
+ * {@link InputStream} - абстрактный класс читающий байты
  *
- * Методы inputStream:
- * available() - Количество непрочитанных байт
- * read() - считать следующий байт
- * read(byte[]) - считывает байты из потока в массив, возвращает количество считанных байт
- * markSupported() - поддерживает ли поток механизм меток
- * mark() - поставить метку в определенную позицию
+ * Методы {@link InputStream}:
+ * available - Количество непрочитанных байт
+ * read - считывает байты из потока в массив, возвращает количество считанных байт
+ * markSupported - поддерживает ли поток механизм меток
+ * mark - поставить метку в определенную позицию
  *
  *
- * BufferedInputStream - буферезированный inputStream, обертка позволяющая оптимизировать работу
+ * {@link BufferedInputStream} - буферезированный inputStream, обертка позволяющая оптимизировать работу
  */
 public class InputStream_OutputStream {
 
     public static void main(String[] args) throws IOException {
-        InputStream inputStream = new FileInputStream("TODO.txt");
+        InputStream inputStream = new FileInputStream("Knowledge.txt");
         System.out.println("available() " + inputStream.available());
         System.out.println("markSupported() " + inputStream.markSupported());
         System.out.println("read() " + inputStream.read());
@@ -31,7 +29,7 @@ public class InputStream_OutputStream {
         inputStream.close();
 
         //Считывание файла InputStream
-        try (InputStream inputStream2 = new FileInputStream("TODO.txt")) {
+        try (InputStream inputStream2 = new FileInputStream("Knowledge.txt")) {
             byte[] buf = new byte[256];
             int countOfRead;
             while ((countOfRead = inputStream2.read(buf)) > 0) { // или != -1
@@ -47,7 +45,7 @@ public class InputStream_OutputStream {
         System.out.println("-----------------------------------");
 
         //Считывание файла BufferedInputStream
-        try (BufferedInputStream bufferedInputStream = new BufferedInputStream(new FileInputStream("TODO.txt"))) {
+        try (BufferedInputStream bufferedInputStream = new BufferedInputStream(new FileInputStream("Knowledge.txt"))) {
             byte[] buf = new byte[256];
             int countOfRead;
             while ((countOfRead = bufferedInputStream.read(buf)) > 0) {

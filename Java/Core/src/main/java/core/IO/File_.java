@@ -39,7 +39,7 @@ import java.io.IOException;
 public class File_ {
 
     public static void main(String[] args) throws IOException {
-        File file = new File("TODO.txt");
+        File file = new File("Knowledge.txt");
         System.out.println("File name: " + file.getName());
         System.out.println("Absolute path: " + file.getAbsolutePath());
         System.out.println("Parent directory: " + file.getParent());

@@ -3,20 +3,20 @@ package core.IO;
 import java.io.*;
 
 /**
- * Reader - абстрактный класс читающий символы
+ * {@link Reader} - абстрактный класс читающий символы
  *
- * Методы Reader:
- * ready() - Есть непрочитанные символы
- * read() - считать следующий байт
- * read(byte[]) - считывает байты из потока в массив, возвращает количество считанных байт
- * markSupported() - поддерживает ли поток механизм меток
- * mark() - поставить метку в определенную позицию
+ * Методы {@link Reader}:
+ * ready - Есть непрочитанные символы
+ * read - считывает байты из потока в массив, возвращает количество считанных байт
+ * markSupported - поддерживает ли поток механизм меток
+ * mark - поставить метку в определенную позицию
  *
  *
- * InputStreamReader - читает символы из потока
- * StringReader - читает символы из строки
- * FileReader - читает символы из файла
- * BufferedReader - буферезированный ридер, обертка позволяющая работать с строками
+ * Реализации {@link Reader}:
+ * {@link InputStreamReader} - читает символы из потока
+ * {@link StringReader} - читает символы из строки
+ * {@link FileReader} - читает символы из файла
+ * {@link BufferedReader} - буферезированный ридер, обертка позволяющая работать с строками
  *
  *
  * https://javarush.ru/quests/lectures/questcollections.level01.lecture07
@@ -31,8 +31,8 @@ public class Reader_Writer {
     public static void main(String[] args) throws IOException {
 
         System.out.println("считывание файла FileReader: ");
-        BufferedReader bufferedReader = new BufferedReader(new FileReader("TODO.txt"));
-        while (bufferedReader.ready()){
+        BufferedReader bufferedReader = new BufferedReader(new FileReader("Knowledge.txt"));
+        while (bufferedReader.ready()) {
             String line = bufferedReader.readLine();
             System.out.println(line);
         }

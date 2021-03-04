@@ -4,7 +4,8 @@ import java.util.concurrent.ThreadFactory;
 
 /**
  * Интерфейс {@link ThreadFactory}
- * Метод:
+ *
+ * Методы {@link ThreadFactory}:
  * newThread - возвращает нить
  */
 public class ThreadFactory_ {

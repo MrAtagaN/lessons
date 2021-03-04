@@ -10,12 +10,15 @@ import java.util.OptionalLong;
  * https://vk.com/@javatutorial-java-optional-ne-takoi-uzh-ochevidnyi
  *
  *
- * Методы {@link Optional}:
+ * Статические методы {@link Optional}:
  *
  * Создание:
  * empty - создает Optional c значением null
  * of - создает Optional c переданным значением, не равным null
  * ofNullable - создает Optional c переданным значением
+ *
+ *
+ * Методы {@link Optional}:
  *
  * Получение:
  * get - возвращает результат, или кидает ошибку

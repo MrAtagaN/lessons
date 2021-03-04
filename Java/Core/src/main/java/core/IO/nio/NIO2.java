@@ -1,4 +1,4 @@
-package core.IO;
+package core.IO.nio;
 
 public class NIO2 {
 }
