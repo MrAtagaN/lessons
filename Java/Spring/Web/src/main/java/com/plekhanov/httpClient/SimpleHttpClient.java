@@ -1,6 +1,5 @@
 package com.plekhanov.httpClient;
 
-import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
@@ -15,13 +14,14 @@ import java.io.IOException;
 
 /**
  * Методы {@link HttpUriRequest}:
- * Методы {@link HttpRequest}:
+ *
  *
  * Методы {@link HttpContext}:
  *
  *
  * Методы {@link CloseableHttpClient}:
  *   execute - Делает http запрос и возвращает {@link CloseableHttpResponse}
+ *
  *
  * Методы {@link HttpResponse}:
  *
@@ -37,7 +37,7 @@ public class SimpleHttpClient {
                 .build();
 
         final HttpUriRequest httpRequest = new HttpPost(URL);
-        final CloseableHttpResponse httpResponse = httpClient.execute(httpRequest);
+        final HttpResponse httpResponse = httpClient.execute(httpRequest);
         System.out.println("Status line: " + httpResponse.getStatusLine());
 
 

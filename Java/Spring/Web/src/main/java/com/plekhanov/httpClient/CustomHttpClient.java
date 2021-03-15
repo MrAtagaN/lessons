@@ -23,14 +23,14 @@ public class CustomHttpClient {
 
     public static void main(String[] args) {
 
-        //PoolingHttpClientConnectionManager
+        //настройка PoolingHttpClientConnectionManager
         final PoolingHttpClientConnectionManager connManager = new PoolingHttpClientConnectionManager();
         connManager.setMaxTotal(5);
         connManager.setDefaultMaxPerRoute(4);
         final HttpHost host = new HttpHost("www.baeldung.com", 80);
         connManager.setMaxPerRoute(new HttpRoute(host), 5);
 
-        //ConnectionKeepAliveStrategy
+        //настройка ConnectionKeepAliveStrategy
         final ConnectionKeepAliveStrategy myStrategy = (response, context) -> {
             final HeaderElementIterator it = new BasicHeaderElementIterator(response.headerIterator(HTTP.CONN_KEEP_ALIVE));
             while (it.hasNext()) {

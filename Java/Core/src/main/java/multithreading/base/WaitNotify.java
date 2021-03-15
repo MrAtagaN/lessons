@@ -1,8 +1,9 @@
 package multithreading.base;
 
 /**
- * Нить засыпает в месте wait и снимает блокировку. Когда нить будят (notify) выполнение продолжается с места wait
- * wait и notify можно вызывать только в синхронизиронных блоках
+ * wait и notify можно вызывать только в синхронизиронных блоках.
+ * wait - остановить выполнение и снять блокировку.
+ * notify - возобновить выполнение другой нити с места wait
  */
 public class WaitNotify {
 
@@ -17,6 +18,7 @@ public class WaitNotify {
         thread2.setName("Второй водитель");
         thread2.start();
     }
+
 
     static class Driver implements Runnable {
 
@@ -37,13 +39,18 @@ public class WaitNotify {
         }
     }
 
+
+
     static class Job {
+        /**
+         * Синхронный метод
+         */
         synchronized void drive() throws InterruptedException {
             System.out.println(Thread.currentThread().getName() + " Поехал");
             Thread.sleep(1000);
             this.notify(); //второй разбудит первого
             this.wait();
-            System.out.println(Thread.currentThread().getName() + " Остановился");
+            System.out.println(Thread.currentThread().getName() + " Закончил работу");
         }
     }
 
