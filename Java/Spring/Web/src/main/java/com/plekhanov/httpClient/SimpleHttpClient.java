@@ -36,7 +36,7 @@ public class SimpleHttpClient {
         final CloseableHttpClient httpClient = HttpClientBuilder.create()
                 .build();
 
-        final HttpUriRequest httpRequest = new HttpPost(URL);
+        final HttpPost httpRequest = new HttpPost(URL);
         final HttpResponse httpResponse = httpClient.execute(httpRequest);
         System.out.println("Status line: " + httpResponse.getStatusLine());
 
