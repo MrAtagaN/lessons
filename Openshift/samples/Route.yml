@@ -3,7 +3,7 @@ kind: Route
 metadata:
   name: umb
 spec:
-  host: umb.apps.test-ose.ca.sbrf.ru
+  host: umb.apps.test.ru
   port:
     targetPort: port8081
   to:

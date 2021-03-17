@@ -1,5 +1,4 @@
-Залогинится на сервере OpenShift
-    oc login --server=https://api.<url кластера>:6443 --insecure-skip-tls-verify --token=<токен>
+oc login --server=https://api.<url кластера>:6443 --insecure-skip-tls-verify --token=<токен> - Залогинится на сервере OpenShift
 
 oc project - имя текущего проекта
 
@@ -11,18 +10,21 @@ oc api-resources - список api ресурсов на сервере
 
 oc apply -f <путь к файлу .yml> - загрузить файл деплоя
 
-oc delete -f <путь к файлу .yml> --ignore-not-found=true  -
+oc delete -f <путь к файлу .yml> --ignore-not-found=true
 
-oc create -f <путь к файлу .yml> -
+oc create -f <путь к файлу .yml>
 
-oc patch <object_type> <object_name> -p <changes> - изменение одного параметра в объекте
+oc patch <object_type> <object_name> -p <changes> - Изменение одного параметра в объекте
 
 oc create secret generic <имя секрета> --from-file=./<имя файла>
 
-oc port-forward <имя пода> <порт> - пробросить порт с пода на локальную машину. Под будет доступен по localhost:<порт>
+oc port-forward <имя пода> <порт>  -Пробросить порт с пода на локальную машину. Под будет доступен по localhost:<порт>
 
-Загрузить в openshift ресурсы из Template
-    oc process -f <файл Template.yml> --ignore-unknown-parameters --param-file=<файл с параметрами> | oc apply -f -
+oc process -f <файл Template.yml> --ignore-unknown-parameters --param-file=<файл с параметрами> | oc apply -f -
+    Загрузить в openshift ресурсы из Template
 
-Удалить из openshift ресурсы из Template
-    oc process -f <файл Template.yml> --ignore-unknown-parameters --param-file=<файл с параметрами> | oc delete -f - --ignore-not-found=true
+oc process -f <файл Template.yml> --ignore-unknown-parameters --param-file=<файл с параметрами> | oc delete -f - --ignore-not-found=true
+    Удалить из openshift ресурсы из Template
+
+oc create secret docker-registry <pull_secret_name> --docker-server=<registry_server> --docker-username=<user_name> --docker-password=<password> --docker-email=<email>
+    выдать права на доступ registry

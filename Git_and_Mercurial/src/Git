@@ -32,6 +32,8 @@ git checkout <название ветки или hash коммита> - Пере
     -b - Создать новую ветку и перейти в нее
     -f -
 
+git checkout <hash коммита> . - Превести к состоянию выбранного коммита
+
 git log - история коммитов
     --author="<имя автора>" -
     --pretty=format:"%H %S %AD %AN" -
@@ -41,7 +43,7 @@ git log - история коммитов
         %AN автор
     --date=short -
 
-git reflog -логи изменения ссылок HEAD
+git reflog - логи изменения ссылок HEAD
 
 git revert HEAD --no-edit - Отменяет последний коммит
 

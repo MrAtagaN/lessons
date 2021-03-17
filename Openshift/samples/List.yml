@@ -89,7 +89,7 @@ items:
       metadata:
         name: umb
       spec:
-        host: umb.apps.dev-gen.ca.sbrf.ru # меняется в зависимости от стента
+        host: umb.apps.dev.ru # меняется в зависимости от стента
         port:
           targetPort: 8081
         to:
