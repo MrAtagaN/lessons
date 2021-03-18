@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>group</groupId>
+        <artifactId>artifact</artifactId>
+        <version>1.0</version>
+    </parent>
+
+    <artifactId>artifact</artifactId>
+
+    <properties>
+        <jib.image>jib_image</jib.image>
+        <jib.registry.username>jib_registry_username</jib.registry.username>
+        <jib.registry.password>jib_registry_password</jib.registry.password>
+        <jib.image.tag>${project.version}</jib.image.tag>
+    </properties>
+
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <!--  spring starters  -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.12</version>
+        </dependency>
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-prometheus</artifactId>
+            <version>1.3.5</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.danielwegener</groupId>
+            <artifactId>logback-kafka-appender</artifactId>
+            <version>0.2.0-RC2</version>
+        </dependency>
+
+        <!-- unit-testing tools -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-api-mockito2</artifactId>
+            <version>1.7.0RC2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-module-junit4</artifactId>
+            <version>1.7.0RC2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-core</artifactId>
+            <version>1.7.0RC2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>2.8.9</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!--Kafka-->
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+        </dependency>
+
+        <!--> Avaya <-->
+        <dependency>
+            <groupId>org.avaya.pom</groupId>
+            <artifactId>avaya-pim-pomapi</artifactId>
+            <version>3.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.7</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.6.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring.boot.version}</version>
+                <configuration>
+                    <finalName>myName</finalName>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>${sonar-maven-plugin}</version>
+            </plugin>
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-maven-plugin</artifactId>
+                <version>1.6.1</version>
+
+                <configuration>
+                    <allowInsecureRegistries>true</allowInsecureRegistries>
+                    <container>
+                        <environment>
+                            <TZ>Europe/Moscow</TZ>
+                        </environment>
+                        <jvmFlags>
+                            <!--  JMX-->
+                            <jvmFlag>-Dcom.sun.management.jmxremote.port=12667</jvmFlag>
+                            <jvmFlag>-Dcom.sun.management.jmxremote.authenticate=false</jvmFlag>
+                            <jvmFlag>-Dcom.sun.management.jmxremote.ssl=false</jvmFlag>
+                            <jvmFlag>-Djava.rmi.server.hostname=10.116.7.8</jvmFlag>
+                            <!--  GC Commons-->
+                            <jvmFlag>-XX:+PrintConcurrentLocks</jvmFlag>
+                            <jvmFlag>-XX:MaxGCPauseMillis=2000</jvmFlag>
+                            <jvmFlag>-XX:+AlwaysPreTouch</jvmFlag>
+                            <jvmFlag>-XX:+UseG1GC</jvmFlag>
+                            <jvmFlag>-XX:SurvivorRatio=6</jvmFlag>
+                            <jvmFlag>-XX:InitiatingHeapOccupancyPercent=30</jvmFlag>
+                            <jvmFlag>-XX:G1HeapRegionSize=8m</jvmFlag>
+                            <jvmFlag>-XX:+ScavengeBeforeFullGC</jvmFlag>
+                            <!-- GC Logs-->
+                            <jvmFlag>-XX:+DisableExplicitGC</jvmFlag>
+                            <jvmFlag>-XX:+PrintGCDetails</jvmFlag>
+                            <jvmFlag>-XX:+PrintGCTimeStamps </jvmFlag>
+                            <jvmFlag>-XX:+PrintGCDateStamps</jvmFlag>
+                            <jvmFlag>-XX:+UseGCLogFileRotation</jvmFlag>
+                            <jvmFlag>-XX:+PrintAdaptiveSizePolicy </jvmFlag>
+                            <jvmFlag>-XX:+PrintGCApplicationStoppedTime</jvmFlag>
+                            <jvmFlag>-XX:NumberOfGCLogFiles=10</jvmFlag>
+                            <jvmFlag>-XX:GCLogFileSize=100M</jvmFlag>
+                            <jvmFlag>-Xloggc:logs/gc.log</jvmFlag>
+                            <!-- Debugging -->
+                            <jvmFlag>-Xdebug</jvmFlag>
+                            <jvmFlag>-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=14667</jvmFlag>
+                            <!-- Logging / common preferences -->
+                            <jvmFlag>-Dlogging.config=config/logback.xml </jvmFlag>
+                            <jvmFlag>-Djava.net.preferIPv4Stack=true</jvmFlag>
+                            <!-- Kafka Kerberos -->
+                            <jvmFlag>-Djava.security.auth.login.config=user.jaas</jvmFlag>
+                            <jvmFlag>-Djava.security.krb5.conf=krb5.conf</jvmFlag>
+                        </jvmFlags>
+                    </container>
+                    <to>
+                        <image>${jib.image}:${jib.image.tag}</image>
+                        <auth>
+                            <username>${jib.registry.username}</username>
+                            <password>${jib.registry.password}</password>
+                        </auth>
+                    </to>
+                    <from>
+                        <image>registry.ru/base/redhat-openjdk-18/openjdk18-openshift:1.5-14.1539812388</image>
+                        <auth>
+                            <username>${jib.registry.username}</username>
+                            <password>${jib.registry.password}</password>
+                        </auth>
+                    </from>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+    </build>
+
+</project>

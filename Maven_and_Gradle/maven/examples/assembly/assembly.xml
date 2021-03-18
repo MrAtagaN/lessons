@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf8"?>
+<assembly>
+    <id>dst</id>
+
+    <formats>
+        <format>zip</format>
+    </formats>
+
+    <includeBaseDirectory>false</includeBaseDirectory>
+
+    <fileSets>
+        <!-- Readme -->
+        <fileSet>
+            <directory>./</directory>
+            <outputDirectory>.</outputDirectory>
+            <includes>
+                <include>*.md</include>
+            </includes>
+        </fileSet>
+        <fileSet>
+            <directory>./target</directory>
+            <outputDirectory>.</outputDirectory>
+            <includes>
+                <include>my-service.jar</include>
+            </includes>
+        </fileSet>
+    </fileSets>
+
+</assembly>
