@@ -99,8 +99,6 @@ public class KafkaConfig {
     private String sslKeyPassword;
 
 
-
-
     /*************
      * Producer
      *************/
@@ -122,13 +120,13 @@ public class KafkaConfig {
             props.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, kerberosProtocol);
             props.put(SaslConfigs.SASL_KERBEROS_SERVICE_NAME, kerberosServiceName);
         }
-        if(isEnabledSsl) {
+        if (isEnabledSsl) {
             props.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, sslProtocol);
             props.put(SslConfigs.SSL_TRUSTSTORE_LOCATION_CONFIG, sslTruststoreLocation);
             props.put(SslConfigs.SSL_TRUSTSTORE_PASSWORD_CONFIG, sslTruststorePassword);
             props.put(SslConfigs.SSL_KEYSTORE_LOCATION_CONFIG, sslKeystoreLocation);
             props.put(SslConfigs.SSL_KEYSTORE_PASSWORD_CONFIG, sslKeystorePass);
-            if (sslKeyPassword !=null && !sslKeyPassword.isEmpty()) {
+            if (sslKeyPassword != null && !sslKeyPassword.isEmpty()) {
                 props.put(SslConfigs.SSL_KEY_PASSWORD_CONFIG, sslKeyPassword);
             }
         }
@@ -168,13 +166,13 @@ public class KafkaConfig {
             props.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, kerberosProtocol);
             props.put(SaslConfigs.SASL_KERBEROS_SERVICE_NAME, kerberosServiceName);
         }
-        if(isEnabledSsl) {
+        if (isEnabledSsl) {
             props.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, sslProtocol);
             props.put(SslConfigs.SSL_TRUSTSTORE_LOCATION_CONFIG, sslTruststoreLocation);
             props.put(SslConfigs.SSL_TRUSTSTORE_PASSWORD_CONFIG, sslTruststorePassword);
             props.put(SslConfigs.SSL_KEYSTORE_LOCATION_CONFIG, sslKeystoreLocation);
             props.put(SslConfigs.SSL_KEYSTORE_PASSWORD_CONFIG, sslKeystorePass);
-            if (sslKeyPassword !=null && !sslKeyPassword.isEmpty()) {
+            if (sslKeyPassword != null && !sslKeyPassword.isEmpty()) {
                 props.put(SslConfigs.SSL_KEY_PASSWORD_CONFIG, sslKeyPassword);
             }
         }

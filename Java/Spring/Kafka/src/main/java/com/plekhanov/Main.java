@@ -4,6 +4,7 @@ import com.plekhanov.service.KafkaProducer;
 import org.apache.kafka.clients.CommonClientConfigs;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
+import org.apache.kafka.common.config.SslConfigs;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.WebApplicationType;
@@ -23,6 +24,7 @@ import org.springframework.kafka.annotation.EnableKafka;
  * {@link ConsumerConfig}
  * {@link CommonClientConfigs}
  * {@link ProducerConfig}
+ * {@link SslConfigs}
  *
  * ================================================================================
  *
@@ -50,23 +52,23 @@ public class Main {
     /**
      * Выполнение при старте приложения
      */
-    @Bean
-    public CommandLineRunner commandLineRunner(ApplicationContext context) {
-        return (args) -> {
-            context.getBean(KafkaProducer.class).send("{\n" +
-                    "  \"messageId\" : 163017,\n" +
-                    "  \"messageName\" : \"ESB_FS_HANDLER_REQ\",\n" +
-                    "  \"userChannel\" : \"SBERBANK_MESSENGER\",\n" +
-                    "  \"nextSystem\" : \"UNDEFINED\",\n" +
-                    " \"handlerName\" : \"ESB_FS_HANDLER\",\n" +
-                    "  \"uuid\" : {\n" +
-                    "    \"userChannel\" : \"SBERBANK_MESSENGER\",\n" +
-                    "    \"userId\" : \"32\",\n" +
-                    "    \"chatId\" : \"96221\"\n" +
-                    "  },\n" +
-                    "  \"payload\" : {\n" +
-                    "  }\n" +
-                    "}") ;
-        };
-    }
+//    @Bean
+//    public CommandLineRunner commandLineRunner(ApplicationContext context) {
+//        return (args) -> {
+//            context.getBean(KafkaProducer.class).send("{\n" +
+//                    "  \"messageId\" : 163017,\n" +
+//                    "  \"messageName\" : \"ESB_FS_HANDLER_REQ\",\n" +
+//                    "  \"userChannel\" : \"SBERBANK_MESSENGER\",\n" +
+//                    "  \"nextSystem\" : \"UNDEFINED\",\n" +
+//                    " \"handlerName\" : \"ESB_FS_HANDLER\",\n" +
+//                    "  \"uuid\" : {\n" +
+//                    "    \"userChannel\" : \"SBERBANK_MESSENGER\",\n" +
+//                    "    \"userId\" : \"32\",\n" +
+//                    "    \"chatId\" : \"96221\"\n" +
+//                    "  },\n" +
+//                    "  \"payload\" : {\n" +
+//                    "  }\n" +
+//                    "}") ;
+//        };
+//    }
 }
