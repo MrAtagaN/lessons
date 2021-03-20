@@ -1,6 +1,9 @@
 package com.plekhanov;
 
 import com.plekhanov.service.KafkaProducer;
+import org.apache.kafka.clients.CommonClientConfigs;
+import org.apache.kafka.clients.consumer.ConsumerConfig;
+import org.apache.kafka.clients.producer.ProducerConfig;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.WebApplicationType;
@@ -12,6 +15,17 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.kafka.annotation.EnableKafka;
 
 /**
+ * Доки:
+ * https://docs.spring.io/spring-kafka/docs/current/reference/pdf/spring-kafka-reference.pdf
+ * https://docs.spring.io/spring-kafka/docs/current/reference/html/#reference
+ *
+ * Описание параметров в исходном коде:
+ * {@link ConsumerConfig}
+ * {@link CommonClientConfigs}
+ * {@link ProducerConfig}
+ *
+ * ================================================================================
+ *
  * Для запуска Kafka в контейнере Docker выполнить первый шаг:
  * https://docs.confluent.io/current/quickstart/ce-docker-quickstart.html
  *
