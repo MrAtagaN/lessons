@@ -14,13 +14,13 @@ kafka:
   consumer:
     topic: paTopic-local
     groupId: test-group3
-    enableAutoCommit: false
-    autoCommitIntervalMs: 500
-    sessionTimeoutMs: 30000
+    enableAutoCommit: false # С определенной периодичностью коммитит смещение сообщений из предыдущих чтений (poll())
+    autoCommitIntervalMs: 500 # Интервал с которым будет закомичено смещение сообщений из предыдущих чтений (poll())
     pollTimeoutMs: 500 # default 1000. Максимальное время ожидания при получении сообщений
     maxPollIntervalMs: 30000 # default 300000. ВАЖНО!! Максимальное время между считыванием сообщений (poll()). Если за это время не успеть обработать сообщения, то Consumer считается мертвым и происходит перебалансировка
     threads: 10
     maxPollRecords: 500 # default 500. Максимальное количество сообщений считываемое за раз
+    sessionTimeoutMs: 30000 # Время ожидания сигнала от потребителя что он жив. Если время истекло начинается перебалансировка
     heartbeatIntervalMs: 3000 # default 3000
     autoOffsetReset: earliest # default latest. С какого смещения читать сообщения, если для группы потребителей в кафка не указано последнее смещение
     isBatchListener: true
