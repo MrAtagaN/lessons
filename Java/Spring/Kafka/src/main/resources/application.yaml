@@ -17,10 +17,10 @@ kafka:
     enableAutoCommit: false
     autoCommitIntervalMs: 500
     sessionTimeoutMs: 30000
-    pollTimeoutMs: 500 # default 1000
-    maxPollIntervalMs: 30000 # default 300000. ВАЖНО!! Максимальное время между считыванием сообщений. Если за это время не успеть обработать сообщения, то Consumer считается мертвым и происходит перебалансировка
+    pollTimeoutMs: 500 # default 1000. Максимальное время ожидания при получении сообщений
+    maxPollIntervalMs: 30000 # default 300000. ВАЖНО!! Максимальное время между считыванием сообщений (poll()). Если за это время не успеть обработать сообщения, то Consumer считается мертвым и происходит перебалансировка
     threads: 10
-    maxPollRecords: 500 # default 500
+    maxPollRecords: 500 # default 500. Максимальное количество сообщений считываемое за раз
     heartbeatIntervalMs: 3000 # default 3000
     autoOffsetReset: earliest # default latest. С какого смещения читать сообщения, если для группы потребителей в кафка не указано последнее смещение
     isBatchListener: true

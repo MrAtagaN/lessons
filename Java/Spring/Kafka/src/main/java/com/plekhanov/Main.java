@@ -14,6 +14,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.kafka.annotation.EnableKafka;
+import org.springframework.kafka.listener.config.ContainerProperties;
 
 /**
  * Доки:
@@ -22,6 +23,7 @@ import org.springframework.kafka.annotation.EnableKafka;
  *
  * Описание параметров и дефолтные значения в исходном коде:
  * {@link ConsumerConfig}
+ * {@link ContainerProperties}
  * {@link CommonClientConfigs}
  * {@link ProducerConfig}
  * {@link SslConfigs}
