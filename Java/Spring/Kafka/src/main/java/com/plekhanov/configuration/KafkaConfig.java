@@ -123,6 +123,26 @@ public class KafkaConfig {
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         props.put(ProducerConfig.REQUEST_TIMEOUT_MS_CONFIG, requestTimeout);
+
+        //TODO проставить параметры
+//        props.put(ProducerConfig.METADATA_MAX_AGE_CONFIG, requestTimeout);
+//        props.put(ProducerConfig.SEND_BUFFER_CONFIG, requestTimeout);
+//        props.put(ProducerConfig.RECEIVE_BUFFER_CONFIG, requestTimeout);
+//        props.put(ProducerConfig.RECONNECT_BACKOFF_MS_CONFIG, requestTimeout);
+//        props.put(ProducerConfig.RECONNECT_BACKOFF_MAX_MS_CONFIG, requestTimeout);
+//        props.put(ProducerConfig.RETRY_BACKOFF_MS_CONFIG, requestTimeout);
+//        props.put(ProducerConfig.METRICS_SAMPLE_WINDOW_MS_CONFIG, requestTimeout);
+//        props.put(ProducerConfig.METRICS_NUM_SAMPLES_CONFIG, requestTimeout);
+//        props.put(ProducerConfig.METRICS_RECORDING_LEVEL_CONFIG, requestTimeout);
+//        props.put(ProducerConfig.METRIC_REPORTER_CLASSES_CONFIG, requestTimeout);
+//        props.put(ProducerConfig.CONNECTIONS_MAX_IDLE_MS_CONFIG, requestTimeout);
+//        props.put(ProducerConfig.COMPRESSION_TYPE_CONFIG, requestTimeout);
+//        props.put(ProducerConfig.MAX_IN_FLIGHT_REQUESTS_PER_CONNECTION, requestTimeout);
+//        props.put(ProducerConfig.PARTITIONER_CLASS_CONFIG, requestTimeout);
+//        props.put(ProducerConfig.INTERCEPTOR_CLASSES_CONFIG, requestTimeout);
+//        props.put(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, requestTimeout);
+//        props.put(ProducerConfig.TRANSACTION_TIMEOUT_CONFIG, requestTimeout);
+//        props.put(ProducerConfig.TRANSACTIONAL_ID_CONFIG, requestTimeout);
         securityConfig(props);
         return props;
     }
@@ -150,6 +170,33 @@ public class KafkaConfig {
         props.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, maxPollRecords);
         props.put(ConsumerConfig.HEARTBEAT_INTERVAL_MS_CONFIG, heartbeatIntervalMs);
         props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, autoOffsetReset);
+
+        //TODO проставить параметры
+//        props.put(ConsumerConfig.PARTITION_ASSIGNMENT_STRATEGY_CONFIG, autoOffsetReset);
+//        props.put(ConsumerConfig.FETCH_MIN_BYTES_CONFIG, autoOffsetReset);
+//        props.put(ConsumerConfig.FETCH_MAX_BYTES_CONFIG, autoOffsetReset);
+//        props.put(ConsumerConfig.FETCH_MAX_WAIT_MS_CONFIG, autoOffsetReset);
+//        props.put(ConsumerConfig.METADATA_MAX_AGE_CONFIG, autoOffsetReset);
+//        props.put(ConsumerConfig.MAX_PARTITION_FETCH_BYTES_CONFIG, autoOffsetReset);
+//        props.put(ConsumerConfig.SEND_BUFFER_CONFIG, autoOffsetReset);
+//        props.put(ConsumerConfig.RECEIVE_BUFFER_CONFIG, autoOffsetReset);
+//        props.put(ConsumerConfig.CLIENT_ID_CONFIG, autoOffsetReset);
+//        props.put(ConsumerConfig.RECONNECT_BACKOFF_MS_CONFIG, autoOffsetReset);
+//        props.put(ConsumerConfig.RECONNECT_BACKOFF_MAX_MS_CONFIG, autoOffsetReset);
+//        props.put(ConsumerConfig.RETRY_BACKOFF_MS_CONFIG, autoOffsetReset);
+//        props.put(ConsumerConfig.METRICS_SAMPLE_WINDOW_MS_CONFIG, autoOffsetReset);
+//        props.put(ConsumerConfig.METRICS_NUM_SAMPLES_CONFIG, autoOffsetReset);
+//        props.put(ConsumerConfig.METRICS_RECORDING_LEVEL_CONFIG, autoOffsetReset);
+//        props.put(ConsumerConfig.METRIC_REPORTER_CLASSES_CONFIG, autoOffsetReset);
+//        props.put(ConsumerConfig.CHECK_CRCS_CONFIG, autoOffsetReset);
+//        props.put(ConsumerConfig.CONNECTIONS_MAX_IDLE_MS_CONFIG, autoOffsetReset);
+//        props.put(ConsumerConfig.REQUEST_TIMEOUT_MS_CONFIG, autoOffsetReset);
+//        props.put(ConsumerConfig.INTERCEPTOR_CLASSES_CONFIG, autoOffsetReset);
+//        props.put(ConsumerConfig.EXCLUDE_INTERNAL_TOPICS_CONFIG, autoOffsetReset);
+//        props.put(ConsumerConfig.ISOLATION_LEVEL_CONFIG, autoOffsetReset);
+//        props.put(ConsumerConfig.DEFAULT_ISOLATION_LEVEL, autoOffsetReset);
+
+
         securityConfig(props);
         return props;
     }

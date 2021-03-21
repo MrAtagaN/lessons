@@ -4,9 +4,9 @@ kafka:
     topic: paTopic-local
     groupId: test-group
     blockTimeMs: 2000 # default 60000
-    requestTimeout: 500
+    requestTimeout: 500 # default 30000. Время ожидания ответа на запрос. Если время вышло то будет повторная отправка или ошибка.
     batchSize: 16384 # default 16384
-    lingerMs: 10 # default 0
+    lingerMs: 10 # default 0. Задержка перед отправкой, чтобы накопить несколько сообщений в один запрос. Если размер сообщений будет больше batchSize то отправка будет независимо от этого параметра
     maxRequestSize: 1048576 # default 1024 * 1024
     bufferMemory: 33554432 # default 32 * 1024 * 1024 (33554432)
     retries: 0 # default 0
