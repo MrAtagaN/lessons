@@ -1,6 +1,5 @@
 package com.plekhanov.configuration;
 
-
 import org.apache.kafka.clients.CommonClientConfigs;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
@@ -78,7 +77,6 @@ public class KafkaConfig {
     private AbstractMessageListenerContainer.AckMode ackMode;
 
 
-
     /*************
      * Security (Kerberos SASL)
      *************/
@@ -111,7 +109,7 @@ public class KafkaConfig {
     /*************
      * Producer
      *************/
-    public Map<String, Object> producerConfigs() {
+    private Map<String, Object> producerConfigs() {
         Map<String, Object> props = new HashMap<>();
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapService);
         props.put(ProducerConfig.ACKS_CONFIG, offsetsCommitRequiredAcks);
@@ -125,39 +123,21 @@ public class KafkaConfig {
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         props.put(ProducerConfig.REQUEST_TIMEOUT_MS_CONFIG, requestTimeout);
-        if (isEnableKerberos) {
-            props.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, kerberosProtocol);
-            props.put(SaslConfigs.SASL_KERBEROS_SERVICE_NAME, kerberosServiceName);
-        }
-        if (isEnabledSsl) {
-            props.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, sslProtocol);
-            props.put(SslConfigs.SSL_TRUSTSTORE_LOCATION_CONFIG, sslTruststoreLocation);
-            props.put(SslConfigs.SSL_TRUSTSTORE_PASSWORD_CONFIG, sslTruststorePassword);
-            props.put(SslConfigs.SSL_KEYSTORE_LOCATION_CONFIG, sslKeystoreLocation);
-            props.put(SslConfigs.SSL_KEYSTORE_PASSWORD_CONFIG, sslKeystorePass);
-            if (sslKeyPassword != null && !sslKeyPassword.isEmpty()) {
-                props.put(SslConfigs.SSL_KEY_PASSWORD_CONFIG, sslKeyPassword);
-            }
-        }
-
+        securityConfig(props);
         return props;
     }
 
-    @Bean
-    public ProducerFactory<String, String> producerFactory() {
-        return new DefaultKafkaProducerFactory<>(producerConfigs());
-    }
 
-    @Bean("kafkaTemplate")
-    public KafkaTemplate<String, String> kafkaTemplate(ProducerFactory<String, String> producerFactory) {
-        return new KafkaTemplate<>(producerFactory);
+    @Bean("kafkaTemplate_1")
+    public KafkaTemplate<String, String> kafkaTemplate() {
+        return new KafkaTemplate<>(new DefaultKafkaProducerFactory<>(producerConfigs()));
     }
 
 
     /*************
      * Consumer
      *************/
-    public Map<String, Object> consumerConfigs() {
+    private Map<String, Object> consumerConfigs() {
         Map<String, Object> props = new HashMap<>();
         props.put(ConsumerConfig.GROUP_ID_CONFIG, consumerGroupId);
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapService);
@@ -170,6 +150,28 @@ public class KafkaConfig {
         props.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, maxPollRecords);
         props.put(ConsumerConfig.HEARTBEAT_INTERVAL_MS_CONFIG, heartbeatIntervalMs);
         props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, autoOffsetReset);
+        securityConfig(props);
+        return props;
+    }
+
+
+    @Bean("ListenerContainerFactory_1")
+    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<Object, Object>> kafkaListenerContainerFactory(ConsumerFactory<Object, Object> consumerFactory) {
+        ConcurrentKafkaListenerContainerFactory<Object, Object> factory = new ConcurrentKafkaListenerContainerFactory<>();
+        factory.setConsumerFactory(new DefaultKafkaConsumerFactory<>(consumerConfigs()));
+        factory.setConcurrency(threads);
+        factory.getContainerProperties().setAckMode(ackMode);
+        factory.getContainerProperties().setAckOnError(ackOnError);
+        factory.getContainerProperties().setPollTimeout(pollTimeMs);
+        factory.setBatchListener(isBatchListener);
+        return factory;
+    }
+
+
+    /*************
+     * Security
+     *************/
+    private void securityConfig(Map<String, Object> props) {
         if (isEnableKerberos) {
             props.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, kerberosProtocol);
             props.put(SaslConfigs.SASL_KERBEROS_SERVICE_NAME, kerberosServiceName);
@@ -184,25 +186,6 @@ public class KafkaConfig {
                 props.put(SslConfigs.SSL_KEY_PASSWORD_CONFIG, sslKeyPassword);
             }
         }
-        return props;
     }
-
-    @Bean
-    public ConsumerFactory<Object, Object> consumerFactory() {
-        return new DefaultKafkaConsumerFactory<>(consumerConfigs());
-    }
-
-    @Bean
-    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<Object, Object>> kafkaListenerContainerFactory(ConsumerFactory<Object, Object> consumerFactory) {
-        ConcurrentKafkaListenerContainerFactory<Object, Object> factory = new ConcurrentKafkaListenerContainerFactory<>();
-        factory.setConsumerFactory(consumerFactory);
-        factory.setConcurrency(threads);
-        factory.getContainerProperties().setAckMode(ackMode);
-        factory.getContainerProperties().setAckOnError(ackOnError);
-        factory.getContainerProperties().setPollTimeout(pollTimeMs);
-        factory.setBatchListener(isBatchListener);
-        return factory;
-    }
-
 
 }

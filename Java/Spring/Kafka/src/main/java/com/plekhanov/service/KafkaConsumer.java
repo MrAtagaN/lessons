@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class KafkaConsumer {
 
-    @KafkaListener(topics = "${kafka.consumer.topic}")
+    @KafkaListener(containerFactory = "ListenerContainerFactory_1", topics = "${kafka.consumer.topic}")
     public void listen(List<ConsumerRecord<String, String>> consumerRecords) {
         consumerRecords.forEach(consumerRecord -> {
             String value = consumerRecord.value();
