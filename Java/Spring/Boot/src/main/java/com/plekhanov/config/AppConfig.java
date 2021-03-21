@@ -37,16 +37,9 @@ import javax.sql.DataSource;
 @Configuration
 @PropertySources({
         @PropertySource("classpath:application.yml"),
-        @PropertySource("classpath:application.yml")
+        @PropertySource(value = "classpath:application2.yml", factory = YamlPropertySourceFactory.class)
 })
-//@ConditionalOnProperty
-//@ConditionalOnBean(DataSource.class)
-//@ConditionalOnMissingBean(DataSource.class)
-//@ConditionalOnClass(DataSource.class)
-//@ConditionalOnMissingClass("DataSource")
-//@ConditionalOnResource(resources = "classpath:mysql.properties")
-@EnableConfigurationProperties(AdditionalProperties.class) //работает вместе с ConfigurationProperties
-@ConstructorBinding //внедрение значений через конструктор, а не через сеттеры
+@EnableConfigurationProperties(AdditionalProperties.class)
 public class AppConfig {
 
     @Autowired
@@ -54,6 +47,9 @@ public class AppConfig {
 
     @Value( "${app.prop:defaultAppProp}" )
     private String appProp;
+
+    @Value( "${app2.prop2}" )
+    private String appProp2;
 
     @Autowired
     private Environment env; // переменные окружения
