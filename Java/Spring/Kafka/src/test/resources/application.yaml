@@ -13,12 +13,12 @@ kafka:
     offsetsCommitRequiredAcks: -1 # ВАЖНО! В какое количество реплик запишется сообщение чтобы считаться успешно записанным
   consumer:
     topic: test-topic
-    autoCommitIntervalMs: 500
-    sessionTimeoutMs: 30000
-    pollTimeMs: 500
-    maxPollIntervalMs: 10000
     groupId: test-group
     enableAutoCommit: true
+    autoCommitIntervalMs: 500
+    sessionTimeoutMs: 30000
+    pollTimeoutMs: 500
+    maxPollIntervalMs: 10000
     threads: 10
     maxPollRecords: 500
     heartbeatIntervalMs: 3000 # default 3000

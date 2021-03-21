@@ -53,8 +53,8 @@ public class KafkaConfig {
     private int autoCommitIntervalMs;
     @Value("${kafka.consumer.sessionTimeoutMs}")
     private int sessionTimeoutMs;
-    @Value("${kafka.consumer.pollTimeMs}")
-    private int pollTimeMs;
+    @Value("${kafka.consumer.pollTimeoutMs}")
+    private int pollTimeoutMs;
     @Value("${kafka.consumer.maxPollIntervalMs}")
     private int maxPollIntervalMs;
     @Value("${kafka.consumer.groupId}")
@@ -162,7 +162,7 @@ public class KafkaConfig {
         factory.setConcurrency(threads);
         factory.getContainerProperties().setAckMode(ackMode);
         factory.getContainerProperties().setAckOnError(ackOnError);
-        factory.getContainerProperties().setPollTimeout(pollTimeMs);
+        factory.getContainerProperties().setPollTimeout(pollTimeoutMs);
         factory.setBatchListener(isBatchListener);
         return factory;
     }
