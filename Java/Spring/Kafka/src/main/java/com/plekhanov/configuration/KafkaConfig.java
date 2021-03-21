@@ -44,8 +44,8 @@ public class KafkaConfig {
     private String bufferMemory;
     @Value("${kafka.producer.retries}")
     private String retries;
-    @Value("${kafka.producer.acks}")
-    private String acks;
+    @Value("${kafka.producer.offsetsCommitRequiredAcks}")
+    private String offsetsCommitRequiredAcks;
 
     /*************
      * Consumer
@@ -70,6 +70,13 @@ public class KafkaConfig {
     private int heartbeatIntervalMs;
     @Value("${kafka.consumer.autoOffsetReset}")
     private String autoOffsetReset;
+    @Value("${kafka.consumer.isBatchListener}")
+    private boolean isBatchListener;
+    @Value("${kafka.consumer.ackOnError}")
+    private boolean ackOnError;
+    @Value("${kafka.consumer.ackMode}")
+    private AbstractMessageListenerContainer.AckMode ackMode;
+
 
 
     /*************
@@ -104,11 +111,10 @@ public class KafkaConfig {
     /*************
      * Producer
      *************/
-    @Bean
     public Map<String, Object> producerConfigs() {
         Map<String, Object> props = new HashMap<>();
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapService);
-        props.put(ProducerConfig.ACKS_CONFIG, acks);
+        props.put(ProducerConfig.ACKS_CONFIG, offsetsCommitRequiredAcks);
         props.put(ProducerConfig.BATCH_SIZE_CONFIG, batchSize);
         props.put(ProducerConfig.LINGER_MS_CONFIG, lingerMs);
         props.put(ProducerConfig.CLIENT_ID_CONFIG, producerGroupId);
@@ -143,15 +149,14 @@ public class KafkaConfig {
     }
 
     @Bean("kafkaTemplate")
-    public KafkaTemplate<String, String> kafkaTemplate() {
-        return new KafkaTemplate<>(producerFactory());
+    public KafkaTemplate<String, String> kafkaTemplate(ProducerFactory<String, String> producerFactory) {
+        return new KafkaTemplate<>(producerFactory);
     }
 
 
     /*************
      * Consumer
      *************/
-    @Bean
     public Map<String, Object> consumerConfigs() {
         Map<String, Object> props = new HashMap<>();
         props.put(ConsumerConfig.GROUP_ID_CONFIG, consumerGroupId);
@@ -188,14 +193,14 @@ public class KafkaConfig {
     }
 
     @Bean
-    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<Object, Object>> kafkaListenerContainerFactory() {
+    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<Object, Object>> kafkaListenerContainerFactory(ConsumerFactory<Object, Object> consumerFactory) {
         ConcurrentKafkaListenerContainerFactory<Object, Object> factory = new ConcurrentKafkaListenerContainerFactory<>();
-        factory.setConsumerFactory(consumerFactory());
+        factory.setConsumerFactory(consumerFactory);
         factory.setConcurrency(threads);
-        factory.getContainerProperties().setAckMode(AbstractMessageListenerContainer.AckMode.BATCH);
-        factory.getContainerProperties().setAckOnError(true);
+        factory.getContainerProperties().setAckMode(ackMode);
+        factory.getContainerProperties().setAckOnError(ackOnError);
         factory.getContainerProperties().setPollTimeout(pollTimeMs);
-        factory.setBatchListener(true);
+        factory.setBatchListener(isBatchListener);
         return factory;
     }
 

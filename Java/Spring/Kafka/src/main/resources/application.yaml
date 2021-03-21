@@ -10,7 +10,7 @@ kafka:
     maxRequestSize: 1048576 # default 1024 * 1024
     bufferMemory: 33554432 # default 32 * 1024 * 1024 (33554432)
     retries: 0 # default 0
-    acks: -1 # default 1. ВАЖНО!!! В какое количество реплик запишется сообщение чтобы считаться успешно записанным
+    offsetsCommitRequiredAcks: -1 # default 1. ВАЖНО!!! В какое количество реплик запишется сообщение чтобы считаться успешно записанным
   consumer:
     topic: paTopic-local
     groupId: test-group3
@@ -23,6 +23,9 @@ kafka:
     maxPollRecords: 500
     heartbeatIntervalMs: 3000 # default 3000
     autoOffsetReset: earliest # default latest. С какого смещения читать сообщения, если для группы потребителей в кафка не указано последнее смещение
+    isBatchListener: true
+    ackOnError: true
+    ackMode: BATCH
   security:
     kerberos:
       enabled: false
