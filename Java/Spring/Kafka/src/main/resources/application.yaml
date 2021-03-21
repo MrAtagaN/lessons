@@ -10,18 +10,19 @@ kafka:
     maxRequestSize: 1048576 # default 1024 * 1024
     bufferMemory: 33554432 # default 32 * 1024 * 1024 (33554432)
     retries: 0 # default 0
+    acks: -1 # default 1. ВАЖНО!!! В какое количество реплик запишется сообщение чтобы считаться успешно записанным
   consumer:
     topic: paTopic-local
+    groupId: test-group3
+    enableAutoCommit: false
     autoCommitIntervalMs: 500
     sessionTimeoutMs: 30000
     pollTimeMs: 500
-    maxPollTimeMs: 10000
-    groupId: test-group3
-    enableAutoCommit: false
+    maxPollIntervalMs: 30000 # default 300000. ВАЖНО! Максимальное время между считыванием сообщений. Если за это время не успеть обработать сообщения, то Consumer считается мертвым и происходит перебалансировка
     threads: 10
     maxPollRecords: 500
     heartbeatIntervalMs: 3000 # default 3000
-    autoOffsetReset: earliest # default latest - если для группы потребителей в кафка не указано последнее смещение
+    autoOffsetReset: earliest # default latest. С какого смещения читать сообщения, если для группы потребителей в кафка не указано последнее смещение
   security:
     kerberos:
       enabled: false

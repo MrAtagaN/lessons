@@ -10,12 +10,13 @@ kafka:
     maxRequestSize: 1048576 # default 1024 * 1024
     bufferMemory: 33554432 # default 32 * 1024 * 1024 (33554432)
     retries: 0 # default 0
+    acks: -1 # ВАЖНО! В какое количество реплик запишется сообщение чтобы считаться успешно записанным
   consumer:
     topic: test-topic
     autoCommitIntervalMs: 500
     sessionTimeoutMs: 30000
     pollTimeMs: 500
-    maxPollTimeMs: 10000
+    maxPollIntervalMs: 10000
     groupId: test-group
     enableAutoCommit: true
     threads: 10

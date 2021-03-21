@@ -51,7 +51,7 @@ import java.util.Collections;
  */
 @SpringBootApplication
 @EntityScan
-@EnableScheduling
+//@EnableScheduling
 @EnableAsync
 @ConfigurationPropertiesScan
 public class Main {

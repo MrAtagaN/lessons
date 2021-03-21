@@ -44,6 +44,8 @@ public class KafkaConfig {
     private String bufferMemory;
     @Value("${kafka.producer.retries}")
     private String retries;
+    @Value("${kafka.producer.acks}")
+    private String acks;
 
     /*************
      * Consumer
@@ -54,8 +56,8 @@ public class KafkaConfig {
     private int sessionTimeoutMs;
     @Value("${kafka.consumer.pollTimeMs}")
     private int pollTimeMs;
-    @Value("${kafka.consumer.maxPollTimeMs}")
-    private int maxPollTimeMs;
+    @Value("${kafka.consumer.maxPollIntervalMs}")
+    private int maxPollIntervalMs;
     @Value("${kafka.consumer.groupId}")
     private String consumerGroupId;
     @Value("${kafka.consumer.enableAutoCommit}")
@@ -106,6 +108,7 @@ public class KafkaConfig {
     public Map<String, Object> producerConfigs() {
         Map<String, Object> props = new HashMap<>();
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapService);
+        props.put(ProducerConfig.ACKS_CONFIG, acks);
         props.put(ProducerConfig.BATCH_SIZE_CONFIG, batchSize);
         props.put(ProducerConfig.LINGER_MS_CONFIG, lingerMs);
         props.put(ProducerConfig.CLIENT_ID_CONFIG, producerGroupId);
@@ -155,7 +158,7 @@ public class KafkaConfig {
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapService);
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-        props.put(ConsumerConfig.MAX_POLL_INTERVAL_MS_CONFIG, maxPollTimeMs);
+        props.put(ConsumerConfig.MAX_POLL_INTERVAL_MS_CONFIG, maxPollIntervalMs);
         props.put(ConsumerConfig.AUTO_COMMIT_INTERVAL_MS_CONFIG, autoCommitIntervalMs);
         props.put(ConsumerConfig.SESSION_TIMEOUT_MS_CONFIG, sessionTimeoutMs);
         props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, enableAutoCommit);
@@ -190,7 +193,7 @@ public class KafkaConfig {
         factory.setConsumerFactory(consumerFactory());
         factory.setConcurrency(threads);
         factory.getContainerProperties().setAckMode(AbstractMessageListenerContainer.AckMode.BATCH);
-        factory.getContainerProperties().setAckOnError(false);
+        factory.getContainerProperties().setAckOnError(true);
         factory.getContainerProperties().setPollTimeout(pollTimeMs);
         factory.setBatchListener(true);
         return factory;

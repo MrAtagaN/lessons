@@ -20,11 +20,15 @@ import org.springframework.kafka.annotation.EnableKafka;
  * https://docs.spring.io/spring-kafka/docs/current/reference/pdf/spring-kafka-reference.pdf
  * https://docs.spring.io/spring-kafka/docs/current/reference/html/#reference
  *
- * Описание параметров в исходном коде:
+ * Описание параметров и дефолтные значения в исходном коде:
  * {@link ConsumerConfig}
  * {@link CommonClientConfigs}
  * {@link ProducerConfig}
  * {@link SslConfigs}
+ *
+ * ================================================================================
+ * acks
+ *
  *
  * ================================================================================
  *

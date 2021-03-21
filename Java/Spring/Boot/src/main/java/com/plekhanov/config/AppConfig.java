@@ -7,6 +7,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.ConstructorBinding;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
 import org.springframework.core.env.Environment;
@@ -14,25 +15,23 @@ import org.springframework.core.env.Environment;
 import javax.sql.DataSource;
 
 /**
+ * {@link Configuration} -
  * Настройка условий для работы аннотации {@link Configuration}:
+ * {@link ConditionalOnProperty} - если у определенной проперти есть определенное значение
+ * {@link ConditionalOnBean} -
+ * {@link ConditionalOnMissingBean} -
+ * {@link ConditionalOnClass} -
+ * {@link ConditionalOnMissingClass} -
+ * {@link ConditionalOnResource} -
+ * {@link ConditionalOnWebApplication} - если приложение является веб сервером
  *
- * Аннотация {@link ConditionalOnProperty} - если у определенной проперти есть определенное значение
+ * ========================================
  *
- * Аннотация {@link ConditionalOnBean} -
- *
- * Аннотация {@link ConditionalOnMissingBean} -
- *
- * Аннотация {@link ConditionalOnClass} -
- *
- * Аннотация {@link ConditionalOnMissingClass} -
- *
- * Аннотация {@link ConditionalOnResource} -
- *
- * Аннотация {@link ConditionalOnWebApplication} - если приложение является веб сервером
- *
- *
- * Аннотация {@link PropertySource} -
- *
+ * {@link PropertySource} -
+ * {@link Import} -
+ * {@link EnableConfigurationProperties} - включает работу аннотации {@link ConfigurationProperties}
+ * {@link ConfigurationProperties} -
+ * {@link ConstructorBinding} - внедрение значений через конструктор, а не через сеттеры
  *
  */
 @Configuration
@@ -47,7 +46,7 @@ import javax.sql.DataSource;
 //@ConditionalOnMissingClass("DataSource")
 //@ConditionalOnResource(resources = "classpath:mysql.properties")
 @EnableConfigurationProperties(AdditionalProperties.class) //работает вместе с ConfigurationProperties
-@ConstructorBinding //инжекция в конструктор
+@ConstructorBinding //внедрение значений через конструктор, а не через сеттеры
 public class AppConfig {
 
     @Autowired
