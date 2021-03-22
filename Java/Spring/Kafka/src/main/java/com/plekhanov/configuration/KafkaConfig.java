@@ -46,6 +46,15 @@ public class KafkaConfig {
     @Value("${kafka.producer.offsetsCommitRequiredAcks}")
     private String offsetsCommitRequiredAcks;
 
+    //значения по умолчанию, можно переопределить в конфиге
+    @Value("${kafka.producer.metadataMaxAge:300000}")
+    private String metadataMaxAge;
+    @Value("${kafka.producer.sendBufferConfig:131072}")
+    private String sendBufferConfig;
+    @Value("${kafka.producer.receiveBufferConfig:32768}")
+    private String receiveBufferConfig;
+
+
     /*************
      * Consumer
      *************/
@@ -73,6 +82,10 @@ public class KafkaConfig {
     private boolean isBatchListener;
     @Value("${kafka.consumer.ackMode}")
     private ContainerProperties.AckMode ackMode;
+
+    //значения по умолчанию, можно переопределить в конфиге
+    @Value("${kafka.consumer.fetchMinBytesConfig:1}")
+    private String fetchMinBytesConfig;
 
 
     /*************
@@ -123,9 +136,9 @@ public class KafkaConfig {
         props.put(ProducerConfig.REQUEST_TIMEOUT_MS_CONFIG, requestTimeout);
 
         //TODO проставить параметры
-//        props.put(ProducerConfig.METADATA_MAX_AGE_CONFIG, requestTimeout);
-//        props.put(ProducerConfig.SEND_BUFFER_CONFIG, requestTimeout);
-//        props.put(ProducerConfig.RECEIVE_BUFFER_CONFIG, requestTimeout);
+        props.put(ProducerConfig.METADATA_MAX_AGE_CONFIG, metadataMaxAge);
+        props.put(ProducerConfig.SEND_BUFFER_CONFIG, sendBufferConfig);
+        props.put(ProducerConfig.RECEIVE_BUFFER_CONFIG, receiveBufferConfig);
 //        props.put(ProducerConfig.RECONNECT_BACKOFF_MS_CONFIG, requestTimeout);
 //        props.put(ProducerConfig.RECONNECT_BACKOFF_MAX_MS_CONFIG, requestTimeout);
 //        props.put(ProducerConfig.RETRY_BACKOFF_MS_CONFIG, requestTimeout);
@@ -170,8 +183,8 @@ public class KafkaConfig {
         props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, autoOffsetReset);
 
         //TODO проставить параметры
-//        props.put(ConsumerConfig.PARTITION_ASSIGNMENT_STRATEGY_CONFIG, autoOffsetReset);
-//        props.put(ConsumerConfig.FETCH_MIN_BYTES_CONFIG, autoOffsetReset);
+       // props.put(ConsumerConfig.PARTITION_ASSIGNMENT_STRATEGY_CONFIG, partitionAssigmentStrategyConfig);
+        props.put(ConsumerConfig.FETCH_MIN_BYTES_CONFIG, fetchMinBytesConfig);
 //        props.put(ConsumerConfig.FETCH_MAX_BYTES_CONFIG, autoOffsetReset);
 //        props.put(ConsumerConfig.FETCH_MAX_WAIT_MS_CONFIG, autoOffsetReset);
 //        props.put(ConsumerConfig.METADATA_MAX_AGE_CONFIG, autoOffsetReset);

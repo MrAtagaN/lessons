@@ -49,6 +49,8 @@ import java.util.Collections;
  * OS Environment Variables
  * application.properties in Current Directory
  * application.properties in the classpath (src/main/resources or the packaged jar file)
+ *
+ * //TODO Внести актуатор. Менять уровень логирования на лету rest запросом
  */
 @SpringBootApplication
 @EntityScan
