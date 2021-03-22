@@ -8,7 +8,7 @@ import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.kafka.annotation.EnableKafka;
+import org.springframework.kafka.annotation.*;
 import org.springframework.kafka.listener.ContainerProperties;
 
 
@@ -17,6 +17,7 @@ import org.springframework.kafka.listener.ContainerProperties;
  * https://docs.spring.io/spring-kafka/docs/current/reference/pdf/spring-kafka-reference.pdf
  * https://docs.spring.io/spring-kafka/docs/current/reference/html/#reference
  *
+ * ===============================================================================
  * Описание параметров и дефолтные значения в исходном коде:
  * {@link ConsumerConfig}
  * {@link ContainerProperties}
@@ -25,8 +26,13 @@ import org.springframework.kafka.listener.ContainerProperties;
  * {@link SslConfigs}
  *
  * ================================================================================
- *
- *
+ *  {@link EnableKafka} -
+ *  {@link EnableKafkaStreams} -
+ *  {@link KafkaHandler} -
+ *  {@link KafkaListener} -
+ *  {@link KafkaListeners} -
+ *  {@link PartitionOffset} -
+ *  {@link TopicPartition} -
  *
  * ================================================================================
  *
