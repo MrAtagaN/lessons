@@ -1,12 +1,21 @@
 package com.plekhanov.service;
 
-
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.annotation.PartitionOffset;
+import org.springframework.kafka.annotation.TopicPartition;
+import org.springframework.kafka.listener.adapter.ConsumerRecordMetadata;
+import org.springframework.kafka.support.Acknowledgment;
+import org.springframework.kafka.support.KafkaHeaders;
+import org.springframework.messaging.handler.annotation.Header;
+import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ *
+ */
 @Service
 public class KafkaConsumer {
 
@@ -17,4 +26,5 @@ public class KafkaConsumer {
             System.out.println("Incoming message body: " + value);
         });
     }
+
 }

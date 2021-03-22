@@ -1,0 +1,42 @@
+kafka:
+  bootstrapService: ${spring.embedded.kafka.brokers}
+  producer:
+    topic: test-topic
+    groupId: test-group
+    blockTimeMs: 2000 # default 60000
+    requestTimeout: 500
+    batchSize: 16384 # default 16384
+    lingerMs: 10 # default 0
+    maxRequestSize: 1048576 # default 1024 * 1024
+    bufferMemory: 33554432 # default 32 * 1024 * 1024 (33554432)
+    retries: 0 # default 0
+    offsetsCommitRequiredAcks: -1 # ВАЖНО! В какое количество реплик запишется сообщение чтобы считаться успешно записанным
+  consumer:
+    topic: test-topic
+    groupId: test-group
+    enableAutoCommit: true
+    autoCommitIntervalMs: 500
+    sessionTimeoutMs: 30000
+    pollTimeoutMs: 500
+    maxPollIntervalMs: 10000
+    threads: 10
+    maxPollRecords: 500
+    heartbeatIntervalMs: 3000 # default 3000
+    autoOffsetReset: earliest # default latest
+    isBatchListener: true
+    ackMode: BATCH
+  security:
+    kerberos:
+      enabled: false
+      protocol: SASL_PLAINTEXT
+      serviceName: kafka
+    ssl:
+      enabled: false
+      security.protocol: SSL
+      truststore:
+        location: kafka.jks
+        password: password
+      keystore:
+        location: kafka.jks
+        password: password
+      key.password: password
