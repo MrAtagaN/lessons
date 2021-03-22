@@ -13,8 +13,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.config.KafkaListenerContainerFactory;
 import org.springframework.kafka.core.*;
-import org.springframework.kafka.listener.AbstractMessageListenerContainer;
 import org.springframework.kafka.listener.ConcurrentMessageListenerContainer;
+import org.springframework.kafka.listener.ContainerProperties;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -71,10 +71,8 @@ public class KafkaConfig {
     private String autoOffsetReset;
     @Value("${kafka.consumer.isBatchListener}")
     private boolean isBatchListener;
-    @Value("${kafka.consumer.ackOnError}")
-    private boolean ackOnError;
     @Value("${kafka.consumer.ackMode}")
-    private AbstractMessageListenerContainer.AckMode ackMode;
+    private ContainerProperties.AckMode ackMode;
 
 
     /*************
@@ -208,7 +206,6 @@ public class KafkaConfig {
         factory.setConsumerFactory(new DefaultKafkaConsumerFactory<>(consumerConfigs()));
         factory.setConcurrency(threads);
         factory.getContainerProperties().setAckMode(ackMode);
-        factory.getContainerProperties().setAckOnError(ackOnError);
         factory.getContainerProperties().setPollTimeout(pollTimeoutMs);
         factory.setBatchListener(isBatchListener);
         return factory;

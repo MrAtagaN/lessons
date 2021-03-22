@@ -24,7 +24,6 @@ kafka:
     heartbeatIntervalMs: 3000 # default 3000. Интервал с которым потребитель посылает сигналы о своей живости
     autoOffsetReset: earliest # default latest. С какого смещения читать сообщения, если для группы потребителей в кафка не указано последнее смещение
     isBatchListener: true # Получать сообщения пачками
-    ackOnError: true # default true. Подтверждать получение сообщения если во время обработки возникла ошибка
     ackMode: BATCH # Подтверждение получения сообщений пачками
   security:
     kerberos:

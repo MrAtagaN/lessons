@@ -24,7 +24,6 @@ kafka:
     heartbeatIntervalMs: 3000 # default 3000
     autoOffsetReset: earliest # default latest
     isBatchListener: true
-    ackOnError: true
     ackMode: BATCH
   security:
     kerberos:
