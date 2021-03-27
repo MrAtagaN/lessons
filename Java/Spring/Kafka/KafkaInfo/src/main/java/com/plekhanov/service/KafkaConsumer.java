@@ -15,7 +15,7 @@ import java.util.List;
 
 
 /**
- * Examples
+ * Примеры вычитки сообщений
  */
 @Service
 public class KafkaConsumer {

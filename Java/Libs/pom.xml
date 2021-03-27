@@ -27,6 +27,7 @@
         <module>BeanValidation</module>
         <module>Vavr</module>
         <module>MailClient</module>
+        <module>Json</module>
     </modules>
 
 
