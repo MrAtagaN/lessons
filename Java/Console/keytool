@@ -28,3 +28,69 @@ keytool -export -keystore <путь к keystore> -alias <имя сертифик
 
 keytool -certreq -alias <alias> -keystore <keystore>.jks -file <file>.csr -sigalg SHA256WithRSA
     запрос на подпись сертификата в удостоверяющем центре
+
+
+==============================================================================================
+
+Пример создания хранилища jks без SAN (Subject Alternative Names)
+
+1.     Сформировать хранилище ключей:
+keytool -genkey -alias {name} -keyalg RSA -keysize 2048 -keystore keystore.jks
+
+2.     Далее вас будет предложено ввести пароль и информацию об организации
+a.     Enter keystore password: {ваш_пароль}
+b.     Re-enter new password: {ваш_пароль}
+c.     What is your first and last name?: {ваш_CN}
+d.     What is the name of your organizational unit?: 00CA
+e.     What is the name of your organization?: Bank
+f.     What is the name of your City or Locality?: Moscow
+g.     What is the name of your State or Province?: Moscow
+h.     What is the two-letter country code for this unit?: RU
+
+3.     Сгенерировать запрос на выпуск сертификата:
+keytool -certreq -keyalg RSA -alias {name} -file {name}.csr -keystore {name}.jks
+
+4.     Полученные сертификаты необходимо импортировать в хранилище. Важно сначала импортировать все доверенные сертификаты (Root, CA).
+Для 2-х хранилищ:
+a.     keytool -v -importcert -keystore truststore.jks -alias {Root} -file {Root}.crt
+b.     keytool -v -importcert -keystore truststore.jks -alias {CA} -file {CA}.crt
+c.     keytool -v -importcert -keystore keystore.jks -alias {name} -file {name}.cer
+
+Для единого хранилища:
+d.     keytool -v -importcert -keystore keystore.jks -alias {Root} -file {Root}.crt
+e.     keytool -v -importcert -keystore keystore.jks -alias {CA} -file {CA}.crt
+f.     keytool -v -importcert -keystore keystore.jks -alias {name} -file {name}.cer
+
+где: {Root} алиас корневого сертификат;  {CA} - алиас промежуточного сертификат; {name} алиас подписанного сертификата; {name} - имя файла сертификата
+
+==============================================================================================
+
+Пример создания хранилища jks c SAN (Subject Alternative Names)
+
+1.     Сформировать хранилище ключей:
+keytool -genkeypair -alias ${ваш_алиас} -keyalg RSA -sigalg SHA256withRSA -dname "CN=${ваш_CN}, OU=00CA, O=Bank, C=RU" \
+-ext SAN=dns:localhost,dns:${ваше_имя_сервера},ip:127.0.0.1 \
+-keystore ${имя_Jks}.jks -storetype JKS -storepass ваш_пароль -validity 1440 -keysize 2048 -keyalg RSA;
+
+или
+
+keytool -keystore server.jks -storepass protected -deststoretype pkcs12 -genkeypair -keyalg RSA -validity 365 -dname "CN=10.100.0.1," -ext "SAN=IP:10.100.0.1"
+
+2.     Сгенерировать запрос на выпуск сертификата:
+keytool -certreq -keyalg RSA -alias {name} -file {name}.csr -keystore {name}.jks
+
+3.     Полученные сертификаты необходимо импортировать в хранилище. Важно сначала импортировать все доверенные сертификаты (Root, CA).
+Для 2-х хранилищ:
+a.     keytool -v -importcert -keystore truststore.jks -alias {Root} -file {Root}.crt
+b.     keytool -v -importcert -keystore truststore.jks -alias {CA} -file {CA}.crt
+c.     keytool -v -importcert -keystore keystore.jks -alias {name} -file {name}.cer
+
+Для единого хранилища:
+
+d.     keytool -v -importcert -keystore keystore.jks -alias {Root} -file {Root}.crt
+e.     keytool -v -importcert -keystore keystore.jks -alias {CA} -file {CA}.crt
+f.     keytool -v -importcert -keystore keystore.jks -alias {name} -file {name}.cer
+
+где: {Root} алиас корневого сертификат;  {CA} - алиас промежуточного сертификат; {name} алиас подписанного сертификата; {name} - имя файла сертификата
+
+==============================================================================================

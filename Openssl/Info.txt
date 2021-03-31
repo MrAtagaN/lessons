@@ -28,3 +28,5 @@ genrsa -out ${cert_name}.key 2048 -days 824
 rsa -in ${cert_name}.key -check
 req -new -key ${cert_name}.key -config ${cert_name}.cfg -out ${cert_name}.csr
 req -in ${cert_name}.csr -noout –text
+
+openssl x509 -in "${cert_name}.cer" -inform DER -out "${cert_name}.pem" -outform PEM  - Перевести из формата cer в формат pem
