@@ -1,6 +1,9 @@
 Команды:
 https://man.openbsd.org/openssl.1
 
+Пример запроса на подпись сертификата:
+https://gist.github.com/jdelic/06d5bffc6de2826bfba531534b0c2f1c
+
 list-standard-commands - стандартные команды
 list-message-digest-commands - команды дайджеста сообщения
 list-cipher-commands - команды шифрования
@@ -16,3 +19,12 @@ req - создает и обрабатывает запросы сертифик
 
 X509 - многоцелевая утилита для сертификатов. Его можно использовать для отображения информации о сертификатах,
        преобразования сертификатов в различные формы, подписи запросов на сертификаты
+
+
+
+Создание сертификата и подпись в УЦ:
+
+genrsa -out ${cert_name}.key 2048 -days 824
+rsa -in ${cert_name}.key -check
+req -new -key ${cert_name}.key -config ${cert_name}.cfg -out ${cert_name}.csr
+req -in ${cert_name}.csr -noout –text
