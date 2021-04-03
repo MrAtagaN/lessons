@@ -17,18 +17,8 @@ import org.springframework.kafka.annotation.EnableKafka;
 
 
 /**
+ * Автоконфигурация kafka в spring-boot
  *
- * Для запуска Kafka в контейнере Docker выполнить первый шаг:
- * https://docs.confluent.io/current/quickstart/ce-docker-quickstart.html
- *
- * Для просмотра сообщений в Kafka можно использовать клиент Kafka Tool:
- * https://www.kafkatool.com/
- * при подключении во вкладке advanced, в поле bootstrap servers указать:  localhost:29092,localhost:9092
- *
- * TODO проверить следующую ссылку
- * https://hub.docker.com/r/bitnami/kafka/
- *
- * ===================================
  * Параметры указываются в application.yaml, они передаются в KafkaClient
  * {@link ConsumerConfig}
  * {@link CommonClientConfigs}
@@ -39,8 +29,12 @@ import org.springframework.kafka.annotation.EnableKafka;
  * {@link KafkaProperties}
  * Произвольные параметры нужно указывать в properties
  *
+ * Описание параметров автоконфигурации страница 480
  * https://docs.spring.io/spring-boot/docs/current/reference/pdf/spring-boot-reference.pdf
- * Описание параметров автоконфигурации в доках страница 480
+ *
+ * ====================================================
+ *
+ * Запуск Kafka сервера:
  *
  */
 @EnableKafka

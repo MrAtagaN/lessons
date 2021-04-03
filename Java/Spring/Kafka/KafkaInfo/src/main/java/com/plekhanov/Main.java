@@ -14,9 +14,12 @@ import org.springframework.kafka.listener.ContainerProperties;
 
 
 /**
- * Доки:
+ * Доки spring-kafka:
  * https://docs.spring.io/spring-kafka/docs/current/reference/pdf/spring-kafka-reference.pdf
  * https://docs.spring.io/spring-kafka/docs/current/reference/html/#reference
+ *
+ * Kafka в spring-boot страница 187
+ * https://docs.spring.io/spring-boot/docs/current/reference/pdf/spring-boot-reference.pdf
  *
  * ===============================================================================
  * Описание параметров и дефолтные значения в исходном коде:

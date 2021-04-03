@@ -8,6 +8,9 @@ import org.springframework.kafka.annotation.*;
 
 
 /**
+ * Создание kafka бинов вручную
+ *
+ * ==========================================================
  *
  * Для запуска Kafka в контейнере Docker выполнить первый шаг:
  * https://docs.confluent.io/current/quickstart/ce-docker-quickstart.html
