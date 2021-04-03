@@ -19,6 +19,7 @@ import org.springframework.kafka.annotation.EnableKafka;
 /**
  * Автоконфигурация kafka в spring-boot
  *
+ * ====================================================
  * Параметры указываются в application.yaml, они передаются в KafkaClient
  * {@link ConsumerConfig}
  * {@link CommonClientConfigs}
