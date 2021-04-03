@@ -1,6 +1,7 @@
 package com.plekhanov.service;
 
 import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.annotation.PartitionOffset;
 import org.springframework.kafka.annotation.TopicPartition;
@@ -9,6 +10,7 @@ import org.springframework.kafka.support.Acknowledgment;
 import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.Payload;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +18,12 @@ import java.util.List;
 
 /**
  * Примеры вычитки сообщений
+ *
+ * {@link SendTo}
+ *
+ * Параметры {@link KafkaListener}
+ * id -
+ *
  */
 @Service
 public class KafkaConsumer {
@@ -27,6 +35,13 @@ public class KafkaConsumer {
             System.out.println("Incoming message body: " + value);
         });
     }
+
+    @KafkaListener(id = "pollResults", topics = "myTopic", containerFactory =
+            "batchFactory")
+    public void pollResults(ConsumerRecords<?, ?> records) {
+
+    }
+
 
 
     /*********************************

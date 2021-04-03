@@ -6,6 +6,7 @@ import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.config.SslConfigs;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.kafka.annotation.*;
@@ -19,6 +20,7 @@ import org.springframework.kafka.listener.ContainerProperties;
  *
  * ===============================================================================
  * Описание параметров и дефолтные значения в исходном коде:
+ * {@link KafkaProperties}
  * {@link ConsumerConfig}
  * {@link ContainerProperties}
  * {@link CommonClientConfigs}
