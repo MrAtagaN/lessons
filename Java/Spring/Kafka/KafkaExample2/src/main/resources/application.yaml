@@ -6,6 +6,17 @@ spring:
     producer:
       bootstrapServers: localhost:9095
       acks: all
+      properties:
+        request.timeout.ms: 500
+    listener:
+      type: BATCH
+      ackMode: BATCH
+      concurrency: 1
+      pollTimeout: 500
+      maxPollRecords: 500
+      enableAutoCommit: true
+      autoCommitInterval: 500
+      autoOffsetReset: latest
 
 kafka:
   consumer:

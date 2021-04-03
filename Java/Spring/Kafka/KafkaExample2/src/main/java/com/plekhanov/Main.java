@@ -1,6 +1,10 @@
 package com.plekhanov;
 
 import com.plekhanov.service.KafkaProducer;
+import org.apache.kafka.clients.CommonClientConfigs;
+import org.apache.kafka.clients.consumer.ConsumerConfig;
+import org.apache.kafka.clients.producer.ProducerConfig;
+import org.apache.kafka.common.config.SslConfigs;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -25,8 +29,18 @@ import org.springframework.kafka.annotation.EnableKafka;
  * https://hub.docker.com/r/bitnami/kafka/
  *
  * ===================================
- * Описание параметров и дефолтные значения в исходном коде:
+ * Параметры указываются в application.yaml, они передаются в KafkaClient
+ * {@link ConsumerConfig}
+ * {@link CommonClientConfigs}
+ * {@link ProducerConfig}
+ * {@link SslConfigs}
+ *
+ * Описание параметров автоконфигурации в исходном коде:
  * {@link KafkaProperties}
+ * Произвольные параметры нужно указывать в properties
+ *
+ * https://docs.spring.io/spring-boot/docs/current/reference/pdf/spring-boot-reference.pdf
+ * Описание параметров автоконфигурации в доках страница 480
  *
  */
 @EnableKafka
