@@ -1,0 +1,14 @@
+spring:
+  kafka:
+    consumer:
+      groupId: 1
+      bootstrapServers: localhost:9095
+    producer:
+      bootstrapServers: localhost:9095
+      acks: all
+
+kafka:
+  consumer:
+    topic: 456
+  producer:
+    topic: 123

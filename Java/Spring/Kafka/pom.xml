@@ -6,6 +6,7 @@
     <modules>
         <module>KafkaExample</module>
         <module>KafkaInfo</module>
+        <module>KafkaExample2</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
