@@ -30,3 +30,5 @@ req -new -key ${cert_name}.key -config ${cert_name}.cfg -out ${cert_name}.csr
 req -in ${cert_name}.csr -noout –text
 
 openssl x509 -in "${cert_name}.cer" -inform DER -out "${cert_name}.pem" -outform PEM  - Перевести из формата cer в формат pem
+
+openssl pkcs12 -export -out keyStore.p12 -inkey myKey.pem -in certs.pem - Сделать контейнер p12
