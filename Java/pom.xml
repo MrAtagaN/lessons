@@ -17,7 +17,7 @@
         <module>Hibernate</module>
         <module>Servlet</module>
         <module>Core</module>
-        <module>JUnit_and_Mockito</module>
+        <module>Tests</module>
         <module>MQ</module>
         <module>Spring</module>
         <module>Soap</module>
