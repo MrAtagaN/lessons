@@ -15,7 +15,9 @@ import java.nio.file.Paths;
  * onConstructor=@__(@Autowired) - onConstructor=@__ поставить над конструктором аннотацию
  * @Value
  * @With - добавляет метод для каждого поля, который делает клон объекта с одним измененныйм полем
- * @Builder
+ * @Builder -
+ * @SuperBuilder -
+ *
  */
 @Slf4j
 public class Main {
@@ -33,8 +35,11 @@ public class Main {
         person.setAge(26);
         person.setCat(cat);
 
+
         System.out.println(person);
         System.out.println(cat);
+
+        System.out.println(person.canEqual(cat));
     }
 
     @SneakyThrows
