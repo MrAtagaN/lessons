@@ -1,6 +1,5 @@
 package com.plekhanov.service;
 
-;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,14 +11,17 @@ import org.springframework.web.client.RestTemplate;
 
 import static org.mockito.Mockito.*;
 
+
+/**
+ * http://java-online.ru/junit-mockito.xhtml
+ */
 @RunWith(MockitoJUnitRunner.class)
 public class RestServiceTest {
 
-
-    RestService restService;
+    private RestService restService;
 
     @Mock
-    RestTemplate restTemplate;
+    private RestTemplate restTemplate;
 
     @Before
     public void init() {
