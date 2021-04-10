@@ -10,7 +10,9 @@ public class JsonToXml {
 
     public static void main(String[] args) {
         JSONObject json = new JSONObject(TEST_JSON_STRING);
-        String xml = XML.toString(json);
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("root", json);
+        String xml = XML.toString(jsonObject);
         System.out.println(xml);
     }
 }
