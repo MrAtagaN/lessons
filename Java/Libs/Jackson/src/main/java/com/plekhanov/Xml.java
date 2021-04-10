@@ -2,6 +2,7 @@ package com.plekhanov;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
@@ -52,6 +53,15 @@ public class Xml {
         JsonNode city = address.get("city");
         String cityString = city.asText();
 
+//        XmlMapper xmlMapper = new XmlMapper();
+//        JsonNode jsonNode = xmlMapper.readTree(string.getBytes());
+//        ObjectMapper objectMapper = new ObjectMapper();
+//        String value = objectMapper.writeValueAsString(jsonNode);
+
+
         System.out.println("city = " + cityString);
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        System.out.println(objectMapper.writeValueAsString(objectNode));
     }
 }

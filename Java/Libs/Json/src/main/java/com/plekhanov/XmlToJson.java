@@ -5,7 +5,7 @@ import org.json.XML;
 
 public class XmlToJson {
 
-    public static int PRETTY_PRINT_INDENT_FACTOR = 4;
+    public static int PRETTY_PRINT_INDENT_FACTOR = 4; //количество пробелов при выводе
     public static String TEST_XML_STRING =
             "<?xml version=\"1.0\" ?><test attrib=\"moretest\">Turn this to JSON</test>";
 
