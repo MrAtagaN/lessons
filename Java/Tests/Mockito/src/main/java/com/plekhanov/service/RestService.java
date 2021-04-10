@@ -13,7 +13,7 @@ public class RestService {
     }
 
     public String doGet(String url) {
-        ResponseEntity entity = restTemplate.getForEntity(url, String.class);
+        ResponseEntity<String> entity = restTemplate.getForEntity(url, String.class);
         return entity.toString();
     }
 }
