@@ -7,5 +7,5 @@ File -> Settings -> Keymap
 MainMenu -> Navigate -> back
 MainMenu -> Navigate -> BookMarks -> Show Bookmarks
 MainMenu -> Run -> Evaluate Expression
-ToolWindow -> Terminal
+ToolWindow -> Run
 Plugins -> Terminal -> Open in Terminal
