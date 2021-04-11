@@ -9,6 +9,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>Mockito</module>
+        <module>JUnit</module>
     </modules>
     <artifactId>Tests</artifactId>
     <modelVersion>4.0.0</modelVersion>

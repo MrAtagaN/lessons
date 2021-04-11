@@ -1,4 +1,4 @@
-package com.plekhanov;
+package com.plekhanov.json;
 
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;

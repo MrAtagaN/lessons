@@ -1,10 +1,12 @@
-package com.plekhanov;
+package com.plekhanov.xml;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.plekhanov.json.Address;
+import com.plekhanov.json.Person;
 
 import java.io.IOException;
 import java.util.Date;

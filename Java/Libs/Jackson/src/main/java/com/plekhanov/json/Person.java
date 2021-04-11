@@ -1,4 +1,4 @@
-package com.plekhanov;
+package com.plekhanov.json;
 
 
 import lombok.AllArgsConstructor;
