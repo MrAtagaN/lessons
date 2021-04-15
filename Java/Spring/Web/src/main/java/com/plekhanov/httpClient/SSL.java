@@ -16,6 +16,14 @@ import java.security.NoSuchAlgorithmException;
  * https://www.baeldung.com/apache-httpclient-tls
  *
  * Проверка сертификатов сервера
+ *
+ * javax.net.debug=ssl
+ * javax.net.ssl.keyStoreType=pkcs12
+ * javax.net.ssl.keyStore=client.p12
+ * javax.net.ssl.keyStorePassword=whatever
+ * javax.net.ssl.trustStoreType=jks
+ * javax.net.ssl.trustStore=client-truststore.jks
+ * javax.net.ssl.trustStorePassword=whatever
  */
 public class SSL {
 
