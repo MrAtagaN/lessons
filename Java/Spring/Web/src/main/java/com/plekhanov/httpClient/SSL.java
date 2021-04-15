@@ -20,7 +20,7 @@ import java.security.NoSuchAlgorithmException;
 public class SSL {
 
     private static String trustStorePath = "";
-    private static String trustStorePasword = "";
+    private static String trustStorePassword = "";
 
     public static void main(String[] args) throws NoSuchAlgorithmException, KeyManagementException {
         CloseableHttpClient httpClient = sslClient();
@@ -30,7 +30,7 @@ public class SSL {
 
     private static CloseableHttpClient sslClient() throws KeyManagementException, NoSuchAlgorithmException {
         System.setProperty("javax.net.ssl.trustStore", trustStorePath);
-        System.setProperty("javax.net.ssl.trustStorePassword", trustStorePasword);
+        System.setProperty("javax.net.ssl.trustStorePassword", trustStorePassword);
 
         final SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(
                 new SSLContextBuilder().build(),
