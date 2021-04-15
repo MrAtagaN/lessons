@@ -14,6 +14,7 @@ import java.security.NoSuchAlgorithmException;
 
 /**
  * https://www.baeldung.com/apache-httpclient-tls
+ * https://stackoverflow.com/questions/1666052/java-https-client-certificate-authentication
  *
  * Проверка сертификатов сервера
  *
