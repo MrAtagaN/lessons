@@ -39,16 +39,12 @@ public class TrustAllCert {
      * Возвращает RestTemplate доверяющий всем сертификатам. Нужен для тестирования
      */
     private static RestTemplate getRestTemplateWithAuth() throws KeyStoreException, NoSuchAlgorithmException, KeyManagementException {
-        final TrustStrategy acceptingTrustStrategy = (X509Certificate[] chain, String authType) -> true;
-
         final SSLContext sslContext = SSLContextBuilder.create()
-                .loadTrustMaterial(null, acceptingTrustStrategy)
+                .loadTrustMaterial(null, (X509Certificate[] chain, String authType) -> true)
                 .build();
 
-        final SSLConnectionSocketFactory connectionSocketFactory = new SSLConnectionSocketFactory(sslContext, NoopHostnameVerifier.INSTANCE);
-
         final CloseableHttpClient httpClient = HttpClientBuilder.create()
-                .setSSLSocketFactory(connectionSocketFactory)
+                .setSSLSocketFactory(new SSLConnectionSocketFactory(sslContext, NoopHostnameVerifier.INSTANCE))
                 .build();
 
         final HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory(httpClient);
