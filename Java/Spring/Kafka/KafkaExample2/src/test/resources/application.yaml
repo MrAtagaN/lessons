@@ -2,14 +2,14 @@ spring:
   kafka:
     consumer:
       groupId: 1
-      bootstrapServers: localhost:9095
+      bootstrapServers: ${spring.embedded.kafka.brokers}
       pollTimeout: 500
       maxPollRecords: 500
       enableAutoCommit: true
       autoCommitInterval: 666
       autoOffsetReset: latest
     producer:
-      bootstrapServers: localhost:9095
+      bootstrapServers: ${spring.embedded.kafka.brokers}
       acks: all
       properties:
         request.timeout.ms: 500

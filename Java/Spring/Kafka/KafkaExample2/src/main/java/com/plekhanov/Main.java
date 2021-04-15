@@ -55,7 +55,7 @@ public class Main {
     @Bean
     public CommandLineRunner commandLineRunner(ApplicationContext context) {
         return (args) -> {
-            context.getBean(KafkaProducer.class).send("{\n" +
+            context.getBean(KafkaProducer.class).send("test-topic", "{\n" +
                     "  \"messageId\" : 163017,\n" +
                     "  \"messageName\" : \"ESB_FS_HANDLER_REQ\",\n" +
                     "  \"userChannel\" : \"SBERBANK_MESSENGER\",\n" +
