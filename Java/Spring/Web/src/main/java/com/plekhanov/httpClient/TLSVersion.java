@@ -38,22 +38,35 @@ public class TLSVersion {
 
 
     private static void prepareHttpClient() {
-        try (final FileInputStream fileInputStream = new FileInputStream(new File(trustStorePath))) {
-            KeyStore truststore = KeyStore.getInstance(KeyStore.getDefaultType());
-            truststore.load(fileInputStream, trustStorePasword.toCharArray());
-            System.out.println("Https client truststore created.");
+        System.setProperty("javax.net.ssl.trustStore", trustStorePath);
+        System.setProperty("javax.net.ssl.trustStorePassword", trustStorePasword);
 
-            final SSLContext sslContext = new SSLContextBuilder()
-                    .loadTrustMaterial(truststore, (certificate, authType) -> true)
-                    .build();
+        try {
             sslsf = new SSLConnectionSocketFactory(
-                    sslContext,
+                    new SSLContextBuilder().build(),
                     new String[]{"TLSv1.2"},
                     null,
                     SSLConnectionSocketFactory.getDefaultHostnameVerifier());
-        } catch (CertificateException | KeyStoreException | NoSuchAlgorithmException | KeyManagementException | IOException e) {
+        } catch (NoSuchAlgorithmException | KeyManagementException e) {
             System.out.println("Exception when loading truststore: " + e.getMessage());
         }
+
+//        try (final FileInputStream fileInputStream = new FileInputStream(new File(trustStorePath))) {
+//            KeyStore truststore = KeyStore.getInstance(KeyStore.getDefaultType());
+//            truststore.load(fileInputStream, trustStorePasword.toCharArray());
+//            System.out.println("Https client truststore created.");
+//
+//            final SSLContext sslContext = new SSLContextBuilder()
+//                    .loadTrustMaterial(truststore, (certificate, authType) -> true)
+//                    .build();
+//            sslsf = new SSLConnectionSocketFactory(
+//                    sslContext,
+//                    new String[]{"TLSv1.2"},
+//                    null,
+//                    SSLConnectionSocketFactory.getDefaultHostnameVerifier());
+//        } catch (CertificateException | KeyStoreException | NoSuchAlgorithmException | KeyManagementException | IOException e) {
+//            System.out.println("Exception when loading truststore: " + e.getMessage());
+//        }
     }
 
     private static CloseableHttpClient client() {
