@@ -1,0 +1,3 @@
+https://www.baeldung.com/deployable-fat-jar-spring-boot#fat-jar--fat-war
+
+https://www.baeldung.com/spring-boot-repackage-vs-mvn-package
