@@ -54,7 +54,7 @@
       </auth>
     </to>
     <from>
-      <image>registry.ca.sbrf.ru/base/redhat-openjdk-18/openjdk18-openshift:1.5-14.1539812388</image>
+      <image>registry.ru/base/redhat-openjdk-18/openjdk18-openshift:1.5-14.1539812388</image>
       <auth>
         <username>${jib.registry.username}</username>
         <password>${jib.registry.password}</password>
