@@ -3,3 +3,5 @@ mvn -s <путь к файлу settings.xml> - исарльзовать выбр
 mvn dependency:tree -Dverbose - показать днерево зависимостей, для решения конфликтов
 
 mvn dependency:analyze - показать неиспользуемые зависимости
+
+mvn help:effective-pom
