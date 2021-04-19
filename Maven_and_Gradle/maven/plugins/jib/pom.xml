@@ -1,0 +1,72 @@
+<plugin>
+    <groupId>com.google.cloud.tools</groupId>
+    <artifactId>jib-maven-plugin</artifactId>
+    <version>1.6.1</version>
+
+    <configuration>
+        <allowInsecureRegistries>true</allowInsecureRegistries>
+        <container>
+            <environment>
+                <TZ>Europe/Moscow</TZ>
+            </environment>
+            <jvmFlags>
+                <!--  JMX-->
+                <jvmFlag>-Dcom.sun.management.jmxremote.port=12667</jvmFlag>
+                <jvmFlag>-Dcom.sun.management.jmxremote.authenticate=false</jvmFlag>
+                <jvmFlag>-Dcom.sun.management.jmxremote.ssl=false</jvmFlag>
+                <jvmFlag>-Djava.rmi.server.hostname=10.116.7.8</jvmFlag>
+                <!--  GC Commons-->
+                <jvmFlag>-XX:+PrintConcurrentLocks</jvmFlag>
+                <jvmFlag>-XX:MaxGCPauseMillis=2000</jvmFlag>
+                <jvmFlag>-XX:+AlwaysPreTouch</jvmFlag>
+                <jvmFlag>-XX:+UseG1GC</jvmFlag>
+                <jvmFlag>-XX:SurvivorRatio=6</jvmFlag>
+                <jvmFlag>-XX:InitiatingHeapOccupancyPercent=30</jvmFlag>
+                <jvmFlag>-XX:G1HeapRegionSize=8m</jvmFlag>
+                <jvmFlag>-XX:+ScavengeBeforeFullGC</jvmFlag>
+                <!-- GC Logs-->
+                <jvmFlag>-XX:+DisableExplicitGC</jvmFlag>
+                <jvmFlag>-XX:+PrintGCDetails</jvmFlag>
+                <jvmFlag>-XX:+PrintGCTimeStamps </jvmFlag>
+                <jvmFlag>-XX:+PrintGCDateStamps</jvmFlag>
+                <jvmFlag>-XX:+UseGCLogFileRotation</jvmFlag>
+                <jvmFlag>-XX:+PrintAdaptiveSizePolicy </jvmFlag>
+                <jvmFlag>-XX:+PrintGCApplicationStoppedTime</jvmFlag>
+                <jvmFlag>-XX:NumberOfGCLogFiles=10</jvmFlag>
+                <jvmFlag>-XX:GCLogFileSize=100M</jvmFlag>
+                <jvmFlag>-Xloggc:logs/gc.log</jvmFlag>
+                <!-- Debugging -->
+                <jvmFlag>-Xdebug</jvmFlag>
+                <jvmFlag>-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=14667</jvmFlag>
+                <!-- Logging / common preferences -->
+                <jvmFlag>-Dlogging.config=config/logback.xml </jvmFlag>
+                <jvmFlag>-Djava.net.preferIPv4Stack=true</jvmFlag>
+                <!-- Kafka Kerberos -->
+                <jvmFlag>-Djava.security.auth.login.config=user_ivr.jaas</jvmFlag>
+                <jvmFlag>-Djava.security.krb5.conf=krb5.conf</jvmFlag>
+            </jvmFlags>
+        </container>
+        <to>
+            <image>${jib.image}:${jib.image.tag}</image>
+            <auth>
+                <username>${jib.registry.username}</username>
+                <password>${jib.registry.password}</password>
+            </auth>
+        </to>
+        <from>
+            <image>registry.ru/base/redhat-openjdk-18/openjdk18-openshift:1.5-14.1539812388</image>
+            <auth>
+                <username>${jib.registry.username}</username>
+                <password>${jib.registry.password}</password>
+            </auth>
+        </from>
+    </configuration>
+    <executions>
+        <execution>
+            <phase>verify</phase>
+            <goals>
+                <goal>build</goal>
+            </goals>
+        </execution>
+    </executions>
+</plugin>
