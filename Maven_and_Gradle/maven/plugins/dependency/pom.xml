@@ -1,0 +1,21 @@
+<build>
+    <plugins>
+        <plugin>
+            <artifactId>maven-dependency-plugin</artifactId>
+            <version>2.10</version>
+            <executions>
+                <execution>
+                    <id>analyze-dep</id>
+                    <goals>
+                        <goal>analyze-only</goal>
+                    </goals>
+                    <configuration>
+                        <ignoredDependencies>
+                            <ignoredDependency>org.foo:bar-api:jar:1.7.5</ignoredDependency>
+                        </ignoredDependencies>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+    </plugins>
+</build>

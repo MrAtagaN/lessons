@@ -1,0 +1,19 @@
+<properties>
+    <sonar.coverage.exclusions>
+        commons/src/main/java/ru/plekhanov/exceptions/**,
+        commons/src/main/java/ru/plekhanov/model/**,
+        commons/src/main/java/ru/plekhanov/message/**,
+    </sonar.coverage.exclusions>
+    <sonar.jacoco.itReportPath>${project.basedir}/target/jacoco-it.exec</sonar.jacoco.itReportPath>
+    <sonar.jacoco.reportPath>${basedir}/target/jacoco.exec</sonar.jacoco.reportPath>
+    <sonar.host.url>url</sonar.host.url>
+    <sonar.login>login</sonar.login>
+</properties>
+
+
+        <!--  sonar-maven-plugin  -->
+<plugin>
+    <groupId>org.sonarsource.scanner.maven</groupId>
+    <artifactId>sonar-maven-plugin</artifactId>
+    <version>${sonar.maven.plugin}</version>
+</plugin>

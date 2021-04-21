@@ -1,3 +1,5 @@
 https://www.eclemma.org/jacoco/trunk/doc/maven.html
 
 https://www.baeldung.com/jacoco
+
+https://github.com/jacoco/jacoco/wiki/FilteringOptions

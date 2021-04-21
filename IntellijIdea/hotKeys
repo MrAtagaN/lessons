@@ -8,4 +8,4 @@ MainMenu -> Navigate -> back
 MainMenu -> Navigate -> BookMarks -> Show Bookmarks
 MainMenu -> Run -> Evaluate Expression
 ToolWindow -> Run
-Plugins -> Terminal -> Open in Terminal
+ToolWindow -> Terminal

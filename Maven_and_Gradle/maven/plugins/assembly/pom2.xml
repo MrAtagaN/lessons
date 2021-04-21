@@ -1,0 +1,19 @@
+<plugin>
+    <artifactId>maven-assembly-plugin</artifactId>
+    <executions>
+        <execution>
+            <id>dst</id>
+            <goals>
+                <goal>single</goal>
+            </goals>
+            <phase>package</phase>
+            <configuration>
+                <descriptors>
+                    <descriptor>assembly.xml</descriptor>
+                </descriptors>
+                <finalName>serviceNAME</finalName>
+                <appendAssemblyId>false</appendAssemblyId>
+            </configuration>
+        </execution>
+    </executions>
+</plugin>
