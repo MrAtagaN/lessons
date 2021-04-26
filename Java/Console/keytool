@@ -2,32 +2,35 @@ https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html
 
 
 keytool -import -trustcacerts -keystore "$JAVA_HOME/jre/lib/security/cacerts" -noprompt -storepass changeit -alias <алиас для сертификата> -import -file <путь к сертификату>
-    добавление сертификатов в cacerts (доверенные сертификаты java)
+    Добавление сертификатов в cacerts (доверенные сертификаты java)
 
 
 keytool -genkey -dname "cn=CLIENT" -alias <имя сертификата в keystore> -keyalg RSA -keystore <имя файла keystore.jks> -keypass <пароль для защиты закрытого ключа> -storepass <пароль для защиты хранилища>
-    сгенерировать ключ и сертификат
+    Сгенерировать ключ и сертификат
 
 
 keytool -genkeypair -keyalg RSA -keysize 2048 -alias stackoverflow -dname "CN=stackoverflow,OU=Hakan,O=Hakan,C=NL" -ext "SAN:c=DNS:localhost,IP:127.0.0.1" -validity 3650 -keystore identity.jks -storepass secret -keypass secret -deststoretype pkcs12
-    сгенерировать ключ и сертификат одной командой
+    Сгенерировать ключ и сертификат одной командой
 
 
 keytool -import -keystore <путь до файла keystore.jks> -file <путь до сертификата> -alias <имя сертификата в keystore>
-    загрузить в keystore.jks доверенный сертификат
+    Загрузить в keystore.jks доверенный сертификат
 
 
 keytool -list -v -keystore <путь до файла keystore>
-   посмотреть содержимое keystore
+   Посмотреть содержимое keystore
    -v - подробная информация
 
 
 keytool -export -keystore <путь к keystore> -alias <имя сертификата в jks> -file <имя выгруженного сертификата>.cer
-    выгрузить сертификат из keystore
+    Выгрузить сертификат из keystore
 
 
 keytool -certreq -alias <alias> -keystore <keystore>.jks -file <file>.csr -sigalg SHA256WithRSA
-    запрос на подпись сертификата в удостоверяющем центре
+    Запрос на подпись сертификата в удостоверяющем центре
+
+keytool -importkeystore -srckeystore keystore.jks -srcstoretype JKS -deststoretype PKCS12 -destkeystore keystore.p12
+    Перевести формат из jks в p12
 
 
 ==============================================================================================
