@@ -32,6 +32,8 @@ keytool -certreq -alias <alias> -keystore <keystore>.jks -file <file>.csr -sigal
 keytool -importkeystore -srckeystore keystore.jks -srcstoretype JKS -deststoretype PKCS12 -destkeystore keystore.p12
     Перевести формат из jks в p12
 
+keytool -importkeystore -srckeystore {SOURCE_KEYSTORE.p12} -srcstoretype pkcs12 -srcstorepass {PASSWORD} -destkeystore {DESTINATION_KEYSTORE.p2} -deststoretype pkcs12 -deststorepass {PASSWORD}
+    Из одного p12 импортнуть сертификаты в другой
 
 ==============================================================================================
 
