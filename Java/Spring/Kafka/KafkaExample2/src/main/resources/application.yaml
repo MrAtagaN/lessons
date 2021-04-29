@@ -1,24 +1,34 @@
-spring:
-  kafka:
-    consumer:
-      groupId: 1
-      bootstrapServers: localhost:9095
-      pollTimeout: 500
-      maxPollRecords: 500
-      enableAutoCommit: true
-      autoCommitInterval: 666
-      autoOffsetReset: latest
-    producer:
-      bootstrapServers: localhost:9095
-      acks: all
-      properties:
-        request.timeout.ms: 500
-    listener:
-      type: BATCH
-      ackMode: BATCH
-      concurrency: 1
-
-
+# --------------------------------------------------------------------------------
+# Параметры Kafka        Параметры для автоконфигурации {@link KafkaProperties}
+# --------------------------------------------------------------------------------
 kafka:
   consumer:
-    topic: 456
+    groupId: push-pom-local
+    bootstrapServers: localhost:9095
+    maxPollRecords: 100
+    enableAutoCommit: true
+    autoCommitInterval: 500
+    autoOffsetReset: latest
+    heartbeatInterval: 3000
+    properties: # здесь можно задавать любые параметры для {@link ConsumerConfig}
+      session.timeout.ms: 30000
+
+  producer:
+    bootstrapServers: localhost:9095
+    acks: all
+    retries: 10
+    batchSize: 16384 # default 16384
+    properties: # здесь можно задавать любые параметры для {@link ProducerConfig}
+      request.timeout.ms: 1000
+      retry.backoff.ms: 100 # default 100
+      linger.ms: 0
+
+  listener:
+    type: BATCH
+    ackMode: BATCH
+    concurrency: 2
+    pollTimeout: 2500
+    missingTopicsFatal: true
+
+  ssl:
+    keyStoreType: p12 #//TODO
