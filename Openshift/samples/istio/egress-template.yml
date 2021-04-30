@@ -1,0 +1,372 @@
+apiVersion: v1
+kind: Template
+labels:
+  app: ${APP_NAME}
+  template: ${APP_NAME}
+message: ${APP_NAME}
+metadata:
+  annotations:
+    description: ${APP_NAME}.
+    openshift.io/display-name: ${APP_NAME}
+    version: 1.0.0
+  name: egress
+objects:
+
+  #
+  # Service
+  #
+  - apiVersion: v1
+    kind: Service
+    metadata:
+      name: egressgateway-${APP_NAME}
+    spec:
+      ports:
+        - name: http-${EGRESS_PORT}
+          port: ${{EGRESS_PORT}}
+      selector:
+        app: egressgateway-${APP_NAME}
+        istio: egressgateway-${APP_NAME}
+
+
+  #
+  # Deployment
+  #
+  - apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      labels:
+        app: egressgateway-${APP_NAME}
+        app.kubernetes.io/component: gateways
+        app.kubernetes.io/instance: ${ISTIO_CONTROL_PLANE}
+        app.kubernetes.io/managed-by: maistra-istio-operator
+        app.kubernetes.io/name: gateways
+        app.kubernetes.io/part-of: istio
+        app.kubernetes.io/version: 1.0.2-7.el8-1
+        chart: gateways
+        heritage: Tiller
+        istio: egressgateway-${APP_NAME}
+        maistra.io/owner: ${ISTIO_CONTROL_PLANE}
+        release: istio
+      name: egressgateway-${APP_NAME}
+    spec:
+      progressDeadlineSeconds: 1200
+      replicas: ${{REPLICAS_COUNT}}
+      revisionHistoryLimit: 10
+      selector:
+        matchLabels:
+          app: egressgateway-${APP_NAME}
+          istio: egressgateway-${APP_NAME}
+      strategy:
+        rollingUpdate:
+          maxSurge: 1
+          maxUnavailable: 1
+        type: RollingUpdate
+      template:
+        metadata:
+          annotations:
+            sidecar.istio.io/inject: "false"
+          creationTimestamp: null
+          labels:
+            app: egressgateway-${APP_NAME}
+            chart: gateways
+            heritage: Tiller
+            istio: egressgateway-${APP_NAME}
+            release: istio
+        spec:
+          affinity:
+            nodeAffinity:
+              preferredDuringSchedulingIgnoredDuringExecution:
+                - preference:
+                    matchExpressions:
+                      - key: beta.kubernetes.io/arch
+                        operator: In
+                        values:
+                          - amd64
+                  weight: 2
+                - preference:
+                    matchExpressions:
+                      - key: beta.kubernetes.io/arch
+                        operator: In
+                        values:
+                          - ppc64le
+                  weight: 2
+                - preference:
+                    matchExpressions:
+                      - key: beta.kubernetes.io/arch
+                        operator: In
+                        values:
+                          - s390x
+                  weight: 2
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: beta.kubernetes.io/arch
+                        operator: In
+                        values:
+                          - amd64
+                          - ppc64le
+                          - s390x
+          containers:
+            - args:
+                - proxy
+                - router
+                - --domain
+                - $(POD_NAMESPACE).svc.cluster.local
+                - --log_output_level=default:info
+                - --drainDuration
+                - 45s
+                - --parentShutdownDuration
+                - 1m0s
+                - --connectTimeout
+                - 10s
+                - --serviceCluster
+                - egressgateway-${PROJECT_NAME}-${APP_NAME}
+                - --zipkinAddress
+                - zipkin.${ISTIO_CONTROL_PLANE}:9411
+                - --proxyAdminPort
+                - "15000"
+                - --statusPort
+                - "15020"
+                - --controlPlaneAuthPolicy
+                - NONE
+                - --discoveryAddress
+                - istio-pilot.${ISTIO_CONTROL_PLANE}:15010
+              env:
+                - name: POD_NAME
+                  valueFrom:
+                    fieldRef:
+                      apiVersion: v1
+                      fieldPath: metadata.name
+                - name: POD_NAMESPACE
+                  valueFrom:
+                    fieldRef:
+                      apiVersion: v1
+                      fieldPath: metadata.namespace
+                - name: INSTANCE_IP
+                  valueFrom:
+                    fieldRef:
+                      apiVersion: v1
+                      fieldPath: status.podIP
+                - name: HOST_IP
+                  valueFrom:
+                    fieldRef:
+                      apiVersion: v1
+                      fieldPath: status.hostIP
+                - name: ISTIO_META_POD_NAME
+                  valueFrom:
+                    fieldRef:
+                      apiVersion: v1
+                      fieldPath: metadata.name
+                - name: ISTIO_META_CONFIG_NAMESPACE
+                  valueFrom:
+                    fieldRef:
+                      apiVersion: v1
+                      fieldPath: metadata.namespace
+                - name: ISTIO_META_ROUTER_MODE
+                  value: sni-dnat
+              image: ${PROXY_IMAGE}
+              imagePullPolicy: Always
+              name: istio-proxy
+              ports:
+                - containerPort: 15020
+                  name: status-port
+                - containerPort: 8080
+                  name: http
+                - containerPort: ${{EGRESS_PORT}}
+                  name: https
+              readinessProbe:
+                failureThreshold: 30
+                httpGet:
+                  path: /healthz/ready
+                  port: 15020
+                  scheme: HTTP
+                initialDelaySeconds: 1
+                periodSeconds: 2
+                successThreshold: 1
+                timeoutSeconds: 5
+              resources:
+                limits:
+                  cpu: ${CPU}m
+                  memory: ${MEMORY}Mi
+                requests:
+                  cpu: ${CPU}m
+                  memory: ${MEMORY}Mi
+              terminationMessagePath: /dev/termination-log
+              terminationMessagePolicy: File
+              volumeMounts:
+                - mountPath: /etc/istio/proxy
+                  name: istio-envoy
+                - mountPath: /etc/certs/
+                  name: istio-certs
+                  readOnly: true
+                - mountPath: /etc/istio/egressgateway-certs-host
+                  name: egressgateway-certs
+                  readOnly: true
+                - mountPath: /etc/istio/egressgateway-ca-certs-host
+                  name: egressgateway-ca-certs
+                  readOnly: true
+          dnsPolicy: ClusterFirst
+          restartPolicy: Always
+          schedulerName: default-scheduler
+          securityContext: {}
+          terminationGracePeriodSeconds: 60
+          volumes:
+            - emptyDir:
+                medium: Memory
+              name: istio-envoy
+            - name: istio-certs
+              secret:
+                defaultMode: 400
+                optional: true
+                secretName: istio.default
+            - name: egressgateway-certs
+              secret:
+                defaultMode: 400
+                optional: true
+                secretName: egressgateway-certs
+            - name: egressgateway-ca-certs
+              secret:
+                defaultMode: 400
+                optional: true
+                secretName: egressgateway-ca-certs
+
+  #
+  # Secret egressgateway-ca-certs
+  #
+  - apiVersion: v1
+    data:
+      ca-chain.cert.pem: ${EGRESS_CA_CERT}
+    kind: Secret
+    metadata:
+      name: egressgateway-ca-certs
+    type: Opaque
+
+  #
+  # Secret egressgateway-certs
+  #
+  - apiVersion: v1
+    data:
+      tls.crt: ${EGRESS_CERTS_CRT}
+      tls.key: ${EGRESS_CERTS_KEY}
+    kind: Secret
+    metadata:
+      name: egressgateway-certs
+    type: Opaque
+
+  #
+  # ServiceEntry
+  #
+  - apiVersion: networking.istio.io/v1alpha3
+    kind: ServiceEntry
+    metadata:
+      name: ${APP_NAME}
+    spec:
+      exportTo:
+        - .
+      hosts:
+        - ${EXTERNAL_HOST}
+      ports:
+        - name: tls-${EXTERNAL_PORT}
+          number: ${{EXTERNAL_PORT}}
+          protocol: TLS
+      resolution: DNS
+
+  #
+  # DestinationRule
+  #
+  - apiVersion: networking.istio.io/v1alpha3
+    kind: DestinationRule
+    metadata:
+      name: ${APP_NAME}
+    spec:
+      host: ${EXTERNAL_HOST}
+      trafficPolicy:
+        loadBalancer:
+          simple: ROUND_ROBIN
+        portLevelSettings:
+          - port:
+              number: ${{EXTERNAL_PORT}}
+            tls:
+              caCertificates: /etc/istio/egressgateway-ca-certs-host/ca-chain.cert.pem
+              clientCertificate: /etc/istio/egressgateway-certs-host/tls.crt
+              mode: MUTUAL
+              privateKey: /etc/istio/egressgateway-certs-host/tls.key
+              sni: ${EXTERNAL_HOST}
+
+  #
+  # Gateway
+  #
+  - apiVersion: networking.istio.io/v1alpha3
+    kind: Gateway
+    metadata:
+      name: egressgateway-${APP_NAME}
+    spec:
+      selector:
+        istio: egressgateway-${APP_NAME}
+      servers:
+        - hosts:
+            - ${APP_NAME}.apps.${OPENSHIFT_HOST}
+          port:
+            name: http-${EGRESS_PORT}
+            number: ${{EGRESS_PORT}}
+            protocol: HTTP
+
+  #
+  # VirtualService
+  #
+  - apiVersion: networking.istio.io/v1alpha3
+    kind: VirtualService
+    metadata:
+      name: egressgateway-${APP_NAME}
+    spec:
+      exportTo:
+        - .
+      gateways:
+        - egressgateway-${APP_NAME}
+      hosts:
+        - ${APP_NAME}.apps.${OPENSHIFT_HOST}
+      http:
+        - match:
+            - gateways:
+                - egressgateway-${APP_NAME}
+              port: ${{EGRESS_PORT}}
+              rewrite:
+                authority: ${EXTERNAL_HOST}
+          route:
+            - destination:
+                host: ${EXTERNAL_HOST}
+                port:
+                  number: ${{EXTERNAL_PORT}}
+
+#
+# parameters
+#
+parameters:
+  - name: PROJECT_NAME
+    required: true
+  - name: APP_NAME
+    required: true
+  - name: ISTIO_CONTROL_PLANE
+    required: true
+  - name: PROXY_IMAGE
+    required: true
+  - name: EGRESS_CA_CERT
+    required: true
+  - name: EGRESS_CERTS_CRT
+    required: true
+  - name: EGRESS_CERTS_KEY
+    required: true
+  - name: EXTERNAL_HOST
+    required: true
+  - name: EXTERNAL_PORT
+    required: true
+  - name: EGRESS_PORT
+    required: true
+  - name: OPENSHIFT_HOST
+    required: true
+  - name: CPU
+    required: true
+  - name: MEMORY
+    required: true
+  - name: REPLICAS_COUNT
+    required: true
