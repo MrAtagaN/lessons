@@ -1,7 +1,9 @@
-Baeldung category
+Baeldung category - все статьи
 https://www.baeldung.com/category/spring/
+https://www.baeldung.com/category/spring-boot/
 https://www.baeldung.com/category/maven/
+https://www.baeldung.com/category/devops/
 
 
-Baeldung series
+Baeldung series - статьи по темам
 https://www.baeldung.com/category/series/
