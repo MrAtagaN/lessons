@@ -1,0 +1,7 @@
+Baeldung category
+https://www.baeldung.com/category/spring/
+https://www.baeldung.com/category/maven/
+
+
+Baeldung series
+https://www.baeldung.com/category/series/
