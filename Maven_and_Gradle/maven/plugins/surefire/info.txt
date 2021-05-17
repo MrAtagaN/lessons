@@ -1,0 +1,4 @@
+https://www.baeldung.com/maven-surefire-plugin
+
+Мы можем запускать тесты проекта с помощью плагина surefire.
+По умолчанию этот плагин генерирует XML-отчеты в каталоге target/surefire-reports.

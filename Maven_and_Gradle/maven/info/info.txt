@@ -1,3 +1,6 @@
 https://www.baeldung.com/maven-guide
 
 https://www.baeldung.com/category/maven/
+
+Lifecycle
+https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#
