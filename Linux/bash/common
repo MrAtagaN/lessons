@@ -43,6 +43,10 @@ grep - поиск по регулярному выражению в файле
 
 curl - http запрос
 
+    -v  подробный вывод
+    -X POST  метод запроса
+    -k  доверять сертификату
+
     Пример:
     curl --location --request POST 'http://s-msk-d-rbp-jmp:9200/api/v1/public/auth/token' \
     --header 'Content-Type: application/json' \
