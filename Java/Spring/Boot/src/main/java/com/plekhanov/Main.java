@@ -29,7 +29,7 @@ import java.util.Collections;
  *     Параметры:
  *     proxyBeanMethods -
  *
- * {@link EnableAutoConfiguration} -
+ * {@link EnableAutoConfiguration} -  тоже что и {@link ComponentScan}, но еще ищет конфигурацию в classpath
  *     Параметры:
  *     exclude, excludeName - Не создавать бины автоконфигурации
  *
