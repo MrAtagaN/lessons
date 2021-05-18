@@ -21,24 +21,26 @@ import java.util.Collections;
  * https://docs.spring.io/spring-boot/docs/current/reference/html/index.html
  * https://docs.spring.io/spring-boot/docs/current/reference/pdf/spring-boot-reference.pdf
  *
- * Аннотация {@link SpringBootApplication} - состоит из трех аннотаций:
+ * https://www.baeldung.com/spring-boot
  *
- * Аннотация {@link Configuration) -
+ * {@link SpringBootApplication} - состоит из трех аннотаций:
+ *
+ * {@link Configuration) -
  *     Параметры:
  *     proxyBeanMethods -
  *
- * Аннотация {@link EnableAutoConfiguration} -
+ * {@link EnableAutoConfiguration} -
  *     Параметры:
  *     exclude, excludeName - Не создавать бины автоконфигурации
  *
- * Аннотация {@link ComponentScan} - автоматическое создание bean-компонентов для каждого класса, аннотированного с
+ * {@link ComponentScan} - автоматическое создание bean-компонентов для каждого класса, аннотированного с
  *     помощью @Component, @Service, @Controller, @RestController, @Repository, и добавления их в контейнер Spring
  *     Параметры:
  *     scanBasePackages, scanBasePackageClasses - сканирование пакетов для создания бинов
  *
- * Аннотация {@link EntityScan} - Сканирует пакеты для регистрации Entity. Не создает бинов
+ * {@link EntityScan} - Сканирует пакеты для регистрации @Entity для JPA. Не создает бинов
  *
- * Аннотация {@link ConfigurationPropertiesScan} -
+ * {@link ConfigurationPropertiesScan} -
  *
  *
  * Приоритетный порядок конфигураций:
@@ -84,17 +86,10 @@ public class Main {
 
 
 
-    //TODO
-    // Курс по SpringBoot:
-    // https://www.baeldung.com/spring-boot
-    // проходится тема:
-    // https://www.baeldung.com/properties-with-spring
 
 
 
     //TODO
     // Изучить аннотации
     // @InitBinder
-    // @EntityScan
-    // @ConfigurationPropertiesScan
 }

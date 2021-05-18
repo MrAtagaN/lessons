@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Создание топико в программе
+ * Создание топиков в программе
  */
 @Configuration
 public class KafkaTopicConfig {
