@@ -25,15 +25,17 @@ public class RestServiceTest {
 
     @Before
     public void init() {
-        ResponseEntity responseEntity = new ResponseEntity<>(HttpStatus.OK);
-        responseEntity.toString();
+        ResponseEntity<String> responseEntity = new ResponseEntity<>(HttpStatus.OK);
+
         when(restTemplate.getForEntity("URL", String.class)).thenReturn(responseEntity);
         this.restService = new RestService(restTemplate);
     }
+
 
     @Test
     public void doGetTest() {
         restService.doGet("URL");
         verify(restTemplate, times(1)).getForEntity(eq("URL"), eq(String.class));
+        verifyNoMoreInteractions(restTemplate);
     }
 }
