@@ -1,0 +1,2107 @@
+openapi: 3.0.1
+info:
+  title: Sberbank-Telecom API для работы с услугами и данными клиента
+  description: Данное API Sberbank-Telecom предназначено для предоставления информации о подключенном тарифном плане клиента, включения/блокировки услуг.
+  version: 1.0.0
+servers:
+  - url: https://$(catalog.host)/sbermobile/customer/v1
+paths:
+  /changeSubscriberServiceStatus:
+    post:
+      tags:
+        - API смены статуса услуги абоненту.
+      summary: Метод для смены статуса услуги абоненту
+      description: Метод для смены статуса услуги абоненту - Включить, Выключить, Блокировать, с указанием формирования начисления за действие, указанием даты смены статуса услуги
+      security:
+        - CRMB2C:
+            - https://api.sberbank.ru/telecom/customer
+      operationId: changeSubscriberServiceStatus
+      parameters:
+        - $ref: '#/components/parameters/HeaderRqUID'
+        - $ref: '#/components/parameters/HeaderRqTm'
+        - $ref: '#/components/parameters/HeaderSubsystemCode'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChangeStatusRequest'
+      responses:
+        "500":
+          description: Internal server error
+          headers:
+            RqUID:
+              $ref: '#/components/headers/RqUID'
+            RqTm:
+              $ref: '#/components/headers/RqTm'
+            SubsystemCode:
+              $ref: '#/components/headers/SubsystemCode'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+              example:
+                code: 'ERROR'
+                messageUser: 'Ошибка сервиса.: Текст возникшей ошибки'
+        "400":
+          description: Bad Request
+          headers:
+            RqUID:
+              $ref: '#/components/headers/RqUID'
+            RqTm:
+              $ref: '#/components/headers/RqTm'
+            SubsystemCode:
+              $ref: '#/components/headers/SubsystemCode'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+              example:
+                code: 'ERROR'
+                messageUser: 'Ошибка запроса.: Текст возникшей ошибки'
+        "200":
+          description: ok
+          headers:
+            RqUID:
+              $ref: '#/components/headers/RqUID'
+            RqTm:
+              $ref: '#/components/headers/RqTm'
+            SubsystemCode:
+              $ref: '#/components/headers/SubsystemCode'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+  /subscriberRateData:
+    post:
+      tags:
+        - Получение даты активации тарифа, даты следующего списания и суммы абонентской платы.
+      summary: Метод для получения даты активации тарифа, даты следующего списания и суммы абонентской платы
+      description: Метод для получения даты активации тарифа, даты следующего списания и суммы абонентской платы
+      security:
+        - CRMB2C:
+            - https://api.sberbank.ru/telecom/customer
+      operationId: subscriberRateData
+      parameters:
+        - $ref: '#/components/parameters/HeaderRqUID'
+        - $ref: '#/components/parameters/HeaderRqTm'
+        - $ref: '#/components/parameters/HeaderSubsystemCode'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MsisdnRequest'
+      responses:
+        "500":
+          description: Internal server error
+          headers:
+            RqUID:
+              $ref: '#/components/headers/RqUID'
+            RqTm:
+              $ref: '#/components/headers/RqTm'
+            SubsystemCode:
+              $ref: '#/components/headers/SubsystemCode'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+              example:
+                code: 'ERROR'
+                messageUser: 'Ошибка сервиса.: Текст возникшей ошибки'
+        "400":
+          description: Bad Request
+          headers:
+            RqUID:
+              $ref: '#/components/headers/RqUID'
+            RqTm:
+              $ref: '#/components/headers/RqTm'
+            SubsystemCode:
+              $ref: '#/components/headers/SubsystemCode'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+              example:
+                code: 'ERROR'
+                messageUser: 'Ошибка запроса.: Текст возникшей ошибки'
+        "200":
+          description: ok
+          headers:
+            RqUID:
+              $ref: '#/components/headers/RqUID'
+            RqTm:
+              $ref: '#/components/headers/RqTm'
+            SubsystemCode:
+              $ref: '#/components/headers/SubsystemCode'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubsRateData'
+  /subscribers:
+    post:
+      tags:
+        - API вывода списка MSISDN клиента
+      summary: Метод предоставляет полный список MSISDN (включая eSIM) по ID Клиента
+      description: Метод предоставляет полный список MSISDN (включая eSIM) по ID Клиента из Единого Профиля Клиента (ЕПК). Каждый элемент списка содержит информацию о балансе, дате следующего списания абонентской платы, признаку типа номера SIM или eSIM, а так же статус профиля.
+      security:
+        - CRMB2C:
+            - https://api.sberbank.ru/telecom/customer
+      operationId: subscribers
+      parameters:
+        - $ref: '#/components/parameters/HeaderRqUID'
+        - $ref: '#/components/parameters/HeaderRqTm'
+        - $ref: '#/components/parameters/HeaderSubsystemCode'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubscribersRequest'
+      responses:
+        "500":
+          description: Internal server error
+          headers:
+            RqUID:
+              $ref: '#/components/headers/RqUID'
+            RqTm:
+              $ref: '#/components/headers/RqTm'
+            SubsystemCode:
+              $ref: '#/components/headers/SubsystemCode'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+              example:
+                code: 'ERROR'
+                messageUser: 'Ошибка сервиса.: Текст возникшей ошибки'
+        "400":
+          description: Bad Request
+          headers:
+            RqUID:
+              $ref: '#/components/headers/RqUID'
+            RqTm:
+              $ref: '#/components/headers/RqTm'
+            SubsystemCode:
+              $ref: '#/components/headers/SubsystemCode'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+              example:
+                code: 'ERROR'
+                messageUser: 'Ошибка запроса.: Текст возникшей ошибки'
+        "200":
+          description: ok
+          headers:
+            RqUID:
+              $ref: '#/components/headers/RqUID'
+            RqTm:
+              $ref: '#/components/headers/RqTm'
+            SubsystemCode:
+              $ref: '#/components/headers/SubsystemCode'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscribersResponse'
+  /subscribersDetails:
+    post:
+      tags:
+        - API предоставления детальной информации для номеров телефонов
+      summary: Метод для получения детальной информацией по номерам телефонов в запросе
+      description: Метод для получения детальной информацией по номерам телефонов в запросе, включая баланс, тарифный план, остатки пакетов, бонусы
+      security:
+        - CRMB2C:
+            - https://api.sberbank.ru/telecom/customer
+      operationId: subscribersDetails
+      parameters:
+        - $ref: '#/components/parameters/HeaderRqUID'
+        - $ref: '#/components/parameters/HeaderRqTm'
+        - $ref: '#/components/parameters/HeaderSubsystemCode'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubscriberDetailsRequest'
+      responses:
+        "500":
+          description: Internal server error
+          headers:
+            RqUID:
+              $ref: '#/components/headers/RqUID'
+            RqTm:
+              $ref: '#/components/headers/RqTm'
+            SubsystemCode:
+              $ref: '#/components/headers/SubsystemCode'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+              example:
+                code: 'ERROR'
+                messageUser: 'Ошибка сервиса.: Текст возникшей ошибки'
+        "400":
+          description: Bad Request
+          headers:
+            RqUID:
+              $ref: '#/components/headers/RqUID'
+            RqTm:
+              $ref: '#/components/headers/RqTm'
+            SubsystemCode:
+              $ref: '#/components/headers/SubsystemCode'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+              example:
+                code: 'ERROR'
+                messageUser: 'Ошибка запроса.: Текст возникшей ошибки'
+        "200":
+          description: ok
+          headers:
+            RqUID:
+              $ref: '#/components/headers/RqUID'
+            RqTm:
+              $ref: '#/components/headers/RqTm'
+            SubsystemCode:
+              $ref: '#/components/headers/SubsystemCode'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriberDetailsResponse'
+  /availableToSubscriberServices:
+    post:
+      tags:
+        - API предоставления перечня услуг доступных для подключения на данном пакетном Тарифном плане.
+      summary: Метод предоставления перечня услуг доступных для подключения на данном пакетном Тарифном плане.
+      description: Метод получения доступных абоненту услуг  в зависимости от текущего пакетного тарифного плана. Уже подключенные услуги в список не включаются.
+      security:
+        - CRMB2C:
+            - https://api.sberbank.ru/telecom/customer
+      operationId: availableToSubscriberServices
+      parameters:
+        - $ref: '#/components/parameters/HeaderRqUID'
+        - $ref: '#/components/parameters/HeaderRqTm'
+        - $ref: '#/components/parameters/HeaderSubsystemCode'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AvailableToSubscriberServicesRequest'
+      responses:
+        "500":
+          description: Internal server error
+          headers:
+            RqUID:
+              $ref: '#/components/headers/RqUID'
+            RqTm:
+              $ref: '#/components/headers/RqTm'
+            SubsystemCode:
+              $ref: '#/components/headers/SubsystemCode'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+              example:
+                code: 'ERROR'
+                messageUser: 'Ошибка сервиса.: Текст возникшей ошибки'
+        "400":
+          description: Bad Request
+          headers:
+            RqUID:
+              $ref: '#/components/headers/RqUID'
+            RqTm:
+              $ref: '#/components/headers/RqTm'
+            SubsystemCode:
+              $ref: '#/components/headers/SubsystemCode'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+              example:
+                code: 'ERROR'
+                messageUser: 'Ошибка запроса.: Текст возникшей ошибки'
+        "200":
+          description: ok
+          headers:
+            RqUID:
+              $ref: '#/components/headers/RqUID'
+            RqTm:
+              $ref: '#/components/headers/RqTm'
+            SubsystemCode:
+              $ref: '#/components/headers/SubsystemCode'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AvailableToSubscriberServicesResponse'
+  /subscriberBalancesList/:
+    post:
+      tags:
+        - Предоставления балансов абонента.
+      summary: Метод предоставления балансов абонента.
+      description: 'Метод предоставления балансов по списку: административный, основной, дополнительный.'
+      security:
+        - CRMB2C:
+            - https://api.sberbank.ru/telecom/customer
+      operationId: subscriberBalancesList
+      parameters:
+        - $ref: '#/components/parameters/HeaderRqUID'
+        - $ref: '#/components/parameters/HeaderRqTm'
+        - $ref: '#/components/parameters/HeaderSubsystemCode'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MsisdnRequest'
+      responses:
+        "500":
+          description: Internal server error
+          headers:
+            RqUID:
+              $ref: '#/components/headers/RqUID'
+            RqTm:
+              $ref: '#/components/headers/RqTm'
+            SubsystemCode:
+              $ref: '#/components/headers/SubsystemCode'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+              example:
+                code: 'ERROR'
+                messageUser: 'Ошибка сервиса.: Текст возникшей ошибки'
+        "400":
+          description: Bad Request
+          headers:
+            RqUID:
+              $ref: '#/components/headers/RqUID'
+            RqTm:
+              $ref: '#/components/headers/RqTm'
+            SubsystemCode:
+              $ref: '#/components/headers/SubsystemCode'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+              example:
+                code: 'ERROR'
+                messageUser: 'Ошибка запроса.: Текст возникшей ошибки'
+        "200":
+          description: ok
+          headers:
+            RqUID:
+              $ref: '#/components/headers/RqUID'
+            RqTm:
+              $ref: '#/components/headers/RqTm'
+            SubsystemCode:
+              $ref: '#/components/headers/SubsystemCode'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriberBalancesListResponse'
+  /subscriberDiscount:
+    post:
+      tags:
+        - Получение остатков потребленных услуг/пакетов абонентом, исключая технологические.
+      summary: Получение остатков потребленных услуг/пакетов абонентом, исключая технологические.
+      description: Получение остатков потребленных услуг/пакетов абонентом, исключая технологические.
+      security:
+        - CRMB2C:
+            - https://api.sberbank.ru/telecom/customer
+      operationId: subscriberDiscount
+      parameters:
+        - $ref: '#/components/parameters/HeaderRqUID'
+        - $ref: '#/components/parameters/HeaderRqTm'
+        - $ref: '#/components/parameters/HeaderSubsystemCode'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MsisdnRequest'
+      responses:
+        "500":
+          description: Internal server error
+          headers:
+            RqUID:
+              $ref: '#/components/headers/RqUID'
+            RqTm:
+              $ref: '#/components/headers/RqTm'
+            SubsystemCode:
+              $ref: '#/components/headers/SubsystemCode'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+              example:
+                code: 'ERROR'
+                messageUser: 'Ошибка сервиса.: Текст возникшей ошибки'
+        "400":
+          description: Bad Request
+          headers:
+            RqUID:
+              $ref: '#/components/headers/RqUID'
+            RqTm:
+              $ref: '#/components/headers/RqTm'
+            SubsystemCode:
+              $ref: '#/components/headers/SubsystemCode'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+              example:
+                code: 'ERROR'
+                messageUser: 'Ошибка запроса.: Текст возникшей ошибки'
+        "200":
+          description: ok
+          headers:
+            RqUID:
+              $ref: '#/components/headers/RqUID'
+            RqTm:
+              $ref: '#/components/headers/RqTm'
+            SubsystemCode:
+              $ref: '#/components/headers/SubsystemCode'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriberDiscountResponse'
+components:
+  securitySchemes:
+    CRMB2C:
+      type: oauth2
+      description: Все клиенты API имеют право на все действия с API. Токен передается от SberAPI
+      flows:
+        clientCredentials:
+          tokenUrl: https://dev.api.sberbank.ru/ru/prod/tokens/v2/oauth
+          scopes:
+            https://api.sberbank.ru/telecom/sbermobile/customer: "Скоуп к Sberbank-Telecom API для работы с услугами и данными клиента"
+  schemas:
+    ChangeStatusRequest:
+      required:
+        - msisdn
+        - serviceId
+      type: object
+      description: 'Структура запроса для смены статуса услуги'
+      properties:
+        msisdn:
+          type: string
+          maxLength: 20
+          description: 'Абонентский номер'
+          example: '9876543210'
+          pattern: "^(([0-9]){10,20})$"
+        serviceId:
+          type: integer
+          format: int64
+          description: 'Идентификатор услуги'
+          example: 1235
+        serviceStatus:
+          type: string
+          maxLength: 8
+          description: >
+            Операция для выполнения над услугой:
+             * `ACTIVATE` - Включить
+             * `DISABLE` - Выключить
+             * `BLOCK` - Блокировать
+          default: 'ACTIVATE'
+          example: 'ACTIVATE'
+          pattern: '^(.*){8}$'
+        chargeOrder:
+          type: integer
+          format: int32
+          description: >
+            Создавать начисление на заказ или нет:
+            * `1` - создавать
+            * `0` - не создавать
+          default: 1
+          example: 1
+        targetDate:
+          type: string
+          pattern: "^(?:[0-9]{4}-[0-9]{2}-[0-9]{2})?(?:[ ][0-9]{2}:[0-9]{2}:[0-9]{2})$"
+          maxLength: 19
+          description: 'Дата смены статуса услуги. Если параметр не передан, будут использоваться текущие дата и время'
+          example: '2017-07-21 17:32:28'
+      example:
+        msisdn: '9876543210'
+        serviceId: 1235
+        serviceStatus: 'ACTIVATE'
+        chargeOrder: 1
+        targetDate: '2017-07-21 17:32:28'
+    SubsRateData:
+      required:
+        - result
+        - subsRate
+      type: object
+      description: 'Структура ответа с данными о результате выполнения операции, стоимости абонентской платы и датах списания средств'
+      properties:
+        result:
+          $ref: '#/components/schemas/Result'
+        subsRate:
+          $ref: '#/components/schemas/SubsRate'
+      example:
+        result:
+          code: 'OK'
+          messageUser: 'Операция выполнена успешно'
+        subsRate:
+          servId: 1724
+          servName: '_SberTeam_07.2020'
+          servStatDate: '2021-01-29T00:00:00+03:00'
+          connPrice: 0
+          subsFee: 379
+          subsFeeDate: '2021-01-29T00:00:00+03:00'
+          intTypeId: 3
+          intQuantity: 1
+    SubsRate:
+      required:
+        - servId
+        - servName
+        - servStatDate
+        - connPrice
+        - subsFee
+        - subsFeeDate
+        - intTypeId
+        - intQuantity
+      type: object
+      description: 'Данные о дате активации тарифа, даты следующего списания и суммы абонентской платы'
+      properties:
+        servId:
+          type: integer
+          format: int64
+          description: 'Идентификатор услуги'
+          example: 1724
+        servName:
+          type: string
+          maxLength: 150
+          description: 'Название услуги'
+          example: '_SberTeam_07.2020'
+          pattern: '^(.*){250}$'
+        servStatDate:
+          type: string
+          pattern: "^((19|20)[0-9][0-9])[-](0[1-9]|1[012])[-](0[1-9]|[12][0-9]|3[01])[T]([01][1-9]|[2][0-3])[:]([0-5][0-9])[:]([0-5][0-9])(([.]([0-9]){1,3}){0,1}[+|-]([01][0-9]|[2][0-3])[:]([0-5][0-9])){0,1}$"
+          maxLength: 25
+          description: 'Дата включения услуги'
+          example: '2021-01-29T00:00:00+03:00'
+        connPrice:
+          type: number
+          format: double
+          description: 'Стоимость подключения'
+          example: '0'
+        subsFee:
+          type: number
+          format: double
+          description: 'Абонентская плата'
+          example: 379
+        subsFeeDate:
+          type: string
+          pattern: "^((19|20)[0-9][0-9])[-](0[1-9]|1[012])[-](0[1-9]|[12][0-9]|3[01])[T]([01][1-9]|[2][0-3])[:]([0-5][0-9])[:]([0-5][0-9])(([.]([0-9]){1,3}){0,1}[+|-]([01][0-9]|[2][0-3])[:]([0-5][0-9])){0,1}$"
+          maxLength: 25
+          description: 'Дата следующего списания абонентской платы'
+          example: '2021-01-29T00:00:00+03:00'
+        intTypeId:
+          type: integer
+          format: int32
+          description: >
+            Идентификатор типа интервала абонентской платы:
+             * `-1` - Неограниченный
+             * `0` - Одноразовый
+             * `1` - День
+             * `2` - Неделя
+             * `3` - Месяц
+             * `4` - Год
+             * `5` - Календарный месяц
+             * `6` - Календарная неделя
+             * `7` - Выходные дни (суббота и воскресенье)
+             * `8` - Праздники
+          example: 3
+        intQuantity:
+          type: integer
+          format: int32
+          description: 'Кол-во интервалов абонентской платы'
+          example: 1
+      example:
+        servId: 1724
+        servName: '_SberTeam_07.2020'
+        servStatDate: '2021-01-29T00:00:00+03:00'
+        connPrice: 0
+        subsFee: 379
+        subsFeeDate: '2021-01-29T00:00:00+03:00'
+        intTypeId: 3
+        intQuantity: 1
+    SubscribersRequest:
+      required:
+        - channel
+      type: object
+      description: 'Запрос списка номеров клиента'
+      properties:
+        clientId:
+          title: clientId
+          type: array
+          description: 'Список идентификаторов клиента, значение берется из ЕПК (ClientId)'
+          items:
+            type: integer
+            format: int64
+            example: '123'
+            description: 'Id склиента'
+          minItems: 0
+          maxItems: 50
+          example: [123654789, 987654321, 369852147]
+        subscriberId:
+          title: subscriberId
+          type: array
+          description: 'Список идентификаторов клиента, значение берется из ЕПК (SubscriberId)'
+          items:
+            type: integer
+            format: int64
+            example: '123'
+            description: 'Ид Клиента'
+          minItems: 0
+          maxItems: 50
+          example: [147852369, 987536214, 125896357]
+        sberbankId:
+          type: string
+          maxLength: 128
+          description: 'Символьная последовательность SberbankId. Значение берется из ЕПК'
+          example: 'ec7e7e6b87770b27d485c6533e8e57a761a75f6d8893306d45e8adfe7405ac150253eee6b1712d2e'
+          pattern: "^(([0-9]|[a-f]|[A-F]){80,128})$"
+        channel:
+          type: string
+          maxLength: 32
+          description: >
+            Код канала обслуживания:
+              * `AS_FS` - АС-ФС
+              * `MAP_SBOL` - МП Подключи
+              * `SBOL_PRO` - СБОЛ Про
+          example: 'SBOL_PRO'
+          pattern: "^(.*){32}$"
+      example:
+        clientId: [123654789, 987654321, 369852147]
+        subscriberId: [147852369, 987536214, 125896357]
+        sberbankId: 'ec7e7e6b87770b27d485c6533e8e57a761a75f6d8893306d45e8adfe7405ac150253eee6b1712d2e'
+        channel: 'SBOL_PRO'
+    SubscribersResponse:
+      required:
+        - result
+      type: object
+      description: 'Структура ответа на запрос о номерах клиента'
+      properties:
+        result:
+          $ref: '#/components/schemas/Result'
+        clients:
+          type: array
+          title: clients
+          description: 'Список клиентов'
+          items:
+            $ref: '#/components/schemas/Client'
+          minItems: 0
+          maxItems: 50
+          example:
+            - clientId: 56897561
+              subscriptions:
+                - subscriberId: 216456764
+                  msisdn: '9632999777'
+                  branchId: 990
+                  icc: '89701501078000004231'
+                  isEsim: 'Y'
+                  profileStatus: 'Released'
+                  subscriberStatusId: 1
+                  subscriberStatus: 'Активирован'
+                  feeDate: '2019-12-05T09:30:00.000+05:30'
+                  msisdnAlias: 'номер для авито'
+                  currentBalance: 536.15
+                  identified: 'Y'
+            - clientId: 2489911
+              subscriptions:
+                - subscriberId: 789406721
+                  msisdn: '9632999001'
+                  branchId: 991
+                  icc: '89701501078000004235'
+                  isEsim: 'N'
+                  profileStatus: 'Error'
+                  subscriberStatusId: 1
+                  subscriberStatus: 'Активирован'
+                  feeDate: '2019-11-29T09:43:00.000+05:30'
+                  msisdnAlias: 'номер для авито'
+                  currentBalance: 36.15
+                  identified: 'Y'
+
+      example:
+        result:
+          code: 'OK'
+          messageUser: 'Операция выполнена успешно'
+        clients:
+          - clientId: 56897561
+            subscriptions:
+              - subscriberId: 216456764
+                msisdn: '9632999777'
+                branchId: 990
+                icc: '89701501078000004231'
+                isEsim: 'Y'
+                profileStatus: 'Released'
+                subscriberStatusId: 1
+                subscriberStatus: 'Активирован'
+                feeDate: '2019-12-05T09:30:00.000+05:30'
+                msisdnAlias: 'номер для авито'
+                currentBalance: 536.15
+                identified: 'Y'
+          - clientId: 2489911
+            subscriptions:
+              - subscriberId: 789406721
+                msisdn: '9632999001'
+                branchId: 991
+                icc: '89701501078000004235'
+                isEsim: 'N'
+                profileStatus: 'Error'
+                subscriberStatusId: 1
+                subscriberStatus: 'Активирован'
+                feeDate: '2019-11-29T09:43:00.000+05:30'
+                msisdnAlias: 'номер для авито'
+                currentBalance: 36.15
+                identified: 'Y'
+    Client:
+      required:
+        - clientId
+      type: object
+      description: 'Структура данных о клиенте СберТелекома'
+      properties:
+        clientId:
+          type: integer
+          format: int64
+          description: 'Идентификатор клиента'
+          example: 5689756
+        subscriptions:
+          type: array
+          title: subscriptions
+          description: 'Список абонентов, относящихся к клиенту'
+          items:
+            $ref: '#/components/schemas/Subsription'
+          minItems: 0
+          maxItems: 2200
+          example:
+            - clientId: 56897561
+              subscriptions:
+                subscriberId: 216456764
+                msisdn: '9632999777'
+                branchId: 990
+                icc: '89701501078000004231'
+                isEsim: 'Y'
+                profileStatus: 'Released'
+                subscriberStatusId: 1
+                subscriberStatus: 'Активирован'
+                feeDate: '2019-12-05T09:30:00.000+05:30'
+                msisdnAlias: 'номер для авито'
+                currentBalance: 536.15
+                identified: 'Y'
+            - clientId: 2489911
+              subscriptions:
+                subscriberId: 789406721
+                msisdn: '9632999001'
+                branchId: 991
+                icc: '89701501078000004235'
+                isEsim: 'N'
+                profileStatus: 'Error'
+                subscriberStatusId: 1
+                subscriberStatus: 'Активирован'
+                feeDate: '2019-11-29T09:43:00.000+05:30'
+                msisdnAlias: 'номер для авито'
+                currentBalance: 36.15
+                identified: 'Y'
+      example:
+        clientId: 8220957
+        subscriptions:
+          - subscriberId: 106456778
+            msisdn: '9632999777'
+            branchId: 990
+            icc: '89701501078000004231'
+            isEsim: 'Y'
+            profileStatus: 'Released'
+            subscriberStatusId: 1
+            subscriberStatus: 'Активирован'
+            feeDate: '2019-12-05T09:30:00.000+05:30'
+            msisdnAlias: 'номер для авито'
+            currentBalance: 536.15
+            identified: 'Y'
+          - subscriberId: 876411070
+            msisdn: '9632111777'
+            branchId: 990
+            icc: '89701501078000004231'
+            isEsim: 'N'
+            profileStatus: 'Error'
+            subscriberStatusId: 1
+            subscriberStatus: 'Активирован'
+            feeDate: '2019-12-05T09:30:00.000+05:30'
+            msisdnAlias: '9881111111'
+            currentBalance: 4.25
+            identified: 'Y'
+    Subsription:
+      required:
+        - subscriberId
+        - branchId
+        - subscriberStatus
+        - currentBalance
+      type: object
+      description: 'Структура данных об абоненте СберТелекома'
+      properties:
+        subscriberId:
+          type: integer
+          format: int64
+          description: 'Идентификатор абонента'
+          example: 216456764
+        msisdn:
+          type: string
+          maxLength: 20
+          description: 'Номер телефона'
+          example: '96329997777'
+          pattern: "^(([0-9]){10,20})$"
+        branchId:
+          type: integer
+          format: int64
+          description: 'Идентификатор филиала'
+          example: 990
+        icc:
+          type: string
+          maxLength: 20
+          description: 'ICC SIM-карты'
+          example: '89701501078000004231'
+          pattern: "^(([0-9]){19,20})$"
+        isEsim:
+          type: string
+          maxLength: 1
+          description: >
+            Является ли данный абонент владельцем eSIM:
+             * `Y` - является абонентом eSIM
+             * `N` - не является. Это абонент с обычной SIM-картой
+          example: 'Y'
+          pattern: '^(.*){1}$'
+        profileStatus:
+          type: string
+          maxLength: 15
+          description: >
+            Текущий статус профиля eSIM:
+             * `Available` - Доступен в системе резервирования номеров eSIM
+             * `Allocated` - Профиль зарезервирован для загрузки без привязки к EID
+             * `Linked` - Профиль зарезервирован для загрузки и привязан к EID
+             * `Confirmed` - профиль зарезервирован для загрузки с совпадающим идентификатором и кодом подтверждения
+             * `Released` - Профиль готов к загрузке и конфигурации в сети оператора мобильной связи
+             * `Downloaded` - Связанный профиль доставлен в LPA
+             * `Installed` - Профиль успешно установлен на eUICC
+             * `Error` - Профиль не был установлен
+             * `Unavailable` - Профиль не может больше использоваться
+          example: 'Released'
+          pattern: '^(.*){15}$'
+        subscriberStatusId:
+          type: integer
+          format: int32
+          description: 'Идентификатор статуса абонента'
+          example: 1
+        subscriberStatus:
+          type: string
+          maxLength: 20
+          description: >
+            Наименование статуса абонента:
+             * `Активирован`
+             * `Заблокирован`
+          example: 'Активирован'
+          pattern: '^(.*){20}$'
+        feeDate:
+          type: string
+          format: date-time
+          maxLength: 29
+          description: 'Дата следующей абонентской платы'
+          example: '2019-12-05T09:30:00.000+05:30'
+          pattern: "^((19|20)[0-9][0-9])[-](0[1-9]|1[012])[-](0[1-9]|[12][0-9]|3[01])[T]([01][1-9]|[2][0-3])[:]([0-5][0-9])[:]([0-5][0-9])(([.]([0-9]){1,3}){0,1}[+|-]([01][0-9]|[2][0-3])[:]([0-5][0-9])){0,1}$"
+        msisdnAlias:
+          type: string
+          maxLength: 100
+          description: 'Алиас номера'
+          example: 'номер для авито'
+          pattern: '^(.*){100}$'
+        currentBalance:
+          type: number
+          format: double
+          description: 'Сумма текущего баланса клиента'
+          example: 536.15
+        identified:
+          type: string
+          maxLength: 1
+          pattern: '^(.*){1}$'
+          description: >
+            Идентификатор личности:
+             * `Y` - идентификация пройдена
+             * `N` - идентификация не пройдена
+          example: 'Y'
+      example:
+        subscriberId: 106456778
+        msisdn: '96329997777'
+        branchId: 990
+        icc: '89701501078000004231'
+        isEsim: 'Y'
+        profileStatus: 'Released'
+        subscriberStatusId: 1
+        subscriberStatus: 'Активирован'
+        feeDate: '2019-12-05T05:30:00.000+05:30'
+        msisdnAlias: 'номер для авито'
+        currentBalance: 536.15
+        identified: 'Y'
+    SubscriberDetailsRequest:
+      required:
+        - msisdn
+        - channel
+      type: object
+      description: 'Запрос детальной информации о номерах клиента'
+      properties:
+        msisdn:
+          title: msisdn
+          type: array
+          description: 'Номера телефонов, по которым проходит поиск'
+          items:
+            type: string
+            maxLength: 20
+            pattern: '^(([0-9]){10,20})$'
+            example: '0987654321'
+            description: 'Номер телефона'
+          minItems: 0
+          maxItems: 50
+          example: ["9876543210", "9876543211", "9876543212"]
+        channel:
+          type: string
+          maxLength: 32
+          description: >
+            Код канала обслуживания:
+              * `AS_FS` - АС-ФС
+              * `MAP_SBOL` - МП Подключи
+              * `SBOL_PRO` - СБОЛ Про
+          example: 'SBOL_PRO'
+          pattern: '^(.*){32}$'
+      example:
+        msisdn: ["9876543210", "9876543211", "9876543212"]
+        channel: 'SBOL_PRO'
+    SubscriberDetailsResponse:
+      required:
+        - result
+      type: object
+      description: 'Структура ответа с детальной информацией о запрошенных номерах, включающая данные по остаткам пакетов и информацию о тарифном плане'
+      properties:
+        result:
+          $ref: '#/components/schemas/Result'
+        subscribers:
+          type: array
+          title: subscribers
+          description: 'Список абонентов'
+          example:
+            clientId: 5689756
+            subscriberId: 216456764
+            msisdn: 9880001122
+            isEsim: 'Y'
+            contractNum: '2003800979'
+            contractDate: '2019-12-05T23:30:00.000+05:30'
+            subscriberStatus: 'Активирован'
+            currentBalance: 15.25
+          items:
+            $ref: '#/components/schemas/MsisdnData'
+          minItems: 0
+          maxItems: 50
+      example:
+        result:
+          code: 'OK'
+          messageUser: 'Операция выполнена успешно'
+        subscribers:
+          - clientId: 5689756
+            subscriberId: 216456764
+            msisdn: "9880001122"
+            isEsim: 'Y'
+            profileStatus: 'Released'
+            matchingId: '5E-KBKJM-2YHMP83'
+            smdpAddress: 'rsp.truphone.com'
+            contractNum: '2003800979'
+            contractDate: '2019-12-05T23:30:00.000+05:30'
+            subscriberStatusId: 1
+            subscriberStatus: 'Активирован'
+            msisdnAlias: '9888888888'
+            feeDate: '2019-12-05T23:30:00.000+05:30'
+            currentBalance: 536.15
+            identified: 'Y'
+            defaultOptions:
+              voice:
+                - serviceId: 12365
+                  serviceName: 'Пакет 30 Гигабайт'
+                  currentValue: 23554
+                  totalValue: 300
+                  percentage: 78
+                  measure: 'Mb'
+                  expDate: '2019-12-05T23:30:00.000+05:30'
+                  expiredCost: 6.00
+              data:
+                - serviceId: 4242
+                  serviceName: 'Пакет 1000 минут'
+                  currentValue: 250
+                  totalValue: 1000
+                  percentage: 25
+                  measure: 'мин'
+                  expiredCost: 15.50
+              sms:
+                - serviceId: 4243
+                  serviceName: 'Пакет 1000 СМС'
+                  currentValue: 250
+                  totalValue: 1000
+                  percentage: 25
+                  measure: 'шт'
+                  expiredCost: 15.50
+            tariffPlanInfo:
+              branchId: 990
+              ratePlanId: 125
+              serviceId: 1820
+              regionType: 'FULL'
+              tariffType: 'LINE0920'
+              clientTariffType: 'B2C'
+              carryoverOfResidues: 'Y'
+              serviceName: 'Стартовый +'
+              firstMonth: 199.00
+              nextMonth: 199.00
+              notes: 'Тарифный план Комьюнити 1 включает сбалансированный объём минут, SMS и трафика для активных пользователей мобильных услуг связи. Трафик соцсетей Вконтакте и Facebook для вас бесплатен. Подключитесь и получайте 50 бонусов "Спасибо" за каждый месяц'
+              balanceRecomPayment: 395.00
+              additionalServices:
+                - serviceId: 12365
+                  technicalCode: 'UNLIM_MSG'
+                  name: ['Apple Music', 'Shazam', 'Google Music', 'Я.Музыка']
+                  enable: 'Y'
+                  cost: 99.00
+                - serviceId: 12365
+                  technicalCode: 'UNLIM_VIDEO'
+                  name: ['Youtube', 'Rutube', 'Twitch']
+                  enable: 'Y'
+                  cost: 99.00
+              bonus:
+                bonusPercent: 5
+                promoText: 'Вернём 50% стоимости тарифа бонусами "Спасибо"'
+    MsisdnData:
+      required:
+        - clientId
+        - subscriberId
+        - msisdn
+        - isEsim
+        - contractNum
+        - contractDate
+        - subscriberStatus
+        - currentBalance
+      type: object
+      description: 'Структура данных о номере абонента'
+      properties:
+        clientId:
+          type: integer
+          format: int64
+          description: 'Идентификатор клиента СберТелекома'
+          example: 5689756
+        subscriberId:
+          type: integer
+          format: int64
+          description: 'Идентификатор абонента СберТелекома'
+          example: 216456764
+        msisdn:
+          type: string
+          maxLength: 20
+          description: 'Номер телефона'
+          example: '96329997777'
+          pattern: "^(([0-9]){10,20})$"
+        isEsim:
+          type: string
+          maxLength: 1
+          description: >
+            Является ли данный абонент владельцем eSIM:
+             * `Y` - является абонентом eSIM
+             * `N` - не является. Это абонент с обычной SIM-картой
+          example: 'Y'
+          pattern: '^(.*){1}$'
+        profileStatus:
+          type: string
+          maxLength: 15
+          description: >
+            Текущий статус профиля eSIM:
+             * `Available` - Доступен в системе резервирования номеров eSIM
+             * `Allocated` - Профиль зарезервирован для загрузки без привязки к EID
+             * `Linked` - Профиль зарезервирован для загрузки и привязан к EID
+             * `Confirmed` - профиль зарезервирован для загрузки с совпадающим идентификатором и кодом подтверждения
+             * `Released` - Профиль готов к загрузке и конфигурации в сети оператора мобильной связи
+             * `Downloaded` - Связанный профиль доставлен в LPA
+             * `Installed` - Профиль успешно установлен на eUICC
+             * `Error` - Профиль не был установлен
+             * `Unavailable` - Профиль не может больше использоваться
+          example: 'Released'
+          pattern: '^(.*){15}$'
+        matchingId:
+          type: string
+          maxLength: 250
+          description: 'Ссылка для дальнейшей установки пользователю eSIM'
+          example: '5E-KBKJM-2YHMP83'
+          pattern: '^(.*){250}$'
+        smdpAddress:
+          type: string
+          maxLength: 250
+          description: 'hashSM-DP + url, откуда может быть скачан профиль'
+          example: 'rsp.truphone.com'
+          pattern: '^(.*){250}$'
+        contractNum:
+          type: string
+          maxLength: 32
+          description: 'Номер абонентского договора'
+          example: '2003800979'
+          pattern: "^(.*){32}$"
+        contractDate:
+          type: string
+          format: date-time
+          maxLength: 29
+          description: 'Дата абонентского договора'
+          example: '2019-12-05T23:30:00.000+05:30'
+          pattern: "^((19|20)[0-9][0-9])[-](0[1-9]|1[012])[-](0[1-9]|[12][0-9]|3[01])[T]([01][1-9]|[2][0-3])[:]([0-5][0-9])[:]([0-5][0-9])(([.]([0-9]){1,3}){0,1}[+|-]([01][0-9]|[2][0-3])[:]([0-5][0-9])){0,1}$"
+
+        subscriberStatusId:
+          type: integer
+          format: int32
+          description: 'Идентификатор статуса абонента'
+          example: 1
+        subscriberStatus:
+          type: string
+          maxLength: 20
+          description: >
+            Наименование статуса абонента:
+             * `Активирован`
+             * `Заблокирован`
+          example: 'Активирован'
+          pattern: '^(.*){20}$'
+        msisdnAlias:
+          type: string
+          maxLength: 100
+          description: 'Алиас номера'
+          example: 'номер для авито'
+          pattern: '^(.*){100}$'
+        feeDate:
+          type: string
+          format: date-time
+          maxLength: 29
+          description: 'Дата следующей абонентской платы'
+          example: '2019-12-05T23:30:00.000+05:30'
+          pattern: "^((19|20)[0-9][0-9])[-](0[1-9]|1[012])[-](0[1-9]|[12][0-9]|3[01])[T]([01][1-9]|[2][0-3])[:]([0-5][0-9])[:]([0-5][0-9])(([.]([0-9]){1,3}){0,1}[+|-]([01][0-9]|[2][0-3])[:]([0-5][0-9])){0,1}$"
+        currentBalance:
+          type: number
+          format: double
+          description: 'Сумма текущего баланса клиента'
+          example: 536.15
+        identified:
+          type: string
+          maxLength: 1
+          pattern: '^(.*){1}$'
+          description: >
+            Идентификатор личности:
+             * `Y` - идентификация пройдена
+             * `N` - идентификация не пройдена
+          example: 'Y'
+        defaultOptions:
+          $ref: '#/components/schemas/DefaultOptions'
+        tariffPlanInfo:
+          $ref: '#/components/schemas/TariffPlanInfo'
+      example:
+        clientId: 5689756
+        subscriberId: 216456764
+        msisdn: 9880001122
+        isEsim: 'Y'
+        contractNum: '2003800979'
+        contractDate: '2019-12-05T05:30:00.000+05:30'
+        subscriberStatus: 'Активирован'
+        currentBalance: 15.25
+    DefaultOptions:
+      type: object
+      description: 'Опции по умолчанию (минуты, смс, интернет)'
+      properties:
+        voice:
+          type: array
+          title: voice
+          description: 'Звонки (минуты, секунды), входящие в пакетный тарифный план'
+          items:
+            $ref: '#/components/schemas/PackageOption'
+          minItems: 0
+          maxItems: 100
+          example:
+            serviceId: 4242
+            serviceName: 'Пакет 1000 минут'
+            currentValue: 250
+            totalValue: 1000
+            percentage: 25
+            measure: 'min'
+            expiredCost: 15.50
+        data:
+          type: array
+          title: data
+          description: 'Данные (GB, MB), входящие в пакетный тарифный план'
+          items:
+            $ref: '#/components/schemas/PackageOption'
+          minItems: 0
+          maxItems: 100
+          example:
+            serviceId: 4242
+            serviceName: 'Пакет 1000 минут'
+            currentValue: 250
+            totalValue: 1000
+            percentage: 25
+            measure: 'min'
+            expiredCost: 15.50
+        sms:
+          type: array
+          title: sms
+          description: 'SMS, входящие в пакетный тарифный план'
+          items:
+            $ref: '#/components/schemas/PackageOption'
+          minItems: 0
+          maxItems: 100
+          example:
+            serviceId: 4242
+            serviceName: 'Пакет 1000 минут'
+            currentValue: 250
+            totalValue: 1000
+            percentage: 25
+            measure: 'min'
+            expiredCost: 15.50
+      example:
+        voice:
+          type: array
+          title: voice
+          description: 'Звонки (минуты, секунды), входящие в пакетный тарифный план'
+          items:
+            $ref: '#/components/schemas/PackageOption'
+          minItems: 0
+          maxItems: 100
+        data:
+          type: array
+          title: data
+          description: 'Данные (GB, MB), входящие в пакетный тарифный план'
+          items:
+            $ref: '#/components/schemas/PackageOption'
+          minItems: 0
+          maxItems: 100
+        sms:
+          type: array
+          title: sms
+          description: 'SMS, входящие в пакетный тарифный план'
+          items:
+            $ref: '#/components/schemas/PackageOption'
+          minItems: 0
+          maxItems: 100
+    PackageOption:
+      required:
+        - serviceId
+        - serviceName
+        - currentValue
+        - totalValue
+        - percentage
+        - measure
+        - expiredCost
+      type: object
+      description: 'Опция пакетного тарифного плана'
+      properties:
+        serviceId:
+          type: integer
+          format: int64
+          description: 'Идентификатор услуги'
+          example: 12365
+        serviceName:
+          type: string
+          maxLength: 150
+          description: 'Наименование услуги в биллинге'
+          example: 'Пакет 300 минут'
+          pattern: '^(.*){150}$'
+        currentValue:
+          type: number
+          format: double
+          description: 'Остаток пакета'
+          example: 235
+        totalValue:
+          type: number
+          format: double
+          description: 'Номинальный размер пакета услуг'
+          example: 300
+        percentage:
+          type: integer
+          format: int32
+          description: 'Процентное выражение текущего значения'
+          example: 78
+        measure:
+          type: string
+          maxLength: 20
+          description: 'Код единицы измерения'
+          example: 'Гбит/сек'
+          pattern: '^(.*){20}$'
+        expDate:
+          type: string
+          format: date-time
+          maxLength: 29
+          description: 'Дата деактивации услуги'
+          example: '2019-12-05T09:30:00.000+05:30'
+          pattern: "^((19|20)[0-9][0-9])[-](0[1-9]|1[012])[-](0[1-9]|[12][0-9]|3[01])[T]([01][1-9]|[2][0-3])[:]([0-5][0-9])[:]([0-5][0-9])(([.]([0-9]){1,3}){0,1}[+|-]([01][0-9]|[2][0-3])[:]([0-5][0-9])){0,1}$"
+        expiredCost:
+          type: number
+          format: double
+          description: 'Стоимость услуги если пакет закончился'
+          example: 6.00
+      example:
+        serviceId: 4242
+        serviceName: 'Пакет 1000 минут'
+        currentValue: 250
+        totalValue: 1000
+        percentage: 25
+        measure: 'min'
+        expiredCost: 15.50
+    TariffPlanInfo:
+      required:
+        - branchId
+        - ratePlanId
+        - clientTariffType
+        - regionType
+        - serviceName
+        - firstMonth
+        - nextMonth
+      type: object
+      description: 'Информация о текущем тарифе, подключенном на номере'
+      properties:
+        branchId:
+          type: integer
+          format: int64
+          description: 'Идентификатор филиала'
+          example: 990
+        ratePlanId:
+          type: integer
+          format: int64
+          description: 'Идентификатор подложки тарифного плана'
+          example: 125
+        serviceId:
+          type: integer
+          format: int64
+          description: 'Идентификатор пакетного тарифного плана'
+          example: 1820
+        clientTariffType:
+          type: string
+          maxLength: 10
+          description: >
+            Тарифная категория клиента:
+              * `B2C` - Business To Business
+              * `B2B` - Business To Customer
+              * `B2B2C` - Business To Business To Customer
+          example: 'B2C'
+          pattern: '^(.*){10}$'
+        regionType:
+          type: string
+          maxLength: 6
+          description: >
+            Тип региона:
+              * `FULL`
+              * `MEDIUM`
+          example: 'FULL'
+          pattern: '^(.*){6}$'
+        tariffType:
+          type: string
+          maxLength: 100
+          description: 'Линейка тарифа'
+          example: 'LINE0920'
+          pattern: '^(.*){250}$'
+        carryoverOfResidues:
+          type: string
+          maxLength: 1
+          description: >
+            Поддерживает ли данный тарифный план опцию переноса остатков:
+             * `Y` - поддерживает
+             * `N` - нет
+          example: 'Y'
+          pattern: '^(.*){1}$'
+        serviceName:
+          type: string
+          maxLength: 150
+          description: 'Название пакетного тарифного плана'
+          pattern: '^(.*){250}$'
+          example: 'Стартовый +'
+        firstMonth:
+          type: number
+          format: double
+          description: 'Цена за первый месяц'
+          example: 199.00
+        nextMonth:
+          type: number
+          format: double
+          description: 'Цена за второй и следующие месяцы'
+          example: 199.00
+        notes:
+          type: string
+          maxLength: 512
+          description: 'Примечания и дополнительная информация о тарифе'
+          pattern: '^(.*){512}$'
+          example: 'Тарифный план Комьюнити 1 включает сбалансированный объём минут, SMS и трафика для активных пользователей мобильных услуг связи. Трафик соцсетей Вконтакте и Facebook для вас бесплатен. Подключитесь и получайте 50 бонусов "Спасибо" за каждый месяц'
+        balanceRecomPayment:
+          type: number
+          format: double
+          description: 'Рекомендуемая сумма платежа. Сумма абонентской платы за месяц минус текущий баланс'
+          example: 395.00
+        additionalServices:
+          example:
+            serviceId: "123"
+            name: "Имя"
+            enable: "true"
+            cost: "100"
+          type: array
+          title: additionalServices
+          description: 'Дополнительные подключенные услуги'
+          items:
+            $ref: '#/components/schemas/AdditionalService'
+          minItems: 0
+          maxItems: 100
+        bonus:
+          $ref: '#/components/schemas/Bonus'
+      example:
+        branchId: 990
+        ratePlanId: 123
+        clientTariffType: 'B2C'
+        regionType: 'FULL'
+        serviceName: 'Пакет 1 Gb'
+        firstMonth: 0.00
+        nextMonth: 300.00
+    AdditionalService:
+      required:
+        - serviceId
+        - name
+        - enable
+        - cost
+      type: object
+      description: 'Дополнительная услуга для абонента'
+      properties:
+        serviceId:
+          type: integer
+          format: int64
+          description: 'Идентификатор услуги'
+          example: 12365
+        technicalCode:
+          type: string
+          maxLength: 32
+          description: Технический код дополнительной услуги для взаимодействия с витринами
+          example: 'UNLIM_MSG'
+          pattern: '^(.*){32}$'
+        name:
+          title: name
+          type: array
+          description: 'Список наименований, входящих в услугу'
+          items:
+            type: string
+            maxLength: 32
+            pattern: '^(.*){32}$'
+            example: 'Shazam'
+            description: 'Наименование'
+          minItems: 0
+          maxItems: 100
+          example: ['Apple Music', 'Shazam', 'Google Music', 'Я.Музыка']
+        enable:
+          type: string
+          maxLength: 1
+          description: >
+            Входит ли подключенная услуга в тарифный план:
+              * `Y` - Входит
+              * `N` - Не входит. Подключена дополнительно
+          example: 'Y'
+          pattern: '^(.*){32}$'
+        cost:
+          type: number
+          format: double
+          description: 'Стоимость подключения услуги в месяц. Если услуга входит в тарифный план то значение всегда будет 0.00'
+          example: 99.00
+      example:
+        serviceId: 1890
+        name: 'Список наименований, входящих в услугу'
+        enable: 'Y'
+        cost: 199.00
+    Bonus:
+      required:
+        - bonusPercent
+        - promoText
+      type: object
+      description: 'Бонусы для тарифного план'
+      properties:
+        bonusPercent:
+          type: integer
+          format: int32
+          description: 'Процент бонусов'
+          example: 5
+        promoText:
+          type: string
+          maxLength: 512
+          description: Описание бонусов
+          example: 'Вернём 50% стоимости тарифа бонусами "Спасибо". При подключении услуги Прайм вы сможете оплачивать бонусами «Спасибо» фильмы в online-кинотеатре ОККО, или 70% стоимости подписки на сервис музыки СберЗвук'
+          pattern: '^(.*){512}$'
+      example:
+        bonusPercent: 10
+        promoText: 'Вернём 50% стоимости тарифа бонусами "Спасибо"'
+    AvailableToSubscriberServicesRequest:
+      required:
+        - msisdn
+        - channel
+      type: object
+      description: 'Структура запроса для получения списка услуг'
+      example:
+        msisdn: '9876543210'
+        channel: 'SBOL_PRO'
+      properties:
+        msisdn:
+          type: string
+          maxLength: 20
+          description: 'Абонентский номер'
+          example: '9876543210'
+          pattern: "^(([0-9]){10,20})$"
+        channel:
+          type: string
+          maxLength: 32
+          description: >
+            Код канала обслуживания:
+              * `AS_FS` - АС-ФС
+              * `MAP_SBOL` - МП Подключи
+              * `SBOL_PRO` - СБОЛ Про
+          example: 'SBOL_PRO'
+          pattern: '^(.*){32}$'
+    AvailableToSubscriberServicesResponse:
+      required:
+        - result
+      type: object
+      description: 'Структура ответа со списком однокомпонентных услуг, которые абонент может подключить дополнительно'
+      properties:
+        result:
+          $ref: '#/components/schemas/Result'
+        services:
+          type: array
+          title: services
+          description: 'Список однокомпонентных услуг, которые абонент может подключить дополнительно'
+          example:
+            serviceId: 123
+          items:
+            $ref: '#/components/schemas/AvailableToSubscriberService'
+          minItems: 0
+          maxItems: 100
+      example:
+        result:
+          code: 'OK'
+          messageUser: 'Операция выполнена успешно'
+        services:
+          - serviceId: 1235
+            serviceName: 'Стартовый +'
+            groupCode: 'CONTENT'
+            groupName: 'Контентные услуги'
+            serviceType: 'PERIODICAL'
+            roaming: false
+            numberUnits: 43.12
+            measure: 'Gb'
+            description: 'Услуга-маркер подключения абоненту подписки Прайм'
+            detailedDescription: 'Данная услуга подключается в момент получения нотификации сервисом Прайм-backend'
+            firstMonth: 199
+            nextMonth: 249
+          - serviceId: 56789
+            serviceName: 'Стартовый +'
+            groupCode: 'CONTENT'
+            groupName: 'Контентные услуги'
+            serviceType: 'PERIODICAL'
+            roaming: false
+            numberUnits: 43.12
+            measure: 'Gb'
+            description: 'Услуга-маркер подключения абоненту подписки Прайм'
+            detailedDescription: 'Данная услуга подключается в момент получения нотификации сервисом Прайм-backend'
+            firstMonth: 199
+            nextMonth: 249
+    AvailableToSubscriberService:
+      required:
+        - serviceId
+      type: object
+      description: 'Статус обработки запроса'
+      example:
+        serviceId: 123
+      properties:
+        serviceId:
+          type: integer
+          format: int64
+          description: 'Идентификатор услуги'
+          example: 1235
+        serviceName:
+          type: string
+          maxLength: 150
+          description: 'Название пакетного тарифного плана'
+          example: 'Стартовый +'
+          pattern: '^(.*){150}$'
+        groupCode:
+          type: string
+          maxLength: 50
+          description: 'Код группы'
+          example: 'CONTENT'
+          pattern: '^(.*){50}$'
+        groupName:
+          type: string
+          maxLength: 100
+          description: 'Наименование группы'
+          example: 'Контентные услуги'
+          pattern: '^(.*){100}$'
+        serviceType:
+          type: string
+          maxLength: 10
+          description: >
+            Тип услуги, допустимые значения:
+             * `ONCE` - периодическая
+             * `PERIODICAL` - разовая
+          example: 'PERIODICAL'
+          pattern: '^(.*){10}$'
+        roaming:
+          type: boolean
+          description: 'Услуга только для роуминга?'
+          example: 'false'
+        numberUnits:
+          type: number
+          format: double
+          description: 'Количество единиц услуги'
+          example: 43.12
+        measure:
+          type: string
+          maxLength: 10
+          description: 'Единица измерения услуги'
+          example: 'Gb'
+          pattern: '^(.*){10}$'
+        description:
+          type: string
+          maxLength: 512
+          description: 'Описание услуги'
+          example: 'Услуга-маркер подключения абоненту подписки Прайм'
+          pattern: '^(.*){512}$'
+        detailedDescription:
+          type: string
+          maxLength: 512
+          description: 'Подробное описание услуги'
+          example: 'Данная услуга подключается в момент получения нотификации сервисом Прайм-backend'
+          pattern: '^(.*){512}$'
+        firstMonth:
+          type: number
+          format: double
+          description: 'Цена за первый месяц'
+          example: 199
+        nextMonth:
+          type: number
+          format: double
+          description: 'Цена за следующий месяц'
+          example: 249
+    SubscriberBalancesListResponse:
+      required:
+        - result
+        - subsBalancesList
+      type: object
+      description: 'Результат обработки запроса балансов'
+      example:
+        result:
+          code: 'OK'
+          messageUser: 'Операция выполнена успешно'
+        subsBalancesList:
+          - clientBalanceId: 4242
+            balanceName: 'Административный'
+            priority: 1
+            deadDate: '2021-01-19T01:20:00+03:00'
+            balance: 100
+            balTypeName: 'Рекламный'
+            startDate: '2020-12-25T12:45:00+03:00'
+            decDate: '2021-01-19T01:20:00+03:00'
+            incDate: '2020-12-25T12:45:00+03:00'
+            balanceLevel: 100
+            freezyDay: 10
+            deadType: 1
+      properties:
+        result:
+          $ref: '#/components/schemas/Result'
+        subsBalancesList:
+          $ref: '#/components/schemas/BalancesList'
+    BalancesList:
+      type: array
+      description: 'Массив балансов абонента'
+      example:
+        clientBalanceId: 4242
+        balanceName: 'Административный'
+        priority: 1
+        deadDate: '2021-01-19T01:20:00+03:00'
+        balance: 100
+        balTypeName: 'Рекламный'
+        startDate: '2020-12-25T12:45:00+03:00'
+        decDate: '2021-01-19T01:20:00+03:00'
+        incDate: '2020-12-25T12:45:00+03:00'
+        balanceLevel: 100
+        freezyDay: 10
+        deadType: 1
+      items:
+        $ref: '#/components/schemas/Balance'
+      minItems: 1
+      maxItems: 10
+    Balance:
+      type: object
+      description: 'Структура баланса пользователя'
+      properties:
+        clientBalanceId:
+          type: integer
+          format: int64
+          description: 'Идентификатор баланса абонента'
+          example: 4242
+        balanceName:
+          type: string
+          maxLength: 150
+          description: 'Имя баланса пользователя'
+          example: 'Административный'
+          pattern: '^(.*){150}$'
+        priority:
+          type: integer
+          format: int32
+          description: 'Приоритет баланса'
+          example: 1
+        deadDate:
+          type: string
+          pattern: "^((19|20)[0-9][0-9])[-](0[1-9]|1[012])[-](0[1-9]|[12][0-9]|3[01])[T]([01][1-9]|[2][0-3])[:]([0-5][0-9])[:]([0-5][0-9])(([.]([0-9]){1,3}){0,1}[+|-]([01][0-9]|[2][0-3])[:]([0-5][0-9])){0,1}$"
+          maxLength: 25
+          description: 'Дата истечения срока жизни баланса'
+          example: '2021-01-19T01:20:00+03:00'
+        balance:
+          type: number
+          format: double
+          description: 'Фактическая величина баланса'
+          example: 150
+        balTypeName:
+          type: string
+          maxLength: 150
+          description: 'Имя типа баланса пользователя'
+          example: 'Рекламный'
+          pattern: '^(.*){150}$'
+        startDate:
+          type: string
+          pattern: "^((19|20)[0-9][0-9])[-](0[1-9]|1[012])[-](0[1-9]|[12][0-9]|3[01])[T]([01][1-9]|[2][0-3])[:]([0-5][0-9])[:]([0-5][0-9])(([.]([0-9]){1,3}){0,1}[+|-]([01][0-9]|[2][0-3])[:]([0-5][0-9])){0,1}$"
+          maxLength: 25
+          description: 'Дата начала действия баланса'
+          example: '2020-12-25T12:45:00+03:00'
+        decDate:
+          type: string
+          pattern: "^((19|20)[0-9][0-9])[-](0[1-9]|1[012])[-](0[1-9]|[12][0-9]|3[01])[T]([01][1-9]|[2][0-3])[:]([0-5][0-9])[:]([0-5][0-9])(([.]([0-9]){1,3}){0,1}[+|-]([01][0-9]|[2][0-3])[:]([0-5][0-9])){0,1}$"
+          maxLength: 25
+          description: 'Дата последнего списания с баланса'
+          example: '2021-01-19T01:20:00+03:00'
+        incDate:
+          type: string
+          pattern: "^((19|20)[0-9][0-9])[-](0[1-9]|1[012])[-](0[1-9]|[12][0-9]|3[01])[T]([01][1-9]|[2][0-3])[:]([0-5][0-9])[:]([0-5][0-9])(([.]([0-9]){1,3}){0,1}[+|-]([01][0-9]|[2][0-3])[:]([0-5][0-9])){0,1}$"
+          maxLength: 25
+          description: 'Дата последнего пополнения баланса клиента'
+          example: '2020-12-25T12:45:00+03:00'
+        balanceLevel:
+          type: number
+          format: double
+          description: 'Пороговое значение баланса'
+          example: 100
+        freezyDay:
+          type: integer
+          format: int32
+          description: 'На сколько дней замораживать баланс'
+          example: 10
+        deadType:
+          type: integer
+          format: int32
+          description: 'Списывать средства с баланса (1) или нет (0)'
+          example: 1
+      example:
+        clientBalanceId: 4242
+        balanceName: 'Административный'
+        priority: 1
+        deadDate: '2021-01-19T01:20:00+03:00'
+        balance: 100
+        balTypeName: 'Рекламный'
+        startDate: '2020-12-25T12:45:00+03:00'
+        decDate: '2021-01-19T01:20:00+03:00'
+        incDate: '2020-12-25T12:45:00+03:00'
+        balanceLevel: 100
+        freezyDay: 10
+        deadType: 1
+    SubscriberDiscountResponse:
+      required:
+        - result
+      type: object
+      description: 'Структура ответа со списком остатков пакетов абонента'
+      properties:
+        result:
+          $ref: '#/components/schemas/Result'
+        services:
+          type: array
+          title: services
+          description: 'Список остатков пакетов абонента'
+          example:
+            servId: 123
+          items:
+            $ref: '#/components/schemas/SubscriberDiscount'
+          minItems: 0
+          maxItems: 100
+      example:
+        result:
+          code: 'OK'
+          messageUser: 'Операция выполнена успешно'
+        services:
+          - disId: 101
+            name: '150 минут Россия'
+            vol1: 0
+            vol2: 0
+            lastDate: '2021-01-20T16:49:16.754+03:00'
+            dvtpId: 1
+            dvtpName: 'Количество минут за период'
+            prevLevel: 0
+            nextLevel: 150
+            startTimeInterval: '2020-12-27T00:21:09+03:00'
+            endTimeInterval: '2021-01-28T00:00:00+03:00'
+            distId: 1
+            servId: 1345
+            billingServName: '150 минут на все номера России'
+            servName: '150 минут Россия'
+            volume: 150
+            volumeLeft: 150
+            typeName: 'Звонки'
+            measure: 'мин'
+            volRest1: 0
+            volRest2: 0
+            balance: 150
+            balanceWithRest: 150
+    SubscriberDiscount:
+      required:
+        - servId
+      type: object
+      description: 'Остатки по конкретному пакету услуг'
+      properties:
+        disId:
+          type: integer
+          format: int64
+          description: 'Идентификатор модификатора'
+          example: 101
+        name:
+          type: string
+          maxLength: 150
+          description: 'Наименование скидки'
+          example: '150 минут Россия'
+          pattern: '^(.*){150}$'
+        vol1:
+          type: number
+          format: double
+          description: 'Объем по локальной составляющей вызова'
+          example: '0'
+        vol2:
+          type: number
+          format: double
+          description: 'Объем по ММТ составляющей вызова'
+          example: '0'
+        lastDate:
+          type: string
+          pattern: "^((19|20)[0-9][0-9])[-](0[1-9]|1[012])[-](0[1-9]|[12][0-9]|3[01])[T]([01][1-9]|[2][0-3])[:]([0-5][0-9])[:]([0-5][0-9])(([.]([0-9]){1,3}){0,1}[+|-]([01][0-9]|[2][0-3])[:]([0-5][0-9])){0,1}$"
+          maxLength: 29
+          description: 'Дата последнего списания средств'
+          example: '2021-01-20T16:49:16.754+03:00'
+        dvtpId:
+          type: integer
+          format: int64
+          description: 'Идентификатор типа порога скидки'
+          example: 1
+        dvtpName:
+          type: string
+          maxLength: 150
+          description: 'Наименование порога'
+          example: 'Количество минут за период'
+          pattern: '^(.*){150}$'
+        prevLevel:
+          type: number
+          format: double
+          description: 'Порог предыдущий'
+          example: '0'
+        nextLevel:
+          type: number
+          format: double
+          description: 'Порог следующий'
+          example: 150
+        startTimeInterval:
+          type: string
+          pattern: "^((19|20)[0-9][0-9])[-](0[1-9]|1[012])[-](0[1-9]|[12][0-9]|3[01])[T]([01][1-9]|[2][0-3])[:]([0-5][0-9])[:]([0-5][0-9])(([.]([0-9]){1,3}){0,1}[+|-]([01][0-9]|[2][0-3])[:]([0-5][0-9])){0,1}$"
+          maxLength: 25
+          description: 'Начало интервала скидки'
+          example: '2020-12-27T00:21:09+03:00'
+        endTimeInterval:
+          type: string
+          format: date-time
+          maxLength: 29
+          description: 'Окончание интервала скидки'
+          example: '2021-01-28T00:00:00+03:00'
+          pattern: "^((19|20)[0-9][0-9])[-](0[1-9]|1[012])[-](0[1-9]|[12][0-9]|3[01])[T]([01][1-9]|[2][0-3])[:]([0-5][0-9])[:]([0-5][0-9])(([.]([0-9]){1,3}){0,1}[+|-]([01][0-9]|[2][0-3])[:]([0-5][0-9])){0,1}$"
+
+        distId:
+          type: integer
+          format: int64
+          description: 'Идентификатор типа модификатора'
+          example: 1
+        servId:
+          type: integer
+          format: int64
+          description: 'Идентификатор связанной услуги'
+          example: 1345
+        billingServName:
+          type: string
+          maxLength: 150
+          description: 'Наименование услуги в биллинге'
+          example: '150 минут на все номера России'
+          pattern: '^(.*){150}$'
+        servName:
+          type: string
+          maxLength: 150
+          description: 'Коммерческое наименование услуги'
+          example: '150 минут Россия'
+          pattern: '^(.*){150}$'
+        volume:
+          type: number
+          format: double
+          description: 'Объем пакета'
+          example: 150
+        volumeLeft:
+          type: number
+          format: double
+          description: 'Остаток'
+          example: 150
+        typeName:
+          type: string
+          maxLength: 32
+          description: 'Категория трафика'
+          example: 'Звонки'
+          pattern: '^(.*){32}$'
+        measure:
+          type: string
+          maxLength: 10
+          description: 'Размерность трафика'
+          example: 'мин'
+          pattern: '^(.*){10}$'
+        volRest1:
+          type: number
+          format: double
+          description: 'Сумма перенесённых остатков 1'
+          example: '0'
+        volRest2:
+          type: number
+          format: double
+          description: 'Сумма перенесённых остатков 2'
+          example: '0'
+        balance:
+          type: number
+          format: double
+          description: 'Неиспользованный остаток скидки'
+          example: 150
+        balanceWithRest:
+          type: number
+          format: double
+          description: 'Неиспользованный остаток скидки с учётом переноса'
+          example: 150
+      example:
+        disId: 101
+        name: '150 минут Россия'
+        vol1: 0
+        vol2: 0
+        lastDate: '2021-01-20T16:49:16.754+03:00'
+        dvtpId: 1
+        dvtpName: 'Количество минут за период'
+        prevLevel: 0
+        nextLevel: 150
+        startTimeInterval: '2020-12-27T00:21:09+03:00'
+        endTimeInterval: '2021-01-28T00:00:00+03:00'
+        distId: 1
+        servId: 1345
+        billingServName: '150 минут на все номера России'
+        servName: '150 минут Россия'
+        volume: 150
+        volumeLeft: 150
+        typeName: 'Звонки'
+        measure: 'мин'
+        volRest1: 0
+        volRest2: 0
+        balance: 150
+        balanceWithRest: 150
+    MsisdnRequest:
+      required:
+        - msisdn
+      type: object
+      description: 'Запрос для получения информации по MSISDN абонента'
+      example:
+        msisdn: "9876543210"
+      properties:
+        msisdn:
+          type: string
+          maxLength: 20
+          description: 'Номер телефона (MSISDN)'
+          example: '9876543210'
+          pattern: "^(([0-9]){10,20})$"
+    Result:
+      required:
+        - code
+      type: object
+      description: 'Статус обработки запроса'
+      properties:
+        code:
+          type: string
+          maxLength: 5
+          description: >
+            Символьный код результата обработки запроса:
+              * `OK` - Успешно
+              * `ERROR` - Непредвиденная ошибка
+          example: 'OK'
+          pattern: '^(.*){5}$'
+        messageUser:
+          type: string
+          maxLength: 250
+          description: 'Текст с информацией об отработке запроса'
+          example: 'Операция выполнена успешно'
+          pattern: '^(.*){250}$'
+      example:
+        code: 'OK'
+        messageUser: 'Операция выполнена успешно'
+  parameters:
+    HeaderRqUID:
+      name: RqUID
+      in: header
+      required: true
+      description: Сквозной идентификатор транзакции
+      schema:
+        type: string
+        pattern: "^(([0-9]|[a-f]|[A-F]){32})$"
+        maxLength: 32
+        description: Схема сквозной идентификатор транзакции
+        example: d0c5d5d03e074ad7ba2e2e248eef7e9c
+    HeaderRqTm:
+      name: RqTm
+      in: header
+      required: true
+      description: Время осуществления транзакции
+      schema:
+        type: string
+        maxLength: 29
+        pattern: '^(.*){29}$'
+        description: Схема времени осуществления транзакции
+        example: "2020-08-05T10:31:12+03:00"
+    HeaderSubsystemCode:
+      name: SubsystemCode
+      in: header
+      required: true
+      description: Код витрины потребителя
+      schema:
+        type: string
+        maxLength: 32
+        pattern: '^(.*){32}$'
+        description: Схема кода витрины потребителя
+        example: "SBOL_PRO"
+  headers:
+    RqUID:
+      description: 'Сквозной идентификатор транзакции'
+      schema:
+        type: string
+        pattern: "^(([0-9]|[a-f]|[A-F]){16,32})$"
+        maxLength: 32
+      example: d0c5d5d03e074ad7ba2e2e248eef7e9c
+    RqTm:
+      description: Время осуществления транзакции
+      schema:
+        type: string
+        maxLength: 29
+        pattern: '^(.*){29}$'
+      example: "2020-08-05T10:31:12+03:00"
+    SubsystemCode:
+      description: Код витрины потребителя
+      schema:
+        type: string
+        maxLength: 32
+        pattern: '^(.*){32}$'
+      example: "SBOL_PRO"
+# Powered by APIStudio
