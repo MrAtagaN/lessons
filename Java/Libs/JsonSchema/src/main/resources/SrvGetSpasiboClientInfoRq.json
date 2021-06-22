@@ -1,24 +1,44 @@
 {
-  "header": {
-    "ServiceName": "SrvGetSpasiboClientInfoRq",
-    "ServiceDescription": "description",
-    "ServiceVersion": "001",
-    "OperationName": "GetSpasiboClientInfo",
-    "SPName": "urn:sbrfsystems:99-asfm",
-    "SCName": "urn:sbrfsystems:99-vp",
-    "ServiceNamespace": "srv://sbg.sbr/federal",
-    "RqUID": "1de9814ae3dc9907bf8e52e01b769485",
-    "RqTm": "2020-04-06T13:07:19"
+  "result": {
+    "code": "OK",
+    "messageUser": "Операция выполнена успешно"
   },
-  "body": {
-    "GetSpasiboClientInfoRq": {
-      "RqUID": "1de9814ae3dc9907bf8e52e01b769485",
-      "RqTm": "2020-04-06T13:07:19",
-      "SPName": "urn:sbrfsystems:99-vp",
-      "Identifier": {
-        "Id": "123456789",
-        "Type": "Something"
-      }
+  "subsDiscount": [
+    {
+      "balance": 5,
+      "balanceWithRest": 5,
+      "billingServName": "Минуты в сутки",
+      "disId": 368,
+      "distId": 1,
+      "dvtpId": 1,
+      "dvtpName": "Количество минут за период",
+      "endTimeInterval": "2021-06-19T00:00:00+03:00",
+      "lastDate": "2021-06-18T10:04:49.75+03:00",
+      "measure": "мин",
+      "name": "[Минуты] 5 Минут в сутки",
+      "nextLevel": 5,
+      "prevLevel": 0,
+      "servId": 1990,
+      "startTimeInterval": "2021-06-18T00:00:00+03:00",
+      "typeName": "Звонки",
+      "vol1": 0,
+      "vol2": 0,
+      "volRest1": 0,
+      "volRest2": 0,
+      "volume": 5,
+      "volumeLeft": 5
+    },
+    {
+      "dvtpId": 0,
+      "endTimeInterval": "2021-06-18T23:59:59+03:00",
+      "lastDate": "2021-06-18T10:04:49.75+03:00",
+      "measure": "Mb",
+      "name": "q_d_1135",
+      "servId": 1135,
+      "startTimeInterval": "2021-06-17T23:59:59+03:00",
+      "typeName": "Интернет",
+      "volume": 100,
+      "volumeLeft": 100
     }
-  }
+  ]
 }
