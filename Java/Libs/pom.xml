@@ -28,6 +28,9 @@
         <module>Vavr</module>
         <module>MailClient</module>
         <module>Json</module>
+        <module>MQ</module>
+        <module>Soap</module>
+        <module>Servlet</module>
     </modules>
 
 
