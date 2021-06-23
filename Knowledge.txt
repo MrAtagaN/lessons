@@ -78,4 +78,7 @@ Postgres client
 SoapUI
 Nodepad++
 
+//TODO
+-Hazelcast, Redis, spring cloud, swagger, gradle, Prometheus, RxJava,
+ webFlux, GRPC и Protobuf, MongoDB, myBatis
 
